@@ -1,0 +1,12 @@
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\PresentationLayer.exe.config
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\PresentationLayer.exe
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\PresentationLayer.pdb
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.csproj.AssemblyReference.cache
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlPersonCard.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.Properties.Resources.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.csproj.GenerateResource.cache
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.csproj.CoreCompileInputs.cache
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.exe
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.pdb
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.Form1.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmPeople.resources

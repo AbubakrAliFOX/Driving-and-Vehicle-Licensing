@@ -31,7 +31,7 @@
             this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblCountry = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbPersonPhoto = new System.Windows.Forms.PictureBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblGender = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDateOfBirth
@@ -77,13 +77,13 @@
             this.lblCountry.Size = new System.Drawing.Size(0, 22);
             this.lblCountry.TabIndex = 2;
             // 
-            // pictureBox1
+            // pbPersonPhoto
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(486, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(204, 177);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.pbPersonPhoto.Location = new System.Drawing.Point(486, 35);
+            this.pbPersonPhoto.Name = "pbPersonPhoto";
+            this.pbPersonPhoto.Size = new System.Drawing.Size(204, 177);
+            this.pbPersonPhoto.TabIndex = 3;
+            this.pbPersonPhoto.TabStop = false;
             // 
             // lblAddress
             // 
@@ -242,7 +242,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbPersonPhoto);
             this.Controls.Add(this.lblCountry);
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.lblDateOfBirth);
@@ -255,7 +255,7 @@
             this.Name = "ctrlPersonCard";
             this.Size = new System.Drawing.Size(740, 289);
             this.Load += new System.EventHandler(this.ctrlPersonCard_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,7 +265,7 @@
         private System.Windows.Forms.Label lblDateOfBirth;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Label lblCountry;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbPersonPhoto;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblGender;

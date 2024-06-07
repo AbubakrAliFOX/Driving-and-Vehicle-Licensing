@@ -15,6 +15,20 @@ namespace PresentationLayer
         public Form1()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+            this.Width = Screen.PrimaryScreen.Bounds.Width;
+            this.Top = (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnPeople_Click(object sender, EventArgs e)
+        {
+            frmPeople newForm = new frmPeople();
+            newForm.Show();
         }
     }
 }
