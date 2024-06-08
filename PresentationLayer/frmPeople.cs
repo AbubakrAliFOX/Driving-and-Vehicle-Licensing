@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PeopleBussinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,14 @@ namespace PresentationLayer
         public frmPeople()
         {
             InitializeComponent();
+
+            dgvPeople.DataSource = clsPeopleBusinessLayer.GetAllPeople();
         }
 
         private void frmPeople_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }

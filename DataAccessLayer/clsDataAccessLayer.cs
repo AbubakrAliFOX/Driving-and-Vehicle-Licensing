@@ -12,7 +12,6 @@ namespace PeopleDataAccessLayer
     {
         public static DataTable GetAllPeople()
         {
-        
             DataTable dt = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
