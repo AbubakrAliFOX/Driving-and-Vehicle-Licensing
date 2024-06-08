@@ -10,9 +10,14 @@ namespace PeopleBussinessLayer
 {
     public class clsPeopleBusinessLayer
     {
-        public static DataTable GetAllPeople()
+        public static DataTable GetAllDrivers()
         {
-            return clsDataAccessLayer.GetAllPeople();
+            return clsDataAccessLayer.GetAllDrivers();
+        }
+
+        public static DataTable GetAllUsers()
+        {
+            return clsDataAccessLayer.GetAllUsers();
         }
     }
 }

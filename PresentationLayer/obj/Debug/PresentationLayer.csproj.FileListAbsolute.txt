@@ -9,9 +9,9 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.c
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.exe
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.pdb
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.Form1.resources
-E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmPeople.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\PeopleBussinessLayer.dll
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\DataAccessLayer.dll
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\PeopleBussinessLayer.pdb
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\DataAccessLayer.pdb
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.csproj.CopyComplete
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlDataPage.resources

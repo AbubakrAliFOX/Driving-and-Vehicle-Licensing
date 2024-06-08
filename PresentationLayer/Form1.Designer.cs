@@ -1,4 +1,6 @@
-﻿namespace PresentationLayer
+﻿using PeopleBussinessLayer;
+
+namespace PresentationLayer
 {
     partial class Form1
     {
@@ -30,12 +32,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pSideNav = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnPeople = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.btnDrivers = new System.Windows.Forms.Button();
             this.pSideNav.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,13 +48,29 @@
             this.pSideNav.Controls.Add(this.panel1);
             this.pSideNav.Controls.Add(this.button3);
             this.pSideNav.Controls.Add(this.button2);
-            this.pSideNav.Controls.Add(this.button1);
-            this.pSideNav.Controls.Add(this.btnPeople);
+            this.pSideNav.Controls.Add(this.btnUsers);
+            this.pSideNav.Controls.Add(this.btnDrivers);
             this.pSideNav.Dock = System.Windows.Forms.DockStyle.Left;
             this.pSideNav.Location = new System.Drawing.Point(0, 0);
             this.pSideNav.Name = "pSideNav";
             this.pSideNav.Size = new System.Drawing.Size(253, 478);
             this.pSideNav.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Gold;
+            this.panel2.Location = new System.Drawing.Point(0, 166);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(7, 76);
+            this.panel2.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gold;
+            this.panel1.Location = new System.Drawing.Point(0, 89);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(7, 76);
+            this.panel1.TabIndex = 2;
             // 
             // button3
             // 
@@ -88,55 +106,41 @@
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnUsers
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 162);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(241, 76);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "         Users";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnUsers.FlatAppearance.BorderSize = 0;
+            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsers.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsers.ForeColor = System.Drawing.Color.White;
+            this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
+            this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsers.Location = new System.Drawing.Point(12, 162);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(241, 76);
+            this.btnUsers.TabIndex = 0;
+            this.btnUsers.Text = "         Users";
+            this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUsers.UseVisualStyleBackColor = true;
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
-            // btnPeople
+            // btnDrivers
             // 
-            this.btnPeople.FlatAppearance.BorderSize = 0;
-            this.btnPeople.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPeople.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPeople.ForeColor = System.Drawing.Color.White;
-            this.btnPeople.Image = ((System.Drawing.Image)(resources.GetObject("btnPeople.Image")));
-            this.btnPeople.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPeople.Location = new System.Drawing.Point(9, 89);
-            this.btnPeople.Name = "btnPeople";
-            this.btnPeople.Size = new System.Drawing.Size(241, 76);
-            this.btnPeople.TabIndex = 0;
-            this.btnPeople.Text = "        Drivers";
-            this.btnPeople.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPeople.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPeople.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Gold;
-            this.panel1.Location = new System.Drawing.Point(0, 89);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(7, 76);
-            this.panel1.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Gold;
-            this.panel2.Location = new System.Drawing.Point(0, 166);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(7, 76);
-            this.panel2.TabIndex = 3;
+            this.btnDrivers.FlatAppearance.BorderSize = 0;
+            this.btnDrivers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDrivers.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDrivers.ForeColor = System.Drawing.Color.White;
+            this.btnDrivers.Image = ((System.Drawing.Image)(resources.GetObject("btnDrivers.Image")));
+            this.btnDrivers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDrivers.Location = new System.Drawing.Point(9, 89);
+            this.btnDrivers.Name = "btnDrivers";
+            this.btnDrivers.Size = new System.Drawing.Size(241, 76);
+            this.btnDrivers.TabIndex = 0;
+            this.btnDrivers.Text = "        Drivers";
+            this.btnDrivers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDrivers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDrivers.UseVisualStyleBackColor = true;
+            this.btnDrivers.Click += new System.EventHandler(this.btnDrivers_Click);
             // 
             // Form1
             // 
@@ -156,8 +160,8 @@
 
         #endregion
         private System.Windows.Forms.Panel pSideNav;
-        private System.Windows.Forms.Button btnPeople;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDrivers;
+        private System.Windows.Forms.Button btnUsers;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
