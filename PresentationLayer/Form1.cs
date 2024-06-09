@@ -46,6 +46,10 @@ namespace PresentationLayer
         {
             ctrlDataPageDrivers.Visible = true;
             ctrlDataPageUsers.Visible = false;
+            panel1.Visible = true;
+            panel2.Visible = false;
+            btnDrivers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(200))))); ;
+            btnUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95))))); ;
             FormatDriverLayout();
         }
 
@@ -53,6 +57,10 @@ namespace PresentationLayer
         {
             ctrlDataPageDrivers.Visible = false;
             ctrlDataPageUsers.Visible = true;
+            panel1.Visible = false;
+            panel2.Visible = true;
+            btnUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(200))))); ;
+            btnDrivers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95))))); ;
             FormatUserLayout();
 
         }

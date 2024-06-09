@@ -65,10 +65,11 @@ namespace PresentationLayer
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gold;
-            this.panel2.Location = new System.Drawing.Point(0, 166);
+            this.panel2.Location = new System.Drawing.Point(0, 164);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(7, 76);
             this.panel2.TabIndex = 3;
+            this.panel2.Visible = false;
             // 
             // panel1
             // 
@@ -77,6 +78,7 @@ namespace PresentationLayer
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(7, 76);
             this.panel1.TabIndex = 2;
+            this.panel1.Visible = false;
             // 
             // button3
             // 
@@ -86,9 +88,9 @@ namespace PresentationLayer
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(12, 334);
+            this.button3.Location = new System.Drawing.Point(7, 336);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(241, 76);
+            this.button3.Size = new System.Drawing.Size(246, 76);
             this.button3.TabIndex = 0;
             this.button3.Text = "  Account Settings";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -103,9 +105,9 @@ namespace PresentationLayer
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 248);
+            this.button2.Location = new System.Drawing.Point(7, 250);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(241, 76);
+            this.button2.Size = new System.Drawing.Size(246, 76);
             this.button2.TabIndex = 0;
             this.button2.Text = "     Applications";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -120,9 +122,9 @@ namespace PresentationLayer
             this.btnUsers.ForeColor = System.Drawing.Color.White;
             this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
             this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsers.Location = new System.Drawing.Point(12, 162);
+            this.btnUsers.Location = new System.Drawing.Point(7, 164);
             this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(241, 76);
+            this.btnUsers.Size = new System.Drawing.Size(246, 76);
             this.btnUsers.TabIndex = 0;
             this.btnUsers.Text = "         Users";
             this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -138,9 +140,9 @@ namespace PresentationLayer
             this.btnDrivers.ForeColor = System.Drawing.Color.White;
             this.btnDrivers.Image = ((System.Drawing.Image)(resources.GetObject("btnDrivers.Image")));
             this.btnDrivers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDrivers.Location = new System.Drawing.Point(9, 89);
+            this.btnDrivers.Location = new System.Drawing.Point(7, 89);
             this.btnDrivers.Name = "btnDrivers";
-            this.btnDrivers.Size = new System.Drawing.Size(241, 76);
+            this.btnDrivers.Size = new System.Drawing.Size(246, 76);
             this.btnDrivers.TabIndex = 0;
             this.btnDrivers.Text = "        Drivers";
             this.btnDrivers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -156,28 +158,28 @@ namespace PresentationLayer
             this.tsmInterLic,
             this.tsmLicHistory});
             this.cmsDrivers.Name = "cmsDrivers";
-            this.cmsDrivers.Size = new System.Drawing.Size(255, 122);
+            this.cmsDrivers.Size = new System.Drawing.Size(255, 82);
             // 
             // tsmDriverInfo
             // 
-            this.tsmDriverInfo.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmDriverInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmDriverInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmDriverInfo.Image")));
             this.tsmDriverInfo.Name = "tsmDriverInfo";
-            this.tsmDriverInfo.Size = new System.Drawing.Size(254, 30);
+            this.tsmDriverInfo.Size = new System.Drawing.Size(254, 26);
             this.tsmDriverInfo.Text = "Show Diver Info";
             // 
             // tsmInterLic
             // 
             this.tsmInterLic.Image = ((System.Drawing.Image)(resources.GetObject("tsmInterLic.Image")));
             this.tsmInterLic.Name = "tsmInterLic";
-            this.tsmInterLic.Size = new System.Drawing.Size(254, 30);
+            this.tsmInterLic.Size = new System.Drawing.Size(254, 26);
             this.tsmInterLic.Text = "Issue International License";
             // 
             // tsmLicHistory
             // 
             this.tsmLicHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsmLicHistory.Image")));
             this.tsmLicHistory.Name = "tsmLicHistory";
-            this.tsmLicHistory.Size = new System.Drawing.Size(254, 30);
+            this.tsmLicHistory.Size = new System.Drawing.Size(254, 26);
             this.tsmLicHistory.Text = "Show License History";
             // 
             // Form1

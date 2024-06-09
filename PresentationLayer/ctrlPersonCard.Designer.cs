@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlPersonCard));
             this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblCountry = new System.Windows.Forms.Label();
@@ -79,9 +80,10 @@
             // 
             // pbPersonPhoto
             // 
-            this.pbPersonPhoto.Location = new System.Drawing.Point(486, 35);
+            this.pbPersonPhoto.Image = ((System.Drawing.Image)(resources.GetObject("pbPersonPhoto.Image")));
+            this.pbPersonPhoto.Location = new System.Drawing.Point(547, 52);
             this.pbPersonPhoto.Name = "pbPersonPhoto";
-            this.pbPersonPhoto.Size = new System.Drawing.Size(204, 177);
+            this.pbPersonPhoto.Size = new System.Drawing.Size(124, 136);
             this.pbPersonPhoto.TabIndex = 3;
             this.pbPersonPhoto.TabStop = false;
             // 
@@ -203,7 +205,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(273, 112);
+            this.label7.Location = new System.Drawing.Point(305, 229);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 22);
             this.label7.TabIndex = 10;
@@ -213,7 +215,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(273, 74);
+            this.label8.Location = new System.Drawing.Point(305, 191);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 22);
             this.label8.TabIndex = 11;
@@ -223,7 +225,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(273, 35);
+            this.label9.Location = new System.Drawing.Point(305, 152);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(109, 22);
             this.label9.TabIndex = 12;
