@@ -30,6 +30,7 @@ namespace PresentationLayer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pSideNav = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -38,7 +39,12 @@ namespace PresentationLayer
             this.button2 = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.btnDrivers = new System.Windows.Forms.Button();
+            this.cmsDrivers = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmDriverInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmInterLic = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmLicHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.pSideNav.SuspendLayout();
+            this.cmsDrivers.SuspendLayout();
             this.SuspendLayout();
             // 
             // pSideNav
@@ -142,6 +148,38 @@ namespace PresentationLayer
             this.btnDrivers.UseVisualStyleBackColor = true;
             this.btnDrivers.Click += new System.EventHandler(this.btnDrivers_Click);
             // 
+            // cmsDrivers
+            // 
+            this.cmsDrivers.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsDrivers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmDriverInfo,
+            this.tsmInterLic,
+            this.tsmLicHistory});
+            this.cmsDrivers.Name = "cmsDrivers";
+            this.cmsDrivers.Size = new System.Drawing.Size(255, 122);
+            // 
+            // tsmDriverInfo
+            // 
+            this.tsmDriverInfo.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmDriverInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmDriverInfo.Image")));
+            this.tsmDriverInfo.Name = "tsmDriverInfo";
+            this.tsmDriverInfo.Size = new System.Drawing.Size(254, 30);
+            this.tsmDriverInfo.Text = "Show Diver Info";
+            // 
+            // tsmInterLic
+            // 
+            this.tsmInterLic.Image = ((System.Drawing.Image)(resources.GetObject("tsmInterLic.Image")));
+            this.tsmInterLic.Name = "tsmInterLic";
+            this.tsmInterLic.Size = new System.Drawing.Size(254, 30);
+            this.tsmInterLic.Text = "Issue International License";
+            // 
+            // tsmLicHistory
+            // 
+            this.tsmLicHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsmLicHistory.Image")));
+            this.tsmLicHistory.Name = "tsmLicHistory";
+            this.tsmLicHistory.Size = new System.Drawing.Size(254, 30);
+            this.tsmLicHistory.Text = "Show License History";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -154,6 +192,7 @@ namespace PresentationLayer
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pSideNav.ResumeLayout(false);
+            this.cmsDrivers.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -166,6 +205,10 @@ namespace PresentationLayer
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ContextMenuStrip cmsDrivers;
+        private System.Windows.Forms.ToolStripMenuItem tsmDriverInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmInterLic;
+        private System.Windows.Forms.ToolStripMenuItem tsmLicHistory;
     }
 }
 

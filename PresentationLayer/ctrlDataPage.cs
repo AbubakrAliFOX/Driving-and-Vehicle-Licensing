@@ -19,20 +19,32 @@ namespace PresentationLayer
             this.Location = new System.Drawing.Point(256, 0);
             this.Size = new System.Drawing.Size(1010, 478);
             this.TabIndex = 4;
+            this.Visible = false;
+            this.dvg.RowHeadersWidth = 30;
+
             this.Name = Name;
             this.Data = Data;
-            this.Visible = false;
+            lblRecordsNumber.Text = Convert.ToString(this.Data.Rows.Count);
+            //CreateTableWithData(Data);
         }
 
         private DataTable data = new DataTable();
         public DataTable Data
         {
             get { return data; }
-            set { 
-                data = value; 
+            set
+            {
+                data = value;
                 dvg.DataSource = this.Data;
             }
         }
 
+        public void CreateTable (DataTable dt)
+        {
+            DataTable localDataTable = dt;
+
+            
+
+        }
     }
 }

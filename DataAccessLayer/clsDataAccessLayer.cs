@@ -16,7 +16,7 @@ namespace PeopleDataAccessLayer
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
-            string query = "select * from Drivers";
+            string query = "SELECT Drivers.DriverID, People.NationalNo, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, Drivers.CreatedDate, Users.Username, (SELECT COUNT(*) FROM Licenses WHERE Licenses.DriverID = Drivers.DriverID and Licenses.IsActive = 1) AS ActiveLicences FROM Drivers INNER JOIN People ON Drivers.PersonID = People.PersonID INNER JOIN Users ON Drivers.CreatedByUserID = Users.UserID;";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -52,7 +52,7 @@ namespace PeopleDataAccessLayer
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
-            string query = "select * from Users";
+            string query = "SELECT Users.UserID, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, Users.UserName, Users.IsActive FROM Users INNER JOIN People ON Users.PersonID = People.PersonID";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
