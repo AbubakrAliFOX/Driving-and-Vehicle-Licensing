@@ -15,26 +15,73 @@ namespace PresentationLayer
     {
         private ctrlDataPage ctrlDataPageDrivers;
         private ctrlDataPage ctrlDataPageUsers;
+
+        private ctrlMenuButton ctrlDriversMenuButton;
+        private ctrlMenuButton ctrlUsersMenuButton;
+        private ctrlMenuButton ctrlApplicationsMenuButton;
+        private ctrlMenuButton ctrlSettingsMenuButton;
+
+        private List<Button> selectedButtons;
+
         public Form1()
         {
             InitializeComponent();
             //this.WindowState = FormWindowState.Maximized;
             //this.Width = Screen.PrimaryScreen.Bounds.Width;
             //this.Top = (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2;
+            selectedButtons = new List<Button>();
+            AddButtonEventHandlers();
+
             InitializeControls();
             SetupLayout();
+        }
+
+        private void AddButtonEventHandlers()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button button)
+                {
+                    //button.Click += Button_Click;
+                }
+            }
         }
 
         private void InitializeControls()
         {
             ctrlDataPageDrivers = new ctrlDataPage("ctrlDataPageDrivers", clsPeopleBusinessLayer.GetAllDrivers());
             ctrlDataPageUsers = new ctrlDataPage("ctrlDataPageUsers", clsPeopleBusinessLayer.GetAllUsers());
+
+            ctrlDriversMenuButton = new ctrlMenuButton("Drivers", "DriverImg.png");
+            ctrlDriversMenuButton.Location = new System.Drawing.Point(378, 89);
+
+            ctrlUsersMenuButton = new ctrlMenuButton("Users", "Users.png");
+            ctrlUsersMenuButton.Location = new System.Drawing.Point(378, 164);
+
+            ctrlApplicationsMenuButton = new ctrlMenuButton("Applications", "Application.png");
+            ctrlApplicationsMenuButton.Location = new System.Drawing.Point(378, 250);
+
+            ctrlSettingsMenuButton = new ctrlMenuButton("Settings", "Settings.png");
+            ctrlSettingsMenuButton.Location = new System.Drawing.Point(378, 336);
+
+            ctrlSettingsMenuButton.MainButton.Click += setThis;
         }
 
+        private void setThis(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            ctrlMenuButton parentControl = button.Parent as ctrlMenuButton;
+            parentControl.SidePanel.Visible = true;
+            MessageBox.Show(parentControl.GetType().ToString());
+        }
         private void SetupLayout()
         {
             this.Controls.Add(ctrlDataPageDrivers);
             this.Controls.Add(ctrlDataPageUsers);
+            pSideNav.Controls.Add(ctrlDriversMenuButton);
+            pSideNav.Controls.Add(ctrlUsersMenuButton);
+            pSideNav.Controls.Add(ctrlApplicationsMenuButton);
+            pSideNav.Controls.Add(ctrlSettingsMenuButton);
         }
 
 
@@ -102,5 +149,6 @@ namespace PresentationLayer
 
             }
         }
+
     }
 }

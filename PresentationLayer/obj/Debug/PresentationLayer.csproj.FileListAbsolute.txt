@@ -15,3 +15,4 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\PeopleBussinessLaye
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\DataAccessLayer.pdb
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.csproj.CopyComplete
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlDataPage.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlMenuButton.resources
