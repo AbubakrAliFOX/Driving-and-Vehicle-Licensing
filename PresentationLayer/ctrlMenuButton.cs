@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PeopleBussinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace PresentationLayer
 {
     public partial class ctrlMenuButton : UserControl
     {
-        private bool _isClicked = false;
+        ctrlDataPage page;
         public ctrlMenuButton(string buttonText, string btnImage)
         {
             InitializeComponent();
@@ -23,6 +24,11 @@ namespace PresentationLayer
             pSidePanel.Visible = false;
         }
 
+        public ctrlDataPage Page
+        {
+            get { return page; }
+            set { page = value; }
+        }
         public Control MainButton
         {
             get { return btnMenuButton; }
@@ -34,22 +40,18 @@ namespace PresentationLayer
             get { return this.pSidePanel; }
         }
 
-        public void AddClickEventHandler(EventHandler eventHandler)
+        public void Reset ()
         {
-            this.Click += eventHandler;
+            this.btnMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95))))); ;
+            this.SidePanel.Visible = false;
+            this.Page.Visible = false;
         }
 
-        private void btnMenuButton_Click(object sender, EventArgs e)
+        public void Selected ()
         {
-            if (_isClicked)
-            {
-                this.btnMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95))))); ;
-            } else
-            {
-                this.btnMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(200))))); ;
-            }
-
-            _isClicked = !_isClicked;
+            this.btnMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(200))))); ;
+            this.SidePanel.Visible = true;
+            this.Page.Visible = true;
         }
 
     }

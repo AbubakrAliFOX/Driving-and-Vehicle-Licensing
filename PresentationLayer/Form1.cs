@@ -15,13 +15,15 @@ namespace PresentationLayer
     {
         private ctrlDataPage ctrlDataPageDrivers;
         private ctrlDataPage ctrlDataPageUsers;
+        private ctrlDataPage ctrlDataPageApplications;
+        private ctrlDataPage ctrlDataPageSettings;
 
         private ctrlMenuButton ctrlDriversMenuButton;
         private ctrlMenuButton ctrlUsersMenuButton;
         private ctrlMenuButton ctrlApplicationsMenuButton;
         private ctrlMenuButton ctrlSettingsMenuButton;
 
-        private List<Button> selectedButtons;
+        private List<ctrlMenuButton> lMenuButtons;
 
         public Form1()
         {
@@ -29,52 +31,60 @@ namespace PresentationLayer
             //this.WindowState = FormWindowState.Maximized;
             //this.Width = Screen.PrimaryScreen.Bounds.Width;
             //this.Top = (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2;
-            selectedButtons = new List<Button>();
-            AddButtonEventHandlers();
-
             InitializeControls();
-            SetupLayout();
-        }
-
-        private void AddButtonEventHandlers()
-        {
-            foreach (Control control in this.Controls)
-            {
-                if (control is Button button)
-                {
-                    //button.Click += Button_Click;
-                }
-            }
+            AddControls();
         }
 
         private void InitializeControls()
         {
+            lMenuButtons = new List<ctrlMenuButton>();
             ctrlDataPageDrivers = new ctrlDataPage("ctrlDataPageDrivers", clsPeopleBusinessLayer.GetAllDrivers());
             ctrlDataPageUsers = new ctrlDataPage("ctrlDataPageUsers", clsPeopleBusinessLayer.GetAllUsers());
+            ctrlDataPageApplications = new ctrlDataPage("ctrlDataPageUsers", clsPeopleBusinessLayer.GetAllUsers());
+            ctrlDataPageSettings = new ctrlDataPage("ctrlDataPageUsers", clsPeopleBusinessLayer.GetAllUsers());
 
             ctrlDriversMenuButton = new ctrlMenuButton("Drivers", "DriverImg.png");
-            ctrlDriversMenuButton.Location = new System.Drawing.Point(378, 89);
+            ctrlDriversMenuButton.Location = new System.Drawing.Point(0, 89);
+            ctrlDriversMenuButton.MainButton.Click += MenuButtonClick;
+            lMenuButtons.Add(ctrlDriversMenuButton);
+            ctrlDriversMenuButton.Page = ctrlDataPageDrivers;
 
             ctrlUsersMenuButton = new ctrlMenuButton("Users", "Users.png");
-            ctrlUsersMenuButton.Location = new System.Drawing.Point(378, 164);
+            ctrlUsersMenuButton.Location = new System.Drawing.Point(0, 165);
+            ctrlUsersMenuButton.MainButton.Click += MenuButtonClick;
+            lMenuButtons.Add(ctrlUsersMenuButton);
+            ctrlUsersMenuButton.Page = ctrlDataPageUsers;
+
 
             ctrlApplicationsMenuButton = new ctrlMenuButton("Applications", "Application.png");
-            ctrlApplicationsMenuButton.Location = new System.Drawing.Point(378, 250);
+            ctrlApplicationsMenuButton.Location = new System.Drawing.Point(0, 241);
+            ctrlApplicationsMenuButton.MainButton.Click += MenuButtonClick;
+            lMenuButtons.Add(ctrlApplicationsMenuButton);
+            ctrlApplicationsMenuButton.Page = ctrlDataPageApplications;
 
             ctrlSettingsMenuButton = new ctrlMenuButton("Settings", "Settings.png");
-            ctrlSettingsMenuButton.Location = new System.Drawing.Point(378, 336);
-
-            ctrlSettingsMenuButton.MainButton.Click += setThis;
+            ctrlSettingsMenuButton.Location = new System.Drawing.Point(0, 317);
+            ctrlSettingsMenuButton.MainButton.Click += MenuButtonClick;
+            lMenuButtons.Add(ctrlSettingsMenuButton);
+            ctrlSettingsMenuButton.Page = ctrlDataPageSettings;
         }
 
-        private void setThis(object sender, EventArgs e)
+        private void MenuButtonClick(object sender, EventArgs e)
         {
             Button button = sender as Button;
             ctrlMenuButton parentControl = button.Parent as ctrlMenuButton;
-            parentControl.SidePanel.Visible = true;
-            MessageBox.Show(parentControl.GetType().ToString());
+
+            foreach (ctrlMenuButton item in lMenuButtons)
+            {
+                if (item == parentControl)
+                {
+                    item.Selected();
+                    continue;
+                }
+                    item.Reset();
+            }
         }
-        private void SetupLayout()
+        private void AddControls()
         {
             this.Controls.Add(ctrlDataPageDrivers);
             this.Controls.Add(ctrlDataPageUsers);

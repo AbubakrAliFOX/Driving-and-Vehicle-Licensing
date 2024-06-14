@@ -42,9 +42,6 @@ namespace PresentationLayer
         public void CreateTable (DataTable dt)
         {
             DataTable localDataTable = dt;
-
-            
-
         }
     }
 }

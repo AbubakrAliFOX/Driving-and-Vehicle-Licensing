@@ -59,7 +59,6 @@
             this.btnMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMenuButton.UseVisualStyleBackColor = false;
-            this.btnMenuButton.Click += new System.EventHandler(this.btnMenuButton_Click);
             // 
             // ctrlMenuButton
             // 
