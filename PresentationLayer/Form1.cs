@@ -38,10 +38,13 @@ namespace PresentationLayer
         private void InitializeControls()
         {
             lMenuButtons = new List<ctrlMenuButton>();
-            ctrlDataPageDrivers = new ctrlDataPage("ctrlDataPageDrivers", clsPeopleBusinessLayer.GetAllDrivers());
-            ctrlDataPageUsers = new ctrlDataPage("ctrlDataPageUsers", clsPeopleBusinessLayer.GetAllUsers());
-            ctrlDataPageApplications = new ctrlDataPage("ctrlDataPageUsers", clsPeopleBusinessLayer.GetAllUsers());
-            ctrlDataPageSettings = new ctrlDataPage("ctrlDataPageUsers", clsPeopleBusinessLayer.GetAllUsers());
+
+            ctrlDataPageDrivers = new ctrlDataPage("ctrlDataPageDrivers", clsPerson.GetAllDrivers());
+            FormatDriverLayout();
+            ctrlDataPageUsers = new ctrlDataPage("ctrlDataPageUsers", clsPerson.GetAllUsers());
+            FormatUserLayout();
+            ctrlDataPageApplications = new ctrlDataPage("ctrlDataPageUsers", clsPerson.GetAllUsers());
+            ctrlDataPageSettings = new ctrlDataPage("ctrlDataPageUsers", clsPerson.GetAllUsers());
 
             ctrlDriversMenuButton = new ctrlMenuButton("Drivers", "DriverImg.png");
             ctrlDriversMenuButton.Location = new System.Drawing.Point(0, 89);
@@ -98,30 +101,6 @@ namespace PresentationLayer
         private void Form1_Load(object sender, EventArgs e)
         {
         }
-
-        private void btnDrivers_Click(object sender, EventArgs e)
-        {
-            ctrlDataPageDrivers.Visible = true;
-            ctrlDataPageUsers.Visible = false;
-            panel1.Visible = true;
-            panel2.Visible = false;
-            btnDrivers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(200))))); ;
-            btnUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95))))); ;
-            FormatDriverLayout();
-        }
-
-        private void btnUsers_Click(object sender, EventArgs e)
-        {
-            ctrlDataPageDrivers.Visible = false;
-            ctrlDataPageUsers.Visible = true;
-            panel1.Visible = false;
-            panel2.Visible = true;
-            btnUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(200))))); ;
-            btnDrivers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95))))); ;
-            FormatUserLayout();
-
-        }
-
         private void FormatDriverLayout()
         {
             DataGridView dgv = ctrlDataPageDrivers.Controls.OfType<DataGridView>().FirstOrDefault();
@@ -160,5 +139,11 @@ namespace PresentationLayer
             }
         }
 
+        private void tsmDriverInfo_Click(object sender, EventArgs e)
+        {
+            ShowPersonDetails showPersonDetailsForm = new ShowPersonDetails((int)ctrlDataPageDrivers.dgv.CurrentRow.Cells[0].Value);
+            showPersonDetailsForm.ShowDialog();
+            //_RefreshContactsList();
+        }
     }
 }

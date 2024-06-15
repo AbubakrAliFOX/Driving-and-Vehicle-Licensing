@@ -37,14 +37,7 @@ namespace PresentationLayer
             this.tsmInterLic = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLicHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.pSideNav = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnUsers = new System.Windows.Forms.Button();
-            this.btnDrivers = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.cmsDrivers.SuspendLayout();
-            this.pSideNav.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmsDrivers
@@ -55,7 +48,7 @@ namespace PresentationLayer
             this.tsmInterLic,
             this.tsmLicHistory});
             this.cmsDrivers.Name = "cmsDrivers";
-            this.cmsDrivers.Size = new System.Drawing.Size(255, 82);
+            this.cmsDrivers.Size = new System.Drawing.Size(255, 110);
             // 
             // tsmDriverInfo
             // 
@@ -64,6 +57,7 @@ namespace PresentationLayer
             this.tsmDriverInfo.Name = "tsmDriverInfo";
             this.tsmDriverInfo.Size = new System.Drawing.Size(254, 26);
             this.tsmDriverInfo.Text = "Show Diver Info";
+            this.tsmDriverInfo.Click += new System.EventHandler(this.tsmDriverInfo_Click);
             // 
             // tsmInterLic
             // 
@@ -82,109 +76,11 @@ namespace PresentationLayer
             // pSideNav
             // 
             this.pSideNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95)))));
-            this.pSideNav.Controls.Add(this.panel2);
-            this.pSideNav.Controls.Add(this.panel1);
-            this.pSideNav.Controls.Add(this.button3);
-            this.pSideNav.Controls.Add(this.button2);
-            this.pSideNav.Controls.Add(this.btnUsers);
-            this.pSideNav.Controls.Add(this.btnDrivers);
             this.pSideNav.Dock = System.Windows.Forms.DockStyle.Left;
             this.pSideNav.Location = new System.Drawing.Point(0, 0);
             this.pSideNav.Name = "pSideNav";
             this.pSideNav.Size = new System.Drawing.Size(246, 478);
             this.pSideNav.TabIndex = 1;
-            // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(7, 317);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(246, 76);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "  Account Settings";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(7, 241);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(246, 76);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "     Applications";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Gold;
-            this.panel2.Location = new System.Drawing.Point(0, 164);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(7, 76);
-            this.panel2.TabIndex = 3;
-            this.panel2.Visible = false;
-            // 
-            // btnUsers
-            // 
-            this.btnUsers.FlatAppearance.BorderSize = 0;
-            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsers.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsers.ForeColor = System.Drawing.Color.White;
-            this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
-            this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsers.Location = new System.Drawing.Point(7, 165);
-            this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(246, 76);
-            this.btnUsers.TabIndex = 0;
-            this.btnUsers.Text = "         Users";
-            this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUsers.UseVisualStyleBackColor = true;
-            this.btnUsers.Visible = false;
-            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
-            // 
-            // btnDrivers
-            // 
-            this.btnDrivers.FlatAppearance.BorderSize = 0;
-            this.btnDrivers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDrivers.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDrivers.ForeColor = System.Drawing.Color.White;
-            this.btnDrivers.Image = ((System.Drawing.Image)(resources.GetObject("btnDrivers.Image")));
-            this.btnDrivers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDrivers.Location = new System.Drawing.Point(7, 89);
-            this.btnDrivers.Name = "btnDrivers";
-            this.btnDrivers.Size = new System.Drawing.Size(246, 76);
-            this.btnDrivers.TabIndex = 0;
-            this.btnDrivers.Text = "        Drivers";
-            this.btnDrivers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDrivers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDrivers.UseVisualStyleBackColor = true;
-            this.btnDrivers.Visible = false;
-            this.btnDrivers.Click += new System.EventHandler(this.btnDrivers_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Gold;
-            this.panel1.Location = new System.Drawing.Point(0, 89);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(7, 76);
-            this.panel1.TabIndex = 2;
-            this.panel1.Visible = false;
             // 
             // Form1
             // 
@@ -198,7 +94,6 @@ namespace PresentationLayer
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.cmsDrivers.ResumeLayout(false);
-            this.pSideNav.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -209,12 +104,6 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem tsmInterLic;
         private System.Windows.Forms.ToolStripMenuItem tsmLicHistory;
         private System.Windows.Forms.Panel pSideNav;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnUsers;
-        private System.Windows.Forms.Button btnDrivers;
     }
 }
 

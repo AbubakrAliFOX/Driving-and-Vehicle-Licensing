@@ -39,6 +39,11 @@ namespace PresentationLayer
             }
         }
 
+        public DataGridView dgv
+        {
+            get { return this.dvg; }
+        }
+
         public void CreateTable (DataTable dt)
         {
             DataTable localDataTable = dt;
