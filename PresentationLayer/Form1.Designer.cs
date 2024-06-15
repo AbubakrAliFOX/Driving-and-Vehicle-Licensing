@@ -1,4 +1,4 @@
-﻿using PeopleBussinessLayer;
+﻿using BusinessLayer;
 
 namespace PresentationLayer
 {

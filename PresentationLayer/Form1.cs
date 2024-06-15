@@ -1,4 +1,4 @@
-﻿using PeopleBussinessLayer;
+﻿using BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +13,13 @@ namespace PresentationLayer
 {
     public partial class Form1 : Form
     {
+        private ctrlDataPage ctrlDataPagePeople;
         private ctrlDataPage ctrlDataPageDrivers;
         private ctrlDataPage ctrlDataPageUsers;
         private ctrlDataPage ctrlDataPageApplications;
         private ctrlDataPage ctrlDataPageSettings;
 
+        private ctrlMenuButton ctrlPeopleMenuButton;
         private ctrlMenuButton ctrlDriversMenuButton;
         private ctrlMenuButton ctrlUsersMenuButton;
         private ctrlMenuButton ctrlApplicationsMenuButton;
@@ -39,12 +41,23 @@ namespace PresentationLayer
         {
             lMenuButtons = new List<ctrlMenuButton>();
 
+            ctrlDataPagePeople = new ctrlDataPage("ctrlDataPagePeople", clsPerson.GetAllDrivers());
+            //FormatDriverLayout();
+
             ctrlDataPageDrivers = new ctrlDataPage("ctrlDataPageDrivers", clsPerson.GetAllDrivers());
             FormatDriverLayout();
+
             ctrlDataPageUsers = new ctrlDataPage("ctrlDataPageUsers", clsPerson.GetAllUsers());
             FormatUserLayout();
+
             ctrlDataPageApplications = new ctrlDataPage("ctrlDataPageUsers", clsPerson.GetAllUsers());
             ctrlDataPageSettings = new ctrlDataPage("ctrlDataPageUsers", clsPerson.GetAllUsers());
+
+            ctrlPeopleMenuButton = new ctrlMenuButton("People", "people.png");
+            ctrlPeopleMenuButton.Location = new System.Drawing.Point(0, 13);
+            ctrlPeopleMenuButton.MainButton.Click += MenuButtonClick;
+            lMenuButtons.Add(ctrlPeopleMenuButton);
+            ctrlPeopleMenuButton.Page = ctrlDataPagePeople;
 
             ctrlDriversMenuButton = new ctrlMenuButton("Drivers", "DriverImg.png");
             ctrlDriversMenuButton.Location = new System.Drawing.Point(0, 89);
@@ -89,8 +102,10 @@ namespace PresentationLayer
         }
         private void AddControls()
         {
+            this.Controls.Add(ctrlDataPagePeople);
             this.Controls.Add(ctrlDataPageDrivers);
             this.Controls.Add(ctrlDataPageUsers);
+            pSideNav.Controls.Add(ctrlPeopleMenuButton);
             pSideNav.Controls.Add(ctrlDriversMenuButton);
             pSideNav.Controls.Add(ctrlUsersMenuButton);
             pSideNav.Controls.Add(ctrlApplicationsMenuButton);
@@ -100,6 +115,27 @@ namespace PresentationLayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+
+        private void FormatPeopleLayout()
+        {
+            DataGridView dgv = ctrlDataPagePeople.Controls.OfType<DataGridView>().FirstOrDefault();
+            if (dgv != null)
+            {
+                dgv.Columns["PersonID"].HeaderText = "Person ID";
+                dgv.Columns["NationalNo"].HeaderText = "National No";
+                dgv.Columns["FullName"].HeaderText = "Full Name";
+                dgv.Columns["Gendor"].HeaderText = "Gender";
+                dgv.Columns["DateOfBirth"].HeaderText = "Birth Date";
+
+                dgv.Columns["FullName"].Width = 300;
+                //dgv.Columns["NationalNo"].Width = 120;
+                //dgv.Columns["CreatedDate"].Width = 120;
+                //dgv.Columns["Username"].Width = 180;
+                //dgv.Columns["ActiveLicences"].Width = 80;
+
+                dgv.ContextMenuStrip = cmsDrivers;
+            }
         }
         private void FormatDriverLayout()
         {

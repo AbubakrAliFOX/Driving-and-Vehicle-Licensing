@@ -116,13 +116,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CountriesBusinessLayer\CountriesBusinessLayer.csproj">
-      <Project>{8172e216-ad52-444b-80b1-3afde5eb4612}</Project>
-      <Name>CountriesBusinessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PeopleBussinessLayer\PeopleBussinessLayer.csproj">
-      <Project>{02525af7-bc77-4eb5-8eb2-c05d569a346b}</Project>
-      <Name>PeopleBussinessLayer</Name>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{2ebd5426-5fce-4b92-8758-cbded5f936dd}</Project>
+      <Name>BusinessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
