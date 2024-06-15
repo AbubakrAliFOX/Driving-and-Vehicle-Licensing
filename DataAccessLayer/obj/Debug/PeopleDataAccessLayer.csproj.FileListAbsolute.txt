@@ -1,6 +1,0 @@
-E:\Downloads\WebDev\Projects\DVL\DataAccessLayer\bin\Debug\DataAccessLayer.dll
-E:\Downloads\WebDev\Projects\DVL\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
-E:\Downloads\WebDev\Projects\DVL\DataAccessLayer\obj\Debug\PeopleDataAccessLayer.csproj.AssemblyReference.cache
-E:\Downloads\WebDev\Projects\DVL\DataAccessLayer\obj\Debug\PeopleDataAccessLayer.csproj.CoreCompileInputs.cache
-E:\Downloads\WebDev\Projects\DVL\DataAccessLayer\obj\Debug\DataAccessLayer.dll
-E:\Downloads\WebDev\Projects\DVL\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

@@ -37,6 +37,7 @@ namespace PresentationLayer
             this.tsmInterLic = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLicHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.pSideNav = new System.Windows.Forms.Panel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsDrivers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,10 +46,11 @@ namespace PresentationLayer
             this.cmsDrivers.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsDrivers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmDriverInfo,
+            this.toolStripSeparator1,
             this.tsmInterLic,
             this.tsmLicHistory});
             this.cmsDrivers.Name = "cmsDrivers";
-            this.cmsDrivers.Size = new System.Drawing.Size(255, 110);
+            this.cmsDrivers.Size = new System.Drawing.Size(255, 116);
             // 
             // tsmDriverInfo
             // 
@@ -82,6 +84,11 @@ namespace PresentationLayer
             this.pSideNav.Size = new System.Drawing.Size(246, 478);
             this.pSideNav.TabIndex = 1;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(251, 6);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -104,6 +111,7 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem tsmInterLic;
         private System.Windows.Forms.ToolStripMenuItem tsmLicHistory;
         private System.Windows.Forms.Panel pSideNav;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

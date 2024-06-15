@@ -1,9 +1,0 @@
-E:\Downloads\WebDev\Projects\DVL\PeopleBussinessLayer\bin\Debug\PeopleBussinessLayer.dll
-E:\Downloads\WebDev\Projects\DVL\PeopleBussinessLayer\bin\Debug\PeopleBussinessLayer.pdb
-E:\Downloads\WebDev\Projects\DVL\PeopleBussinessLayer\bin\Debug\DataAccessLayer.dll
-E:\Downloads\WebDev\Projects\DVL\PeopleBussinessLayer\bin\Debug\DataAccessLayer.pdb
-E:\Downloads\WebDev\Projects\DVL\PeopleBussinessLayer\obj\Debug\PeopleBussinessLayer.csproj.AssemblyReference.cache
-E:\Downloads\WebDev\Projects\DVL\PeopleBussinessLayer\obj\Debug\PeopleBussinessLayer.csproj.CoreCompileInputs.cache
-E:\Downloads\WebDev\Projects\DVL\PeopleBussinessLayer\obj\Debug\PeopleBussinessLayer.csproj.CopyComplete
-E:\Downloads\WebDev\Projects\DVL\PeopleBussinessLayer\obj\Debug\PeopleBussinessLayer.dll
-E:\Downloads\WebDev\Projects\DVL\PeopleBussinessLayer\obj\Debug\PeopleBussinessLayer.pdb

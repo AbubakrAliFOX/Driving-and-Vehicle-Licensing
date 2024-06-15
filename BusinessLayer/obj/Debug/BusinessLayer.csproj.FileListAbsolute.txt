@@ -1,0 +1,9 @@
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\obj\Debug\BusinessLayer.csproj.AssemblyReference.cache
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\BusinessLayer.dll
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\BusinessLayer.pdb
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\DataLayer.dll
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\DataLayer.pdb
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\obj\Debug\BusinessLayer.dll
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\obj\Debug\BusinessLayer.pdb
