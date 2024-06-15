@@ -19,7 +19,7 @@ namespace PresentationLayer
         {
             InitializeComponent();
             SetFormPosition();
-            newPerson = clsPerson.find(personID);
+            newPerson = clsPerson.Find(personID);
             InitializeControls();
             AddControls();
         }

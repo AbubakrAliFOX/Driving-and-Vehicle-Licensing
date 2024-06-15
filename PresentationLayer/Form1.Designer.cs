@@ -38,7 +38,13 @@ namespace PresentationLayer
             this.tsmLicHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.pSideNav = new System.Windows.Forms.Panel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsPeople = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmPersonInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDrivers.SuspendLayout();
+            this.cmsPeople.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmsDrivers
@@ -50,7 +56,7 @@ namespace PresentationLayer
             this.tsmInterLic,
             this.tsmLicHistory});
             this.cmsDrivers.Name = "cmsDrivers";
-            this.cmsDrivers.Size = new System.Drawing.Size(255, 116);
+            this.cmsDrivers.Size = new System.Drawing.Size(255, 88);
             // 
             // tsmDriverInfo
             // 
@@ -89,6 +95,47 @@ namespace PresentationLayer
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(251, 6);
             // 
+            // cmsPeople
+            // 
+            this.cmsPeople.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsPeople.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmPersonInfo,
+            this.toolStripSeparator2,
+            this.tsmAdd,
+            this.tsmEdit});
+            this.cmsPeople.Name = "cmsPeople";
+            this.cmsPeople.Size = new System.Drawing.Size(215, 122);
+            // 
+            // tsmPersonInfo
+            // 
+            this.tsmPersonInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmPersonInfo.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tsmPersonInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmPersonInfo.Image")));
+            this.tsmPersonInfo.Name = "tsmPersonInfo";
+            this.tsmPersonInfo.Size = new System.Drawing.Size(214, 28);
+            this.tsmPersonInfo.Text = "Show Details";
+            this.tsmPersonInfo.Click += new System.EventHandler(this.tsmPersonInfo_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(211, 6);
+            // 
+            // tsmAdd
+            // 
+            this.tsmAdd.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmAdd.Name = "tsmAdd";
+            this.tsmAdd.Size = new System.Drawing.Size(214, 28);
+            this.tsmAdd.Text = "Add New Person";
+            this.tsmAdd.Click += new System.EventHandler(this.tsmAdd_Click);
+            // 
+            // tsmEdit
+            // 
+            this.tsmEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmEdit.Name = "tsmEdit";
+            this.tsmEdit.Size = new System.Drawing.Size(214, 28);
+            this.tsmEdit.Text = "Edit";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -101,6 +148,7 @@ namespace PresentationLayer
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.cmsDrivers.ResumeLayout(false);
+            this.cmsPeople.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -112,6 +160,11 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem tsmLicHistory;
         private System.Windows.Forms.Panel pSideNav;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ContextMenuStrip cmsPeople;
+        private System.Windows.Forms.ToolStripMenuItem tsmPersonInfo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem tsmAdd;
+        private System.Windows.Forms.ToolStripMenuItem tsmEdit;
     }
 }
 

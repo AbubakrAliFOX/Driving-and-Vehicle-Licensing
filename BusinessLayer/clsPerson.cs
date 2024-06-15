@@ -18,7 +18,7 @@ namespace BusinessLayer
         public string secondName { set; get; }
         public string thirdName { set; get; }
         public string lastName { set; get; }
-        public int gender { set; get; }
+        public byte gender { set; get; }
         public string email { set; get; }
         public string phone { set; get; }
         public string address { set; get; }
@@ -26,6 +26,22 @@ namespace BusinessLayer
         public string imgPath { set; get; }
         public int countryID { set; get; }
 
+        public clsPerson()
+        {
+            this.ID = -1;
+            this.nationalNumber = "";
+            this.firstName = "";
+            this.secondName = "";
+            this.thirdName = "";
+            this.lastName = "";
+            this.gender = 0;
+            this.email = "";
+            this.phone = "";
+            this.address = "";
+            this.dateOfBirth = DateTime.Now;
+            this.countryID = -1;
+            this.imgPath = "";
+        }
         public clsPerson(
             int ID,
             string NationalNumber,
@@ -33,7 +49,7 @@ namespace BusinessLayer
             string SecondName,
             string ThirdName,
             string LastName,
-            int Gender,
+            byte Gender,
             string Email,
             string Phone,
             string Address,
@@ -57,7 +73,7 @@ namespace BusinessLayer
             this.imgPath = ImagePath;
         }
 
-        public static clsPerson find(int ID)
+        public static clsPerson Find(int ID)
         {
             string nationalNumber = "",
                 firstName = "",
@@ -115,6 +131,25 @@ namespace BusinessLayer
         public static DataTable GetAllPeople()
         {
             return clsPeopleDataAccess.GetAllPeople();
+        }
+
+        private bool _AddNewPerson()
+        {
+            this.ID = clsPeopleDataAccess.AddNewPerson(this.nationalNumber,this.firstName, this.secondName, 
+            this.thirdName, this.lastName,
+            this.gender,
+            this.email,
+            this.phone,
+            this.address,
+            this.dateOfBirth,
+            this.countryID,
+            this.imgPath);
+            return (this.ID != -1);
+        }
+
+        public bool Save()
+        {
+            return _AddNewPerson();
         }
     }
 }

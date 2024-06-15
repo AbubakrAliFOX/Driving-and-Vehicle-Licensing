@@ -49,7 +49,7 @@
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ShowPersonDetails";
-            this.Text = "ShowPersonDetails";
+            this.Text = "Show Details";
             this.ResumeLayout(false);
 
         }

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewPerson.Designer.cs">
+      <DependentUpon>AddNewPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlMenuButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <Compile Include="ShowPersonDetails.Designer.cs">
       <DependentUpon>ShowPersonDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddNewPerson.resx">
+      <DependentUpon>AddNewPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrlMenuButton.resx">
       <DependentUpon>ctrlMenuButton.cs</DependentUpon>
     </EmbeddedResource>

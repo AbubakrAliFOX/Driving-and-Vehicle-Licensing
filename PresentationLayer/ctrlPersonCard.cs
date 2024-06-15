@@ -48,7 +48,7 @@ namespace PresentationLayer
             lblAddress.Text = personInfo.address;
             lblDateOfBirth.Text = personInfo.dateOfBirth.ToString("dd/MM/yyyy");
 
-            lblCountry.Text = clsCountry.find(personInfo.countryID);
+            lblCountry.Text = clsCountry.Find(personInfo.countryID);
         }
 
         public void Close ()

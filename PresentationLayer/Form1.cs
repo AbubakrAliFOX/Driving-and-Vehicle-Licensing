@@ -41,13 +41,13 @@ namespace PresentationLayer
         {
             lMenuButtons = new List<ctrlMenuButton>();
 
-            ctrlDataPagePeople = new ctrlDataPage("ctrlDataPagePeople", clsPerson.GetAllPeople());
+            ctrlDataPagePeople = new ctrlDataPage("People", clsPerson.GetAllPeople());
             FormatPeopleLayout();
 
-            ctrlDataPageDrivers = new ctrlDataPage("ctrlDataPageDrivers", clsDriver.GetAllDrivers());
+            ctrlDataPageDrivers = new ctrlDataPage("Drivers", clsDriver.GetAllDrivers());
             FormatDriverLayout();
 
-            ctrlDataPageUsers = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
+            ctrlDataPageUsers = new ctrlDataPage("Users", clsUser.GetAllUsers());
             FormatUserLayout();
 
             ctrlDataPageApplications = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
@@ -134,7 +134,7 @@ namespace PresentationLayer
                 //dgv.Columns["Username"].Width = 180;
                 //dgv.Columns["ActiveLicences"].Width = 80;
 
-                dgv.ContextMenuStrip = cmsDrivers;
+                dgv.ContextMenuStrip = cmsPeople;
             }
         }
         private void FormatDriverLayout()
@@ -180,6 +180,18 @@ namespace PresentationLayer
             ShowPersonDetails showPersonDetailsForm = new ShowPersonDetails((int)ctrlDataPageDrivers.dgv.CurrentRow.Cells[0].Value);
             showPersonDetailsForm.ShowDialog();
             //_RefreshContactsList();
+        }
+
+        private void tsmPersonInfo_Click(object sender, EventArgs e)
+        {
+            ShowPersonDetails showPersonDetailsForm = new ShowPersonDetails((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value);
+            showPersonDetailsForm.ShowDialog();
+        }
+
+        private void tsmAdd_Click(object sender, EventArgs e)
+        {
+            AddNewPerson addNewPersonForm = new AddNewPerson();
+            addNewPersonForm.ShowDialog();
         }
     }
 }

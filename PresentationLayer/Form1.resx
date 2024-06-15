@@ -182,4 +182,26 @@
         Qdct/TmV6px50nLRJTRFTWTmvw4h/gKlbsxUtsLhRAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="cmsPeople.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>149, 17</value>
+  </metadata>
+  <data name="tsmPersonInfo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAACwUlEQVRYR9VXTWgUMRR+oKIeVPCfdjfJtuvfSaH+ISp6KIqoILJI0c1L17ogqHhSwR48KeJJqJ70
+        IKIHUUT0oCcF8VoQb+pZUGkLiiK0/rxk3mEnm90ZOzugH3zskO/le5lM8pKF/xOloWUg9U7iAVBmM5RP
+        zmYlZxTNNpD4nPiT+LuBX4jXaTDLOTIHSBwm/uKErfgR5OAW7tFBCDwVSNaKE9CjV3LPDqCgu8n0u5ck
+        geYF9+4AFF4OJ0mgwD52yAiJb5rM03GYHTJC4lfPOCX1TXbIiGkPAG+wQ0ZIfO0Zp+V5dsgIoS8FzJOp
+        zDp2yIhirYsMvzUlaEdhnnLvDkHh8WCiMMegiL3cs4MQeIbM/TPA5wco6Y3cIweo6iYayDNKNOUlnqBZ
+        ugpdA4s5Mmd060W0OLcS90Kxuh766rNYAeitLqVB1mlQI1QL7tDvFSrNe2Ix04Iyc+g43kBvOuDWhDLn
+        3A4R+qwbEFRmUNsFSthqwb6jxdnPbilht1K0DW05nmwwa+SISy7xodce4hTNjmb3NlDVXRQ86nUO8TOs
+        qs3jN49rQh+B8uH59Hzf035AqbaWM3noqS+g6X3kdWhNgRfdNw9Nux2YhdRDTZrEJ06LIRrtX558dPsR
+        5lhQU3iPk79v0uznLBxdyJkZCm8FAtuzPLiEVvi1oCbxJc2QvUmNee0RS7idMxOicuvv7WTa27DE203t
+        lkofct5SPwjqwuxzuoMyu4NBSYyua7TPA5owlcjbfoqQ3nhjssGhoETS/wJbZEJa+wGMAeyY6XQHiQe9
+        gLS86yqcLTK+1u4T2HtmDMqsJiHpoAmR1k11Db1tf/TcqOlX5Huansdj7QLfuu3eBKlPUMCnWHA6jkKh
+        MtdVOFtkwjERbfKCWcEZc4CtcBIfE/2yPe6mPfjmecAWGfs/soj73WkZW3D/FAD+AJv3wo4HiZEqAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
 </root>

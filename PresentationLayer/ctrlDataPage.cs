@@ -13,7 +13,7 @@ namespace PresentationLayer
 {
     public partial class ctrlDataPage : UserControl
     {
-        public ctrlDataPage(string Name, DataTable Data)
+        public ctrlDataPage(string Title, DataTable Data)
         {
             InitializeComponent();
             this.Location = new System.Drawing.Point(256, 0);
@@ -22,7 +22,7 @@ namespace PresentationLayer
             this.Visible = false;
             this.dvg.RowHeadersWidth = 30;
 
-            this.Name = Name;
+            lblTitle.Text = $"Manage {Title}";
             this.Data = Data;
             lblRecordsNumber.Text = Convert.ToString(this.Data.Rows.Count);
             //CreateTableWithData(Data);
