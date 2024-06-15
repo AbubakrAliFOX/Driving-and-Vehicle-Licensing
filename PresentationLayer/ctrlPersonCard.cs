@@ -1,4 +1,5 @@
-﻿using PeopleBussinessLayer;
+﻿using CountriesBusinessLayer;
+using PeopleBussinessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace PresentationLayer
             InitializeComponent();
 
             this.pbPersonPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
+            
             if (personInfo == null)
             {
                 MessageBox.Show("Something went wrong!", "Error");
@@ -46,6 +48,8 @@ namespace PresentationLayer
             lblPhone.Text = personInfo.phone;
             lblAddress.Text = personInfo.address;
             lblDateOfBirth.Text = personInfo.dateOfBirth.ToString("dd/MM/yyyy");
+
+            lblCountry.Text = clsCountry.find(personInfo.countryID);
         }
 
         public void Close ()

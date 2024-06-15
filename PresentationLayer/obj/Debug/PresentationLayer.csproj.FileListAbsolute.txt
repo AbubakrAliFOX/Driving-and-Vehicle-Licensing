@@ -17,3 +17,7 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.c
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlDataPage.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlMenuButton.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ShowPersonDetails.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\CountriesBusinessLayer.dll
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\CountriesDataAcessLayer.dll
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\CountriesBusinessLayer.pdb
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\CountriesDataAcessLayer.pdb

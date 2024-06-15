@@ -116,6 +116,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CountriesBusinessLayer\CountriesBusinessLayer.csproj">
+      <Project>{8172e216-ad52-444b-80b1-3afde5eb4612}</Project>
+      <Name>CountriesBusinessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PeopleBussinessLayer\PeopleBussinessLayer.csproj">
       <Project>{02525af7-bc77-4eb5-8eb2-c05d569a346b}</Project>
       <Name>PeopleBussinessLayer</Name>
