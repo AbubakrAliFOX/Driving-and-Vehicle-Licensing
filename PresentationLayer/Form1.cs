@@ -41,17 +41,17 @@ namespace PresentationLayer
         {
             lMenuButtons = new List<ctrlMenuButton>();
 
-            ctrlDataPagePeople = new ctrlDataPage("ctrlDataPagePeople", clsPerson.GetAllDrivers());
-            //FormatDriverLayout();
+            ctrlDataPagePeople = new ctrlDataPage("ctrlDataPagePeople", clsPerson.GetAllPeople());
+            FormatPeopleLayout();
 
-            ctrlDataPageDrivers = new ctrlDataPage("ctrlDataPageDrivers", clsPerson.GetAllDrivers());
+            ctrlDataPageDrivers = new ctrlDataPage("ctrlDataPageDrivers", clsDriver.GetAllDrivers());
             FormatDriverLayout();
 
-            ctrlDataPageUsers = new ctrlDataPage("ctrlDataPageUsers", clsPerson.GetAllUsers());
+            ctrlDataPageUsers = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
             FormatUserLayout();
 
-            ctrlDataPageApplications = new ctrlDataPage("ctrlDataPageUsers", clsPerson.GetAllUsers());
-            ctrlDataPageSettings = new ctrlDataPage("ctrlDataPageUsers", clsPerson.GetAllUsers());
+            ctrlDataPageApplications = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
+            ctrlDataPageSettings = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
 
             ctrlPeopleMenuButton = new ctrlMenuButton("People", "people.png");
             ctrlPeopleMenuButton.Location = new System.Drawing.Point(0, 13);
@@ -128,7 +128,7 @@ namespace PresentationLayer
                 dgv.Columns["Gendor"].HeaderText = "Gender";
                 dgv.Columns["DateOfBirth"].HeaderText = "Birth Date";
 
-                dgv.Columns["FullName"].Width = 300;
+                dgv.Columns["FullName"].Width = 220;
                 //dgv.Columns["NationalNo"].Width = 120;
                 //dgv.Columns["CreatedDate"].Width = 120;
                 //dgv.Columns["Username"].Width = 180;

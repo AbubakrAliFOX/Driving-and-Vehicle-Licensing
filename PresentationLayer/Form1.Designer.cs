@@ -56,7 +56,7 @@ namespace PresentationLayer
             this.tsmDriverInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmDriverInfo.Image")));
             this.tsmDriverInfo.Name = "tsmDriverInfo";
             this.tsmDriverInfo.Size = new System.Drawing.Size(254, 26);
-            this.tsmDriverInfo.Text = "Show Diver Info";
+            this.tsmDriverInfo.Text = "Show Details";
             this.tsmDriverInfo.Click += new System.EventHandler(this.tsmDriverInfo_Click);
             // 
             // tsmInterLic
