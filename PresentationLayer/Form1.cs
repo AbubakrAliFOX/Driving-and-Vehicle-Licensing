@@ -193,7 +193,11 @@ namespace PresentationLayer
             AddNewPerson addNewPersonForm = new AddNewPerson(-1);
             addNewPersonForm.ShowDialog();
         }
-
+        private void tsmEdit_Click(object sender, EventArgs e)
+        {
+            AddNewPerson addNewPersonForm = new AddNewPerson((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value);
+            addNewPersonForm.ShowDialog();
+        }
         private void tsmDelete_Click(object sender, EventArgs e)
         {
             
@@ -205,5 +209,6 @@ namespace PresentationLayer
                 }
             }
         }
+
     }
 }

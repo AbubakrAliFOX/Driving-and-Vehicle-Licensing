@@ -12,6 +12,8 @@ namespace BusinessLayer
 {
     public class clsPerson
     {
+        public enum enMode { AddNew = 0, Update};
+        private enMode _Mode;
         public int ID { set; get; }
         public string nationalNumber { set; get; }
         public string firstName { set; get; }
@@ -41,6 +43,7 @@ namespace BusinessLayer
             this.dateOfBirth = DateTime.Now;
             this.countryID = -1;
             this.imgPath = "";
+            _Mode = enMode.AddNew;
         }
         public clsPerson(
             int ID,
@@ -71,6 +74,7 @@ namespace BusinessLayer
             this.dateOfBirth = DateOfBirth;
             this.countryID = CountryID;
             this.imgPath = ImagePath;
+            _Mode = enMode.Update;
         }
 
         public static clsPerson Find(int ID)
@@ -147,6 +151,20 @@ namespace BusinessLayer
             return (this.ID != -1);
         }
 
+        private bool _UpdatePerson ()
+        {
+            return clsPeopleDataAccess.UpdatePerson(this.ID, this.nationalNumber,
+            this.firstName, this.secondName,
+            this.thirdName, this.lastName,
+            this.gender,
+            this.email,
+            this.phone,
+            this.address,
+            this.dateOfBirth,
+            this.countryID,
+            this.imgPath);
+        }
+
         public static bool Delete (int ID)
         {
             return clsPeopleDataAccess.Delete(ID);
@@ -154,7 +172,23 @@ namespace BusinessLayer
 
         public bool Save()
         {
-            return _AddNewPerson();
+            switch (_Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewPerson())
+                    {
+                        _Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case enMode.Update:
+                    return _UpdatePerson();
+
+            }
+            return false; 
         }
     }
 }

@@ -95,8 +95,7 @@ namespace PresentationLayer
                 tbEmail.Text = newPerson.email;
                 tbAddress.Text = newPerson.address;
                 tbPhone.Text = newPerson.phone;
-                //clsCountry.GetCountryID(cbCountries.SelectedValue.ToString()) = newPerson.countryID;
-                //cbCountries.SelectedIndex = cbCountries.FindString();
+                cbCountries.SelectedIndex = cbCountries.FindString(clsCountry.Find(newPerson.countryID));
 
                 if (newPerson.imgPath != "")
                 {
@@ -108,7 +107,6 @@ namespace PresentationLayer
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            newPerson = new clsPerson();
             newPerson.nationalNumber = tbNationalNumber.Text;
             newPerson.firstName = tbFirstName.Text;
             newPerson.secondName = tbSecondName.Text;

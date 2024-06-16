@@ -230,6 +230,102 @@ namespace DataLayer
             return PersonID;
         }
 
+        public static bool UpdatePerson(
+            int ID,
+            string nationalNumber,
+            string firstName,
+            string secondName,
+            string thirdName,
+            string lastName,
+            byte gender,
+            string email,
+            string phone,
+            string address,
+            DateTime dateOfBirth,
+            int countryID,
+            string imgPath
+        )
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                    @"Update People 
+                    Set NationalNo = @NationalNo,
+                        FirstName = @FirstName,
+                        SecondName = @SecondName,
+                        ThirdName = @ThirdName, 
+                        LastName = @LastName,
+                        DateOfBirth = @DateOfBirth,
+                        Gendor = @Gendor,
+                        Address = @Address,
+                        Phone = @Phone,
+                        Email = @Email,
+                        NationalityCountryID = @NationalityCountryID,
+                        ImagePath = @ImagePath
+                    Where PersonID = @PersonID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@PersonID", ID);
+            cmd.Parameters.AddWithValue("@NationalNo", nationalNumber);
+            cmd.Parameters.AddWithValue("@FirstName", firstName);
+            cmd.Parameters.AddWithValue("@SecondName", secondName);
+
+            cmd.Parameters.AddWithValue("@LastName", lastName);
+            cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
+            cmd.Parameters.AddWithValue("@Gendor", gender);
+            cmd.Parameters.AddWithValue("@Address", address);
+            cmd.Parameters.AddWithValue("@Phone", phone);
+
+            cmd.Parameters.AddWithValue("@NationalityCountryID", countryID);
+
+
+            if (thirdName != "")
+            {
+                cmd.Parameters.AddWithValue("@ThirdName", thirdName);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ThirdName", System.DBNull.Value);
+            }
+
+            if (email != "")
+            {
+                cmd.Parameters.AddWithValue("@Email", email);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Email", System.DBNull.Value);
+            }
+
+            if (imgPath != "")
+            {
+                cmd.Parameters.AddWithValue("@ImagePath", imgPath);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
+            }
+
+            try
+            {
+                connection.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+        }
+
         public static bool Delete (int ID)
         {
             int rowsAffected = 0;
