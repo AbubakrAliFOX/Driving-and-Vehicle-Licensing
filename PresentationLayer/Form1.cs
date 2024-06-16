@@ -193,5 +193,17 @@ namespace PresentationLayer
             AddNewPerson addNewPersonForm = new AddNewPerson();
             addNewPersonForm.ShowDialog();
         }
+
+        private void tsmDelete_Click(object sender, EventArgs e)
+        {
+            
+            if (MessageBox.Show("Are you sure you want to delete this entry?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                if(clsPerson.Delete((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value)) 
+                {
+                    MessageBox.Show("Successfully Deleted!", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
     }
 }

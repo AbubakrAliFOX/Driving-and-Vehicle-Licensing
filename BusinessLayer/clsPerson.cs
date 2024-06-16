@@ -147,6 +147,11 @@ namespace BusinessLayer
             return (this.ID != -1);
         }
 
+        public static bool Delete (int ID)
+        {
+            return clsPeopleDataAccess.Delete(ID);
+        }
+
         public bool Save()
         {
             return _AddNewPerson();

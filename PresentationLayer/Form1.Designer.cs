@@ -43,6 +43,7 @@ namespace PresentationLayer
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDrivers.SuspendLayout();
             this.cmsPeople.SuspendLayout();
             this.SuspendLayout();
@@ -102,9 +103,10 @@ namespace PresentationLayer
             this.tsmPersonInfo,
             this.toolStripSeparator2,
             this.tsmAdd,
-            this.tsmEdit});
+            this.tsmEdit,
+            this.tsmDelete});
             this.cmsPeople.Name = "cmsPeople";
-            this.cmsPeople.Size = new System.Drawing.Size(215, 122);
+            this.cmsPeople.Size = new System.Drawing.Size(215, 150);
             // 
             // tsmPersonInfo
             // 
@@ -136,6 +138,14 @@ namespace PresentationLayer
             this.tsmEdit.Size = new System.Drawing.Size(214, 28);
             this.tsmEdit.Text = "Edit";
             // 
+            // tsmDelete
+            // 
+            this.tsmDelete.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmDelete.Name = "tsmDelete";
+            this.tsmDelete.Size = new System.Drawing.Size(214, 28);
+            this.tsmDelete.Text = "Delete";
+            this.tsmDelete.Click += new System.EventHandler(this.tsmDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -165,6 +175,7 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmAdd;
         private System.Windows.Forms.ToolStripMenuItem tsmEdit;
+        private System.Windows.Forms.ToolStripMenuItem tsmDelete;
     }
 }
 
