@@ -190,7 +190,7 @@ namespace PresentationLayer
 
         private void tsmAdd_Click(object sender, EventArgs e)
         {
-            AddNewPerson addNewPersonForm = new AddNewPerson();
+            AddNewPerson addNewPersonForm = new AddNewPerson(-1);
             addNewPersonForm.ShowDialog();
         }
 
