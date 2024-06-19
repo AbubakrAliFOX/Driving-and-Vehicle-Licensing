@@ -131,7 +131,7 @@ namespace PresentationLayer
 
             if (newPerson.Save())
             {
-                MessageBox.Show("Person Saved Successfully");
+                MessageBox.Show("Person Saved Successfully", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _CurrentMode = enMode.Update;
                 _PersonID = newPerson.ID;
                 FillData();
