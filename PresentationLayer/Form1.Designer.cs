@@ -34,10 +34,10 @@ namespace PresentationLayer
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cmsDrivers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmDriverInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmInterLic = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLicHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.pSideNav = new System.Windows.Forms.Panel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsPeople = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmPersonInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -57,29 +57,36 @@ namespace PresentationLayer
             this.tsmInterLic,
             this.tsmLicHistory});
             this.cmsDrivers.Name = "cmsDrivers";
-            this.cmsDrivers.Size = new System.Drawing.Size(255, 88);
+            this.cmsDrivers.Size = new System.Drawing.Size(285, 94);
             // 
             // tsmDriverInfo
             // 
-            this.tsmDriverInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmDriverInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmDriverInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmDriverInfo.Image")));
             this.tsmDriverInfo.Name = "tsmDriverInfo";
-            this.tsmDriverInfo.Size = new System.Drawing.Size(254, 26);
+            this.tsmDriverInfo.Size = new System.Drawing.Size(284, 28);
             this.tsmDriverInfo.Text = "Show Details";
             this.tsmDriverInfo.Click += new System.EventHandler(this.tsmDriverInfo_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(281, 6);
+            // 
             // tsmInterLic
             // 
+            this.tsmInterLic.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmInterLic.Image = ((System.Drawing.Image)(resources.GetObject("tsmInterLic.Image")));
             this.tsmInterLic.Name = "tsmInterLic";
-            this.tsmInterLic.Size = new System.Drawing.Size(254, 26);
+            this.tsmInterLic.Size = new System.Drawing.Size(284, 28);
             this.tsmInterLic.Text = "Issue International License";
             // 
             // tsmLicHistory
             // 
+            this.tsmLicHistory.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmLicHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsmLicHistory.Image")));
             this.tsmLicHistory.Name = "tsmLicHistory";
-            this.tsmLicHistory.Size = new System.Drawing.Size(254, 26);
+            this.tsmLicHistory.Size = new System.Drawing.Size(284, 28);
             this.tsmLicHistory.Text = "Show License History";
             // 
             // pSideNav
@@ -91,11 +98,6 @@ namespace PresentationLayer
             this.pSideNav.Size = new System.Drawing.Size(246, 478);
             this.pSideNav.TabIndex = 1;
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(251, 6);
-            // 
             // cmsPeople
             // 
             this.cmsPeople.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -106,7 +108,7 @@ namespace PresentationLayer
             this.tsmEdit,
             this.tsmDelete});
             this.cmsPeople.Name = "cmsPeople";
-            this.cmsPeople.Size = new System.Drawing.Size(215, 150);
+            this.cmsPeople.Size = new System.Drawing.Size(210, 122);
             // 
             // tsmPersonInfo
             // 
@@ -126,6 +128,7 @@ namespace PresentationLayer
             // tsmAdd
             // 
             this.tsmAdd.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsmAdd.Image")));
             this.tsmAdd.Name = "tsmAdd";
             this.tsmAdd.Size = new System.Drawing.Size(214, 28);
             this.tsmAdd.Text = "Add New Person";
@@ -134,6 +137,7 @@ namespace PresentationLayer
             // tsmEdit
             // 
             this.tsmEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmEdit.Image")));
             this.tsmEdit.Name = "tsmEdit";
             this.tsmEdit.Size = new System.Drawing.Size(214, 28);
             this.tsmEdit.Text = "Edit";
@@ -142,6 +146,7 @@ namespace PresentationLayer
             // tsmDelete
             // 
             this.tsmDelete.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsmDelete.Image")));
             this.tsmDelete.Name = "tsmDelete";
             this.tsmDelete.Size = new System.Drawing.Size(214, 28);
             this.tsmDelete.Text = "Delete";

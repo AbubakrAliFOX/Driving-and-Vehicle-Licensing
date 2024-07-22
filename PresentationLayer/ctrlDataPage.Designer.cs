@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlDataPage));
             this.dvg = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnAddNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,10 +90,23 @@
             this.lblTitle.TabIndex = 6;
             this.lblTitle.Text = "Manage People";
             // 
+            // btnAddNew
+            // 
+            this.btnAddNew.FlatAppearance.BorderSize = 0;
+            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.Image")));
+            this.btnAddNew.Location = new System.Drawing.Point(942, 90);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(50, 47);
+            this.btnAddNew.TabIndex = 7;
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
             // ctrlDataPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblRecordsNumber);
             this.Controls.Add(this.label2);
@@ -112,5 +127,6 @@
         private System.Windows.Forms.Label lblRecordsNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnAddNew;
     }
 }

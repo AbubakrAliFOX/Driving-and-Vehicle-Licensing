@@ -48,5 +48,11 @@ namespace PresentationLayer
         {
             DataTable localDataTable = dt;
         }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            AddNewPerson addNewPersonForm = new AddNewPerson(-1);
+            addNewPersonForm.ShowDialog();
+        }
     }
 }

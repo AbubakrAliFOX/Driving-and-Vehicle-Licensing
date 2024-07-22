@@ -174,6 +174,7 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(80, 29);
             this.tbFirstName.TabIndex = 32;
+            this.tbFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.tbFirstName_Validating);
             // 
             // tbLastName
             // 

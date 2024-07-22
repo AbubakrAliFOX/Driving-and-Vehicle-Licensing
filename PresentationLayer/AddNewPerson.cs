@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
+
 
 namespace PresentationLayer
 {
@@ -145,6 +148,22 @@ namespace PresentationLayer
 
         private void llAddPhoto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp|All Files (*.*)|*.*";
+            openFileDialog.FilterIndex = 1;
+
+            DialogResult result = openFileDialog.ShowDialog();
+
+            // Process the result if OK was clicked
+            if (result == DialogResult.OK)
+            {
+                // Get the file path selected by the user
+                string filePath = openFileDialog.FileName;
+
+                // Display the file path (for example, in a label or message box)
+                MessageBox.Show("Selected file: " + filePath);
+                pbPersonPhoto.Load(filePath);
+            }
 
         }
 
@@ -152,5 +171,20 @@ namespace PresentationLayer
         {
             this.Close();
         }
+
+        private void tbFirstName_Validating(object sender, CancelEventArgs e)
+        {
+            /*string errorMsg;
+            if (!ValidEmailAddress(textBox1.Text, out errorMsg))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                textBox1.Select(0, textBox1.Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.errorProvider1.SetError(textBox1, errorMsg);
+            }*/
+        }
+
     }
 }
