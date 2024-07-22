@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnAddNew = new System.Windows.Forms.Button();
+            this.cbFilterList = new System.Windows.Forms.ComboBox();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dvg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +66,7 @@
             // 
             this.lblRecordsNumber.AutoSize = true;
             this.lblRecordsNumber.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsNumber.Location = new System.Drawing.Point(167, 431);
+            this.lblRecordsNumber.Location = new System.Drawing.Point(180, 431);
             this.lblRecordsNumber.Name = "lblRecordsNumber";
             this.lblRecordsNumber.Size = new System.Drawing.Size(24, 28);
             this.lblRecordsNumber.TabIndex = 5;
@@ -102,10 +104,39 @@
             this.btnAddNew.UseVisualStyleBackColor = true;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
+            // cbFilterList
+            // 
+            this.cbFilterList.FormattingEnabled = true;
+            this.cbFilterList.Items.AddRange(new object[] {
+            "None",
+            "Person ID",
+            "National No",
+            "Full Name",
+            "Nationality",
+            "Gendor",
+            "Phone",
+            "Email"});
+            this.cbFilterList.Location = new System.Drawing.Point(130, 113);
+            this.cbFilterList.Name = "cbFilterList";
+            this.cbFilterList.Size = new System.Drawing.Size(136, 24);
+            this.cbFilterList.TabIndex = 8;
+            this.cbFilterList.SelectedIndexChanged += new System.EventHandler(this.cbFilterList_SelectedIndexChanged);
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Location = new System.Drawing.Point(275, 114);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(211, 22);
+            this.tbSearch.TabIndex = 9;
+            this.tbSearch.Visible = false;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            // 
             // ctrlDataPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tbSearch);
+            this.Controls.Add(this.cbFilterList);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblRecordsNumber);
@@ -128,5 +159,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnAddNew;
+        private System.Windows.Forms.ComboBox cbFilterList;
+        private System.Windows.Forms.TextBox tbSearch;
     }
 }

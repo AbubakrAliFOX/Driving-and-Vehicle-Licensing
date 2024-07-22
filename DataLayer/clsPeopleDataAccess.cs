@@ -114,7 +114,7 @@ namespace DataLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
             string query =
-                "SELECT PersonID, NationalNo, CONCAT(FirstName, ' ', SecondName, ' ', ThirdName, ' ', LastName) AS FullName, DateOfBirth, Gendor, Address, Phone, Email FROM People";
+                "SELECT PersonID, NationalNo, CONCAT(FirstName, ' ', SecondName, ' ', ThirdName, ' ', LastName) AS FullName, DateOfBirth, Countries.CountryName AS Nationality, CASE WHEN Gendor = 0 THEN 'Male' ELSE 'Female' END AS Gendor, Address, Phone, Email FROM People INNER JOIN Countries ON People.NationalityCountryID = Countries.CountryID";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 

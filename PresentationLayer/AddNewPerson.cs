@@ -160,8 +160,6 @@ namespace PresentationLayer
                 // Get the file path selected by the user
                 string filePath = openFileDialog.FileName;
 
-                // Display the file path (for example, in a label or message box)
-                MessageBox.Show("Selected file: " + filePath);
                 pbPersonPhoto.Load(filePath);
             }
 

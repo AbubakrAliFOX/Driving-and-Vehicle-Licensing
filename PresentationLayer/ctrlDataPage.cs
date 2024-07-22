@@ -13,6 +13,7 @@ namespace PresentationLayer
 {
     public partial class ctrlDataPage : UserControl
     {
+        string Filter;
         public ctrlDataPage(string Title, DataTable Data)
         {
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace PresentationLayer
             this.Data = Data;
             lblRecordsNumber.Text = Convert.ToString(this.Data.Rows.Count);
             //CreateTableWithData(Data);
+
+            cbFilterList.SelectedIndex = 0;
         }
 
         private DataTable data = new DataTable();
@@ -53,6 +56,44 @@ namespace PresentationLayer
         {
             AddNewPerson addNewPersonForm = new AddNewPerson(-1);
             addNewPersonForm.ShowDialog();
+        }
+
+        private void cbFilterList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbFilterList.SelectedIndex != 0)
+            {
+                tbSearch.Visible = true;
+            } else
+            {
+                tbSearch.Visible = false;
+            }
+
+            Filter = cbFilterList.SelectedItem.ToString().Replace(" ","");
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+       
+            DataView dataView = new DataView(Data);
+
+            if (Filter == "PersonID")
+            {
+                int SearchTerm;
+                int.TryParse(tbSearch.Text, out SearchTerm);
+
+                if (tbSearch.Text != "")
+                {
+                    dataView.RowFilter = $"PersonID = {SearchTerm}";
+                }
+            }
+            else
+            {
+                dataView.RowFilter = $"{Filter} LIKE '%{tbSearch.Text}%'";
+            }
+
+
+            // Bind the filtered DataView to the DataGridView
+            dvg.DataSource = dataView;
         }
     }
 }
