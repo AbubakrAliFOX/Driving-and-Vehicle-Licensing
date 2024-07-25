@@ -107,15 +107,6 @@
             // cbFilterList
             // 
             this.cbFilterList.FormattingEnabled = true;
-            this.cbFilterList.Items.AddRange(new object[] {
-            "None",
-            "Person ID",
-            "National No",
-            "Full Name",
-            "Nationality",
-            "Gendor",
-            "Phone",
-            "Email"});
             this.cbFilterList.Location = new System.Drawing.Point(130, 113);
             this.cbFilterList.Name = "cbFilterList";
             this.cbFilterList.Size = new System.Drawing.Size(136, 24);

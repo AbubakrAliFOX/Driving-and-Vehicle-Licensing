@@ -13,23 +13,20 @@ namespace PresentationLayer
 {
     public partial class ctrlDataPage : UserControl
     {
-        string Filter;
-        public ctrlDataPage(string Title, DataTable Data)
+        public ctrlDataPage(string Title, DataTable Data, string[] SearchableColumns = null)
         {
             InitializeComponent();
-            this.Location = new System.Drawing.Point(256, 0);
-            this.Size = new System.Drawing.Size(1010, 478);
-            this.TabIndex = 4;
-            this.Visible = false;
-            this.dvg.RowHeadersWidth = 30;
 
-            lblTitle.Text = $"Manage {Title}";
+            FormatStyles(Title);
+
+            PopulateSearchableList(SearchableColumns);
+
             this.Data = Data;
             lblRecordsNumber.Text = Convert.ToString(this.Data.Rows.Count);
-            //CreateTableWithData(Data);
 
-            cbFilterList.SelectedIndex = 0;
         }
+
+        private string SearchColumn;
 
         private DataTable data = new DataTable();
         public DataTable Data
@@ -47,10 +44,30 @@ namespace PresentationLayer
             get { return this.dvg; }
         }
 
-        public void CreateTable (DataTable dt)
+        private void FormatStyles (string Title)
         {
-            DataTable localDataTable = dt;
+            this.Location = new System.Drawing.Point(256, 0);
+            this.Size = new System.Drawing.Size(1010, 478);
+            this.TabIndex = 4;
+            this.Visible = false;
+            this.dvg.RowHeadersWidth = 30;
+            lblTitle.Text = $"Manage {Title}";
         }
+
+        private void PopulateSearchableList (string[] SearchableColumns)
+        {
+            if(SearchableColumns != null)
+            {
+                foreach (string item in SearchableColumns)
+                {
+                    cbFilterList.Items.Add(item);
+                }
+
+                cbFilterList.SelectedIndex = 0;
+
+            }
+        }
+
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
@@ -68,32 +85,48 @@ namespace PresentationLayer
                 tbSearch.Visible = false;
             }
 
-            Filter = cbFilterList.SelectedItem.ToString().Replace(" ","");
+            SearchColumn = cbFilterList.SelectedItem.ToString().Replace(" ","");
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
        
-            DataView dataView = new DataView(Data);
+            DataView DataView = new DataView(Data);
 
-            if (Filter == "PersonID")
+            Type ColumnDataType = GetColumnType(DataView, SearchColumn);
+
+            if (ColumnDataType == typeof(Int32))
             {
                 int SearchTerm;
                 int.TryParse(tbSearch.Text, out SearchTerm);
 
                 if (tbSearch.Text != "")
                 {
-                    dataView.RowFilter = $"PersonID = {SearchTerm}";
+                    DataView.RowFilter = $"{SearchColumn} = {SearchTerm}";
                 }
             }
             else
             {
-                dataView.RowFilter = $"{Filter} LIKE '%{tbSearch.Text}%'";
+                DataView.RowFilter = $"{SearchColumn} LIKE '%{tbSearch.Text}%'";
             }
 
-
             // Bind the filtered DataView to the DataGridView
-            dvg.DataSource = dataView;
+            dvg.DataSource = DataView;
+        }
+
+        private Type GetColumnType(DataView view, string columnName)
+        {
+            DataTable table = view.Table;
+
+            if (table.Columns.Contains(columnName))
+            {
+                DataColumn column = table.Columns[columnName];
+                return column.DataType;
+            }
+            else
+            {
+                throw new ArgumentException($"Column '{columnName}' does not exist in the DataView.");
+            }
         }
     }
 }

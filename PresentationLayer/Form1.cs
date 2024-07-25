@@ -41,13 +41,16 @@ namespace PresentationLayer
         {
             lMenuButtons = new List<ctrlMenuButton>();
 
-            ctrlDataPagePeople = new ctrlDataPage("People", clsPerson.GetAllPeople());
+            string[] SearchableItems = new string[] { "None", "Person ID", "National No", "Full Name", "Nationality", "Gender", "Phone", "Email" };
+            ctrlDataPagePeople = new ctrlDataPage("People", clsPerson.GetAllPeople(), SearchableItems);
             FormatPeopleLayout();
 
-            ctrlDataPageDrivers = new ctrlDataPage("Drivers", clsDriver.GetAllDrivers());
+            SearchableItems = new string[] { "None","Driver ID","National No","Created By User", "Active Licences" };
+            ctrlDataPageDrivers = new ctrlDataPage("Drivers", clsDriver.GetAllDrivers(), SearchableItems);
             FormatDriverLayout();
 
-            ctrlDataPageUsers = new ctrlDataPage("Users", clsUser.GetAllUsers());
+            SearchableItems = new string[] { "None", "User ID", "Full Name", "User Name"};
+            ctrlDataPageUsers = new ctrlDataPage("Users", clsUser.GetAllUsers(), SearchableItems);
             FormatUserLayout();
 
             ctrlDataPageApplications = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
