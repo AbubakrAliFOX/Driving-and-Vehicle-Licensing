@@ -262,6 +262,7 @@ namespace PresentationLayer
             this.tsmManageTestTypes.Name = "tsmManageTestTypes";
             this.tsmManageTestTypes.Size = new System.Drawing.Size(377, 40);
             this.tsmManageTestTypes.Text = "Manage Test Types";
+            this.tsmManageTestTypes.Click += new System.EventHandler(this.tsmManageTestTypes_Click);
             // 
             // toolStripSeparator3
             // 

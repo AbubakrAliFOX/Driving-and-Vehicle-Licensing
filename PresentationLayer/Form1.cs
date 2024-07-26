@@ -252,5 +252,11 @@ namespace PresentationLayer
             frmManageApplicationTypes manageApplicationTypes = new frmManageApplicationTypes();
             manageApplicationTypes.ShowDialog();
         }
+
+        private void tsmManageTestTypes_Click(object sender, EventArgs e)
+        {
+            frmManageTestTypes manageTestTypes = new frmManageTestTypes();
+            manageTestTypes.ShowDialog();
+        }
     }
 }

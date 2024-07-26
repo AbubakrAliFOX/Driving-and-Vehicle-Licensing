@@ -142,7 +142,7 @@
             this.Controls.Add(this.lblApplicationID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmEditApplicationType";
-            this.Text = "frmEditApplicationType";
+            this.Text = "Edit Application Type";
             this.ResumeLayout(false);
             this.PerformLayout();
 

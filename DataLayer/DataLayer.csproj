@@ -46,6 +46,7 @@
     <Compile Include="clsDriversDataAccess.cs" />
     <Compile Include="clsPeopleDataAccess.cs" />
     <Compile Include="clsSettings.cs" />
+    <Compile Include="clsTestsDataAccess.cs" />
     <Compile Include="clsUsersDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

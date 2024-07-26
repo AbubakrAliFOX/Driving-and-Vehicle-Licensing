@@ -11,19 +11,15 @@ using System.Windows.Forms;
 
 namespace PresentationLayer
 {
-    public partial class frmManageApplicationTypes : Form
+    public partial class frmManageTestTypes : Form
     {
-        public frmManageApplicationTypes()
+        public frmManageTestTypes()
         {
             InitializeComponent();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void frmManageApplicationTypes_Load(object sender, EventArgs e)
+        private void frmManageTestTypes_Load(object sender, EventArgs e)
         {
             SetupDataGridView();
             lblRecordsNumber.Text = Convert.ToString(this.dgv.Rows.Count);
@@ -31,11 +27,12 @@ namespace PresentationLayer
 
         private void SetupDataGridView()
         {
-            dgv.DataSource = clsApplication.GetApplicationTypes();
+            dgv.DataSource = clsTest.GetTestTypes();
             if (dgv != null)
             {
                 dgv.Columns["ID"].Width = 100;
-                dgv.Columns["Title"].Width = 490;
+                dgv.Columns["Title"].Width = 190;
+                dgv.Columns["Description"].Width = 300;
                 dgv.Columns["Fees"].Width = 100;
 
             }
@@ -43,8 +40,13 @@ namespace PresentationLayer
 
         private void tsmEdit_Click(object sender, EventArgs e)
         {
-            frmEditApplicationType EditApplicationType = new frmEditApplicationType((int)dgv.CurrentRow.Cells[0].Value, (string)dgv.CurrentRow.Cells[1].Value, (decimal)dgv.CurrentRow.Cells[2].Value);
-            EditApplicationType.ShowDialog();
+            frmEditTestType EditTestType = new frmEditTestType((int)dgv.CurrentRow.Cells[0].Value, (string)dgv.CurrentRow.Cells[1].Value, (string)dgv.CurrentRow.Cells[2].Value, (decimal)dgv.CurrentRow.Cells[3].Value);
+            EditTestType.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
