@@ -18,4 +18,5 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\DataLayer.dll
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\BusinessLayer.pdb
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\DataLayer.pdb
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.AddNewPerson.resources
-E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlApplicationDataPage.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmManageApplicationTypes.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmEditApplicationType.resources

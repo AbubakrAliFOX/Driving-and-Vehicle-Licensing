@@ -50,10 +50,12 @@ namespace PresentationLayer
             this.localDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.internationalDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageApplicationsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.helloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detainLicensesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageApplicationTypesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageTestTypesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmManageApplicationTypes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmManageTestTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmHidden = new System.Windows.Forms.ToolStripMenuItem();
             this.rjDropdownMenu = new CustomControls.RJControls.RJDropdownMenu(this.components);
             this.drivingLicensesServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,8 +66,6 @@ namespace PresentationLayer
             this.detainLicensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageApplicationTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmHidden = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDrivers.SuspendLayout();
             this.cmsPeople.SuspendLayout();
             this.cmsApplicationOptions.SuspendLayout();
@@ -184,8 +184,8 @@ namespace PresentationLayer
             this.toolStripMenuItem1,
             this.manageApplicationsToolStripMenuItem1,
             this.detainLicensesToolStripMenuItem1,
-            this.manageApplicationTypesToolStripMenuItem1,
-            this.manageTestTypesToolStripMenuItem1,
+            this.tsmManageApplicationTypes,
+            this.tsmManageTestTypes,
             this.toolStripSeparator3,
             this.tsmHidden});
             this.cmsApplicationOptions.Name = "cmsApplicationOptions";
@@ -235,6 +235,12 @@ namespace PresentationLayer
             this.manageApplicationsToolStripMenuItem1.Size = new System.Drawing.Size(377, 40);
             this.manageApplicationsToolStripMenuItem1.Text = "Manage Applications";
             // 
+            // helloToolStripMenuItem
+            // 
+            this.helloToolStripMenuItem.Name = "helloToolStripMenuItem";
+            this.helloToolStripMenuItem.Size = new System.Drawing.Size(155, 36);
+            this.helloToolStripMenuItem.Text = "Hello";
+            // 
             // detainLicensesToolStripMenuItem1
             // 
             this.detainLicensesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("detainLicensesToolStripMenuItem1.Image")));
@@ -242,24 +248,32 @@ namespace PresentationLayer
             this.detainLicensesToolStripMenuItem1.Size = new System.Drawing.Size(377, 40);
             this.detainLicensesToolStripMenuItem1.Text = "Detain Licenses";
             // 
-            // manageApplicationTypesToolStripMenuItem1
+            // tsmManageApplicationTypes
             // 
-            this.manageApplicationTypesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("manageApplicationTypesToolStripMenuItem1.Image")));
-            this.manageApplicationTypesToolStripMenuItem1.Name = "manageApplicationTypesToolStripMenuItem1";
-            this.manageApplicationTypesToolStripMenuItem1.Size = new System.Drawing.Size(377, 40);
-            this.manageApplicationTypesToolStripMenuItem1.Text = "Manage Application Types";
+            this.tsmManageApplicationTypes.Image = ((System.Drawing.Image)(resources.GetObject("tsmManageApplicationTypes.Image")));
+            this.tsmManageApplicationTypes.Name = "tsmManageApplicationTypes";
+            this.tsmManageApplicationTypes.Size = new System.Drawing.Size(377, 40);
+            this.tsmManageApplicationTypes.Text = "Manage Application Types";
+            this.tsmManageApplicationTypes.Click += new System.EventHandler(this.tsmManageApplicationTypes_Click);
             // 
-            // manageTestTypesToolStripMenuItem1
+            // tsmManageTestTypes
             // 
-            this.manageTestTypesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("manageTestTypesToolStripMenuItem1.Image")));
-            this.manageTestTypesToolStripMenuItem1.Name = "manageTestTypesToolStripMenuItem1";
-            this.manageTestTypesToolStripMenuItem1.Size = new System.Drawing.Size(377, 40);
-            this.manageTestTypesToolStripMenuItem1.Text = "Manage Test Types";
+            this.tsmManageTestTypes.Image = ((System.Drawing.Image)(resources.GetObject("tsmManageTestTypes.Image")));
+            this.tsmManageTestTypes.Name = "tsmManageTestTypes";
+            this.tsmManageTestTypes.Size = new System.Drawing.Size(377, 40);
+            this.tsmManageTestTypes.Text = "Manage Test Types";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(374, 6);
+            // 
+            // tsmHidden
+            // 
+            this.tsmHidden.AutoSize = false;
+            this.tsmHidden.Name = "tsmHidden";
+            this.tsmHidden.Size = new System.Drawing.Size(377, 40);
+            this.tsmHidden.Text = "Hidden";
             // 
             // rjDropdownMenu
             // 
@@ -340,19 +354,6 @@ namespace PresentationLayer
             this.manageTestTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 24);
             this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
             // 
-            // helloToolStripMenuItem
-            // 
-            this.helloToolStripMenuItem.Name = "helloToolStripMenuItem";
-            this.helloToolStripMenuItem.Size = new System.Drawing.Size(224, 36);
-            this.helloToolStripMenuItem.Text = "Hello";
-            // 
-            // tsmHidden
-            // 
-            this.tsmHidden.AutoSize = false;
-            this.tsmHidden.Name = "tsmHidden";
-            this.tsmHidden.Size = new System.Drawing.Size(377, 40);
-            this.tsmHidden.Text = "Hidden";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -402,8 +403,8 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem internationalDrivingLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageApplicationsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem detainLicensesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem manageApplicationTypesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem manageTestTypesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmManageApplicationTypes;
+        private System.Windows.Forms.ToolStripMenuItem tsmManageTestTypes;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem helloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmHidden;

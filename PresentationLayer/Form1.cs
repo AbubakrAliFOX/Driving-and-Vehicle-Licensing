@@ -17,7 +17,6 @@ namespace PresentationLayer
         private ctrlDataPage ctrlDataPagePeople;
         private ctrlDataPage ctrlDataPageDrivers;
         private ctrlDataPage ctrlDataPageUsers;
-        private ctrlApplicationDataPage ctrlDataPageApplications;
         private ctrlDataPage ctrlDataPageSettings;
 
         private ctrlMenuButton ctrlPeopleMenuButton;
@@ -54,7 +53,6 @@ namespace PresentationLayer
             ctrlDataPageUsers = new ctrlDataPage("Users", clsUser.GetAllUsers(), SearchableItems);
             FormatUserLayout();
 
-            ctrlDataPageApplications = new ctrlApplicationDataPage();
             ctrlDataPageSettings = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
 
             ctrlPeopleMenuButton = new ctrlMenuButton("People", "people.png");
@@ -115,7 +113,6 @@ namespace PresentationLayer
             this.Controls.Add(ctrlDataPagePeople);
             this.Controls.Add(ctrlDataPageDrivers);
             this.Controls.Add(ctrlDataPageUsers);
-            this.Controls.Add(ctrlDataPageApplications);
             pSideNav.Controls.Add(ctrlPeopleMenuButton);
             pSideNav.Controls.Add(ctrlDriversMenuButton);
             pSideNav.Controls.Add(ctrlUsersMenuButton);
@@ -250,5 +247,10 @@ namespace PresentationLayer
 
         }
 
+        private void tsmManageApplicationTypes_Click(object sender, EventArgs e)
+        {
+            frmManageApplicationTypes manageApplicationTypes = new frmManageApplicationTypes();
+            manageApplicationTypes.ShowDialog();
+        }
     }
 }
