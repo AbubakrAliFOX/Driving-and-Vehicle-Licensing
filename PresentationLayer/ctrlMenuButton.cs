@@ -13,7 +13,7 @@ namespace PresentationLayer
 {
     public partial class ctrlMenuButton : UserControl
     {
-        ctrlDataPage page;
+        UserControl page;
         public ctrlMenuButton(string buttonText, string btnImage)
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace PresentationLayer
             pSidePanel.Visible = false;
         }
 
-        public ctrlDataPage Page
+        public UserControl Page
         {
             get { return page; }
             set { page = value; }
@@ -44,14 +44,20 @@ namespace PresentationLayer
         {
             this.btnMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95))))); ;
             this.SidePanel.Visible = false;
-            this.Page.Visible = false;
+            if (this.Page != null)
+            {
+                this.Page.Visible = false;
+            }
         }
 
         public void Selected ()
         {
             this.btnMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(200))))); ;
             this.SidePanel.Visible = true;
-            this.Page.Visible = true;
+            if (this.Page != null)
+            {
+                this.Page.Visible = true;
+            }
         }
 
     }

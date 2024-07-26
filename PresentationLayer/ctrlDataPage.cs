@@ -13,6 +13,13 @@ namespace PresentationLayer
 {
     public partial class ctrlDataPage : UserControl
     {
+        public ctrlDataPage()
+        {
+            InitializeComponent();
+
+
+        }
+
         public ctrlDataPage(string Title, DataTable Data, string[] SearchableColumns = null)
         {
             InitializeComponent();

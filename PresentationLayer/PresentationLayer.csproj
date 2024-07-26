@@ -52,6 +52,15 @@
     <Compile Include="AddNewPerson.Designer.cs">
       <DependentUpon>AddNewPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlApplicationDataPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlApplicationDataPage.Designer.cs">
+      <DependentUpon>ctrlApplicationDataPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlApplicationOption.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ctrlMenuButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -76,8 +85,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuColorTable.cs" />
+    <Compile Include="MenuRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RJDropdownMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ShowPersonDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +100,9 @@
     </Compile>
     <EmbeddedResource Include="AddNewPerson.resx">
       <DependentUpon>AddNewPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlApplicationDataPage.resx">
+      <DependentUpon>ctrlApplicationDataPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlMenuButton.resx">
       <DependentUpon>ctrlMenuButton.cs</DependentUpon>

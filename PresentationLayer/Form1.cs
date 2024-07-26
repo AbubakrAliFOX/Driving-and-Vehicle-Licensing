@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ namespace PresentationLayer
         private ctrlDataPage ctrlDataPagePeople;
         private ctrlDataPage ctrlDataPageDrivers;
         private ctrlDataPage ctrlDataPageUsers;
-        private ctrlDataPage ctrlDataPageApplications;
+        private ctrlApplicationDataPage ctrlDataPageApplications;
         private ctrlDataPage ctrlDataPageSettings;
 
         private ctrlMenuButton ctrlPeopleMenuButton;
@@ -53,7 +54,7 @@ namespace PresentationLayer
             ctrlDataPageUsers = new ctrlDataPage("Users", clsUser.GetAllUsers(), SearchableItems);
             FormatUserLayout();
 
-            ctrlDataPageApplications = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
+            ctrlDataPageApplications = new ctrlApplicationDataPage();
             ctrlDataPageSettings = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
 
             ctrlPeopleMenuButton = new ctrlMenuButton("People", "people.png");
@@ -77,9 +78,7 @@ namespace PresentationLayer
 
             ctrlApplicationsMenuButton = new ctrlMenuButton("Applications", "Application.png");
             ctrlApplicationsMenuButton.Location = new System.Drawing.Point(0, 241);
-            ctrlApplicationsMenuButton.MainButton.Click += MenuButtonClick;
-            lMenuButtons.Add(ctrlApplicationsMenuButton);
-            ctrlApplicationsMenuButton.Page = ctrlDataPageApplications;
+            ctrlApplicationsMenuButton.MainButton.Click += new EventHandler(this.MenuDropdownButton_Click);
 
             ctrlSettingsMenuButton = new ctrlMenuButton("Settings", "Settings.png");
             ctrlSettingsMenuButton.Location = new System.Drawing.Point(0, 317);
@@ -103,11 +102,20 @@ namespace PresentationLayer
                     item.Reset();
             }
         }
+
+        private void MenuDropdownButton_Click(object sender, EventArgs e)
+        {
+            tsmHidden.Text = "\n";
+            tsmHidden.Visible = false;
+            cmsApplicationOptions.Show(ctrlApplicationsMenuButton, ctrlApplicationsMenuButton.Width, 0);
+        }
+
         private void AddControls()
         {
             this.Controls.Add(ctrlDataPagePeople);
             this.Controls.Add(ctrlDataPageDrivers);
             this.Controls.Add(ctrlDataPageUsers);
+            this.Controls.Add(ctrlDataPageApplications);
             pSideNav.Controls.Add(ctrlPeopleMenuButton);
             pSideNav.Controls.Add(ctrlDriversMenuButton);
             pSideNav.Controls.Add(ctrlUsersMenuButton);
@@ -118,6 +126,8 @@ namespace PresentationLayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            rjDropdownMenu.IsMainMenu = true;
+
         }
 
         private void FormatPeopleLayout()
@@ -211,6 +221,33 @@ namespace PresentationLayer
                     MessageBox.Show("Successfully Deleted!", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void drivingLicensesServicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjDropdownMenu_Opened(object sender, EventArgs e)
+        {
+            ctrlApplicationsMenuButton.Selected();
+        }
+
+        private void rjDropdownMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        {
+            ctrlApplicationsMenuButton.Reset();
+        }
+
+        private void cmsApplicationOptions_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        {
+            ctrlApplicationsMenuButton.Reset();
+
+        }
+
+        private void cmsApplicationOptions_Opened(object sender, EventArgs e)
+        {
+            ctrlApplicationsMenuButton.Selected();
+
         }
 
     }
