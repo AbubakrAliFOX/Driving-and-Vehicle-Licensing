@@ -73,6 +73,12 @@
     <Compile Include="ctrlDataPage.Designer.cs">
       <DependentUpon>ctrlDataPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlSearchBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlSearchBar.Designer.cs">
+      <DependentUpon>ctrlSearchBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlDataPage.resx">
       <DependentUpon>ctrlDataPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlSearchBar.resx">
+      <DependentUpon>ctrlSearchBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

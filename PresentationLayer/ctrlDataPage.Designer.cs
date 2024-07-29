@@ -37,6 +37,7 @@
             this.btnAddNew = new System.Windows.Forms.Button();
             this.cbFilterList = new System.Windows.Forms.ComboBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
+            this.ctrlSearchBar1 = new PresentationLayer.ctrlSearchBar();
             ((System.ComponentModel.ISupportInitialize)(this.dvg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 109);
+            this.label1.Location = new System.Drawing.Point(510, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 28);
             this.label1.TabIndex = 1;
@@ -107,7 +108,7 @@
             // cbFilterList
             // 
             this.cbFilterList.FormattingEnabled = true;
-            this.cbFilterList.Location = new System.Drawing.Point(130, 113);
+            this.cbFilterList.Location = new System.Drawing.Point(608, 26);
             this.cbFilterList.Name = "cbFilterList";
             this.cbFilterList.Size = new System.Drawing.Size(136, 24);
             this.cbFilterList.TabIndex = 8;
@@ -115,17 +116,26 @@
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(275, 114);
+            this.tbSearch.Location = new System.Drawing.Point(753, 27);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(211, 22);
             this.tbSearch.TabIndex = 9;
             this.tbSearch.Visible = false;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
+            // ctrlSearchBar1
+            // 
+            this.ctrlSearchBar1.UnfilteredData = null;
+            this.ctrlSearchBar1.Location = new System.Drawing.Point(32, 103);
+            this.ctrlSearchBar1.Name = "ctrlSearchBar1";
+            this.ctrlSearchBar1.Size = new System.Drawing.Size(457, 34);
+            this.ctrlSearchBar1.TabIndex = 10;
+            // 
             // ctrlDataPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ctrlSearchBar1);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.cbFilterList);
             this.Controls.Add(this.btnAddNew);
@@ -152,5 +162,6 @@
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.ComboBox cbFilterList;
         private System.Windows.Forms.TextBox tbSearch;
+        private ctrlSearchBar ctrlSearchBar1;
     }
 }
