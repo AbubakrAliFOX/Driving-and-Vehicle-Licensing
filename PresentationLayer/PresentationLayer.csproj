@@ -55,6 +55,12 @@
     <Compile Include="ctrlApplicationOption.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ctrlFindPerson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlFindPerson.Designer.cs">
+      <DependentUpon>ctrlFindPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlMenuButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +115,12 @@
     <Compile Include="frmManageTestTypes.Designer.cs">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNewLocalDrivingLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewLocalDrivingLicenseApplication.Designer.cs">
+      <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuColorTable.cs" />
     <Compile Include="MenuRenderer.cs" />
     <Compile Include="Program.cs" />
@@ -124,6 +136,9 @@
     </Compile>
     <EmbeddedResource Include="AddNewPerson.resx">
       <DependentUpon>AddNewPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlFindPerson.resx">
+      <DependentUpon>ctrlFindPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlMenuButton.resx">
       <DependentUpon>ctrlMenuButton.cs</DependentUpon>
@@ -151,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageTestTypes.resx">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewLocalDrivingLicenseApplication.resx">
+      <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

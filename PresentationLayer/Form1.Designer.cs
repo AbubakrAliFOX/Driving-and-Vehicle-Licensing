@@ -219,6 +219,7 @@ namespace PresentationLayer
             this.localDrivingLicenseToolStripMenuItem.Name = "localDrivingLicenseToolStripMenuItem";
             this.localDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(313, 36);
             this.localDrivingLicenseToolStripMenuItem.Text = "Local License";
+            this.localDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.localDrivingLicenseToolStripMenuItem_Click);
             // 
             // internationalDrivingLicenseToolStripMenuItem
             // 

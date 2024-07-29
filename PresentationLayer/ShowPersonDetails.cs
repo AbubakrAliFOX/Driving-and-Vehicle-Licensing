@@ -33,7 +33,8 @@ namespace PresentationLayer
 
         private void InitializeControls()
         {
-            ctrlPerson = new ctrlPersonCard(newPerson);
+            ctrlPerson = new ctrlPersonCard();
+            ctrlPerson.PersonInfo = newPerson;
         }
 
         private void AddControls()

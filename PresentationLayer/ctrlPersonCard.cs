@@ -13,31 +13,40 @@ namespace PresentationLayer
 {
     public partial class ctrlPersonCard : UserControl
     {
-        public ctrlPersonCard(clsPerson personInfo)
+        public ctrlPersonCard()
         {
             InitializeComponent();
+        }
 
-            this.pbPersonPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
-            
-            if (personInfo == null)
+        private clsPerson _PersonInfo;
+
+        public clsPerson PersonInfo
+        {
+            get { return _PersonInfo; }
+            set
             {
-                MessageBox.Show("Something went wrong!", "Error");
-                Close();
-            } else
-            {
-                FillPersonCard(personInfo);
+                _PersonInfo = value;
+                if (_PersonInfo == null)
+                {
+                    ResetPersonCard();
+                    MessageBox.Show("Person Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    FillPersonCard(_PersonInfo);
+                }
             }
-
-
         }
 
         private void FillPersonCard(clsPerson personInfo)
         {
-            pbPersonPhoto.Image = Image.FromFile(
-                    personInfo.imgPath != "" ?
-                        personInfo.imgPath :
-                        "E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\user1.png"
-                    );
+            if (personInfo.imgPath != "")
+            {
+                pbPersonPhoto.Image = Image.FromFile(personInfo.imgPath);
+            } else
+            {
+                pbPersonPhoto.Image = Image.FromFile("E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\user1.png");
+            }
 
             lblPersonID.Text = personInfo.ID.ToString();
             lblName.Text = $"{personInfo.firstName} {personInfo.lastName}";
@@ -51,9 +60,21 @@ namespace PresentationLayer
             lblCountry.Text = clsCountry.Find(personInfo.countryID);
         }
 
-        public void Close ()
+        private void ResetPersonCard()
         {
-            this.Close();
+            pbPersonPhoto.Image = Image.FromFile("E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\user1.png");
+
+            lblPersonID.Text = "";
+            lblName.Text = "";
+            lblNationalNumber.Text = "";
+            lblGender.Text = "";
+            lblEmail.Text = "";
+            lblPhone.Text = "";
+            lblAddress.Text = "";
+            lblDateOfBirth.Text = "";
+
+            lblCountry.Text = "";
         }
+
     }
 }

@@ -132,6 +132,61 @@ namespace BusinessLayer
             }
         }
 
+        public static clsPerson FindByNationalNo(string NationalNo)
+        {
+            int ID = -1;
+            string firstName = "",
+                secondName = "",
+                thirdName = "",
+                lastName = "",
+                email = "",
+                phone = "",
+                address = "",
+                imgPath = "";
+            DateTime dateOfBirth = DateTime.Now;
+            int countryID = -1;
+            byte gender = 0;
+
+            if (
+                clsPeopleDataAccess.GetPersonByNationalNo(
+                    NationalNo,
+                    ref ID,
+                    ref firstName,
+                    ref secondName,
+                    ref thirdName,
+                    ref lastName,
+                    ref gender,
+                    ref email,
+                    ref phone,
+                    ref address,
+                    ref dateOfBirth,
+                    ref countryID,
+                    ref imgPath
+                )
+            )
+            {
+                return new clsPerson(
+                    ID,
+                    NationalNo,
+                    firstName,
+                    secondName,
+                    thirdName,
+                    lastName,
+                    gender,
+                    email,
+                    phone,
+                    address,
+                    dateOfBirth,
+                    countryID,
+                    imgPath
+                );
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static DataTable GetAllPeople()
         {
             return clsPeopleDataAccess.GetAllPeople();

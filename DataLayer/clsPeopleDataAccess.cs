@@ -107,6 +107,100 @@ namespace DataLayer
             return isFound;
         }
 
+        public static bool GetPersonByNationalNo(
+            string nationalNo,
+            ref int ID,
+            ref string firstName,
+            ref string secondName,
+            ref string thirdName,
+            ref string lastName,
+            ref byte gender,
+            ref string email,
+            ref string phone,
+            ref string address,
+            ref DateTime dateOfBirth,
+            ref int countryID,
+            ref string imgPath
+        )
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "select * from People where NationalNo = @NationalNo";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@NationalNo", nationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+                    ID = (int)reader["PersonID"];
+
+                    firstName = (string)reader["FirstName"];
+                    secondName = (string)reader["SecondName"];
+
+                    if (reader["ThirdName"] != DBNull.Value)
+                    {
+                        thirdName = (string)reader["ThirdName"];
+                    }
+                    else
+                    {
+                        thirdName = "";
+                    }
+
+                    lastName = (string)reader["LastName"];
+
+                    gender = (byte)reader["Gendor"];
+
+                    if (reader["Email"] != DBNull.Value)
+                    {
+                        email = (string)reader["Email"];
+                    }
+                    else
+                    {
+                        email = "";
+                    }
+
+                    phone = (string)reader["Phone"];
+                    address = (string)reader["Address"];
+                    countryID = (int)reader["NationalityCountryID"];
+                    dateOfBirth = (DateTime)reader["DateOfBirth"];
+
+                    if (reader["ImagePath"] != DBNull.Value)
+                    {
+                        imgPath = (string)reader["ImagePath"];
+                    }
+                    else
+                    {
+                        imgPath = "";
+                    }
+                }
+                else
+                {
+                    isFound = false;
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
         public static DataTable GetAllPeople()
         {
             DataTable dt = new DataTable();

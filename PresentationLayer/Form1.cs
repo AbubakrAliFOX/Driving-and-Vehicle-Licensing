@@ -258,5 +258,11 @@ namespace PresentationLayer
             frmManageTestTypes manageTestTypes = new frmManageTestTypes();
             manageTestTypes.ShowDialog();
         }
+
+        private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNewLocalDrivingLicenseApplication NewLocalDrivingLicenseApplication = new frmNewLocalDrivingLicenseApplication();
+            NewLocalDrivingLicenseApplication.ShowDialog();
+        }
     }
 }

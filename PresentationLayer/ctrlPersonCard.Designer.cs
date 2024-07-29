@@ -84,6 +84,7 @@
             this.pbPersonPhoto.Location = new System.Drawing.Point(33, 35);
             this.pbPersonPhoto.Name = "pbPersonPhoto";
             this.pbPersonPhoto.Size = new System.Drawing.Size(188, 241);
+            this.pbPersonPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPersonPhoto.TabIndex = 3;
             this.pbPersonPhoto.TabStop = false;
             // 
@@ -129,9 +130,8 @@
             this.lblName.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(367, 74);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(115, 21);
+            this.lblName.Size = new System.Drawing.Size(0, 21);
             this.lblName.TabIndex = 1;
-            this.lblName.Text = "Abubakr Eldaw";
             // 
             // lblPersonID
             // 
@@ -256,7 +256,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblPersonID);
             this.Name = "ctrlPersonCard";
-            this.Size = new System.Drawing.Size(740, 502);
+            this.Size = new System.Drawing.Size(740, 384);
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
