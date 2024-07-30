@@ -50,6 +50,7 @@ namespace PresentationLayer
                 dgv.Columns["ApplicationDate"].Width = 120;
                 dgv.Columns["ApplicationStatus"].Width = 120;
 
+                dgv.ContextMenuStrip = cmsLocalLicences;
             }
         }
 
