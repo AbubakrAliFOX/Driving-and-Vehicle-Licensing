@@ -26,12 +26,12 @@ namespace PresentationLayer
         private void frmManageApplicationTypes_Load(object sender, EventArgs e)
         {
             SetupDataGridView();
-            lblRecordsNumber.Text = Convert.ToString(this.dgv.Rows.Count);
         }
 
         private void SetupDataGridView()
         {
-            dgv.DataSource = clsApplication.GetApplicationTypes();
+            RefreshData();
+
             if (dgv != null)
             {
                 dgv.Columns["ID"].Width = 100;
@@ -41,10 +41,17 @@ namespace PresentationLayer
             }
         }
 
+        private void RefreshData()
+        {
+            dgv.DataSource = clsApplication.GetApplicationTypes();
+            lblRecordsNumber.Text = Convert.ToString(this.dgv.Rows.Count);
+        }
+
         private void tsmEdit_Click(object sender, EventArgs e)
         {
             frmEditApplicationType EditApplicationType = new frmEditApplicationType((int)dgv.CurrentRow.Cells[0].Value, (string)dgv.CurrentRow.Cells[1].Value, (decimal)dgv.CurrentRow.Cells[2].Value);
             EditApplicationType.ShowDialog();
+            RefreshData();
         }
     }
 }

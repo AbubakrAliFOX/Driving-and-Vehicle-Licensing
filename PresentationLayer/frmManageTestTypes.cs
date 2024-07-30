@@ -22,12 +22,12 @@ namespace PresentationLayer
         private void frmManageTestTypes_Load(object sender, EventArgs e)
         {
             SetupDataGridView();
-            lblRecordsNumber.Text = Convert.ToString(this.dgv.Rows.Count);
         }
 
         private void SetupDataGridView()
         {
-            dgv.DataSource = clsTest.GetTestTypes();
+            RefreshData();
+
             if (dgv != null)
             {
                 dgv.Columns["ID"].Width = 100;
@@ -42,6 +42,13 @@ namespace PresentationLayer
         {
             frmEditTestType EditTestType = new frmEditTestType((int)dgv.CurrentRow.Cells[0].Value, (string)dgv.CurrentRow.Cells[1].Value, (string)dgv.CurrentRow.Cells[2].Value, (decimal)dgv.CurrentRow.Cells[3].Value);
             EditTestType.ShowDialog();
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            dgv.DataSource = clsTest.GetTestTypes();
+            lblRecordsNumber.Text = Convert.ToString(this.dgv.Rows.Count);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
