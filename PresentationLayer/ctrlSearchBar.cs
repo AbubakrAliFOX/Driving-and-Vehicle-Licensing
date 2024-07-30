@@ -12,6 +12,13 @@ namespace PresentationLayer
 {
     public partial class ctrlSearchBar : UserControl
     {
+        public event EventHandler FilterChanged;
+
+        protected virtual void OnFilterChanged(EventArgs e)
+        {
+            FilterChanged?.Invoke(this, e);
+        }
+
         public ctrlSearchBar()
         {
             InitializeComponent();
@@ -30,24 +37,26 @@ namespace PresentationLayer
         }
         public DataView FilteredData { get; private set; }
 
-        private DataView _unfilteredData;
+        private DataView _UnfilteredData;
         public DataView UnfilteredData
         {
-            get { return _unfilteredData; }
+            get { return _UnfilteredData; }
             set
             {
                 if (value != null)
                 {
-                    _unfilteredData = value;
+                    _UnfilteredData = value;
                     FilteredData = new DataView(value.Table);
                 }
                 else
                 {
-                    _unfilteredData = null;
+                    _UnfilteredData = null;
                     FilteredData = null;
                 }
             }
         }
+
+        public int NumberOfRecords { get; set; }
 
         private Type GetColumnType(DataView view, string columnName)
         {
@@ -65,6 +74,8 @@ namespace PresentationLayer
         }
         private void PopulateSearchableList(string[] SearchableColumns)
         {
+            cbFilterList.Items.Clear();
+
             if (SearchableColumns != null)
             {
                 foreach (string item in SearchableColumns)
@@ -88,43 +99,40 @@ namespace PresentationLayer
                 tbSearch.Visible = false;
             }
 
+            tbSearch.Text = "";
             SearchColumn = cbFilterList.SelectedItem.ToString().Replace(" ", "");
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            //DataView DataView = new DataView(Data);
-
             Type ColumnDataType = GetColumnType(UnfilteredData, SearchColumn);
 
-            if (ColumnDataType == typeof(Int32))
+            if (string.IsNullOrWhiteSpace(tbSearch.Text))
             {
-                int SearchTerm;
-                int.TryParse(tbSearch.Text, out SearchTerm);
-
-                if (tbSearch.Text != "")
-                {
-                    FilteredData.RowFilter = $"{SearchColumn} = {SearchTerm}";
-                }
-                else
-                {
-                    FilteredData.RowFilter = string.Empty;
-                }
+                FilteredData.RowFilter = string.Empty;
             }
             else
             {
-                if (tbSearch.Text != "")
+                if (ColumnDataType == typeof(Int32))
                 {
-                    FilteredData.RowFilter = $"{SearchColumn} LIKE '%{tbSearch.Text}%'";
+                    int SearchTerm;
+                    int.TryParse(tbSearch.Text, out SearchTerm);
+                    FilteredData.RowFilter = $"{SearchColumn} = {SearchTerm}";
+
                 }
                 else
                 {
-                    FilteredData.RowFilter = string.Empty;
+                    FilteredData.RowFilter = $"{SearchColumn} LIKE '%{tbSearch.Text}%'";
+
                 }
+
             }
 
-            // Bind the filtered DataView to the DataGridView
-            //dvg.DataSource = LocalData;
+            OnFilterChanged(EventArgs.Empty);
         }
+
+ 
     }
+
+
 }

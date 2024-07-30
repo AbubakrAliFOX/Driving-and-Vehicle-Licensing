@@ -1,5 +1,4 @@
 ﻿using BusinessLayer;
-using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,20 +39,24 @@ namespace PresentationLayer
         private void InitializeControls()
         {
             lMenuButtons = new List<ctrlMenuButton>();
-
-            string[] SearchableItems = new string[] { "None", "Person ID", "National No", "Full Name", "Nationality", "Gender", "Phone", "Email" };
-            ctrlDataPagePeople = new ctrlDataPage("People", clsPerson.GetAllPeople(), SearchableItems);
+ 
+            ctrlDataPagePeople = new ctrlDataPage();
+            ctrlDataPagePeople.Title = "People";
+            ctrlDataPagePeople.SearchableColumns = new string[] { "None", "Person ID", "National No", "Full Name", "Nationality", "Gender", "Phone", "Email" };
             FormatPeopleLayout();
 
-            SearchableItems = new string[] { "None","Driver ID","National No","Created By User", "Active Licences" };
-            ctrlDataPageDrivers = new ctrlDataPage("Drivers", clsDriver.GetAllDrivers(), SearchableItems);
+            ctrlDataPageDrivers = new ctrlDataPage();
+            ctrlDataPageDrivers.Title = "Drivers";
+            ctrlDataPageDrivers.SearchableColumns = new string[] { "None","Driver ID","National No","Created By User", "Active Licences" };
             FormatDriverLayout();
 
-            SearchableItems = new string[] { "None", "User ID", "Full Name", "User Name"};
-            ctrlDataPageUsers = new ctrlDataPage("Users", clsUser.GetAllUsers(), SearchableItems);
+            ctrlDataPageUsers = new ctrlDataPage();
+            ctrlDataPageUsers.Title = "Users";
+            ctrlDataPageUsers.SearchableColumns = new string[] { "None", "User ID", "Full Name", "User Name" };
             FormatUserLayout();
 
-            ctrlDataPageSettings = new ctrlDataPage("ctrlDataPageUsers", clsUser.GetAllUsers());
+            ctrlDataPageSettings = new ctrlDataPage();
+            ctrlDataPageSettings.Title = "Users";
 
             ctrlPeopleMenuButton = new ctrlMenuButton("People", "people.png");
             ctrlPeopleMenuButton.Location = new System.Drawing.Point(0, 13);
@@ -123,7 +126,6 @@ namespace PresentationLayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            rjDropdownMenu.IsMainMenu = true;
 
         }
 
@@ -220,21 +222,6 @@ namespace PresentationLayer
             }
         }
 
-        private void drivingLicensesServicesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjDropdownMenu_Opened(object sender, EventArgs e)
-        {
-            ctrlApplicationsMenuButton.Selected();
-        }
-
-        private void rjDropdownMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
-        {
-            ctrlApplicationsMenuButton.Reset();
-        }
-
         private void cmsApplicationOptions_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
             ctrlApplicationsMenuButton.Reset();
@@ -263,6 +250,11 @@ namespace PresentationLayer
         {
             frmNewLocalDrivingLicenseApplication NewLocalDrivingLicenseApplication = new frmNewLocalDrivingLicenseApplication();
             NewLocalDrivingLicenseApplication.ShowDialog();
+        }
+
+        private void tsmLocalDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlDataPage));
-            this.dvg = new System.Windows.Forms.DataGridView();
+            this.DataGridView = new System.Windows.Forms.DataGridView();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.ctrlSearchBar1 = new PresentationLayer.ctrlSearchBar();
-            ((System.ComponentModel.ISupportInitialize)(this.dvg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dvg
+            // DataGridView
             // 
-            this.dvg.AllowUserToAddRows = false;
-            this.dvg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvg.Location = new System.Drawing.Point(32, 150);
-            this.dvg.Name = "dvg";
-            this.dvg.ReadOnly = true;
-            this.dvg.RowHeadersWidth = 51;
-            this.dvg.RowTemplate.Height = 24;
-            this.dvg.Size = new System.Drawing.Size(960, 273);
-            this.dvg.TabIndex = 0;
+            this.DataGridView.AllowUserToAddRows = false;
+            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.Location = new System.Drawing.Point(32, 150);
+            this.DataGridView.Name = "DataGridView";
+            this.DataGridView.ReadOnly = true;
+            this.DataGridView.RowHeadersWidth = 51;
+            this.DataGridView.RowTemplate.Height = 24;
+            this.DataGridView.Size = new System.Drawing.Size(960, 273);
+            this.DataGridView.TabIndex = 0;
             // 
             // lblRecordsNumber
             // 
@@ -96,9 +96,11 @@
             // 
             this.ctrlSearchBar1.Location = new System.Drawing.Point(32, 103);
             this.ctrlSearchBar1.Name = "ctrlSearchBar1";
+            this.ctrlSearchBar1.NumberOfRecords = 0;
             this.ctrlSearchBar1.Size = new System.Drawing.Size(457, 34);
             this.ctrlSearchBar1.TabIndex = 10;
             this.ctrlSearchBar1.UnfilteredData = null;
+            this.ctrlSearchBar1.FilterChanged += new System.EventHandler(this.ctrlSearchBar1_FilterChanged);
             // 
             // ctrlDataPage
             // 
@@ -109,10 +111,10 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblRecordsNumber);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dvg);
+            this.Controls.Add(this.DataGridView);
             this.Name = "ctrlDataPage";
             this.Size = new System.Drawing.Size(1014, 478);
-            ((System.ComponentModel.ISupportInitialize)(this.dvg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,7 +122,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dvg;
+        private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Label lblRecordsNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTitle;
