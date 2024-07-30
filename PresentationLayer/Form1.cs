@@ -42,17 +42,17 @@ namespace PresentationLayer
  
             ctrlDataPagePeople = new ctrlDataPage();
             ctrlDataPagePeople.Title = "People";
-            ctrlDataPagePeople.SearchableColumns = new string[] { "None", "Person ID", "National No", "Full Name", "Nationality", "Gender", "Phone", "Email" };
+            //ctrlDataPagePeople.SearchableColumns = new string[] { "None", "Person ID", "National No", "Full Name", "Nationality", "Gender", "Phone", "Email" };
             FormatPeopleLayout();
 
             ctrlDataPageDrivers = new ctrlDataPage();
             ctrlDataPageDrivers.Title = "Drivers";
-            ctrlDataPageDrivers.SearchableColumns = new string[] { "None","Driver ID","National No","Created By User", "Active Licences" };
+            //ctrlDataPageDrivers.SearchableColumns = new string[] { "None","Driver ID","National No","Created By User", "Active Licences" };
             FormatDriverLayout();
 
             ctrlDataPageUsers = new ctrlDataPage();
             ctrlDataPageUsers.Title = "Users";
-            ctrlDataPageUsers.SearchableColumns = new string[] { "None", "User ID", "Full Name", "User Name" };
+            //ctrlDataPageUsers.SearchableColumns = new string[] { "None", "User ID", "Full Name", "User Name" };
             FormatUserLayout();
 
             ctrlDataPageSettings = new ctrlDataPage();
@@ -158,13 +158,13 @@ namespace PresentationLayer
                 dgv.Columns["NationalNo"].HeaderText = "National No";
                 dgv.Columns["FullName"].HeaderText = "Full Name";
                 dgv.Columns["CreatedDate"].HeaderText = "Created Date";
-                dgv.Columns["Username"].HeaderText = "Created By User";
+                dgv.Columns["CreatedByUser"].HeaderText = "Created By User";
                 dgv.Columns["ActiveLicences"].HeaderText = "Active Licenses";
 
                 dgv.Columns["FullName"].Width = 300;
                 dgv.Columns["NationalNo"].Width = 120;
                 dgv.Columns["CreatedDate"].Width = 120;
-                dgv.Columns["Username"].Width = 180;
+                dgv.Columns["CreatedByUser"].Width = 180;
                 dgv.Columns["ActiveLicences"].Width = 80;
 
                 dgv.ContextMenuStrip = cmsDrivers;

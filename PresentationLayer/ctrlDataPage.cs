@@ -18,7 +18,6 @@ namespace PresentationLayer
             InitializeComponent();
 
             FormatStyles();
-
         }
         private void FormatStyles()
         {
@@ -41,20 +40,16 @@ namespace PresentationLayer
                 _Title = value;
                 lblTitle.Text = $"Manage {Title}";
                 RefreshData();
+                ctrlSearchBar1.SearchableColumns = SearchableColumns;
             }
         }
 
-        private string[] _SearchableColumns;
         public string[] SearchableColumns
         {
             get
             {
-                return _SearchableColumns;
-            }
-            set
-            {
-                _SearchableColumns = value;
-                ctrlSearchBar1.SearchableColumns = SearchableColumns;
+                _SearchableColumns.TryGetValue(Title, out string [] SearchableItems);
+                return SearchableItems;
             }
         }
 
@@ -83,7 +78,14 @@ namespace PresentationLayer
             { "Drivers", clsDriver.GetAllDrivers },
             { "Users", clsUser.GetAllUsers }
         };
-        
+
+        private Dictionary<string, string[]> _SearchableColumns = new Dictionary<string, string[]>
+        {
+            { "People", new string[] { "None", "Person ID", "National No", "Full Name", "Nationality", "Gender", "Phone", "Email" }},
+            { "Drivers", new string[] { "None","Driver ID","National No","Created By User", "Active Licences" }},
+            { "Users", new string[] { "None", "User ID", "Full Name", "User Name" }}
+        };
+
         private void RefreshData ()
         {
             DataSources.TryGetValue(Title, out var DataSourceTable);
