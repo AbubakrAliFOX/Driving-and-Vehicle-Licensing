@@ -48,6 +48,7 @@ namespace PresentationLayer
             if (ctrlFindPerson1.PersonInfo == null)
             {
                 MessageBox.Show("Select a Person First", "No Person Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if(!clsLicenseClass.PersonHasLicenseClass(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1))

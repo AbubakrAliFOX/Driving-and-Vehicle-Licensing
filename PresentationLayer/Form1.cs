@@ -254,7 +254,8 @@ namespace PresentationLayer
 
         private void tsmLocalDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmManageLocalDrivingLicenseApplications LocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
+            LocalDrivingLicenseApplications.ShowDialog();
         }
     }
 }

@@ -29,5 +29,10 @@ namespace BusinessLayer
         {
             return clsApplicationsDataAccess.CreateApplication(PersonID, ApplicationTypeID, PaidFees);
         }
+
+        public static DataTable GetLocalDrivingLicenseApplications()
+        {
+            return clsApplicationsDataAccess.GetLocalDrivingLicenseApplications();
+        }
     }
 }

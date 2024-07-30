@@ -23,7 +23,6 @@ namespace PresentationLayer
         {
             this.Location = new System.Drawing.Point(256, 0);
             this.Size = new System.Drawing.Size(1010, 478);
-            this.TabIndex = 4;
             this.Visible = false;
             this.DataGridView.RowHeadersWidth = 30;
         }
@@ -76,17 +75,19 @@ namespace PresentationLayer
         {
             { "People", clsPerson.GetAllPeople },
             { "Drivers", clsDriver.GetAllDrivers },
-            { "Users", clsUser.GetAllUsers }
+            { "Users", clsUser.GetAllUsers },
+            { "LocalDrivingLicenses", clsApplication.GetLocalDrivingLicenseApplications}
         };
 
         private Dictionary<string, string[]> _SearchableColumns = new Dictionary<string, string[]>
         {
             { "People", new string[] { "None", "Person ID", "National No", "Full Name", "Nationality", "Gender", "Phone", "Email" }},
             { "Drivers", new string[] { "None","Driver ID","National No","Created By User", "Active Licences" }},
-            { "Users", new string[] { "None", "User ID", "Full Name", "User Name" }}
+            { "Users", new string[] { "None", "User ID", "Full Name", "User Name" }},
+            { "LocalDrivingLicenses", new string[] { "None", "L.D.L.AppID", "National No", "Full Name", "ApplicationStatus" }}
         };
 
-        private void RefreshData ()
+        public void RefreshData ()
         {
             DataSources.TryGetValue(Title, out var DataSourceTable);
             Data = DataSourceTable();
@@ -103,6 +104,11 @@ namespace PresentationLayer
             AddNewPerson addNewPersonForm = new AddNewPerson(-1);
             addNewPersonForm.ShowDialog();
             RefreshData();
+        }
+        public void SetAddNewClickEventHandler(EventHandler eventHandler)
+        {
+            btnAddNew.Click -= btnAddNew_Click; // Remove the default handler if needed
+            btnAddNew.Click += eventHandler;
         }
 
         private void ctrlSearchBar1_FilterChanged(object sender, EventArgs e)
