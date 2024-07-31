@@ -71,6 +71,7 @@ namespace BusinessLayer
             return clsApplicationsDataAccess.GetApplicationFees(ApplicationID);
         }
 
+
         public static clsApplication FindLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
         {
 

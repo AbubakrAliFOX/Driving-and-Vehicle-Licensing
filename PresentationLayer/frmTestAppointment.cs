@@ -42,5 +42,16 @@ namespace PresentationLayer
             ShowPersonDetails PersonDetails = new ShowPersonDetails(ApplicationDetails.ApplicantID);
             PersonDetails.ShowDialog();
         }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            frmScheduleTest Appointment = new frmScheduleTest(ApplicationDetails,1);
+            Appointment.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

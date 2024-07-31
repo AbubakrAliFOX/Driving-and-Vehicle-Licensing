@@ -361,6 +361,7 @@
             this.btnAddNew.Size = new System.Drawing.Size(50, 47);
             this.btnAddNew.TabIndex = 34;
             this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // lblRecordsNumber
             // 
@@ -391,6 +392,7 @@
             this.btnClose.TabIndex = 37;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmTestAppointment
             // 

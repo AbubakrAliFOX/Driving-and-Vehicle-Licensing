@@ -19,5 +19,15 @@ namespace BusinessLayer
 
             return clsTestsDataAccess.UpdateTestType(TestID, TestTitle, TestDescription ,TestFees);
         }
+
+        public static decimal GetTestFees(int TestTypeID)
+        {
+            return clsTestsDataAccess.GetTestFees(TestTypeID);
+        }
+
+        public static int CreateTestAppointment(int TestType, int LDLApplicationID, DateTime Date, decimal PaidFees)
+        {
+            return clsTestsDataAccess.CreateTestAppointment(TestType, LDLApplicationID, Date, PaidFees);
+        }
     }
 }
