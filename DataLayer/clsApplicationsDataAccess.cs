@@ -116,6 +116,106 @@ namespace DataLayer
             return Fees;
         }
 
+        public static bool FindLocalDrivingLicenseApplicationByID(
+            int LocalDrivingLicenseApplicationID,
+            ref int ApplicationID,
+            ref string ApplicantName,
+            ref string ApplicationType,
+            ref int ApplicantID,
+            ref string ApplicationStatus,
+            ref string CreatedByUser,
+            ref DateTime StatusDate,
+            ref DateTime Date,
+            ref int LicenseClassID,
+            ref string LicenseClassName,
+            ref decimal Fees
+        )
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT Applications.PaidFees AS Fees, People.PersonID, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, Applications.ApplicationDate, CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Pending' ELSE 'Completed' END AS ApplicationStatus, Applications.ApplicationID, Applications.LastStatusDate AS StatusDate, Users.UserName AS CreatedByUser, LicenseClasses.LicenseClassID, LicenseClasses.ClassName AS DrivingClass, ApplicationTypes.ApplicationTypeTitle AS ApplicationType FROM Applications INNER JOIN LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN People ON Applications.ApplicantPersonID = People.PersonID INNER JOIN ApplicationTypes ON Applications.ApplicationTypeID = ApplicationTypes.ApplicationTypeID INNER JOIN Users ON Applications.CreatedByUserID = Users.UserID WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID= @LDLApplication";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LDLApplication", LocalDrivingLicenseApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+
+                    ApplicationID = (int)reader["ApplicationID"];
+                    ApplicantID = (int)reader["PersonID"];
+                    ApplicantName = (string)reader["FullName"];
+                    ApplicationType = (string)reader["ApplicationType"];
+                    ApplicationStatus = (string)reader["ApplicationStatus"];
+                    CreatedByUser = (string)reader["CreatedByUser"];
+                    StatusDate = (DateTime)reader["StatusDate"];
+                    Date = (DateTime)reader["ApplicationDate"];
+                    Fees = (decimal)reader["Fees"];
+                    LicenseClassID = (int)reader["LicenseClassID"];
+                    LicenseClassName = (string)reader["DrivingClass"];
+
+
+                }
+                else
+                {
+                    isFound = false;
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+        
+        public static int PassedTestsCount(int LDLApplicationID)
+        {
+            int PassedTests = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT COUNT(*) AS PassedTests FROM TestAppointments INNER JOIN Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID WHERE Tests.TestResult = 1 AND TestAppointments.LocalDrivingLicenseApplicationID = @LDLApplicationID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    PassedTests = (int)reader["PassedTests"];
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return PassedTests;
+        }
         public static int CreateApplication(int PersonID, int ApplicationTypeID, decimal PaidFees)
         {
             int ApplicationID = -1;
@@ -164,8 +264,7 @@ namespace DataLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
             string query =
-                "SELECT LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID AS [L.D.L.AppID], LicenseClasses.ClassName AS DrivingClass, People.NationalNo, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, Applications.ApplicationDate, CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' ELSE 'Completed' END AS ApplicationStatus FROM     Applications INNER JOIN LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN People ON Applications.ApplicantPersonID = People.PersonID";
-
+               "SELECT LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID AS [L.D.L.AppID], LicenseClasses.ClassName AS DrivingClass, People.NationalNo, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, (SELECT COUNT(*) AS PassedTests FROM TestAppointments INNER JOIN Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID WHERE Tests.TestResult = 1 AND TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID) AS PassedTests, Applications.ApplicationDate, CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' ELSE 'Completed' END AS ApplicationStatus FROM     Applications INNER JOIN LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN People ON Applications.ApplicantPersonID = People.PersonID";
             SqlCommand cmd = new SqlCommand(query, connection);
 
             try

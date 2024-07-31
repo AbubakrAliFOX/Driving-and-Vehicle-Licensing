@@ -13,6 +13,7 @@ namespace PresentationLayer
     public partial class frmManageLocalDrivingLicenseApplications : Form
     {
         ctrlDataPage LocalLicenseApplicationsPage;
+
         public frmManageLocalDrivingLicenseApplications()
         {
             
@@ -64,6 +65,12 @@ namespace PresentationLayer
             frmNewLocalDrivingLicenseApplication NewApplication = new frmNewLocalDrivingLicenseApplication();
             NewApplication.ShowDialog();
             LocalLicenseApplicationsPage.RefreshData();
+        }
+
+        private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            TestAppointment.ShowDialog();
         }
     }
 }
