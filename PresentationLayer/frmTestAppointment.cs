@@ -16,6 +16,7 @@ namespace PresentationLayer
         clsApplication ApplicationDetails;
         int LDLAppID;
         int TestTypeID;
+        string[] TestTypeName = new string[] {"Vision", "Written", "Field"};
         public frmTestAppointment(int LDLApplicationID, int TestType)
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace PresentationLayer
             ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
             LDLAppID = LDLApplicationID;
             TestTypeID = TestType;
+            lblTitle.Text = $"{TestTypeName[TestTypeID-1]} Test Appointments";
 
             RefreshData();
             FormatDataGridView();
@@ -31,7 +33,7 @@ namespace PresentationLayer
         
         private void RefreshData ()
         {
-            dgvAppointments.DataSource = clsTest.GetTestAppointments(LDLAppID, 1);
+            dgvAppointments.DataSource = clsTest.GetTestAppointments(LDLAppID, TestTypeID);
 
         }
         private void FormatDataGridView()
@@ -85,26 +87,20 @@ namespace PresentationLayer
         {
             if(!clsTest.IsAppointmentActiveForTest(LDLAppID, TestTypeID))
             {
-                frmScheduleTest Appointment = new frmScheduleTest(ApplicationDetails, 1);
-                Appointment.ShowDialog();
-                RefreshData();
+                if (!clsTest.HasApplicantPassedTest(LDLAppID, TestTypeID))
+                {
+                    frmScheduleTest Appointment = new frmScheduleTest(ApplicationDetails, TestTypeID);
+                    Appointment.ShowDialog();
+                    RefreshData();
+                }
+                else
+                {
+                    MessageBox.Show("Person already has passed this test", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             } else
             {
                 MessageBox.Show("Person already has an active test.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            if(!clsTest.HasApplicantPassedTest(LDLAppID, TestTypeID))
-            {
-                frmScheduleTest Appointment = new frmScheduleTest(ApplicationDetails, 1);
-                Appointment.ShowDialog();
-                RefreshData();
-            } else
-            {
-                MessageBox.Show("Person already has passed this test", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -121,7 +117,7 @@ namespace PresentationLayer
 
             } else
             {
-                frmScheduleTest ScheduleTest = new frmScheduleTest(ApplicationDetails, 1, true, (int)dgvAppointments.CurrentRow.Cells[0].Value);
+                frmScheduleTest ScheduleTest = new frmScheduleTest(ApplicationDetails, TestTypeID, true, (int)dgvAppointments.CurrentRow.Cells[0].Value);
                 ScheduleTest.ShowDialog();
                 RefreshData();
                 FormatDataGridView();

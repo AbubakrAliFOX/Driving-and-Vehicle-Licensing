@@ -67,10 +67,28 @@ namespace PresentationLayer
             LocalLicenseApplicationsPage.RefreshData();
         }
 
-        private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmvisionTest_Click(object sender, EventArgs e)
         {
             frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value, 1);
             TestAppointment.ShowDialog();
+            LocalLicenseApplicationsPage.RefreshData();
         }
+
+        private void tsmScheduleWrittenTest_Click(object sender, EventArgs e)
+        {
+            frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value, 2);
+            TestAppointment.ShowDialog();
+            LocalLicenseApplicationsPage.RefreshData();
+
+        }
+
+        private void tsmScheduleStreetTest_Click(object sender, EventArgs e)
+        {
+            frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value, 3);
+            TestAppointment.ShowDialog();
+            LocalLicenseApplicationsPage.RefreshData();
+
+        }
+
     }
 }

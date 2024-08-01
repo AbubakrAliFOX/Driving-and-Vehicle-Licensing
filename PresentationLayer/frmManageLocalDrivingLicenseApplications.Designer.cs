@@ -32,18 +32,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageLocalDrivingLicenseApplications));
             this.btnClose = new System.Windows.Forms.Button();
             this.cmsLocalLicences = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmDriverInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmShowApplicationDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmInterLic = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmLicHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.scheduleTestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmEditApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDeleteApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCancelApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmscheduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmvisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
             this.issueDrivingLicenseFirstTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.visionTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.scheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.scheduleStreetTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsLocalLicences.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,99 +62,111 @@
             // 
             this.cmsLocalLicences.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsLocalLicences.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmDriverInfo,
+            this.tsmShowApplicationDetails,
             this.toolStripSeparator1,
-            this.tsmInterLic,
-            this.tsmLicHistory,
-            this.cancelApplicationToolStripMenuItem,
-            this.scheduleTestsToolStripMenuItem,
+            this.tsmEditApplication,
+            this.tsmDeleteApplication,
+            this.tsmCancelApplication,
+            this.tsmscheduleTests,
             this.issueDrivingLicenseFirstTimeToolStripMenuItem,
             this.showLicenseToolStripMenuItem,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.cmsLocalLicences.Name = "cmsDrivers";
-            this.cmsLocalLicences.Size = new System.Drawing.Size(297, 262);
+            this.cmsLocalLicences.Size = new System.Drawing.Size(419, 326);
             // 
-            // tsmDriverInfo
+            // tsmShowApplicationDetails
             // 
-            this.tsmDriverInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmDriverInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmDriverInfo.Image")));
-            this.tsmDriverInfo.Name = "tsmDriverInfo";
-            this.tsmDriverInfo.Size = new System.Drawing.Size(296, 28);
-            this.tsmDriverInfo.Text = "Show Application Details";
+            this.tsmShowApplicationDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmShowApplicationDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowApplicationDetails.Image")));
+            this.tsmShowApplicationDetails.Name = "tsmShowApplicationDetails";
+            this.tsmShowApplicationDetails.Size = new System.Drawing.Size(418, 36);
+            this.tsmShowApplicationDetails.Text = "Show Application Details";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(293, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(415, 6);
             // 
-            // tsmInterLic
+            // tsmEditApplication
             // 
-            this.tsmInterLic.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmInterLic.Image = ((System.Drawing.Image)(resources.GetObject("tsmInterLic.Image")));
-            this.tsmInterLic.Name = "tsmInterLic";
-            this.tsmInterLic.Size = new System.Drawing.Size(296, 28);
-            this.tsmInterLic.Text = "Edit Application";
+            this.tsmEditApplication.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.tsmEditApplication.Image = ((System.Drawing.Image)(resources.GetObject("tsmEditApplication.Image")));
+            this.tsmEditApplication.Name = "tsmEditApplication";
+            this.tsmEditApplication.Size = new System.Drawing.Size(418, 36);
+            this.tsmEditApplication.Text = "Edit Application";
             // 
-            // tsmLicHistory
+            // tsmDeleteApplication
             // 
-            this.tsmLicHistory.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmLicHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsmLicHistory.Image")));
-            this.tsmLicHistory.Name = "tsmLicHistory";
-            this.tsmLicHistory.Size = new System.Drawing.Size(296, 28);
-            this.tsmLicHistory.Text = "Delete Application";
+            this.tsmDeleteApplication.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.tsmDeleteApplication.Image = ((System.Drawing.Image)(resources.GetObject("tsmDeleteApplication.Image")));
+            this.tsmDeleteApplication.Name = "tsmDeleteApplication";
+            this.tsmDeleteApplication.Size = new System.Drawing.Size(418, 36);
+            this.tsmDeleteApplication.Text = "Delete Application";
             // 
-            // cancelApplicationToolStripMenuItem
+            // tsmCancelApplication
             // 
-            this.cancelApplicationToolStripMenuItem.Name = "cancelApplicationToolStripMenuItem";
-            this.cancelApplicationToolStripMenuItem.Size = new System.Drawing.Size(296, 28);
-            this.cancelApplicationToolStripMenuItem.Text = "Cancel Application";
+            this.tsmCancelApplication.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.tsmCancelApplication.Image = ((System.Drawing.Image)(resources.GetObject("tsmCancelApplication.Image")));
+            this.tsmCancelApplication.Name = "tsmCancelApplication";
+            this.tsmCancelApplication.Size = new System.Drawing.Size(418, 36);
+            this.tsmCancelApplication.Text = "Cancel Application";
             // 
-            // scheduleTestsToolStripMenuItem
+            // tsmscheduleTests
             // 
-            this.scheduleTestsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.visionTestToolStripMenuItem,
-            this.scheduleToolStripMenuItem,
-            this.scheduleStreetTestToolStripMenuItem});
-            this.scheduleTestsToolStripMenuItem.Name = "scheduleTestsToolStripMenuItem";
-            this.scheduleTestsToolStripMenuItem.Size = new System.Drawing.Size(296, 28);
-            this.scheduleTestsToolStripMenuItem.Text = "Schedule Tests";
+            this.tsmscheduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmvisionTest,
+            this.tsmScheduleWrittenTest,
+            this.tsmScheduleStreetTest});
+            this.tsmscheduleTests.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.tsmscheduleTests.Image = ((System.Drawing.Image)(resources.GetObject("tsmscheduleTests.Image")));
+            this.tsmscheduleTests.Name = "tsmscheduleTests";
+            this.tsmscheduleTests.Size = new System.Drawing.Size(418, 36);
+            this.tsmscheduleTests.Text = "Schedule Tests";
+            // 
+            // tsmvisionTest
+            // 
+            this.tsmvisionTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmvisionTest.Image")));
+            this.tsmvisionTest.Name = "tsmvisionTest";
+            this.tsmvisionTest.Size = new System.Drawing.Size(323, 36);
+            this.tsmvisionTest.Text = "Schedule Vision Test";
+            this.tsmvisionTest.Click += new System.EventHandler(this.tsmvisionTest_Click);
+            // 
+            // tsmScheduleWrittenTest
+            // 
+            this.tsmScheduleWrittenTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleWrittenTest.Image")));
+            this.tsmScheduleWrittenTest.Name = "tsmScheduleWrittenTest";
+            this.tsmScheduleWrittenTest.Size = new System.Drawing.Size(323, 36);
+            this.tsmScheduleWrittenTest.Text = "Schedule Written Test";
+            this.tsmScheduleWrittenTest.Click += new System.EventHandler(this.tsmScheduleWrittenTest_Click);
+            // 
+            // tsmScheduleStreetTest
+            // 
+            this.tsmScheduleStreetTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleStreetTest.Image")));
+            this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
+            this.tsmScheduleStreetTest.Size = new System.Drawing.Size(323, 36);
+            this.tsmScheduleStreetTest.Text = "Schedule Street Test";
+            this.tsmScheduleStreetTest.Click += new System.EventHandler(this.tsmScheduleStreetTest_Click);
             // 
             // issueDrivingLicenseFirstTimeToolStripMenuItem
             // 
+            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 13.8F);
             this.issueDrivingLicenseFirstTimeToolStripMenuItem.Name = "issueDrivingLicenseFirstTimeToolStripMenuItem";
-            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Size = new System.Drawing.Size(296, 28);
+            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Size = new System.Drawing.Size(418, 36);
             this.issueDrivingLicenseFirstTimeToolStripMenuItem.Text = "Issue Driving License (First Time)";
             // 
             // showLicenseToolStripMenuItem
             // 
+            this.showLicenseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 13.8F);
             this.showLicenseToolStripMenuItem.Name = "showLicenseToolStripMenuItem";
-            this.showLicenseToolStripMenuItem.Size = new System.Drawing.Size(296, 28);
+            this.showLicenseToolStripMenuItem.Size = new System.Drawing.Size(418, 36);
             this.showLicenseToolStripMenuItem.Text = "Show License";
             // 
             // showPersonLicenseHistoryToolStripMenuItem
             // 
+            this.showPersonLicenseHistoryToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 13.8F);
             this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
-            this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(296, 28);
+            this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(418, 36);
             this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
-            // 
-            // visionTestToolStripMenuItem
-            // 
-            this.visionTestToolStripMenuItem.Name = "visionTestToolStripMenuItem";
-            this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
-            this.visionTestToolStripMenuItem.Text = "Schedule Vision Test";
-            this.visionTestToolStripMenuItem.Click += new System.EventHandler(this.visionTestToolStripMenuItem_Click);
-            // 
-            // scheduleToolStripMenuItem
-            // 
-            this.scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
-            this.scheduleToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
-            this.scheduleToolStripMenuItem.Text = "Schedule Written Test";
-            // 
-            // scheduleStreetTestToolStripMenuItem
-            // 
-            this.scheduleStreetTestToolStripMenuItem.Name = "scheduleStreetTestToolStripMenuItem";
-            this.scheduleStreetTestToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
-            this.scheduleStreetTestToolStripMenuItem.Text = "Schedule Street Test";
             // 
             // frmManageLocalDrivingLicenseApplications
             // 
@@ -174,15 +186,15 @@
         #endregion
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ContextMenuStrip cmsLocalLicences;
-        private System.Windows.Forms.ToolStripMenuItem tsmDriverInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmShowApplicationDetails;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem tsmInterLic;
-        private System.Windows.Forms.ToolStripMenuItem tsmLicHistory;
-        private System.Windows.Forms.ToolStripMenuItem cancelApplicationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem scheduleTestsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem visionTestToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem scheduleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem scheduleStreetTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmEditApplication;
+        private System.Windows.Forms.ToolStripMenuItem tsmDeleteApplication;
+        private System.Windows.Forms.ToolStripMenuItem tsmCancelApplication;
+        private System.Windows.Forms.ToolStripMenuItem tsmscheduleTests;
+        private System.Windows.Forms.ToolStripMenuItem tsmvisionTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleWrittenTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleStreetTest;
         private System.Windows.Forms.ToolStripMenuItem issueDrivingLicenseFirstTimeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showPersonLicenseHistoryToolStripMenuItem;

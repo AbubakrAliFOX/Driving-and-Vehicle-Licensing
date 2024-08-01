@@ -21,14 +21,18 @@ namespace PresentationLayer
         bool IsEditMode = false;
         int AppointmentID;
 
+        string[] TestTypeName = new string[] { "Vision", "Written", "Field" };
+
         public frmScheduleTest(clsApplication Application, int TestType, bool EditMode = false, int Appointment = 0)
         {
             InitializeComponent();
 
             ApplicationDetails = Application;
 
+
             LDLApplicationID = Application.LocalDrivingLicenseApplicationID;
             TestTypeID = TestType;
+            lblTitle.Text = $"Schedule {TestTypeName[TestTypeID - 1]} Test";
             TestFees = clsTest.GetTestFees(TestTypeID);
 
             IsEditMode = EditMode;
