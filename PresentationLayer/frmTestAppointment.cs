@@ -62,6 +62,11 @@ namespace PresentationLayer
             lblPassedTests.Text = $"{clsApplication.PassedTestsCount(LDLAppID).ToString()}/3";
         }
 
+        private bool IsAppointmentLocked ()
+        {
+            return (bool)dgvAppointments.CurrentRow.Cells[3].Value;
+        }
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ShowPersonDetails PersonDetails = new ShowPersonDetails(ApplicationDetails.ApplicantID);
@@ -82,9 +87,8 @@ namespace PresentationLayer
 
         private void tsmEdit_Click(object sender, EventArgs e)
         {
-            bool IsLocked = (bool)dgvAppointments.CurrentRow.Cells[3].Value;
 
-            if (IsLocked)
+            if (IsAppointmentLocked())
             {
                 MessageBox.Show("Person already took this test. This appointment is locked", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -92,8 +96,25 @@ namespace PresentationLayer
             {
                 frmScheduleTest ScheduleTest = new frmScheduleTest(ApplicationDetails, 1, true, (int)dgvAppointments.CurrentRow.Cells[0].Value);
                 ScheduleTest.ShowDialog();
+                RefreshData();
             }
             
+        }
+
+        private void tsmTakeTest_Click(object sender, EventArgs e)
+        {
+            if (IsAppointmentLocked())
+            {
+                MessageBox.Show("Person already took this test", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                frmTakeTest TakeTest = new frmTakeTest(ApplicationDetails, (int)dgvAppointments.CurrentRow.Cells[0].Value);
+                TakeTest.ShowDialog();
+                RefreshData();
+            }
+
         }
     }
 }

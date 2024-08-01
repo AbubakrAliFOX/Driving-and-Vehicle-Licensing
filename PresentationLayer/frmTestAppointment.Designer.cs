@@ -428,6 +428,7 @@
             this.tsmTakeTest.Name = "tsmTakeTest";
             this.tsmTakeTest.Size = new System.Drawing.Size(214, 28);
             this.tsmTakeTest.Text = "Take Test";
+            this.tsmTakeTest.Click += new System.EventHandler(this.tsmTakeTest_Click);
             // 
             // frmTestAppointment
             // 

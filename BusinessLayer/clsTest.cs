@@ -39,5 +39,10 @@ namespace BusinessLayer
         {
             return clsTestsDataAccess.UpdateAppointment(AppointmentID, NewDate);
         }
+        
+        public static int TakeTest(int AppointmentID, byte Result, string Notes = null)
+        {
+            return clsTestsDataAccess.TakeTest(AppointmentID, Result, Notes);
+        }
     }
 }

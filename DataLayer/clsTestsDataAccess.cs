@@ -225,5 +225,88 @@ namespace DataLayer
 
             return rowsAffected > 0;
         }
+
+        public static int TakeTest(int AppointmentID, byte Result, string Notes = null)
+        {
+            int TestID = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "INSERT INTO Tests (TestAppointmentID, TestResult, Notes, CreatedByUserID) VALUES (@TestAppointmentID, @TestResult, @Notes, @CreatedByUserID); Select SCOPE_IDENTITY();";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@TestAppointmentID", AppointmentID);
+            cmd.Parameters.AddWithValue("@TestResult", Result);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
+
+            if (Notes == null)
+            {
+                cmd.Parameters.AddWithValue("@Notes", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Notes", Notes);
+            }
+            try
+            {
+                connection.Open();
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    TestID = insertedID;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+           if (LockAppointment(AppointmentID))
+            {
+                return TestID;
+            } else
+            {
+                return -1;
+            }
+        }
+
+        private static bool LockAppointment (int AppointmentID)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                    @"Update TestAppointments 
+                    Set IsLocked = @IsLocked
+                    Where TestAppointmentID = @AppointmentID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@IsLocked", (byte)1);
+            cmd.Parameters.AddWithValue("@AppointmentID", AppointmentID);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+        }
     }
 }
