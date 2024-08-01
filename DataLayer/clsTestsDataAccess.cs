@@ -339,5 +339,36 @@ namespace DataLayer
 
             return isActive;
         }
+        
+        public static bool HasApplicantPassedTest(int LDLAppID, int TestTypeID)
+        {
+            bool hasPassed = false;
+
+            string connectionString = clsDataAccessSettings.connectionString;
+
+            string query = "SELECT Tests.TestResult FROM TestAppointments INNER JOIN TESTS ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID WHERE (LocalDrivingLicenseApplicationID = @LDLAppID AND TestTypeID = @TestTypeID) AND TestResult = 1";
+            
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            cmd.Parameters.AddWithValue("@LDLAppID", LDLAppID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                hasPassed = reader.HasRows;
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+
+            return hasPassed;
+        }
     }
 }

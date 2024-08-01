@@ -48,5 +48,10 @@ namespace BusinessLayer
         {
             return clsTestsDataAccess.IsAppointmentActiveForTest(LDLAppID, TestTypeID);
         }
+        
+        public static bool HasApplicantPassedTest(int LDLAppID, int TestTypeID)
+        {
+            return clsTestsDataAccess.HasApplicantPassedTest(LDLAppID, TestTypeID);
+        }
     }
 }

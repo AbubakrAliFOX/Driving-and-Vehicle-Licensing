@@ -36,13 +36,19 @@ namespace PresentationLayer
         }
         private void FormatDataGridView()
         {
-            dgvAppointments.Columns["AppointmentID"].HeaderText = "Appointment ID";
-            dgvAppointments.Columns["AppointmentDate"].HeaderText = "Appointment Date";
-            dgvAppointments.Columns["PaidFees"].HeaderText = "Paid Fees";
-            dgvAppointments.Columns["IsLocked"].HeaderText = "Is Locked";
+            if (dgvAppointments.Rows.Count != 0)
+            {
+                dgvAppointments.Columns["AppointmentID"].HeaderText = "Appointment ID";
+                dgvAppointments.Columns["AppointmentDate"].HeaderText = "Appointment Date";
+                dgvAppointments.Columns["PaidFees"].HeaderText = "Paid Fees";
+                dgvAppointments.Columns["IsLocked"].HeaderText = "Is Locked";
 
-            dgvAppointments.Columns["AppointmentID"].Width = 130;
-            dgvAppointments.Columns["AppointmentDate"].Width = 200;
+                dgvAppointments.Columns["AppointmentID"].Width = 130;
+                dgvAppointments.Columns["AppointmentDate"].Width = 200;
+
+                lblRecordsNumber.Text = dgvAppointments.Rows.Count.ToString();
+            }
+
         }
 
         private void FillLabels()
@@ -86,6 +92,18 @@ namespace PresentationLayer
             {
                 MessageBox.Show("Person already has an active test.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
+            if(!clsTest.HasApplicantPassedTest(LDLAppID, TestTypeID))
+            {
+                frmScheduleTest Appointment = new frmScheduleTest(ApplicationDetails, 1);
+                Appointment.ShowDialog();
+                RefreshData();
+            } else
+            {
+                MessageBox.Show("Person already has passed this test", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
 
         }
 
@@ -106,6 +124,7 @@ namespace PresentationLayer
                 frmScheduleTest ScheduleTest = new frmScheduleTest(ApplicationDetails, 1, true, (int)dgvAppointments.CurrentRow.Cells[0].Value);
                 ScheduleTest.ShowDialog();
                 RefreshData();
+                FormatDataGridView();
             }
             
         }

@@ -380,7 +380,7 @@
             this.lblRecordsNumber.Name = "lblRecordsNumber";
             this.lblRecordsNumber.Size = new System.Drawing.Size(24, 28);
             this.lblRecordsNumber.TabIndex = 36;
-            this.lblRecordsNumber.Text = "6";
+            this.lblRecordsNumber.Text = "0";
             // 
             // label13
             // 
@@ -410,14 +410,14 @@
             this.tsmEdit,
             this.tsmTakeTest});
             this.cmsOptions.Name = "cmsDrivers";
-            this.cmsOptions.Size = new System.Drawing.Size(215, 88);
+            this.cmsOptions.Size = new System.Drawing.Size(151, 60);
             // 
             // tsmEdit
             // 
             this.tsmEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmEdit.Image")));
             this.tsmEdit.Name = "tsmEdit";
-            this.tsmEdit.Size = new System.Drawing.Size(214, 28);
+            this.tsmEdit.Size = new System.Drawing.Size(150, 28);
             this.tsmEdit.Text = "Edit";
             this.tsmEdit.Click += new System.EventHandler(this.tsmEdit_Click);
             // 
