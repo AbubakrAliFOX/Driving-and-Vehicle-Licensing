@@ -15,12 +15,14 @@ namespace PresentationLayer
     {
         clsApplication ApplicationDetails;
         int LDLAppID;
-        public frmTestAppointment(int LDLApplicationID)
+        int TestTypeID;
+        public frmTestAppointment(int LDLApplicationID, int TestType)
         {
             InitializeComponent();
 
             ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
             LDLAppID = LDLApplicationID;
+            TestTypeID = TestType;
 
             RefreshData();
             FormatDataGridView();
@@ -75,9 +77,16 @@ namespace PresentationLayer
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            frmScheduleTest Appointment = new frmScheduleTest(ApplicationDetails,1);
-            Appointment.ShowDialog();
-            RefreshData();
+            if(!clsTest.IsAppointmentActiveForTest(LDLAppID, TestTypeID))
+            {
+                frmScheduleTest Appointment = new frmScheduleTest(ApplicationDetails, 1);
+                Appointment.ShowDialog();
+                RefreshData();
+            } else
+            {
+                MessageBox.Show("Person already has an active test.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

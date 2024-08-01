@@ -308,5 +308,36 @@ namespace DataLayer
 
             return rowsAffected > 0;
         }
+
+        public static bool IsAppointmentActiveForTest(int LDLAppID, int TestTypeID)
+        {
+            bool isActive = false;
+
+            string connectionString = clsDataAccessSettings.connectionString;
+
+            string query = "SELECT Found = 1 FROM TestAppointments LEFT JOIN TESTS ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID WHERE (LocalDrivingLicenseApplicationID = @LDLAppID AND TestTypeID = @TestTypeID) AND Tests.TestResult is NULL";
+            
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            cmd.Parameters.AddWithValue("@LDLAppID", LDLAppID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                isActive = reader.HasRows;
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+
+            return isActive;
+        }
     }
 }

@@ -80,6 +80,8 @@ namespace PresentationLayer
                     MessageBox.Show("Rescheduling Appointment Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            this.Close();
         }
 
         private void frmScheduleTest_Load(object sender, EventArgs e)

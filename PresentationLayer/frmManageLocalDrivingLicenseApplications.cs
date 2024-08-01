@@ -69,7 +69,7 @@ namespace PresentationLayer
 
         private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value, 1);
             TestAppointment.ShowDialog();
         }
     }
