@@ -29,5 +29,15 @@ namespace BusinessLayer
         {
             return clsTestsDataAccess.CreateTestAppointment(TestType, LDLApplicationID, Date, PaidFees);
         }
+
+        public static DataTable GetTestAppointments(int LDLApplicationID, int TestType)
+        {
+            return clsTestsDataAccess.GetTestAppointments(LDLApplicationID, TestType);
+        }
+        
+        public static bool UpdateAppointment(int AppointmentID, DateTime NewDate)
+        {
+            return clsTestsDataAccess.UpdateAppointment(AppointmentID, NewDate);
+        }
     }
 }

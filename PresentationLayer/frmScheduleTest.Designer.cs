@@ -61,7 +61,7 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Calibri", 26F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblTitle.Location = new System.Drawing.Point(61, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(396, 54);
             this.lblTitle.TabIndex = 8;
@@ -83,9 +83,9 @@
             this.groupBox3.Controls.Add(this.LisenceClass);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.lblDLAppID);
-            this.groupBox3.Location = new System.Drawing.Point(21, 81);
+            this.groupBox3.Location = new System.Drawing.Point(19, 81);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(359, 352);
+            this.groupBox3.Size = new System.Drawing.Size(480, 352);
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Application Info";
@@ -232,9 +232,9 @@
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.label25);
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(21, 454);
+            this.groupBox1.Location = new System.Drawing.Point(19, 454);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(359, 111);
+            this.groupBox1.Size = new System.Drawing.Size(480, 111);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Retake Test Info";
@@ -302,7 +302,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(21, 592);
+            this.btnClose.Location = new System.Drawing.Point(150, 586);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(163, 35);
             this.btnClose.TabIndex = 38;
@@ -313,7 +313,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(217, 590);
+            this.btnSave.Location = new System.Drawing.Point(336, 586);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(163, 35);
             this.btnSave.TabIndex = 39;
@@ -325,7 +325,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 637);
+            this.ClientSize = new System.Drawing.Size(524, 637);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
@@ -335,6 +335,7 @@
             this.Name = "frmScheduleTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schedule Test";
+            this.Load += new System.EventHandler(this.frmScheduleTest_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);

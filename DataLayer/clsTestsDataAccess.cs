@@ -156,5 +156,74 @@ namespace DataLayer
             return TestAppointmentID;
         }
 
+        public static DataTable GetTestAppointments(int LDLApplicationID, int TestType)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                "SELECT TestAppointmentID AS AppointmentID, AppointmentDate, PaidFees, IsLocked FROM TestAppointments WHERE LocalDrivingLicenseApplicationID = @LDLApplicationID AND TestTypeID = @TestTypeID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+            cmd.Parameters.AddWithValue("@TestTypeID", TestType);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+        }
+
+        public static bool UpdateAppointment(int AppointmentID, DateTime NewDate)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                    @"Update TestAppointments 
+                    Set AppointmentDate = @AppointmentDate
+                    Where TestAppointmentID = @AppointmentID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@AppointmentDate", NewDate);
+            cmd.Parameters.AddWithValue("@AppointmentID", AppointmentID);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+        }
     }
 }

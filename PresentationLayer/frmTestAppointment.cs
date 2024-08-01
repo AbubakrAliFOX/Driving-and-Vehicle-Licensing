@@ -14,12 +14,37 @@ namespace PresentationLayer
     public partial class frmTestAppointment : Form
     {
         clsApplication ApplicationDetails;
+        int LDLAppID;
         public frmTestAppointment(int LDLApplicationID)
         {
             InitializeComponent();
 
             ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
+            LDLAppID = LDLApplicationID;
 
+            RefreshData();
+            FormatDataGridView();
+            FillLabels();
+        }
+        
+        private void RefreshData ()
+        {
+            dgvAppointments.DataSource = clsTest.GetTestAppointments(LDLAppID, 1);
+
+        }
+        private void FormatDataGridView()
+        {
+            dgvAppointments.Columns["AppointmentID"].HeaderText = "Appointment ID";
+            dgvAppointments.Columns["AppointmentDate"].HeaderText = "Appointment Date";
+            dgvAppointments.Columns["PaidFees"].HeaderText = "Paid Fees";
+            dgvAppointments.Columns["IsLocked"].HeaderText = "Is Locked";
+
+            dgvAppointments.Columns["AppointmentID"].Width = 130;
+            dgvAppointments.Columns["AppointmentDate"].Width = 200;
+        }
+
+        private void FillLabels()
+        {
             lblDLAppID.Text = ApplicationDetails.LocalDrivingLicenseApplicationID.ToString();
             lblApplicationID.Text = ApplicationDetails.ApplicationID.ToString();
 
@@ -34,7 +59,7 @@ namespace PresentationLayer
 
             lblUser.Text = ApplicationDetails.CreatedByUser;
 
-            lblPassedTests.Text = $"{clsApplication.PassedTestsCount(LDLApplicationID).ToString()}/3";
+            lblPassedTests.Text = $"{clsApplication.PassedTestsCount(LDLAppID).ToString()}/3";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -47,11 +72,28 @@ namespace PresentationLayer
         {
             frmScheduleTest Appointment = new frmScheduleTest(ApplicationDetails,1);
             Appointment.ShowDialog();
+            RefreshData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tsmEdit_Click(object sender, EventArgs e)
+        {
+            bool IsLocked = (bool)dgvAppointments.CurrentRow.Cells[3].Value;
+
+            if (IsLocked)
+            {
+                MessageBox.Show("Person already took this test. This appointment is locked", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            } else
+            {
+                frmScheduleTest ScheduleTest = new frmScheduleTest(ApplicationDetails, 1, true, (int)dgvAppointments.CurrentRow.Cells[0].Value);
+                ScheduleTest.ShowDialog();
+            }
+            
         }
     }
 }
