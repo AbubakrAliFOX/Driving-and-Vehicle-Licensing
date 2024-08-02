@@ -52,6 +52,12 @@
     <Compile Include="AddNewPerson.Designer.cs">
       <DependentUpon>AddNewPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlApplicationOption.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -102,6 +108,12 @@
     </Compile>
     <Compile Include="frmEditTestType.Designer.cs">
       <DependentUpon>frmEditTestType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIssueLocalLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIssueLocalLicense.Designer.cs">
+      <DependentUpon>frmIssueLocalLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManageApplicationTypes.cs">
       <SubType>Form</SubType>
@@ -156,6 +168,9 @@
     <EmbeddedResource Include="AddNewPerson.resx">
       <DependentUpon>AddNewPerson.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctrlApplicationInfo.resx">
+      <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrlFindPerson.resx">
       <DependentUpon>ctrlFindPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditTestType.resx">
       <DependentUpon>frmEditTestType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIssueLocalLicense.resx">
+      <DependentUpon>frmIssueLocalLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageApplicationTypes.resx">
       <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>

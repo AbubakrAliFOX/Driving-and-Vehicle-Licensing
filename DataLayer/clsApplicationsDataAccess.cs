@@ -116,6 +116,39 @@ namespace DataLayer
             return rowsAffected > 0;
         }
 
+        public static bool UpdateApplicationStatus(int ApplicationID, int Status)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                    @"Update Applications 
+                    Set ApplicationStatus = @ApplicationStatus
+                    Where ApplicationID = @ApplicationID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            cmd.Parameters.AddWithValue("@ApplicationStatus", Status);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+        }
+
         public static decimal GetApplicationFees(int ApplicationID)
         {
             decimal Fees = 0;

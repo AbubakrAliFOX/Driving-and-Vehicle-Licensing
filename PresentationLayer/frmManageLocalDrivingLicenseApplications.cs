@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -130,6 +131,13 @@ namespace PresentationLayer
             tsmScheduleStreetTest.Enabled = false;
 
             tsmIssueDrivingLicenseFirstTime.Enabled = false;
+        }
+
+        private void tsmIssueDrivingLicenseFirstTime_Click(object sender, EventArgs e)
+        {
+            frmIssueLocalLicense IssueLicense = new frmIssueLocalLicense((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            IssueLicense.ShowDialog();
+            LocalLicenseApplicationsPage.RefreshData();
         }
     }
 }

@@ -26,9 +26,9 @@ namespace PresentationLayer
             TestTypeID = TestType;
             lblTitle.Text = $"{TestTypeName[TestTypeID-1]} Test Appointments";
 
+            ctrlApplicationInfo.ApplicationInfo = ApplicationDetails;
             RefreshData();
             FormatDataGridView();
-            FillLabels();
         }
         
         private void RefreshData ()
@@ -53,34 +53,9 @@ namespace PresentationLayer
 
         }
 
-        private void FillLabels()
-        {
-            lblDLAppID.Text = ApplicationDetails.LocalDrivingLicenseApplicationID.ToString();
-            lblApplicationID.Text = ApplicationDetails.ApplicationID.ToString();
-
-            lblClass.Text = ApplicationDetails.LicenseClassName;
-            lblType.Text = ApplicationDetails.ApplicationType;
-            lblStatus.Text = ApplicationDetails.ApplicationStatus;
-            lblFees.Text = ApplicationDetails.Fees.ToString();
-            lblApplicantName.Text = ApplicationDetails.ApplicantName;
-
-            lblDate.Text = ApplicationDetails.Date.ToString("dd MMM yyyy");
-            lblStatusDate.Text = ApplicationDetails.StatusDate.ToString("dd MMM yyyy");
-
-            lblUser.Text = ApplicationDetails.CreatedByUser;
-
-            lblPassedTests.Text = $"{clsApplication.PassedTestsCount(LDLAppID).ToString()}/3";
-        }
-
         private bool IsAppointmentLocked ()
         {
             return (bool)dgvAppointments.CurrentRow.Cells[3].Value;
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            ShowPersonDetails PersonDetails = new ShowPersonDetails(ApplicationDetails.ApplicantID);
-            PersonDetails.ShowDialog();
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)

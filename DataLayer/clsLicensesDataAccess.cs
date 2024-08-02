@@ -160,6 +160,7 @@ namespace DataLayer
                     LicenseID = insertedID;
                 }
 
+
             }
             catch (Exception ex)
             {
@@ -180,7 +181,7 @@ namespace DataLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
             string query =
-                "SELECT DefaultValidityLength AS Validity FROM LicenseClasses WHERE LicenseClassID = @LicenseClassID";
+                "SELECT CAST(DefaultValidityLength as int) AS Validity FROM LicenseClasses WHERE LicenseClassID = @LicenseClassID";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 

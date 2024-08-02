@@ -25,22 +25,29 @@ namespace BusinessLayer
             return clsLicensesDataAccess.CreateLocalDrivingLicenseApplication(PersonID, ClassID);
         }
 
-        public static int LicenseValidity(int LicenseClassID)
+        public static int IssueLicense(clsApplication ApplicationDetails, string IssueNotes, int IssueReason)
         {
-            return clsLicensesDataAccess.LicenseValidity(LicenseClassID);
-        }
-
-        public static int IssueLicense(clsApplication ApplicationDetails, string IssueNotes)
-        {
+            // Check Wether he is already a driver?
+            // Fix pricing on issue license form
             int DriverID = clsDriver.CreateDriver(ApplicationDetails.ApplicantID);
 
             int ApplicationID = ApplicationDetails.ApplicationID;
 
             int LicenseClassID = ApplicationDetails.LicenseClassID;
 
-            decimal PaidFees = clsApplication.GetApplicationFees(ApplicationDetails.ApplicationType);
+            decimal PaidFees = clsApplication.GetApplicationFees(clsApplication.GetApplicationTypeByName(ApplicationDetails.ApplicationType));
 
-            return clsLicensesDataAccess.IssueLicense(DriverID, ApplicationID, LicenseClassID, IssueNotes, );
+            int IssuedLicenseID = clsLicensesDataAccess.IssueLicense(DriverID, ApplicationID, LicenseClassID, IssueNotes, PaidFees, IssueReason);
+
+            bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);
+
+            if (IssuedLicenseID != -1 && IsStatusUpdated)
+            {
+                return IssuedLicenseID;
+            } else
+            {
+                return -1;
+            }
         }
     }
 }

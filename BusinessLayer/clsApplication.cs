@@ -66,8 +66,12 @@ namespace BusinessLayer
         }
         public static bool UpdateApplicationType(int ApplicationID, string ApplicationTitle, decimal ApplicationFees)
         {
-
             return clsApplicationsDataAccess.UpdateApplicationType(ApplicationID, ApplicationTitle, ApplicationFees);
+        }
+
+        public static bool UpdateApplicationStatus(int ApplicationID, int Status)
+        {
+            return clsApplicationsDataAccess.UpdateApplicationStatus(ApplicationID, Status);
         }
 
         public static decimal GetApplicationFees(int ApplicationID)

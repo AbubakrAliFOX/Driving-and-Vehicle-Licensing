@@ -27,7 +27,7 @@ namespace PresentationLayer
 
         private void FillLicenseClassesComboBox ()
         {
-            DataTable LicenseClasses = clsLicenseClass.GetLicenseClasses();
+            DataTable LicenseClasses = clsLicense.GetLicenseClasses();
             cbLicenseClasses.Items.Clear();
 
             foreach (DataRow row in LicenseClasses.Rows)
@@ -51,13 +51,13 @@ namespace PresentationLayer
                 return;
             }
 
-            if(!clsLicenseClass.PersonHasLicenseClass(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1))
+            if(!clsLicense.PersonHasLicenseClass(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1))
             {
                 int NewApplicationID = clsApplication.CreateApplication(ctrlFindPerson1.PersonInfo.ID, 1, clsApplication.GetApplicationFees(1));
 
                 if (NewApplicationID != -1)
                 {
-                    if (clsLicenseClass.CreateLocalDrivingLicenseApplication(NewApplicationID, cbLicenseClasses.SelectedIndex + 1))
+                    if (clsLicense.CreateLocalDrivingLicenseApplication(NewApplicationID, cbLicenseClasses.SelectedIndex + 1))
                     {
                         lblApplicationID.Text = NewApplicationID.ToString();
                         MessageBox.Show("Application Created Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
