@@ -87,16 +87,30 @@ namespace PresentationLayer
         {
             if(!clsTest.IsAppointmentActiveForTest(LDLAppID, TestTypeID))
             {
-                if (!clsTest.HasApplicantPassedTest(LDLAppID, TestTypeID))
-                {
-                    frmScheduleTest Appointment = new frmScheduleTest(ApplicationDetails, TestTypeID);
-                    Appointment.ShowDialog();
-                    RefreshData();
-                }
-                else
+                if (clsTest.HasApplicantPassedTest(LDLAppID, TestTypeID))
                 {
                     MessageBox.Show("Person already has passed this test", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else
+                {
+                    // Implement retake test fee later
+                    frmScheduleTest Appointment;
+
+                    if (clsTest.HasApplicantFailedTest(LDLAppID, TestTypeID))
+                    {
+                        Appointment = new frmScheduleTest(ApplicationDetails, TestTypeID);
+                    }
+                    else
+                    {
+                        Appointment = new frmScheduleTest(ApplicationDetails, TestTypeID);
+                    }
+
+                    Appointment.ShowDialog();
+                    RefreshData();
+
+                }
+                
+                
             } else
             {
                 MessageBox.Show("Person already has an active test.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -117,8 +131,13 @@ namespace PresentationLayer
 
             } else
             {
-                frmScheduleTest ScheduleTest = new frmScheduleTest(ApplicationDetails, TestTypeID, true, (int)dgvAppointments.CurrentRow.Cells[0].Value);
+                frmScheduleTest ScheduleTest = new frmScheduleTest(ApplicationDetails, TestTypeID);
+
+                ScheduleTest.IsEditMode = true;
+                ScheduleTest.AppointmentID = (int)dgvAppointments.CurrentRow.Cells[0].Value;
+
                 ScheduleTest.ShowDialog();
+
                 RefreshData();
                 FormatDataGridView();
             }

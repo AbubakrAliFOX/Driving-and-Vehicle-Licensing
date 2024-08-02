@@ -60,6 +60,10 @@ namespace BusinessLayer
         {
             return clsApplicationsDataAccess.GetApplicationTypes();
         }
+        public static int GetApplicationTypeByName(string ApplicationID)
+        {
+            return clsApplicationsDataAccess.GetApplicationTypeByName(ApplicationID);
+        }
         public static bool UpdateApplicationType(int ApplicationID, string ApplicationTitle, decimal ApplicationFees)
         {
 
@@ -137,5 +141,6 @@ namespace BusinessLayer
         {
             return clsApplicationsDataAccess.PassedTestsCount(LDLApplicationID);
         }
+
     }
 }

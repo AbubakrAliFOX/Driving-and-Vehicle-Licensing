@@ -45,6 +45,41 @@ namespace DataLayer
 
             return dt;
         }
+        public static int GetApplicationTypeByName(string ApplicationName)
+        {
+            int ApplicationID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT ApplicationTypeID FROM ApplicationTypes WHERE ApplicationTypeTitle = @ApplicationName";
+
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@ApplicationName", ApplicationName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    ApplicationID = (int)reader["ApplicationTypeID"];
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ApplicationID;
+        }
 
         public static bool UpdateApplicationType(int ApplicationID, string ApplicationTitle, decimal ApplicationFees)
         {
@@ -288,5 +323,6 @@ namespace DataLayer
 
             return dt;
         }
+
     }
 }

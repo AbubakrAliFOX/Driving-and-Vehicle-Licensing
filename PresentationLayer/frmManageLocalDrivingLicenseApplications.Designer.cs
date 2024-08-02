@@ -37,11 +37,11 @@
             this.tsmEditApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDeleteApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCancelApplication = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmscheduleTests = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmvisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.issueDrivingLicenseFirstTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmIssueDrivingLicenseFirstTime = new System.Windows.Forms.ToolStripMenuItem();
             this.showLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsLocalLicences.SuspendLayout();
@@ -67,12 +67,14 @@
             this.tsmEditApplication,
             this.tsmDeleteApplication,
             this.tsmCancelApplication,
-            this.tsmscheduleTests,
-            this.issueDrivingLicenseFirstTimeToolStripMenuItem,
+            this.tsmScheduleTests,
+            this.tsmIssueDrivingLicenseFirstTime,
             this.showLicenseToolStripMenuItem,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.cmsLocalLicences.Name = "cmsDrivers";
             this.cmsLocalLicences.Size = new System.Drawing.Size(419, 326);
+            this.cmsLocalLicences.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.cmsLocalLicences_Closed);
+            this.cmsLocalLicences.Opened += new System.EventHandler(this.cmsLocalLicences_Opened);
             // 
             // tsmShowApplicationDetails
             // 
@@ -111,28 +113,30 @@
             this.tsmCancelApplication.Size = new System.Drawing.Size(418, 36);
             this.tsmCancelApplication.Text = "Cancel Application";
             // 
-            // tsmscheduleTests
+            // tsmScheduleTests
             // 
-            this.tsmscheduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmvisionTest,
+            this.tsmScheduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmScheduleVisionTest,
             this.tsmScheduleWrittenTest,
             this.tsmScheduleStreetTest});
-            this.tsmscheduleTests.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmscheduleTests.Image = ((System.Drawing.Image)(resources.GetObject("tsmscheduleTests.Image")));
-            this.tsmscheduleTests.Name = "tsmscheduleTests";
-            this.tsmscheduleTests.Size = new System.Drawing.Size(418, 36);
-            this.tsmscheduleTests.Text = "Schedule Tests";
+            this.tsmScheduleTests.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.tsmScheduleTests.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleTests.Image")));
+            this.tsmScheduleTests.Name = "tsmScheduleTests";
+            this.tsmScheduleTests.Size = new System.Drawing.Size(418, 36);
+            this.tsmScheduleTests.Text = "Schedule Tests";
             // 
-            // tsmvisionTest
+            // tsmScheduleVisionTest
             // 
-            this.tsmvisionTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmvisionTest.Image")));
-            this.tsmvisionTest.Name = "tsmvisionTest";
-            this.tsmvisionTest.Size = new System.Drawing.Size(323, 36);
-            this.tsmvisionTest.Text = "Schedule Vision Test";
-            this.tsmvisionTest.Click += new System.EventHandler(this.tsmvisionTest_Click);
+            this.tsmScheduleVisionTest.Enabled = false;
+            this.tsmScheduleVisionTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleVisionTest.Image")));
+            this.tsmScheduleVisionTest.Name = "tsmScheduleVisionTest";
+            this.tsmScheduleVisionTest.Size = new System.Drawing.Size(323, 36);
+            this.tsmScheduleVisionTest.Text = "Schedule Vision Test";
+            this.tsmScheduleVisionTest.Click += new System.EventHandler(this.tsmScheduleVisionTest_Click);
             // 
             // tsmScheduleWrittenTest
             // 
+            this.tsmScheduleWrittenTest.Enabled = false;
             this.tsmScheduleWrittenTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleWrittenTest.Image")));
             this.tsmScheduleWrittenTest.Name = "tsmScheduleWrittenTest";
             this.tsmScheduleWrittenTest.Size = new System.Drawing.Size(323, 36);
@@ -141,18 +145,20 @@
             // 
             // tsmScheduleStreetTest
             // 
+            this.tsmScheduleStreetTest.Enabled = false;
             this.tsmScheduleStreetTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleStreetTest.Image")));
             this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
             this.tsmScheduleStreetTest.Size = new System.Drawing.Size(323, 36);
             this.tsmScheduleStreetTest.Text = "Schedule Street Test";
             this.tsmScheduleStreetTest.Click += new System.EventHandler(this.tsmScheduleStreetTest_Click);
             // 
-            // issueDrivingLicenseFirstTimeToolStripMenuItem
+            // tsmIssueDrivingLicenseFirstTime
             // 
-            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Name = "issueDrivingLicenseFirstTimeToolStripMenuItem";
-            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Size = new System.Drawing.Size(418, 36);
-            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Text = "Issue Driving License (First Time)";
+            this.tsmIssueDrivingLicenseFirstTime.Enabled = false;
+            this.tsmIssueDrivingLicenseFirstTime.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.tsmIssueDrivingLicenseFirstTime.Name = "tsmIssueDrivingLicenseFirstTime";
+            this.tsmIssueDrivingLicenseFirstTime.Size = new System.Drawing.Size(418, 36);
+            this.tsmIssueDrivingLicenseFirstTime.Text = "Issue Driving License (First Time)";
             // 
             // showLicenseToolStripMenuItem
             // 
@@ -191,11 +197,11 @@
         private System.Windows.Forms.ToolStripMenuItem tsmEditApplication;
         private System.Windows.Forms.ToolStripMenuItem tsmDeleteApplication;
         private System.Windows.Forms.ToolStripMenuItem tsmCancelApplication;
-        private System.Windows.Forms.ToolStripMenuItem tsmscheduleTests;
-        private System.Windows.Forms.ToolStripMenuItem tsmvisionTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleTests;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleVisionTest;
         private System.Windows.Forms.ToolStripMenuItem tsmScheduleWrittenTest;
         private System.Windows.Forms.ToolStripMenuItem tsmScheduleStreetTest;
-        private System.Windows.Forms.ToolStripMenuItem issueDrivingLicenseFirstTimeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmIssueDrivingLicenseFirstTime;
         private System.Windows.Forms.ToolStripMenuItem showLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showPersonLicenseHistoryToolStripMenuItem;
     }

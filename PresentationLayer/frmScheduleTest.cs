@@ -18,12 +18,10 @@ namespace PresentationLayer
         int LDLApplicationID;
         int TestTypeID;
         decimal TestFees;
-        bool IsEditMode = false;
-        int AppointmentID;
 
         string[] TestTypeName = new string[] { "Vision", "Written", "Field" };
 
-        public frmScheduleTest(clsApplication Application, int TestType, bool EditMode = false, int Appointment = 0)
+        public frmScheduleTest(clsApplication Application, int TestType)
         {
             InitializeComponent();
 
@@ -35,13 +33,58 @@ namespace PresentationLayer
             lblTitle.Text = $"Schedule {TestTypeName[TestTypeID - 1]} Test";
             TestFees = clsTest.GetTestFees(TestTypeID);
 
-            IsEditMode = EditMode;
-            AppointmentID = Appointment;
-
             FillLabels();
+            //IsTestFailed = TestFailed;
+            //if(TestFailed)
+            //{
 
+            //}
         }
 
+        private bool _IsEditMode = false;
+
+        public bool IsEditMode
+        {
+            get
+            {
+                return _IsEditMode;
+            }
+
+            set
+            {
+                _IsEditMode = value;
+            }
+        }
+
+        private int _AppointmentID;
+
+        public int AppointmentID
+        {
+            get
+            {
+                return _AppointmentID;
+            }
+
+            set
+            {
+                _AppointmentID = value;
+            }
+        }
+
+
+        private bool _IsTestFailed = false;
+        private decimal _RetestFee = 0;
+
+        public bool IsTestFailed
+        {
+            get { return _IsTestFailed;}
+
+            set
+            {
+                _IsTestFailed = value;
+                _RetestFee = clsApplication.GetApplicationFees(2);
+            }
+        }
         private void FillLabels()
         {
             lblDLAppID.Text = LDLApplicationID.ToString();

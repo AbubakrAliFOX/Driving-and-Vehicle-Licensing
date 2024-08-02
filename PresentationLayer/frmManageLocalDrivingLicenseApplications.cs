@@ -67,7 +67,7 @@ namespace PresentationLayer
             LocalLicenseApplicationsPage.RefreshData();
         }
 
-        private void tsmvisionTest_Click(object sender, EventArgs e)
+        private void tsmScheduleVisionTest_Click(object sender, EventArgs e)
         {
             frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value, 1);
             TestAppointment.ShowDialog();
@@ -90,5 +90,46 @@ namespace PresentationLayer
 
         }
 
+        private void cmsLocalLicences_Opened(object sender, EventArgs e)
+        {
+            int PassedTests = (int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[4].Value;
+            string ApplicationStatus = (string)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[6].Value;
+
+            if(ApplicationStatus == "New")
+            {
+                if (PassedTests == 0)
+                {
+                    tsmScheduleVisionTest.Enabled = true;
+                }
+                else if (PassedTests == 1)
+                {
+                    tsmScheduleWrittenTest.Enabled = true;
+                }
+                else if (PassedTests == 2)
+                {
+                    tsmScheduleStreetTest.Enabled = true;
+                }
+                else if (PassedTests == 3)
+                {
+                    tsmScheduleTests.Enabled = false;
+
+                    tsmIssueDrivingLicenseFirstTime.Enabled = true;
+                }
+            }
+
+
+            
+        }
+
+        private void cmsLocalLicences_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        {
+            tsmScheduleTests.Enabled = true;
+
+            tsmScheduleVisionTest.Enabled = false;
+            tsmScheduleWrittenTest.Enabled = false;
+            tsmScheduleStreetTest.Enabled = false;
+
+            tsmIssueDrivingLicenseFirstTime.Enabled = false;
+        }
     }
 }
