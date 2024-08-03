@@ -44,6 +44,141 @@ namespace DataLayer
             return dt;
         }
 
+        //public static bool FindLicenseByID(
+        //    int LicenseID,
+        //    ref int DriverID,
+        //    ref int ApplicationID,
+        //    ref int LicenseClassID,
+        //    ref string LicenseClassName,
+        //    ref DateTime IssueDate,
+        //    ref DateTime ExpirationDate,
+        //    ref string IssueNotes,
+        //    ref decimal PaidFees,
+        //    ref byte IsActive,
+        //    ref int IssueReason,
+        //    ref int CreatedByUser
+        //)
+        //{
+        //    bool isFound = false;
+
+        //    SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+        //    string query = "SELECT LicenseID, DriverID, ApplicationID, LicenseClass, ClassName, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, IssueReason FROM Licenses INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID WHERE LicenseID = @LicenseID";
+
+        //    SqlCommand cmd = new SqlCommand(query, connection);
+
+        //    cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+        //    try
+        //    {
+        //        connection.Open();
+        //        SqlDataReader reader = cmd.ExecuteReader();
+
+        //        if (reader.Read())
+        //        {
+        //            isFound = true;
+
+        //            DriverID = (int)reader["DriverID"];
+        //            ApplicationID = (int)reader["ApplicationID"];
+        //            LicenseClassID = (int)reader["LicenseClass"];
+        //            LicenseClassName = (string)reader["ClassName"];
+        //            IssueDate = (DateTime)reader["IssueDate"];
+        //            ExpirationDate = (DateTime)reader["ExpirationDate"];
+        //            IssueNotes = (string)reader["Notes"];
+        //            PaidFees = (decimal)reader["PaidFees"];
+        //            IsActive = (byte)reader["IsActive"];
+        //            IssueReason = (int)reader["IssueReason"];
+        //            CreatedByUser = (int)reader["CreatedByUserID"];
+        //        }
+        //        else
+        //        {
+        //            isFound = false;
+        //        }
+
+        //        reader.Close();
+        //    }
+        //    catch
+        //    {
+        //        isFound = false;
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
+
+        //    return isFound;
+        //}
+
+        public static bool FindLicenseByLocalDrivingLicenseApplicationID(
+            int LDLApplicationID,
+            ref int LicenseID,
+            ref int PersonID,
+            ref int DriverID,
+            ref int ApplicationID,
+            ref int LicenseClassID,
+            ref string LicenseClassName,
+            ref DateTime IssueDate,
+            ref DateTime ExpirationDate,
+            ref string IssueNotes,
+            ref decimal PaidFees,
+            ref bool IsActive,
+            ref int IssueReason,
+            ref int CreatedByUser
+        )
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT LicenseID, Licenses.DriverID, PersonID, ApplicationID, LicenseClass, ClassName, IssueDate, ExpirationDate, Notes, PaidFees, CAST(IsActive as bit) AS IsActive, IssueReason, Licenses.CreatedByUserID FROM Licenses INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID INNER JOIN Drivers ON Licenses.DriverID = Drivers.DriverID WHERE ApplicationID = (SELECT ApplicationID from LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID  = @LDLApplicationID)";
+            
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+
+                    LicenseID = (int)reader["LicenseID"];
+                    PersonID = (int)reader["PersonID"];
+                    DriverID = (int)reader["DriverID"];
+                    ApplicationID = (int)reader["ApplicationID"];
+                    LicenseClassID = (int)reader["LicenseClass"];
+                    LicenseClassName = (string)reader["ClassName"];
+                    IssueDate = (DateTime)reader["IssueDate"];
+                    ExpirationDate = (DateTime)reader["ExpirationDate"];
+                    IssueNotes = (string)reader["Notes"];
+                    PaidFees = (decimal)reader["PaidFees"];
+                    IsActive = (bool)reader["IsActive"];
+                    IssueReason = Convert.ToInt32(reader["IssueReason"]);
+                    CreatedByUser = (int)reader["CreatedByUserID"];
+                }
+                else
+                {
+                    isFound = false;
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+
         public static bool PersonHasLicenseClass(int PersonID, int ClassID)
         {
             int applicationStatus = 0;

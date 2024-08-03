@@ -61,6 +61,7 @@ namespace PresentationLayer
                     {
                         lblApplicationID.Text = NewApplicationID.ToString();
                         MessageBox.Show("Application Created Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
                     }
                 }
             }

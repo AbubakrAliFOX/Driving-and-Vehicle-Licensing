@@ -98,24 +98,30 @@ namespace PresentationLayer
 
             if(ApplicationStatus == "New")
             {
-                if (PassedTests == 0)
+                if (PassedTests < 3)
                 {
-                    tsmScheduleVisionTest.Enabled = true;
-                }
-                else if (PassedTests == 1)
-                {
-                    tsmScheduleWrittenTest.Enabled = true;
-                }
-                else if (PassedTests == 2)
-                {
-                    tsmScheduleStreetTest.Enabled = true;
-                }
-                else if (PassedTests == 3)
-                {
-                    tsmScheduleTests.Enabled = false;
+                    tsmScheduleTests.Enabled = true;
 
+                    if (PassedTests == 0)
+                    {
+                        tsmScheduleVisionTest.Enabled = true;
+                    }
+                    else if (PassedTests == 1)
+                    {
+                        tsmScheduleWrittenTest.Enabled = true;
+                    }
+                    else if (PassedTests == 2)
+                    {
+                        tsmScheduleStreetTest.Enabled = true;
+                    }
+                } else if (PassedTests == 3)
+                {
                     tsmIssueDrivingLicenseFirstTime.Enabled = true;
                 }
+            } else if (ApplicationStatus == "Completed")
+            {
+                tsmShowLicense.Enabled = true;
+                tsmShowPersonLicenseHistory.Enabled = true;
             }
 
 
@@ -124,13 +130,17 @@ namespace PresentationLayer
 
         private void cmsLocalLicences_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
-            tsmScheduleTests.Enabled = true;
+            //Default settings
+            tsmScheduleTests.Enabled = false;
 
             tsmScheduleVisionTest.Enabled = false;
             tsmScheduleWrittenTest.Enabled = false;
             tsmScheduleStreetTest.Enabled = false;
 
             tsmIssueDrivingLicenseFirstTime.Enabled = false;
+
+            tsmShowLicense.Enabled = false;
+            tsmShowPersonLicenseHistory.Enabled = false;
         }
 
         private void tsmIssueDrivingLicenseFirstTime_Click(object sender, EventArgs e)
@@ -138,6 +148,12 @@ namespace PresentationLayer
             frmIssueLocalLicense IssueLicense = new frmIssueLocalLicense((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
             IssueLicense.ShowDialog();
             LocalLicenseApplicationsPage.RefreshData();
+        }
+
+        private void tsmShowLicense_Click(object sender, EventArgs e)
+        {
+            frmLicenseDetails LicenseDetails = new frmLicenseDetails((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            LicenseDetails.ShowDialog();
         }
     }
 }
