@@ -216,6 +216,7 @@ namespace PresentationLayer
             this.internationalDrivingLicenseToolStripMenuItem.Name = "internationalDrivingLicenseToolStripMenuItem";
             this.internationalDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(313, 36);
             this.internationalDrivingLicenseToolStripMenuItem.Text = "International License";
+            this.internationalDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.internationalDrivingLicenseToolStripMenuItem_Click);
             // 
             // tsmManageApplicationsToolStripMenuItem
             // 

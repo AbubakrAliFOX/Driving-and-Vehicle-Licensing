@@ -315,13 +315,12 @@ namespace DataLayer
 
             return PassedTests;
         }
-        public static int CreateApplication(int PersonID, int ApplicationTypeID, decimal PaidFees)
+        public static int CreateApplication(int PersonID, int ApplicationTypeID)
         {
             int ApplicationID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
-            string query = "INSERT INTO Applications (ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID) VALUES (@ApplicantPersonID, @ApplicationDate, @ApplicationTypeID, @ApplicationStatus, @LastStatusDate, @PaidFees, @CreatedByUserID); Select SCOPE_IDENTITY();";
-
+            string query = "INSERT INTO Applications(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID) VALUES(@ApplicantPersonID, @ApplicationDate, @ApplicationTypeID, @ApplicationStatus, @LastStatusDate, (SELECT ApplicationFees FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID), @CreatedByUserID); Select SCOPE_IDENTITY();";
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("@ApplicantPersonID", PersonID);
@@ -329,7 +328,6 @@ namespace DataLayer
             cmd.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
             cmd.Parameters.AddWithValue("@ApplicationStatus", 1);
             cmd.Parameters.AddWithValue("@LastStatusDate", DateTime.Now);
-            cmd.Parameters.AddWithValue("@PaidFees", PaidFees);
             cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
 
 

@@ -83,6 +83,7 @@
             this.tsmShowApplicationDetails.Name = "tsmShowApplicationDetails";
             this.tsmShowApplicationDetails.Size = new System.Drawing.Size(418, 36);
             this.tsmShowApplicationDetails.Text = "Show Application Details";
+            this.tsmShowApplicationDetails.Click += new System.EventHandler(this.tsmShowApplicationDetails_Click);
             // 
             // toolStripSeparator1
             // 
@@ -96,6 +97,7 @@
             this.tsmEditApplication.Name = "tsmEditApplication";
             this.tsmEditApplication.Size = new System.Drawing.Size(418, 36);
             this.tsmEditApplication.Text = "Edit Application";
+            this.tsmEditApplication.Click += new System.EventHandler(this.tsmEditApplication_Click);
             // 
             // tsmDeleteApplication
             // 

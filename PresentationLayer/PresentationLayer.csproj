@@ -61,6 +61,18 @@
     <Compile Include="ctrlApplicationOption.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ctrlDriverLicense.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlDriverLicense.Designer.cs">
+      <DependentUpon>ctrlDriverLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlFindLicense.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlFindLicense.Designer.cs">
+      <DependentUpon>ctrlFindLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlFindPerson.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +157,12 @@
     <Compile Include="frmManageTestTypes.Designer.cs">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNewInternationalDrivingLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewInternationalDrivingLicenseApplication.Designer.cs">
+      <DependentUpon>frmNewInternationalDrivingLicenseApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNewLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +200,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlApplicationInfo.resx">
       <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlDriverLicense.resx">
+      <DependentUpon>ctrlDriverLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlFindLicense.resx">
+      <DependentUpon>ctrlFindLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlFindPerson.resx">
       <DependentUpon>ctrlFindPerson.cs</DependentUpon>
@@ -224,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageTestTypes.resx">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewInternationalDrivingLicenseApplication.resx">
+      <DependentUpon>frmNewInternationalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>

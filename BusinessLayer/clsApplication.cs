@@ -137,9 +137,9 @@ namespace BusinessLayer
                 return null;
             }
         }
-        public static int CreateApplication(int PersonID, int ApplicationTypeID, decimal PaidFees)
+        public static int CreateApplication(int PersonID, int ApplicationTypeID)
         {
-            return clsApplicationsDataAccess.CreateApplication(PersonID, ApplicationTypeID, PaidFees);
+            return clsApplicationsDataAccess.CreateApplication(PersonID, ApplicationTypeID);
         }
 
         public static bool CreateLocalDrivingLicenseApplication(int ApplicationID, int ClassID)

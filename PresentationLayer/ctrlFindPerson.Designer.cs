@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlFindPerson));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ctrlPersonCard1 = new PresentationLayer.ctrlPersonCard();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pbAddNew = new System.Windows.Forms.PictureBox();
             this.pbSearch = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.cbFilterList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ctrlPersonCard1 = new PresentationLayer.ctrlPersonCard();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAddNew)).BeginInit();
@@ -52,14 +52,6 @@
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Person Info";
-            // 
-            // ctrlPersonCard1
-            // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(20, 21);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.PersonInfo = null;
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(740, 384);
-            this.ctrlPersonCard1.TabIndex = 16;
             // 
             // groupBox1
             // 
@@ -122,6 +114,14 @@
             this.label1.Size = new System.Drawing.Size(82, 28);
             this.label1.TabIndex = 10;
             this.label1.Text = "Find By";
+            // 
+            // ctrlPersonCard1
+            // 
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(20, 21);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.PersonInfo = null;
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(740, 384);
+            this.ctrlPersonCard1.TabIndex = 16;
             // 
             // ctrlFindPerson
             // 

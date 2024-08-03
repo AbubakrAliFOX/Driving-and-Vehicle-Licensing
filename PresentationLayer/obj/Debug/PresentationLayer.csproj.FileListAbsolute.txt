@@ -33,3 +33,6 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.c
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmIssueLocalLicense.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmLicenseDetails.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmLicenseHistory.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlDriverLicense.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlFindLicense.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmNewInternationalDrivingLicenseApplication.resources

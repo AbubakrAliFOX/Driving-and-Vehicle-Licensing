@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
+using System.ComponentModel;
+using System.Net;
+using System.Security.Policy;
 
 namespace DataLayer
 {
@@ -45,70 +48,82 @@ namespace DataLayer
             return dt;
         }
 
-        //public static bool FindLicenseByID(
-        //    int LicenseID,
-        //    ref int DriverID,
-        //    ref int ApplicationID,
-        //    ref int LicenseClassID,
-        //    ref string LicenseClassName,
-        //    ref DateTime IssueDate,
-        //    ref DateTime ExpirationDate,
-        //    ref string IssueNotes,
-        //    ref decimal PaidFees,
-        //    ref byte IsActive,
-        //    ref int IssueReason,
-        //    ref int CreatedByUser
-        //)
-        //{
-        //    bool isFound = false;
+        public static bool FindLicenseByID(
+            int LicenseID,
+            ref int PersonID,
+            ref int DriverID,
+            ref int ApplicationID,
+            ref int LicenseClassID,
+            ref string LicenseClassName,
+            ref DateTime IssueDate,
+            ref DateTime ExpirationDate,
+            ref string IssueNotes,
+            ref decimal PaidFees,
+            ref bool IsActive,
+            ref int IssueReason,
+            ref int CreatedByUser
+        )
+        {
+            bool isFound = false;
 
-        //    SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
-        //    string query = "SELECT LicenseID, DriverID, ApplicationID, LicenseClass, ClassName, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, IssueReason FROM Licenses INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID WHERE LicenseID = @LicenseID";
+            string query = "SELECT LicenseID, Licenses.DriverID, PersonID, ApplicationID, LicenseClass, ClassName, IssueDate, ExpirationDate, Notes, PaidFees, CAST(IsActive as bit) AS IsActive, IssueReason, Licenses.CreatedByUserID FROM Licenses INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID INNER JOIN Drivers ON Licenses.DriverID = Drivers.DriverID WHERE LicenseID  = @LicenseID";
 
-        //    SqlCommand cmd = new SqlCommand(query, connection);
+            SqlCommand cmd = new SqlCommand(query, connection);
 
-        //    cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+            cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
 
-        //    try
-        //    {
-        //        connection.Open();
-        //        SqlDataReader reader = cmd.ExecuteReader();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-        //        if (reader.Read())
-        //        {
-        //            isFound = true;
+                if (reader.Read())
+                {
+                    isFound = true;
 
-        //            DriverID = (int)reader["DriverID"];
-        //            ApplicationID = (int)reader["ApplicationID"];
-        //            LicenseClassID = (int)reader["LicenseClass"];
-        //            LicenseClassName = (string)reader["ClassName"];
-        //            IssueDate = (DateTime)reader["IssueDate"];
-        //            ExpirationDate = (DateTime)reader["ExpirationDate"];
-        //            IssueNotes = (string)reader["Notes"];
-        //            PaidFees = (decimal)reader["PaidFees"];
-        //            IsActive = (byte)reader["IsActive"];
-        //            IssueReason = (int)reader["IssueReason"];
-        //            CreatedByUser = (int)reader["CreatedByUserID"];
-        //        }
-        //        else
-        //        {
-        //            isFound = false;
-        //        }
+                    LicenseID = (int)reader["LicenseID"];
+                    PersonID = (int)reader["PersonID"];
+                    DriverID = (int)reader["DriverID"];
+                    ApplicationID = (int)reader["ApplicationID"];
+                    LicenseClassID = (int)reader["LicenseClass"];
+                    LicenseClassName = (string)reader["ClassName"];
+                    IssueDate = (DateTime)reader["IssueDate"];
+                    ExpirationDate = (DateTime)reader["ExpirationDate"];
+                    PaidFees = (decimal)reader["PaidFees"];
+                    IsActive = (bool)reader["IsActive"];
+                    IssueReason = Convert.ToInt32(reader["IssueReason"]);
+                    CreatedByUser = (int)reader["CreatedByUserID"];
 
-        //        reader.Close();
-        //    }
-        //    catch
-        //    {
-        //        isFound = false;
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
+                    if (reader["Notes"] != DBNull.Value)
+                    {
+                        IssueNotes = (string)reader["Notes"];
+                    }
+                    else
+                    {
+                        IssueNotes = "";
+                    }
 
-        //    return isFound;
-        //}
+                }
+                else
+                {
+                    isFound = false;
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
 
         public static bool FindLicenseByLocalDrivingLicenseApplicationID(
             int LDLApplicationID,
@@ -190,7 +205,7 @@ namespace DataLayer
         }
 
 
-        public static bool PersonHasLicenseClass(int PersonID, int ClassID)
+        public static bool PersonHasApplicationWithLicenseClass(int PersonID, int ClassID)
         {
             int applicationStatus = 0;
             bool foundApplication = false;
@@ -283,6 +298,101 @@ namespace DataLayer
 
             return LicenseID;
         }
+        
+        public static bool FindInternationalLicenseByLocalLicenseID(int LocalLicenseID, ref int InternationalLicenseID, ref int ILApplicationID, ref DateTime IssueDate, ref DateTime ApplicationDate, ref DateTime ExpirationDate, ref decimal PaidFees, ref string CreatedByUser)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT InternationalLicenseID, InternationalLicenses.ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, (SELECT UserName FROM Users WHERE UserID = InternationalLicenses.CreatedByUserID) AS CreatedByUser, PaidFees, Applications.ApplicationDate FROM InternationalLicenses INNER JOIN Applications ON InternationalLicenses.ApplicationID = Applications.ApplicationID  WHERE IssuedUsingLocalLicenseID = @LocalLicenseID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LocalLicenseID", LocalLicenseID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    InternationalLicenseID = (int)reader["InternationalLicenseID"];
+                    ILApplicationID = (int)reader["ApplicationID"];
+                    IssueDate = (DateTime)reader["IssueDate"];
+                    ApplicationDate = (DateTime)reader["ApplicationDate"];
+                    ExpirationDate = (DateTime)reader["ExpirationDate"];
+                    PaidFees = (decimal)reader["PaidFees"];
+                    CreatedByUser = (string)reader["CreatedByUser"];
+
+                }
+                else
+                {
+                    IsFound = false;
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+        
+        public static int IssueInternationalLicense(int LocalLicenseID, int ApplicationID, int DriverID)
+        {
+            int InternationalLicenseID = -1;
+
+            DateTime IssueDate = DateTime.Now;
+
+            DateTime ExpirationDate = IssueDate.AddYears(1);
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "INSERT INTO InternationalLicenses (ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, CreatedByUserID) VALUES (@ApplicationID, @DriverID, @IssuedUsingLocalLicenseID, @IssueDate, @ExpirationDate, @IsActive, @CreatedByUserID); Select SCOPE_IDENTITY();";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@IssuedUsingLocalLicenseID", LocalLicenseID);
+            cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            cmd.Parameters.AddWithValue("@DriverID", DriverID);
+            cmd.Parameters.AddWithValue("@IssueDate", IssueDate);
+            cmd.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
+            cmd.Parameters.AddWithValue("@IsActive", 1);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
+
+            try
+            {
+                connection.Open();
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    InternationalLicenseID = insertedID;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return InternationalLicenseID;
+        }
 
         private static int LicenseValidity(int LicenseClassID)
         {
@@ -354,6 +464,36 @@ namespace DataLayer
             return dt;
         }
 
+        public static bool HasInternationalLicense(int LocalLicenseID)
+        {
+            bool isFound = false;
 
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT Found = 1 FROM InternationalLicenses WHERE IssuedUsingLocalLicenseID = @LocalLicenseID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LocalLicenseID", LocalLicenseID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                isFound = reader.HasRows;
+                reader.Close();
+            }
+            catch
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
     }
 }

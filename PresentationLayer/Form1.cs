@@ -257,5 +257,11 @@ namespace PresentationLayer
             frmManageLocalDrivingLicenseApplications LocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
             LocalDrivingLicenseApplications.ShowDialog();
         }
+
+        private void internationalDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNewInternationalDrivingLicenseApplication InternationalLicense = new frmNewInternationalDrivingLicenseApplication();
+            InternationalLicense.ShowDialog();
+        }
     }
 }

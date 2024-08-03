@@ -60,9 +60,9 @@ namespace BusinessLayer
             return clsLicensesDataAccess.GetLicenseClasses();
         }
 
-        public static bool PersonHasLicenseClass(int PersonID, int ClassID)
+        public static bool PersonHasApplicationWithLicenseClass(int PersonID, int ClassID)
         {
-            return clsLicensesDataAccess.PersonHasLicenseClass(PersonID, ClassID);
+            return clsLicensesDataAccess.PersonHasApplicationWithLicenseClass(PersonID, ClassID);
         }
 
         public static int IssueLicense(clsApplication ApplicationDetails, string IssueNotes, int IssueReason)
@@ -92,58 +92,62 @@ namespace BusinessLayer
                 return -1;
             }
         }
+        
+        
+        public static clsLicense FindLicenseByID(int LicenseID)
+        {
+            int PersonID = 0;
+            int DriverID = 0;
+            int ApplicationID = 0;
+            int LicenseClassID = 0;
+            string LicenseClassName = "";
+            DateTime IssueDate = DateTime.Now;
+            DateTime ExpirationDate = DateTime.Now;
+            string IssueNotes = "";
+            decimal PaidFees = 0;
+            bool IsActive = false;
+            int IssueReason = 0;
+            int CreatedByUser = 0;
 
-        //public static clsLicense FindLicenseByID(int LicenseID)
-        //{
-        //    int DriverID = 0;
-        //    int ApplicationID = 0;
-        //    int LicenseClassID = 0;
-        //    string LicenseClassName = "";
-        //    DateTime IssueDate = DateTime.Now;
-        //    DateTime ExpirationDate = DateTime.Now;
-        //    string IssueNotes = "";
-        //    decimal PaidFees = 0;
-        //    byte IsActive = 0;
-        //    int IssueReason = 0;
-        //    int CreatedByUser = 0;
-
-        //    if (
-        //        clsLicensesDataAccess.FindLicenseByID(
-        //            LicenseID,
-        //            ref DriverID,
-        //            ref ApplicationID,
-        //            ref LicenseClassID,
-        //            ref LicenseClassName,
-        //            ref IssueDate,
-        //            ref ExpirationDate,
-        //            ref IssueNotes,
-        //            ref PaidFees,
-        //            ref IsActive,
-        //            ref IssueReason,
-        //            ref CreatedByUser
-        //        )
-        //    )
-        //    {
-        //        return new clsLicense(
-        //            LicenseID,
-        //            DriverID,
-        //            ApplicationID,
-        //            LicenseClassID,
-        //            LicenseClassName,
-        //            IssueDate,
-        //            ExpirationDate,
-        //            IssueNotes,
-        //            PaidFees,
-        //            IsActive,
-        //            IssueReason,
-        //            CreatedByUser
-        //        );
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
+            if (
+                clsLicensesDataAccess.FindLicenseByID(
+                    LicenseID,
+                    ref PersonID,
+                    ref DriverID,
+                    ref ApplicationID,
+                    ref LicenseClassID,
+                    ref LicenseClassName,
+                    ref IssueDate,
+                    ref ExpirationDate,
+                    ref IssueNotes,
+                    ref PaidFees,
+                    ref IsActive,
+                    ref IssueReason,
+                    ref CreatedByUser
+                )
+            )
+            {
+                return new clsLicense(
+                    LicenseID,
+                    PersonID,
+                    DriverID,
+                    ApplicationID,
+                    LicenseClassID,
+                    LicenseClassName,
+                    IssueDate,
+                    ExpirationDate,
+                    IssueNotes,
+                    PaidFees,
+                    IsActive,
+                    IssueReason,
+                    CreatedByUser
+                );
+            }
+            else
+            {
+                return null;
+            }
+        }
         
         public static clsLicense FindLicenseByLocalDrivingLicenseApplicationID(int LDLApplicationID)
         {
@@ -206,5 +210,6 @@ namespace BusinessLayer
         {
             return clsLicensesDataAccess.GetAllPersonLicenses(NationalNo);
         }
+
     }
 }

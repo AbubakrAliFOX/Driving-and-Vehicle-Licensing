@@ -68,6 +68,53 @@ namespace PresentationLayer
             LocalLicenseApplicationsPage.RefreshData();
         }
 
+        private void tsmShowApplicationDetails_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Implemented Yet!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void tsmEditApplication_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Implemented Yet!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void tsmCancelApplication_Click(object sender, EventArgs e)
+        {
+            clsApplication ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+
+            if (ApplicationDetails.ApplicationStatus == "New")
+            {
+                if (clsApplication.UpdateApplicationStatus(ApplicationDetails.ApplicationID, 2))
+                {
+                    MessageBox.Show("Application Cancelled Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                LocalLicenseApplicationsPage.RefreshData();
+            }
+        }
+
+        private void tsmDeleteApplication_Click(object sender, EventArgs e)
+        {
+            clsApplication ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+
+            if (ApplicationDetails.ApplicationStatus != "Completed")
+            {
+                if (clsApplication.DeleteApplication(ApplicationDetails.ApplicationID))
+                {
+                    MessageBox.Show("Application Deleted Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("You can't delete an application that has active tests!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                LocalLicenseApplicationsPage.RefreshData();
+            }
+        }
+
         private void tsmScheduleVisionTest_Click(object sender, EventArgs e)
         {
             frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value, 1);
@@ -80,7 +127,6 @@ namespace PresentationLayer
             frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value, 2);
             TestAppointment.ShowDialog();
             LocalLicenseApplicationsPage.RefreshData();
-
         }
 
         private void tsmScheduleStreetTest_Click(object sender, EventArgs e)
@@ -88,77 +134,8 @@ namespace PresentationLayer
             frmTestAppointment TestAppointment = new frmTestAppointment((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value, 3);
             TestAppointment.ShowDialog();
             LocalLicenseApplicationsPage.RefreshData();
-
         }
-
-        private void cmsLocalLicences_Opened(object sender, EventArgs e)
-        {
-            int PassedTests = (int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[4].Value;
-            string ApplicationStatus = (string)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[6].Value;
-
-            if(ApplicationStatus == "New")
-            {
-                if (PassedTests < 3)
-                {
-                    tsmScheduleTests.Enabled = true;
-
-                    if (PassedTests == 0)
-                    {
-                        tsmScheduleVisionTest.Enabled = true;
-                    }
-                    else if (PassedTests == 1)
-                    {
-                        tsmScheduleWrittenTest.Enabled = true;
-                    }
-                    else if (PassedTests == 2)
-                    {
-                        tsmScheduleStreetTest.Enabled = true;
-                    }
-                } else if (PassedTests == 3)
-                {
-                    tsmIssueDrivingLicenseFirstTime.Enabled = true;
-                }
-            } else if (ApplicationStatus == "Completed")
-            {
-                tsmCancelApplication.Enabled = false;
-                tsmDeleteApplication.Enabled = false;
-                tsmEditApplication.Enabled = false;
-
-                tsmShowLicense.Enabled = true;
-                tsmShowPersonLicenseHistory.Enabled = true;
-            } else if (ApplicationStatus == "Cancelled")
-            {
-                tsmCancelApplication.Enabled = false;
-                tsmEditApplication.Enabled = false;
-
-                tsmShowLicense.Enabled = false;
-                tsmShowPersonLicenseHistory.Enabled = true;
-            }
-
-
-            
-        }
-
-        private void cmsLocalLicences_Closed(object sender, ToolStripDropDownClosedEventArgs e)
-        {
-            //Default settings
-            tsmCancelApplication.Enabled = true;
-            tsmDeleteApplication.Enabled = true;
-            tsmEditApplication.Enabled = true;
-
-
-            tsmScheduleTests.Enabled = false;
-
-            tsmScheduleVisionTest.Enabled = false;
-            tsmScheduleWrittenTest.Enabled = false;
-            tsmScheduleStreetTest.Enabled = false;
-
-            tsmIssueDrivingLicenseFirstTime.Enabled = false;
-
-            tsmShowLicense.Enabled = false;
-            tsmShowPersonLicenseHistory.Enabled = false;
-        }
-
+        
         private void tsmIssueDrivingLicenseFirstTime_Click(object sender, EventArgs e)
         {
             frmIssueLocalLicense IssueLicense = new frmIssueLocalLicense((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
@@ -178,39 +155,71 @@ namespace PresentationLayer
             LicenseHistory.ShowDialog();
         }
 
-        private void tsmCancelApplication_Click(object sender, EventArgs e)
+        private void cmsLocalLicences_Opened(object sender, EventArgs e)
         {
-            clsApplication ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            int PassedTests = (int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[4].Value;
+            string ApplicationStatus = (string)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[6].Value;
 
-            if (ApplicationDetails.ApplicationStatus == "New" )
+            if (ApplicationStatus == "New")
             {
-               if (clsApplication.UpdateApplicationStatus(ApplicationDetails.ApplicationID, 2))
-               {
-                    MessageBox.Show("Application Cancelled Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               } else
-               {
-                    MessageBox.Show("Something went wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (PassedTests < 3)
+                {
+                    tsmScheduleTests.Enabled = true;
 
-               }
-               LocalLicenseApplicationsPage.RefreshData();
+                    if (PassedTests == 0)
+                    {
+                        tsmScheduleVisionTest.Enabled = true;
+                    }
+                    else if (PassedTests == 1)
+                    {
+                        tsmScheduleWrittenTest.Enabled = true;
+                    }
+                    else if (PassedTests == 2)
+                    {
+                        tsmScheduleStreetTest.Enabled = true;
+                    }
+                }
+                else if (PassedTests == 3)
+                {
+                    tsmIssueDrivingLicenseFirstTime.Enabled = true;
+                }
+            }
+            else if (ApplicationStatus == "Completed")
+            {
+                tsmCancelApplication.Enabled = false;
+                tsmDeleteApplication.Enabled = false;
+                tsmEditApplication.Enabled = false;
+
+                tsmShowLicense.Enabled = true;
+                tsmShowPersonLicenseHistory.Enabled = true;
+            }
+            else if (ApplicationStatus == "Cancelled")
+            {
+                tsmCancelApplication.Enabled = false;
+                tsmEditApplication.Enabled = false;
+
+                tsmShowLicense.Enabled = false;
+                tsmShowPersonLicenseHistory.Enabled = true;
             }
         }
-
-        private void tsmDeleteApplication_Click(object sender, EventArgs e)
+        private void cmsLocalLicences_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
-            clsApplication ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            //Default settings
+            tsmCancelApplication.Enabled = true;
+            tsmDeleteApplication.Enabled = true;
+            tsmEditApplication.Enabled = true;
 
-            if (ApplicationDetails.ApplicationStatus != "Completed")
-            {
-                if(clsApplication.DeleteApplication(ApplicationDetails.ApplicationID))
-                {
-                    MessageBox.Show("Application Deleted Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else
-                {
-                    MessageBox.Show("You can't delete an application that has active tests!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                LocalLicenseApplicationsPage.RefreshData();
-            }
+
+            tsmScheduleTests.Enabled = false;
+
+            tsmScheduleVisionTest.Enabled = false;
+            tsmScheduleWrittenTest.Enabled = false;
+            tsmScheduleStreetTest.Enabled = false;
+
+            tsmIssueDrivingLicenseFirstTime.Enabled = false;
+
+            tsmShowLicense.Enabled = false;
+            tsmShowPersonLicenseHistory.Enabled = false;
         }
     }
 }
