@@ -65,16 +65,14 @@ namespace BusinessLayer
             return clsLicensesDataAccess.PersonHasLicenseClass(PersonID, ClassID);
         }
 
-        public static bool CreateLocalDrivingLicenseApplication(int PersonID, int ClassID)
-        {
-            return clsLicensesDataAccess.CreateLocalDrivingLicenseApplication(PersonID, ClassID);
-        }
-
         public static int IssueLicense(clsApplication ApplicationDetails, string IssueNotes, int IssueReason)
         {
-            // Check Wether he is already a driver?
-            // Fix pricing on issue license form
-            int DriverID = clsDriver.CreateDriver(ApplicationDetails.ApplicantID);
+            int DriverID = clsDriver.GetDriverID(ApplicationDetails.ApplicantID);
+
+            if (clsDriver.GetDriverID(ApplicationDetails.ApplicantID) == -1)
+            {
+                DriverID = clsDriver.CreateDriver(ApplicationDetails.ApplicantID);
+            }
 
             int ApplicationID = ApplicationDetails.ApplicationID;
 

@@ -15,9 +15,16 @@ namespace BusinessLayer
             return clsDriversDataAccess.GetAllDrivers();
         }
 
+        public static int GetDriverID(int PersonID)
+        {
+            return clsDriversDataAccess.GetDriverByPersonID(PersonID);
+        }
+
         public static int CreateDriver (int PersonID)
         {
             return clsDriversDataAccess.CreateDriver(PersonID);
         }
+
+        
     }
 }

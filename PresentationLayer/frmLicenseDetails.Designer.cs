@@ -119,7 +119,7 @@
             // 
             this.lblDriverID.AutoSize = true;
             this.lblDriverID.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDriverID.Location = new System.Drawing.Point(631, 111);
+            this.lblDriverID.Location = new System.Drawing.Point(636, 111);
             this.lblDriverID.Name = "lblDriverID";
             this.lblDriverID.Size = new System.Drawing.Size(0, 21);
             this.lblDriverID.TabIndex = 75;
@@ -128,7 +128,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(239, 155);
+            this.label11.Location = new System.Drawing.Point(512, 189);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 22);
             this.label11.TabIndex = 74;
@@ -138,7 +138,7 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(391, 155);
+            this.lblGender.Location = new System.Drawing.Point(636, 190);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(0, 21);
             this.lblGender.TabIndex = 73;
@@ -157,7 +157,7 @@
             // 
             this.lblIsActive.AutoSize = true;
             this.lblIsActive.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIsActive.Location = new System.Drawing.Point(631, 35);
+            this.lblIsActive.Location = new System.Drawing.Point(636, 35);
             this.lblIsActive.Name = "lblIsActive";
             this.lblIsActive.Size = new System.Drawing.Size(0, 21);
             this.lblIsActive.TabIndex = 71;
@@ -166,7 +166,7 @@
             // 
             this.lblExpirationDate.AutoSize = true;
             this.lblExpirationDate.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExpirationDate.Location = new System.Drawing.Point(391, 231);
+            this.lblExpirationDate.Location = new System.Drawing.Point(393, 194);
             this.lblExpirationDate.Name = "lblExpirationDate";
             this.lblExpirationDate.Size = new System.Drawing.Size(0, 21);
             this.lblExpirationDate.TabIndex = 70;
@@ -185,7 +185,7 @@
             // 
             this.lblDOB.AutoSize = true;
             this.lblDOB.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDOB.Location = new System.Drawing.Point(631, 72);
+            this.lblDOB.Location = new System.Drawing.Point(636, 72);
             this.lblDOB.Name = "lblDOB";
             this.lblDOB.Size = new System.Drawing.Size(0, 21);
             this.lblDOB.TabIndex = 68;
@@ -194,7 +194,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(239, 117);
+            this.label7.Location = new System.Drawing.Point(239, 115);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 22);
             this.label7.TabIndex = 67;
@@ -204,7 +204,7 @@
             // 
             this.lblIssueReason.AutoSize = true;
             this.lblIssueReason.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIssueReason.Location = new System.Drawing.Point(391, 119);
+            this.lblIssueReason.Location = new System.Drawing.Point(393, 117);
             this.lblIssueReason.Name = "lblIssueReason";
             this.lblIssueReason.Size = new System.Drawing.Size(0, 21);
             this.lblIssueReason.TabIndex = 66;
@@ -213,7 +213,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(239, 229);
+            this.label10.Location = new System.Drawing.Point(239, 189);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(128, 22);
             this.label10.TabIndex = 65;
@@ -223,7 +223,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(239, 80);
+            this.label1.Location = new System.Drawing.Point(239, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 22);
             this.label1.TabIndex = 64;
@@ -233,7 +233,7 @@
             // 
             this.lblNationalNo.AutoSize = true;
             this.lblNationalNo.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNationalNo.Location = new System.Drawing.Point(391, 80);
+            this.lblNationalNo.Location = new System.Drawing.Point(393, 81);
             this.lblNationalNo.Name = "lblNationalNo";
             this.lblNationalNo.Size = new System.Drawing.Size(0, 21);
             this.lblNationalNo.TabIndex = 63;
@@ -242,7 +242,7 @@
             // 
             this.lblClass.AutoSize = true;
             this.lblClass.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClass.Location = new System.Drawing.Point(391, 269);
+            this.lblClass.Location = new System.Drawing.Point(393, 227);
             this.lblClass.Name = "lblClass";
             this.lblClass.Size = new System.Drawing.Size(0, 21);
             this.lblClass.TabIndex = 62;
@@ -251,7 +251,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(239, 190);
+            this.label8.Location = new System.Drawing.Point(239, 152);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 22);
             this.label8.TabIndex = 61;
@@ -261,7 +261,7 @@
             // 
             this.lblIssueDate.AutoSize = true;
             this.lblIssueDate.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIssueDate.Location = new System.Drawing.Point(391, 190);
+            this.lblIssueDate.Location = new System.Drawing.Point(393, 153);
             this.lblIssueDate.Name = "lblIssueDate";
             this.lblIssueDate.Size = new System.Drawing.Size(0, 21);
             this.lblIssueDate.TabIndex = 60;
@@ -270,7 +270,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(512, 185);
+            this.label4.Location = new System.Drawing.Point(239, 263);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 22);
             this.label4.TabIndex = 59;
@@ -280,7 +280,7 @@
             // 
             this.lblNotes.AutoSize = true;
             this.lblNotes.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotes.Location = new System.Drawing.Point(631, 186);
+            this.lblNotes.Location = new System.Drawing.Point(393, 265);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(0, 21);
             this.lblNotes.TabIndex = 58;
@@ -289,7 +289,7 @@
             // 
             this.LisenceClass.AutoSize = true;
             this.LisenceClass.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LisenceClass.Location = new System.Drawing.Point(239, 269);
+            this.LisenceClass.Location = new System.Drawing.Point(239, 226);
             this.LisenceClass.Name = "LisenceClass";
             this.LisenceClass.Size = new System.Drawing.Size(52, 22);
             this.LisenceClass.TabIndex = 57;
@@ -309,7 +309,7 @@
             // 
             this.lblLicenseID.AutoSize = true;
             this.lblLicenseID.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLicenseID.Location = new System.Drawing.Point(391, 41);
+            this.lblLicenseID.Location = new System.Drawing.Point(393, 42);
             this.lblLicenseID.Name = "lblLicenseID";
             this.lblLicenseID.Size = new System.Drawing.Size(0, 21);
             this.lblLicenseID.TabIndex = 55;
@@ -328,7 +328,7 @@
             // 
             this.lblIsDetained.AutoSize = true;
             this.lblIsDetained.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIsDetained.Location = new System.Drawing.Point(631, 150);
+            this.lblIsDetained.Location = new System.Drawing.Point(636, 150);
             this.lblIsDetained.Name = "lblIsDetained";
             this.lblIsDetained.Size = new System.Drawing.Size(0, 21);
             this.lblIsDetained.TabIndex = 77;

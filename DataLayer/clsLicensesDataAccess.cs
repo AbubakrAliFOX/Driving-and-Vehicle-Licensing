@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 
 namespace DataLayer
 {
@@ -153,11 +154,21 @@ namespace DataLayer
                     LicenseClassName = (string)reader["ClassName"];
                     IssueDate = (DateTime)reader["IssueDate"];
                     ExpirationDate = (DateTime)reader["ExpirationDate"];
-                    IssueNotes = (string)reader["Notes"];
                     PaidFees = (decimal)reader["PaidFees"];
                     IsActive = (bool)reader["IsActive"];
                     IssueReason = Convert.ToInt32(reader["IssueReason"]);
                     CreatedByUser = (int)reader["CreatedByUserID"];
+
+                    
+
+                    if (reader["Notes"] != DBNull.Value)
+                    {
+                        IssueNotes = (string)reader["Notes"];
+                    }
+                    else
+                    {
+                        IssueNotes = "";
+                    }
                 }
                 else
                 {
@@ -221,42 +232,6 @@ namespace DataLayer
             return (applicationStatus != 2 && foundApplication);
         }
 
-        public static bool CreateLocalDrivingLicenseApplication(int PersonID, int ClassID)
-        {
-            int LocalDrivingLicenseID = -1;
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-
-            string query = "INSERT INTO LocalDrivingLicenseApplications (ApplicationID, LicenseClassID) VALUES (@ApplicationID, @LicenseClassID); Select SCOPE_IDENTITY();";
-
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            cmd.Parameters.AddWithValue("@ApplicationID", PersonID);
-            cmd.Parameters.AddWithValue("@LicenseClassID", ClassID);
-
-
-            try
-            {
-                connection.Open();
-                object result = cmd.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
-                {
-                    LocalDrivingLicenseID = insertedID;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return LocalDrivingLicenseID != -1;
-        }
 
         public static int IssueLicense(int DriverID, int ApplicationID, int LicenseClassID, string IssueNotes, decimal PaidFees, int IssueReason)
         {

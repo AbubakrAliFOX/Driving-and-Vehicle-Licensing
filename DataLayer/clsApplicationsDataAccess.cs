@@ -149,6 +149,37 @@ namespace DataLayer
             return rowsAffected > 0;
         }
 
+        public static bool DeleteApplicationByID(int ApplicationID)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                    @"DELETE FROM Applications 
+                    Where ApplicationID = @ApplicationID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+        }
+
         public static decimal GetApplicationFees(int ApplicationID)
         {
             decimal Fees = 0;
@@ -324,6 +355,74 @@ namespace DataLayer
 
             return ApplicationID;
         }
+
+        public static bool CreateLocalDrivingLicenseApplication(int ApplicationID, int ClassID)
+        {
+            int LocalDrivingLicenseID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "INSERT INTO LocalDrivingLicenseApplications (ApplicationID, LicenseClassID) VALUES (@ApplicationID, @LicenseClassID); Select SCOPE_IDENTITY();";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            cmd.Parameters.AddWithValue("@LicenseClassID", ClassID);
+
+
+            try
+            {
+                connection.Open();
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    LocalDrivingLicenseID = insertedID;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return LocalDrivingLicenseID != -1;
+        }
+        //public static bool CancelApplication(int LDLApplicationID)
+        //{
+        //    int rowsAffected = 0;
+        //    SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+        //    string query = @"UPDATE Applications
+        //                    SET ApplicationStatus = 2
+        //                    WHERE ApplicationID = (SELECT ApplicationID FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LDLApplicationID)";
+
+        //    SqlCommand cmd = new SqlCommand(query, connection);
+
+        //    cmd.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+
+        //    try
+        //    {
+        //        connection.Open();
+        //        rowsAffected = cmd.ExecuteNonQuery();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //Console.WriteLine("Error: " + ex.Message);
+        //        return false;
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
+
+        //    return (rowsAffected > 0);
+        //}
 
         public static DataTable GetLocalDrivingLicenseApplications()
         {

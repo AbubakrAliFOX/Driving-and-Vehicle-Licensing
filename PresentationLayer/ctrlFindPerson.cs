@@ -36,34 +36,27 @@ namespace PresentationLayer
         {
             if (tbSearch.Text != "")
             {
+                clsPerson GetPerson;
+
                 if (SearchColumn == "PersonID")
                 {
                     int SearchTerm;
                     int.TryParse(tbSearch.Text, out SearchTerm);
+                    GetPerson = clsPerson.Find(SearchTerm);
 
-                    clsPerson GetPerson = clsPerson.Find(SearchTerm);
+                } else
+                {
+                    GetPerson = clsPerson.FindByNationalNo(tbSearch.Text);
+                }
 
-                    if (GetPerson != null)
-                    {
-                        PersonInfo = GetPerson;
-                    } 
-                    else
-                    {
-                        PersonInfo = null;
-                    }
+                if (GetPerson != null)
+                {
+                    PersonInfo = GetPerson;
                 }
                 else
                 {
-                    clsPerson GetPerson = clsPerson.FindByNationalNo(tbSearch.Text);
-
-                    if (GetPerson != null)
-                    {
-                        PersonInfo = GetPerson;
-                    }
-                    else
-                    {
-                        PersonInfo = null;
-                    }
+                    PersonInfo = null;
+                    MessageBox.Show("Person Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

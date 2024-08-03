@@ -74,6 +74,11 @@ namespace BusinessLayer
             return clsApplicationsDataAccess.UpdateApplicationStatus(ApplicationID, Status);
         }
 
+        public static bool DeleteApplication(int ApplicationID)
+        {
+            return clsApplicationsDataAccess.DeleteApplicationByID(ApplicationID);
+        }
+
         public static decimal GetApplicationFees(int ApplicationID)
         {
             return clsApplicationsDataAccess.GetApplicationFees(ApplicationID);
@@ -136,6 +141,16 @@ namespace BusinessLayer
         {
             return clsApplicationsDataAccess.CreateApplication(PersonID, ApplicationTypeID, PaidFees);
         }
+
+        public static bool CreateLocalDrivingLicenseApplication(int ApplicationID, int ClassID)
+        {
+            return clsApplicationsDataAccess.CreateLocalDrivingLicenseApplication(ApplicationID, ClassID);
+        }
+
+        //public static bool CancelLocalDrivingLicenseApplication(int PersonID, int ClassID)
+        //{
+        //    return clsApplicationsDataAccess.CreateLocalDrivingLicenseApplication(PersonID, ClassID);
+        //}
 
         public static DataTable GetLocalDrivingLicenseApplications()
         {

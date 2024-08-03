@@ -104,6 +104,7 @@
             this.tsmDeleteApplication.Name = "tsmDeleteApplication";
             this.tsmDeleteApplication.Size = new System.Drawing.Size(418, 36);
             this.tsmDeleteApplication.Text = "Delete Application";
+            this.tsmDeleteApplication.Click += new System.EventHandler(this.tsmDeleteApplication_Click);
             // 
             // tsmCancelApplication
             // 
@@ -112,6 +113,7 @@
             this.tsmCancelApplication.Name = "tsmCancelApplication";
             this.tsmCancelApplication.Size = new System.Drawing.Size(418, 36);
             this.tsmCancelApplication.Text = "Cancel Application";
+            this.tsmCancelApplication.Click += new System.EventHandler(this.tsmCancelApplication_Click);
             // 
             // tsmScheduleTests
             // 

@@ -30,7 +30,6 @@ namespace PresentationLayer
                 if (_PersonInfo == null)
                 {
                     ResetPersonCard();
-                    //MessageBox.Show("Person Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

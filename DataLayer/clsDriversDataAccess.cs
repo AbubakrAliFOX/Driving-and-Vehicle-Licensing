@@ -82,5 +82,39 @@ namespace DataLayer
 
             return DriverID;
         }
+
+        public static int GetDriverByPersonID(int PersonID)
+        {
+            int DriverID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                "SELECT DriverID FROM Drivers WHERE PersonID = @PersonID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    DriverID = (int)reader["DriverID"];
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return DriverID;
+        }
     }
 }

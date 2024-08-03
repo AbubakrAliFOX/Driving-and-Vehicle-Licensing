@@ -57,11 +57,10 @@ namespace PresentationLayer
 
                 if (NewApplicationID != -1)
                 {
-                    if (clsLicense.CreateLocalDrivingLicenseApplication(NewApplicationID, cbLicenseClasses.SelectedIndex + 1))
+                    if (clsApplication.CreateLocalDrivingLicenseApplication(NewApplicationID, cbLicenseClasses.SelectedIndex + 1))
                     {
                         lblApplicationID.Text = NewApplicationID.ToString();
                         MessageBox.Show("Application Created Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
                     }
                 }
             }
