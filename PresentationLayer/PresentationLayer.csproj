@@ -121,6 +121,12 @@
     <Compile Include="frmLicenseDetails.Designer.cs">
       <DependentUpon>frmLicenseDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLicenseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicenseHistory.Designer.cs">
+      <DependentUpon>frmLicenseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLicenseDetails.resx">
       <DependentUpon>frmLicenseDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicenseHistory.resx">
+      <DependentUpon>frmLicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageApplicationTypes.resx">
       <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>

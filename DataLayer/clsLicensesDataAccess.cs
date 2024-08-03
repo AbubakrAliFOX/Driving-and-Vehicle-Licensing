@@ -342,6 +342,43 @@ namespace DataLayer
 
             return Validity;
         }
-        
+
+        public static DataTable GetAllPersonLicenses(string NationalNo)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                "SELECT LicenseID, ApplicationID, ClassName, IssueDate, ExpirationDate, IsActive FROM Licenses INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID INNER JOIN Drivers ON Licenses.DriverID = Drivers.DriverID INNER JOIN People ON Drivers.PersonID = People.PersonID WHERE People.NationalNo = @NationalNo";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+        }
+
+
     }
 }

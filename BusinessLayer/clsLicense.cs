@@ -203,5 +203,10 @@ namespace BusinessLayer
                 return null;
             }
         }
+
+        public static DataTable GetAllPersonLicenses(string NationalNo)
+        {
+            return clsLicensesDataAccess.GetAllPersonLicenses(NationalNo);
+        }
     }
 }

@@ -155,5 +155,11 @@ namespace PresentationLayer
             frmLicenseDetails LicenseDetails = new frmLicenseDetails((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
             LicenseDetails.ShowDialog();
         }
+
+        private void tsmShowPersonLicenseHistory_Click(object sender, EventArgs e)
+        {
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory((string)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[2].Value);
+            LicenseHistory.ShowDialog();
+        }
     }
 }

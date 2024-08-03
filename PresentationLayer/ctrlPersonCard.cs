@@ -16,6 +16,7 @@ namespace PresentationLayer
         public ctrlPersonCard()
         {
             InitializeComponent();
+
         }
 
         private clsPerson _PersonInfo;
@@ -29,7 +30,7 @@ namespace PresentationLayer
                 if (_PersonInfo == null)
                 {
                     ResetPersonCard();
-                    MessageBox.Show("Person Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Person Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
