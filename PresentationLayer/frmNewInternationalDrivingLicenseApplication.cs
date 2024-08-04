@@ -80,8 +80,20 @@ namespace PresentationLayer
 
         private void llLicensesHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicenseHistory LicenseHistory = new frmLicenseHistory(InternationalLicense.LocalLicense.PersonID);
+            if (ctrlFindLicense1.LicenseInfo == null)
+            {
+                MessageBox.Show("Select a License First", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory(ctrlFindLicense1.LicenseInfo.PersonID);
             LicenseHistory.ShowDialog();
+        }
+
+        private void llLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmInternationalLicenseDetails InternationalLicenseDetails = new frmInternationalLicenseDetails(InternationalLicense.InternationalLicenseID, InternationalLicense.LocalLicense.LicenseID);
+            InternationalLicenseDetails.ShowDialog();
         }
     }
 }

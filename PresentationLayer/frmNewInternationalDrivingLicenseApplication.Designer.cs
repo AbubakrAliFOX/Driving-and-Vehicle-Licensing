@@ -48,9 +48,9 @@
             this.lblLicenseID = new System.Windows.Forms.Label();
             this.lblExpirationDate = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.ctrlFindLicense1 = new PresentationLayer.ctrlFindLicense();
             this.llLicenseInfo = new System.Windows.Forms.LinkLabel();
             this.llLicensesHistory = new System.Windows.Forms.LinkLabel();
+            this.ctrlFindLicense1 = new PresentationLayer.ctrlFindLicense();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -266,14 +266,6 @@
             this.label10.TabIndex = 21;
             this.label10.Text = "Exp. Date:";
             // 
-            // ctrlFindLicense1
-            // 
-            this.ctrlFindLicense1.LicenseInfo = null;
-            this.ctrlFindLicense1.Location = new System.Drawing.Point(2, 91);
-            this.ctrlFindLicense1.Name = "ctrlFindLicense1";
-            this.ctrlFindLicense1.Size = new System.Drawing.Size(785, 519);
-            this.ctrlFindLicense1.TabIndex = 0;
-            // 
             // llLicenseInfo
             // 
             this.llLicenseInfo.AutoSize = true;
@@ -285,6 +277,7 @@
             this.llLicenseInfo.TabIndex = 60;
             this.llLicenseInfo.TabStop = true;
             this.llLicenseInfo.Text = "Show License Info";
+            this.llLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicenseInfo_LinkClicked);
             // 
             // llLicensesHistory
             // 
@@ -297,6 +290,14 @@
             this.llLicensesHistory.TabStop = true;
             this.llLicensesHistory.Text = "Show Licenses History";
             this.llLicensesHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicensesHistory_LinkClicked);
+            // 
+            // ctrlFindLicense1
+            // 
+            this.ctrlFindLicense1.LicenseInfo = null;
+            this.ctrlFindLicense1.Location = new System.Drawing.Point(2, 91);
+            this.ctrlFindLicense1.Name = "ctrlFindLicense1";
+            this.ctrlFindLicense1.Size = new System.Drawing.Size(785, 519);
+            this.ctrlFindLicense1.TabIndex = 0;
             // 
             // frmNewInternationalDrivingLicenseApplication
             // 
