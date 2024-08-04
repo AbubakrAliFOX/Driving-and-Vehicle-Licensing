@@ -65,6 +65,11 @@ namespace BusinessLayer
             return clsLicensesDataAccess.PersonHasApplicationWithLicenseClass(PersonID, ClassID);
         }
 
+        public static bool IsLicenseActive(int LicenseID)
+        {
+            return clsLicensesDataAccess.IsLicenseActive(LicenseID);
+        }
+
         public static int IssueLicense(clsApplication ApplicationDetails, string IssueNotes, int IssueReason)
         {
             int DriverID = clsDriver.GetDriverID(ApplicationDetails.ApplicantID);

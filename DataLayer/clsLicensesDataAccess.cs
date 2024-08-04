@@ -207,8 +207,8 @@ namespace DataLayer
 
         public static bool PersonHasApplicationWithLicenseClass(int PersonID, int ClassID)
         {
-            int applicationStatus = 0;
-            bool foundApplication = false;
+            int ApplicationStatus = 0;
+            bool FoundApplication = false;
 
             string connectionString = clsDataAccessSettings.connectionString;
 
@@ -227,12 +227,12 @@ namespace DataLayer
                     {
                         if (reader.Read())
                         {
-                            applicationStatus = (int)reader["Status"];
-                            foundApplication = true;
+                            ApplicationStatus = (int)reader["Status"];
+                            FoundApplication = true;
                         }
                         else
                         {
-                            foundApplication = false;
+                            FoundApplication = false;
                         }
                     }
                 }
@@ -244,7 +244,40 @@ namespace DataLayer
                 }
             }
 
-            return (applicationStatus != 2 && foundApplication);
+            return (ApplicationStatus != 2 && FoundApplication);
+        }
+
+        public static bool IsLicenseActive(int LicenseID)
+        {
+            bool IsLicenseActive = false;
+
+            string connectionString = clsDataAccessSettings.connectionString;
+
+            string query = "SELECT Found = 1 FROM Licenses WHERE IsActive = 1 and LicenseID = @LicenseID";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                IsLicenseActive = reader.HasRows;
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                // Optionally rethrow or handle the exception as needed
+            }
+
+            return IsLicenseActive;
         }
 
 
@@ -299,101 +332,6 @@ namespace DataLayer
             return LicenseID;
         }
         
-        public static bool FindInternationalLicenseByLocalLicenseID(int LocalLicenseID, ref int InternationalLicenseID, ref int ILApplicationID, ref DateTime IssueDate, ref DateTime ApplicationDate, ref DateTime ExpirationDate, ref decimal PaidFees, ref string CreatedByUser)
-        {
-            bool IsFound = false;
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-
-            string query = "SELECT InternationalLicenseID, InternationalLicenses.ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, (SELECT UserName FROM Users WHERE UserID = InternationalLicenses.CreatedByUserID) AS CreatedByUser, PaidFees, Applications.ApplicationDate FROM InternationalLicenses INNER JOIN Applications ON InternationalLicenses.ApplicationID = Applications.ApplicationID  WHERE IssuedUsingLocalLicenseID = @LocalLicenseID";
-
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            cmd.Parameters.AddWithValue("@LocalLicenseID", LocalLicenseID);
-
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    IsFound = true;
-
-                    InternationalLicenseID = (int)reader["InternationalLicenseID"];
-                    ILApplicationID = (int)reader["ApplicationID"];
-                    IssueDate = (DateTime)reader["IssueDate"];
-                    ApplicationDate = (DateTime)reader["ApplicationDate"];
-                    ExpirationDate = (DateTime)reader["ExpirationDate"];
-                    PaidFees = (decimal)reader["PaidFees"];
-                    CreatedByUser = (string)reader["CreatedByUser"];
-
-                }
-                else
-                {
-                    IsFound = false;
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return IsFound;
-        }
-        
-        public static int IssueInternationalLicense(int LocalLicenseID, int ApplicationID, int DriverID)
-        {
-            int InternationalLicenseID = -1;
-
-            DateTime IssueDate = DateTime.Now;
-
-            DateTime ExpirationDate = IssueDate.AddYears(1);
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-
-            string query = "INSERT INTO InternationalLicenses (ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, CreatedByUserID) VALUES (@ApplicationID, @DriverID, @IssuedUsingLocalLicenseID, @IssueDate, @ExpirationDate, @IsActive, @CreatedByUserID); Select SCOPE_IDENTITY();";
-
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            cmd.Parameters.AddWithValue("@IssuedUsingLocalLicenseID", LocalLicenseID);
-            cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-            cmd.Parameters.AddWithValue("@DriverID", DriverID);
-            cmd.Parameters.AddWithValue("@IssueDate", IssueDate);
-            cmd.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
-            cmd.Parameters.AddWithValue("@IsActive", 1);
-            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
-
-            try
-            {
-                connection.Open();
-                object result = cmd.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
-                {
-                    InternationalLicenseID = insertedID;
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return InternationalLicenseID;
-        }
-
         private static int LicenseValidity(int LicenseClassID)
         {
             int Validity = 0;

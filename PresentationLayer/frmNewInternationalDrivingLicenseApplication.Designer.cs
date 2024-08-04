@@ -49,6 +49,8 @@
             this.lblExpirationDate = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.ctrlFindLicense1 = new PresentationLayer.ctrlFindLicense();
+            this.llLicenseInfo = new System.Windows.Forms.LinkLabel();
+            this.llLicensesHistory = new System.Windows.Forms.LinkLabel();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -272,11 +274,37 @@
             this.ctrlFindLicense1.Size = new System.Drawing.Size(785, 519);
             this.ctrlFindLicense1.TabIndex = 0;
             // 
+            // llLicenseInfo
+            // 
+            this.llLicenseInfo.AutoSize = true;
+            this.llLicenseInfo.Enabled = false;
+            this.llLicenseInfo.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llLicenseInfo.Location = new System.Drawing.Point(203, 925);
+            this.llLicenseInfo.Name = "llLicenseInfo";
+            this.llLicenseInfo.Size = new System.Drawing.Size(146, 22);
+            this.llLicenseInfo.TabIndex = 60;
+            this.llLicenseInfo.TabStop = true;
+            this.llLicenseInfo.Text = "Show License Info";
+            // 
+            // llLicensesHistory
+            // 
+            this.llLicensesHistory.AutoSize = true;
+            this.llLicensesHistory.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llLicensesHistory.Location = new System.Drawing.Point(10, 925);
+            this.llLicensesHistory.Name = "llLicensesHistory";
+            this.llLicensesHistory.Size = new System.Drawing.Size(175, 22);
+            this.llLicensesHistory.TabIndex = 61;
+            this.llLicensesHistory.TabStop = true;
+            this.llLicensesHistory.Text = "Show Licenses History";
+            this.llLicensesHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicensesHistory_LinkClicked);
+            // 
             // frmNewInternationalDrivingLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 965);
+            this.Controls.Add(this.llLicensesHistory);
+            this.Controls.Add(this.llLicenseInfo);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnIssue);
             this.Controls.Add(this.groupBox3);
@@ -316,5 +344,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblInternationalLicenseID;
         private System.Windows.Forms.Label lblIssueDate;
+        private System.Windows.Forms.LinkLabel llLicenseInfo;
+        private System.Windows.Forms.LinkLabel llLicensesHistory;
     }
 }

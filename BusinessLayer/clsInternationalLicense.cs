@@ -1,6 +1,7 @@
 ﻿using DataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace BusinessLayer
             decimal PaidFees = 0;
             string CreatedByUser = "";
 
-            if (clsLicensesDataAccess.FindInternationalLicenseByLocalLicenseID(
+            if (clsInternationalLicensesDataAccess.FindInternationalLicenseByLocalLicenseID(
                 LocalLicenseID,
                 ref InternationalLicenseID,
                 ref ILApplicationID,
@@ -79,7 +80,12 @@ namespace BusinessLayer
             int DriverID = LocalLicenseDetails.DriverID;
 
 
-            return clsLicensesDataAccess.IssueInternationalLicense(LocalLicenseID, ApplicationID, DriverID);
+            return clsInternationalLicensesDataAccess.IssueInternationalLicense(LocalLicenseID, ApplicationID, DriverID);
+        }
+
+        public static DataTable GetAllPersonLicenses(string NationalNo)
+        {
+            return clsInternationalLicensesDataAccess.GetAllPersonLicenses(NationalNo);
         }
 
     }

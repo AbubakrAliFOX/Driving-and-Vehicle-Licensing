@@ -159,6 +159,7 @@
             this.Name = "frmLicenseHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "License History";
+            this.Load += new System.EventHandler(this.frmLicenseHistory_Load);
             this.groupBox1.ResumeLayout(false);
             this.tcLicenses.ResumeLayout(false);
             this.tpLocalLicenses.ResumeLayout(false);

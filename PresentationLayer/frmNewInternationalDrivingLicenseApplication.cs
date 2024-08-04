@@ -13,21 +13,22 @@ namespace PresentationLayer
 {
     public partial class frmNewInternationalDrivingLicenseApplication : Form
     {
+        clsInternationalLicense InternationalLicense;
         public frmNewInternationalDrivingLicenseApplication()
         {
             InitializeComponent();
         }
 
-        private void FillLabels(clsInternationalLicense LicenseInfo)
+        private void FillLabels()
         {
-            lblApplicationID.Text = LicenseInfo.ILApplicationID.ToString();
-            lblApplicationDate.Text = LicenseInfo.ApplicationDate.ToString("dd MMM yyyy");
-            lblIssueDate.Text = LicenseInfo.IssueDate.ToString("dd MMM yyyy");
-            lblExpirationDate.Text = LicenseInfo.ExpirationDate.ToString("dd MMM yyyy");
-            lblFees.Text = LicenseInfo.PaidFees.ToString();
-            lblUser.Text = LicenseInfo.CreatedByUser;
-            lblLicenseID.Text = LicenseInfo.LocalLicense.LicenseID.ToString();
-            lblInternationalLicenseID.Text = LicenseInfo.InternationalLicenseID.ToString();
+            lblApplicationID.Text = InternationalLicense.ILApplicationID.ToString();
+            lblApplicationDate.Text = InternationalLicense.ApplicationDate.ToString("dd MMM yyyy");
+            lblIssueDate.Text = InternationalLicense.IssueDate.ToString("dd MMM yyyy");
+            lblExpirationDate.Text = InternationalLicense.ExpirationDate.ToString("dd MMM yyyy");
+            lblFees.Text = InternationalLicense.PaidFees.ToString();
+            lblUser.Text = InternationalLicense.CreatedByUser;
+            lblLicenseID.Text = InternationalLicense.LocalLicense.LicenseID.ToString();
+            lblInternationalLicenseID.Text = InternationalLicense.InternationalLicenseID.ToString();
         }
 
 
@@ -46,6 +47,12 @@ namespace PresentationLayer
 
             if (!clsInternationalLicense.HasInternationalLicense(ctrlFindLicense1.LicenseInfo.LicenseID))
             {
+                if (!clsLicense.IsLicenseActive(ctrlFindLicense1.LicenseInfo.LicenseID))
+                {
+                    MessageBox.Show("License is inactive!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 int InternationalLicenseID = clsInternationalLicense.IssueInternationalLicense(ctrlFindLicense1.LicenseInfo.LicenseID);
 
                 if (InternationalLicenseID == -1)
@@ -59,8 +66,9 @@ namespace PresentationLayer
                 else
                 {
                     MessageBox.Show("Internatinoal license issued successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    clsInternationalLicense InternationalLicense = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID(ctrlFindLicense1.LicenseInfo.LicenseID);
-                    FillLabels(InternationalLicense);
+                    InternationalLicense = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID(ctrlFindLicense1.LicenseInfo.LicenseID);
+                    FillLabels();
+                    llLicenseInfo.Enabled = true;
                 }
 
             }
@@ -68,6 +76,12 @@ namespace PresentationLayer
             {
                 MessageBox.Show("Driver already has an international license", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void llLicensesHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory(InternationalLicense.LocalLicense.PersonID);
+            LicenseHistory.ShowDialog();
         }
     }
 }
