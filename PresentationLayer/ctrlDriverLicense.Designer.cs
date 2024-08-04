@@ -193,7 +193,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(514, 56);
+            this.label2.Location = new System.Drawing.Point(514, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 22);
             this.label2.TabIndex = 72;
@@ -212,7 +212,7 @@
             // 
             this.lblIsActive.AutoSize = true;
             this.lblIsActive.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIsActive.Location = new System.Drawing.Point(638, 56);
+            this.lblIsActive.Location = new System.Drawing.Point(638, 63);
             this.lblIsActive.Name = "lblIsActive";
             this.lblIsActive.Size = new System.Drawing.Size(0, 21);
             this.lblIsActive.TabIndex = 71;

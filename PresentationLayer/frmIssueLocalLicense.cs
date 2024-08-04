@@ -13,14 +13,14 @@ namespace PresentationLayer
 {
     public partial class frmIssueLocalLicense : Form
     {
-        clsApplication ApplicationDetails;
+        clsLocalDrivingLicensApplication LocalApplicationDetails;
         public frmIssueLocalLicense(int LDLApplicationID)
         {
             InitializeComponent();
 
-            ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
+            LocalApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
 
-            ctrlApplicationInfo.ApplicationInfo = ApplicationDetails;
+            ctrlApplicationInfo.LocalApplicationInfo = LocalApplicationDetails;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -32,9 +32,12 @@ namespace PresentationLayer
         {
             if (MessageBox.Show("Issue License?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
-                if (clsLicense.IssueLicense(ApplicationDetails, tbNotes.Text, 1) != -1)
+                if (clsLicense.IssueLicense(LocalApplicationDetails, tbNotes.Text, 1) != -1)
                 {
                     MessageBox.Show("License Issued Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show("An Error Occured!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 

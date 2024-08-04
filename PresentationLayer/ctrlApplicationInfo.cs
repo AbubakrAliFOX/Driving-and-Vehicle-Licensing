@@ -18,44 +18,44 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
-        clsApplication ApplicationDetails;
-        public clsApplication ApplicationInfo
+        clsLocalDrivingLicensApplication LocalLicenseApplicationDetails;
+        public clsLocalDrivingLicensApplication LocalApplicationInfo
         {
             set
             {
-                ApplicationDetails = value;
-                if (ApplicationDetails != null)
+                LocalLicenseApplicationDetails = value;
+                if (LocalLicenseApplicationDetails != null)
                 {
                     FillLabels();
                 }
             }
 
-            get { return ApplicationDetails; }
+            get { return LocalLicenseApplicationDetails; }
         }
 
 
         private void FillLabels()
         {
-            lblDLAppID.Text = ApplicationDetails.LocalDrivingLicenseApplicationID.ToString();
-            lblApplicationID.Text = ApplicationDetails.ApplicationID.ToString();
+            lblDLAppID.Text = LocalLicenseApplicationDetails.LocalDrivingLicenseApplicationID.ToString();
+            lblApplicationID.Text = LocalLicenseApplicationDetails.Application.ApplicationID.ToString();
 
-            lblClass.Text = ApplicationDetails.LicenseClassName;
-            lblType.Text = ApplicationDetails.ApplicationType;
-            lblStatus.Text = ApplicationDetails.ApplicationStatus;
-            lblFees.Text = ApplicationDetails.Fees.ToString();
-            lblApplicantName.Text = ApplicationDetails.ApplicantName;
+            lblClass.Text = LocalLicenseApplicationDetails.LicenseClassName;
+            lblType.Text = LocalLicenseApplicationDetails.Application.ApplicationType;
+            lblStatus.Text = LocalLicenseApplicationDetails.Application.ApplicationStatus;
+            lblFees.Text = LocalLicenseApplicationDetails.Application.Fees.ToString();
+            lblApplicantName.Text = LocalLicenseApplicationDetails.Application.ApplicantName;
 
-            lblDate.Text = ApplicationDetails.Date.ToString("dd MMM yyyy");
-            lblStatusDate.Text = ApplicationDetails.StatusDate.ToString("dd MMM yyyy");
+            lblDate.Text = LocalLicenseApplicationDetails.Application.Date.ToString("dd MMM yyyy");
+            lblStatusDate.Text = LocalLicenseApplicationDetails.Application.StatusDate.ToString("dd MMM yyyy");
 
-            lblUser.Text = ApplicationDetails.CreatedByUser;
+            lblUser.Text = LocalLicenseApplicationDetails.Application.CreatedByUser;
 
-            lblPassedTests.Text = $"{clsApplication.PassedTestsCount(ApplicationDetails.LocalDrivingLicenseApplicationID).ToString()}/3";
+            lblPassedTests.Text = $"{clsApplication.PassedTestsCount(LocalLicenseApplicationDetails.LocalDrivingLicenseApplicationID).ToString()}/3";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ShowPersonDetails PersonDetails = new ShowPersonDetails(ApplicationDetails.ApplicantID);
+            ShowPersonDetails PersonDetails = new ShowPersonDetails(LocalLicenseApplicationDetails.Application.ApplicantID);
             PersonDetails.ShowDialog();
         }
     }

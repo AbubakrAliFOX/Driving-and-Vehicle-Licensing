@@ -79,11 +79,11 @@ namespace PresentationLayer
 
         private void tsmCancelApplication_Click(object sender, EventArgs e)
         {
-            clsApplication ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            clsLocalDrivingLicensApplication ApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
 
-            if (ApplicationDetails.ApplicationStatus == "New")
+            if (ApplicationDetails.Application.ApplicationStatus == "New")
             {
-                if (clsApplication.UpdateApplicationStatus(ApplicationDetails.ApplicationID, 2))
+                if (clsApplication.UpdateApplicationStatus(ApplicationDetails.Application.ApplicationID, 2))
                 {
                     MessageBox.Show("Application Cancelled Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -98,11 +98,11 @@ namespace PresentationLayer
 
         private void tsmDeleteApplication_Click(object sender, EventArgs e)
         {
-            clsApplication ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            clsLocalDrivingLicensApplication ApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
 
-            if (ApplicationDetails.ApplicationStatus != "Completed")
+            if (ApplicationDetails.Application.ApplicationStatus != "Completed")
             {
-                if (clsApplication.DeleteApplication(ApplicationDetails.ApplicationID))
+                if (clsApplication.DeleteApplication(ApplicationDetails.Application.ApplicationID))
                 {
                     MessageBox.Show("Application Deleted Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

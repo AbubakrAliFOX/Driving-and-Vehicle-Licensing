@@ -37,7 +37,7 @@
             // 
             // ctrlApplicationInfo
             // 
-            this.ctrlApplicationInfo.ApplicationInfo = null;
+            this.ctrlApplicationInfo.LocalApplicationInfo = null;
             this.ctrlApplicationInfo.Location = new System.Drawing.Point(12, 12);
             this.ctrlApplicationInfo.Name = "ctrlApplicationInfo";
             this.ctrlApplicationInfo.Size = new System.Drawing.Size(774, 354);

@@ -27,8 +27,8 @@ namespace BusinessLayer
         {
             
         }
+
         public clsApplication(
-            int LocalDrivingLicenseApplicationID,
             int ApplicationID,
             int ApplicantID,
             string ApplicantName,
@@ -37,12 +37,9 @@ namespace BusinessLayer
             string CreatedByUser,
             DateTime StatusDate,
             DateTime Date,
-            int LicenseClassID,
-            string LicenseClassName,
             decimal Fees
         )
         {
-            this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.ApplicationID = ApplicationID;
             this.ApplicantID = ApplicantID;
             this.ApplicantName = ApplicantName;
@@ -51,8 +48,6 @@ namespace BusinessLayer
             this.CreatedByUser = CreatedByUser;
             this.StatusDate = StatusDate;
             this.Date = Date;
-            this.LicenseClassID = LicenseClassID;
-            this.LicenseClassName = LicenseClassName;
             this.Fees = Fees;
         }
 
@@ -60,9 +55,9 @@ namespace BusinessLayer
         {
             return clsApplicationsDataAccess.GetApplicationTypes();
         }
-        public static int GetApplicationTypeByName(string ApplicationID)
+        public static int GetApplicationTypeByName(string ApplicationName)
         {
-            return clsApplicationsDataAccess.GetApplicationTypeByName(ApplicationID);
+            return clsApplicationsDataAccess.GetApplicationTypeByName(ApplicationName);
         }
         public static bool UpdateApplicationType(int ApplicationID, string ApplicationTitle, decimal ApplicationFees)
         {
@@ -79,16 +74,14 @@ namespace BusinessLayer
             return clsApplicationsDataAccess.DeleteApplicationByID(ApplicationID);
         }
 
-        public static decimal GetApplicationFees(int ApplicationID)
+        public static decimal GetApplicationFees(int ApplicationTypeID)
         {
-            return clsApplicationsDataAccess.GetApplicationFees(ApplicationID);
+            return clsApplicationsDataAccess.GetApplicationFees(ApplicationTypeID);
         }
-
-
-        public static clsApplication FindLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
+        
+        public static clsApplication FindApplicationByID(int ApplicationID)
         {
 
-            int ApplicationID = -1;
             int ApplicantID = -1;
             string ApplicantName = "";
             string ApplicationType = "";
@@ -96,14 +89,11 @@ namespace BusinessLayer
             string CreatedByUser = "";
             DateTime StatusDate = DateTime.Now;
             DateTime Date = DateTime.Now;
-            int LicenseClassID = 0;
-            string LicenseClassName = "";
             decimal Fees = 0;
 
             if (
-                clsApplicationsDataAccess.FindLocalDrivingLicenseApplicationByID(
-                    LocalDrivingLicenseApplicationID,
-                    ref ApplicationID,
+                clsApplicationsDataAccess.FindApplicationByID(
+                    ApplicationID,
                     ref ApplicantName,
                     ref ApplicationType,
                     ref ApplicantID,
@@ -111,14 +101,11 @@ namespace BusinessLayer
                     ref CreatedByUser,
                     ref StatusDate,
                     ref Date,
-                    ref LicenseClassID,
-                    ref LicenseClassName,
                     ref Fees
                 )
             )
             {
                 return new clsApplication(
-                    LocalDrivingLicenseApplicationID,
                     ApplicationID,
                     ApplicantID,
                     ApplicantName,
@@ -127,8 +114,6 @@ namespace BusinessLayer
                     CreatedByUser,
                     StatusDate,
                     Date,
-                    LicenseClassID,
-                    LicenseClassName,
                     Fees
                 );
             }

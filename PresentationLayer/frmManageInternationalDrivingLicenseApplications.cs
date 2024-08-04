@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,27 +13,28 @@ namespace PresentationLayer
 {
     public partial class frmManageInternationalDrivingLicenseApplications : Form
     {
-        ctrlDataPage LocalLicenseApplicationsPage;
+        ctrlDataPage InternationalLicenseApplicationsPage;
+        clsInternationalLicense InternationalLicenseDetails;
         public frmManageInternationalDrivingLicenseApplications()
         {
             InitializeComponent();
 
-            LocalLicenseApplicationsPage = new ctrlDataPage();
+            InternationalLicenseApplicationsPage = new ctrlDataPage();
 
-            LocalLicenseApplicationsPage.Title = "International Driving Licenses";
-            LocalLicenseApplicationsPage.Location = new System.Drawing.Point(0, 0);
-            LocalLicenseApplicationsPage.Visible = true;
+            InternationalLicenseApplicationsPage.Title = "International Driving Licenses";
+            InternationalLicenseApplicationsPage.Location = new System.Drawing.Point(0, 0);
+            InternationalLicenseApplicationsPage.Visible = true;
 
-            LocalLicenseApplicationsPage.SetAddNewClickEventHandler(AddNewApplication_Click);
+            InternationalLicenseApplicationsPage.SetAddNewClickEventHandler(AddNewApplication_Click);
 
-            this.Controls.Add(LocalLicenseApplicationsPage);
+            this.Controls.Add(InternationalLicenseApplicationsPage);
 
             FormatLayout();
         }
 
         private void FormatLayout()
         {
-            DataGridView dgv = LocalLicenseApplicationsPage.Controls.OfType<DataGridView>().FirstOrDefault();
+            DataGridView dgv = InternationalLicenseApplicationsPage.Controls.OfType<DataGridView>().FirstOrDefault();
             if (dgv != null)
             {
                 dgv.Columns["Int.LicenseID"].HeaderText = "Int.License ID";
@@ -59,12 +61,33 @@ namespace PresentationLayer
         {
             frmNewInternationalDrivingLicenseApplication NewApplication = new frmNewInternationalDrivingLicenseApplication();
             NewApplication.ShowDialog();
-            LocalLicenseApplicationsPage.RefreshData();
+            InternationalLicenseApplicationsPage.RefreshData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tsmShowPersonDetails_Click(object sender, EventArgs e)
+        {
+            InternationalLicenseDetails = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID((int)InternationalLicenseApplicationsPage.dgv.CurrentRow.Cells[1].Value);
+            ShowPersonDetails PersonDetails = new ShowPersonDetails(InternationalLicenseDetails.LocalLicense.PersonID);
+            PersonDetails.ShowDialog();
+        }
+
+        private void tsmShowLicenseDetails_Click(object sender, EventArgs e)
+        {
+            InternationalLicenseDetails = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID((int)InternationalLicenseApplicationsPage.dgv.CurrentRow.Cells[1].Value);
+            frmInternationalLicenseDetails InternationalLicenseForm = new frmInternationalLicenseDetails(InternationalLicenseDetails.InternationalLicenseID, InternationalLicenseDetails.LocalLicense.LicenseID);
+            InternationalLicenseForm.ShowDialog();
+        }
+
+        private void tsmShowPersonLicenseHistory_Click(object sender, EventArgs e)
+        {
+            InternationalLicenseDetails = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID((int)InternationalLicenseApplicationsPage.dgv.CurrentRow.Cells[1].Value);
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory(InternationalLicenseDetails.LocalLicense.PersonID);
+            LicenseHistory.ShowDialog();
         }
     }
 }

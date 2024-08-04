@@ -79,5 +79,19 @@ namespace PresentationLayer
         {
             this.Close();
         }
+
+        private void tsmShowLicenseDetails_Click(object sender, EventArgs e)
+        {
+            clsInternationalLicense InternationalLicenseDetails = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID((int)dgvInternationalLicenses.CurrentRow.Cells[1].Value);
+            frmInternationalLicenseDetails InternationalLicenseForm = new frmInternationalLicenseDetails(InternationalLicenseDetails.InternationalLicenseID, InternationalLicenseDetails.LocalLicense.LicenseID);
+            InternationalLicenseForm.ShowDialog();
+        }
+
+        private void cmsLocalLicenceDetails_Opening(object sender, CancelEventArgs e)
+        {
+            //clsLicense LocalLicense = clsLicense.FindLicenseByID((int)dgvLocalLicenses.CurrentRow.Cells[0].Value);
+            //clsApplication ApplicationDetails = clsApplication.
+            //frmLicenseDetails LicenseDetails = new frmLicenseDetails(LocalLicense.)
+        }
     }
 }

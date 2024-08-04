@@ -246,6 +246,37 @@ namespace DataLayer
 
             return (ApplicationStatus != 2 && FoundApplication);
         }
+        public static bool DeactivateLicense(int LicenseID)
+        {
+            int RowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                    @"Update Licenses 
+                        Set IsActive = 0
+                    Where LicenseID = @LicenseID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                connection.Open();
+                RowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return RowsAffected > 0;
+        }
 
         public static bool IsLicenseActive(int LicenseID)
         {
@@ -279,8 +310,43 @@ namespace DataLayer
 
             return IsLicenseActive;
         }
+        
+        public static bool IsLicenseExpired(int LicenseID)
+        {
+            DateTime ExpirationDate = DateTime.Now;
 
+            string connectionString = clsDataAccessSettings.connectionString;
 
+            string query = "SELECT ExpirationDate FROM Licenses WHERE LicenseID = @LicenseID";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    ExpirationDate = (DateTime)reader["ExpirationDate"];
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                // Optionally rethrow or handle the exception as needed
+            }
+
+            return ExpirationDate.CompareTo(DateTime.Now) < 0;
+        }
+        
         public static int IssueLicense(int DriverID, int ApplicationID, int LicenseClassID, string IssueNotes, decimal PaidFees, int IssueReason)
         {
             int LicenseID = -1;

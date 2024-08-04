@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,25 +66,35 @@ namespace BusinessLayer
             return clsLicensesDataAccess.PersonHasApplicationWithLicenseClass(PersonID, ClassID);
         }
 
+        public static bool DeactivateLicense(int LicenseID)
+        {
+            return clsLicensesDataAccess.DeactivateLicense(LicenseID);
+        }
+        
         public static bool IsLicenseActive(int LicenseID)
         {
             return clsLicensesDataAccess.IsLicenseActive(LicenseID);
         }
-
-        public static int IssueLicense(clsApplication ApplicationDetails, string IssueNotes, int IssueReason)
+        
+        public static bool IsLicenseExpired(int LicenseID)
         {
-            int DriverID = clsDriver.GetDriverID(ApplicationDetails.ApplicantID);
+            return clsLicensesDataAccess.IsLicenseExpired(LicenseID);
+        }
 
-            if (clsDriver.GetDriverID(ApplicationDetails.ApplicantID) == -1)
+        public static int IssueLicense(clsLocalDrivingLicensApplication LocalApplicationDetails, string IssueNotes, int IssueReason)
+        {
+            int DriverID = clsDriver.GetDriverID(LocalApplicationDetails.Application.ApplicantID);
+
+            if (clsDriver.GetDriverID(LocalApplicationDetails.Application.ApplicantID) == -1)
             {
-                DriverID = clsDriver.CreateDriver(ApplicationDetails.ApplicantID);
+                DriverID = clsDriver.CreateDriver(LocalApplicationDetails.Application.ApplicantID);
             }
 
-            int ApplicationID = ApplicationDetails.ApplicationID;
+            int ApplicationID = LocalApplicationDetails.Application.ApplicationID;
 
-            int LicenseClassID = ApplicationDetails.LicenseClassID;
+            int LicenseClassID = LocalApplicationDetails.LicenseClassID;
 
-            decimal PaidFees = clsApplication.GetApplicationFees(clsApplication.GetApplicationTypeByName(ApplicationDetails.ApplicationType));
+            decimal PaidFees = clsApplication.GetApplicationFees(clsApplication.GetApplicationTypeByName(LocalApplicationDetails.Application.ApplicationType));
 
             int IssuedLicenseID = clsLicensesDataAccess.IssueLicense(DriverID, ApplicationID, LicenseClassID, IssueNotes, PaidFees, IssueReason);
 
@@ -97,8 +108,6 @@ namespace BusinessLayer
                 return -1;
             }
         }
-        
-        
         public static clsLicense FindLicenseByID(int LicenseID)
         {
             int PersonID = 0;
@@ -216,5 +225,40 @@ namespace BusinessLayer
             return clsLicensesDataAccess.GetAllPersonLicenses(NationalNo);
         }
 
+        public static int RenewLicense(int LicenseID, string RenewNotes)
+        {
+            clsLicense LicenseInfo = FindLicenseByID(LicenseID);
+            
+            if (IsLicenseExpired(LicenseID))
+            {
+                if(DeactivateLicense(LicenseID))
+                {
+                    int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, 2);
+
+                    // Fees for a new license
+                    decimal PaidFees = clsApplication.GetApplicationFees(1);
+
+                    int RenewedLicenseID = clsLicensesDataAccess.IssueLicense(LicenseInfo.DriverID, ApplicationID, LicenseInfo.LicenseClassID, RenewNotes, PaidFees, 2);
+
+                    bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);
+
+                    if (RenewedLicenseID != -1 && IsStatusUpdated)
+                    {
+                        return RenewedLicenseID;
+                    }
+                    else
+                    {
+                        return -3;
+                    }
+                } else
+                {
+                    return -2;
+                }
+
+            } else
+            {
+                return -1;
+            }
+        }
     }
 }

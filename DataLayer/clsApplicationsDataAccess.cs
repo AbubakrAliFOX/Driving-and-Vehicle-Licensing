@@ -180,18 +180,18 @@ namespace DataLayer
             return rowsAffected > 0;
         }
 
-        public static decimal GetApplicationFees(int ApplicationID)
+        public static decimal GetApplicationFees(int ApplicationTypeID)
         {
             decimal Fees = 0;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
             string query =
-                "SELECT ApplicationFees FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationID";
+                "SELECT ApplicationFees FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
-            cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            cmd.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
 
             try
             {
@@ -260,6 +260,67 @@ namespace DataLayer
                     Fees = (decimal)reader["Fees"];
                     LicenseClassID = (int)reader["LicenseClassID"];
                     LicenseClassName = (string)reader["DrivingClass"];
+
+
+                }
+                else
+                {
+                    isFound = false;
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+        
+        public static bool FindApplicationByID(
+            int ApplicationID,
+            ref string ApplicantName,
+            ref string ApplicationType,
+            ref int ApplicantID,
+            ref string ApplicationStatus,
+            ref string CreatedByUser,
+            ref DateTime StatusDate,
+            ref DateTime Date,
+            ref decimal Fees
+        )
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT Applications.PaidFees AS Fees, People.PersonID, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, \r\nApplications.ApplicationDate, CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' ELSE 'Completed' END AS ApplicationStatus, \r\nApplications.ApplicationID, Applications.LastStatusDate AS StatusDate, Users.UserName AS CreatedByUser, ApplicationTypes.ApplicationTypeTitle AS ApplicationType \r\nFROM Applications \r\nINNER JOIN People ON Applications.ApplicantPersonID = People.PersonID INNER JOIN ApplicationTypes ON Applications.ApplicationTypeID = ApplicationTypes.ApplicationTypeID \r\nINNER JOIN Users ON Applications.CreatedByUserID = Users.UserID WHERE Applications.ApplicationID = @ApplicationID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+
+                    ApplicantID = (int)reader["PersonID"];
+                    ApplicantName = (string)reader["FullName"];
+                    ApplicationType = (string)reader["ApplicationType"];
+                    ApplicationStatus = (string)reader["ApplicationStatus"];
+                    CreatedByUser = (string)reader["CreatedByUser"];
+                    StatusDate = (DateTime)reader["StatusDate"];
+                    Date = (DateTime)reader["ApplicationDate"];
+                    Fees = (decimal)reader["Fees"];
 
 
                 }

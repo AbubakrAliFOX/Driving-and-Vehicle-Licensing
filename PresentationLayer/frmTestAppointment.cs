@@ -13,7 +13,7 @@ namespace PresentationLayer
 {
     public partial class frmTestAppointment : Form
     {
-        clsApplication ApplicationDetails;
+        clsLocalDrivingLicensApplication LocalApplicationDetails;
         int LDLAppID;
         int TestTypeID;
         string[] TestTypeName = new string[] {"Vision", "Written", "Field"};
@@ -21,12 +21,12 @@ namespace PresentationLayer
         {
             InitializeComponent();
 
-            ApplicationDetails = clsApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
+            LocalApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
             LDLAppID = LDLApplicationID;
             TestTypeID = TestType;
             lblTitle.Text = $"{TestTypeName[TestTypeID-1]} Test Appointments";
 
-            ctrlApplicationInfo.ApplicationInfo = ApplicationDetails;
+            ctrlApplicationInfo.LocalApplicationInfo = LocalApplicationDetails;
             RefreshData();
             FormatDataGridView();
         }
@@ -73,11 +73,11 @@ namespace PresentationLayer
 
                     if (clsTest.HasApplicantFailedTest(LDLAppID, TestTypeID))
                     {
-                        Appointment = new frmScheduleTest(ApplicationDetails, TestTypeID);
+                        Appointment = new frmScheduleTest(LocalApplicationDetails, TestTypeID);
                     }
                     else
                     {
-                        Appointment = new frmScheduleTest(ApplicationDetails, TestTypeID);
+                        Appointment = new frmScheduleTest(LocalApplicationDetails, TestTypeID);
                     }
 
                     Appointment.ShowDialog();
@@ -106,7 +106,7 @@ namespace PresentationLayer
 
             } else
             {
-                frmScheduleTest ScheduleTest = new frmScheduleTest(ApplicationDetails, TestTypeID);
+                frmScheduleTest ScheduleTest = new frmScheduleTest(LocalApplicationDetails, TestTypeID);
 
                 ScheduleTest.IsEditMode = true;
                 ScheduleTest.AppointmentID = (int)dgvAppointments.CurrentRow.Cells[0].Value;
@@ -128,7 +128,7 @@ namespace PresentationLayer
             }
             else
             {
-                frmTakeTest TakeTest = new frmTakeTest(ApplicationDetails, (int)dgvAppointments.CurrentRow.Cells[0].Value);
+                frmTakeTest TakeTest = new frmTakeTest(LocalApplicationDetails, (int)dgvAppointments.CurrentRow.Cells[0].Value);
                 TakeTest.ShowDialog();
                 RefreshData();
             }

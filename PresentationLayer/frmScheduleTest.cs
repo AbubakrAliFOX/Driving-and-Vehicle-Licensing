@@ -13,7 +13,7 @@ namespace PresentationLayer
 {
     public partial class frmScheduleTest : Form
     {
-        clsApplication ApplicationDetails;
+        clsLocalDrivingLicensApplication LocalApplicationDetails;
 
         int LDLApplicationID;
         int TestTypeID;
@@ -21,14 +21,14 @@ namespace PresentationLayer
 
         string[] TestTypeName = new string[] { "Vision", "Written", "Field" };
 
-        public frmScheduleTest(clsApplication Application, int TestType)
+        public frmScheduleTest(clsLocalDrivingLicensApplication LocalApplication, int TestType)
         {
             InitializeComponent();
 
-            ApplicationDetails = Application;
+            LocalApplicationDetails = LocalApplication;
 
 
-            LDLApplicationID = Application.LocalDrivingLicenseApplicationID;
+            LDLApplicationID = LocalApplication.LocalDrivingLicenseApplicationID;
             TestTypeID = TestType;
             lblTitle.Text = $"Schedule {TestTypeName[TestTypeID - 1]} Test";
             TestFees = clsTest.GetTestFees(TestTypeID);
@@ -88,11 +88,11 @@ namespace PresentationLayer
         private void FillLabels()
         {
             lblDLAppID.Text = LDLApplicationID.ToString();
-            lblApplicationID.Text = ApplicationDetails.ApplicationID.ToString();
+            lblApplicationID.Text = LocalApplicationDetails.Application.ApplicationID.ToString();
 
-            lblClass.Text = ApplicationDetails.LicenseClassName;
+            lblClass.Text = LocalApplicationDetails.LicenseClassName;
 
-            lblApplicantName.Text = ApplicationDetails.ApplicantName;
+            lblApplicantName.Text = LocalApplicationDetails.Application.ApplicantName;
 
             lblFees.Text = TestFees.ToString();
 

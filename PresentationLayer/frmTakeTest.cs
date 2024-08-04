@@ -13,13 +13,13 @@ namespace PresentationLayer
 {
     public partial class frmTakeTest : Form
     {
-        clsApplication ApplicationDetails;
+        clsLocalDrivingLicensApplication LocalApplicationDetails;
         int Appointment;
-        public frmTakeTest(clsApplication Application, int AppointmentID)
+        public frmTakeTest(clsLocalDrivingLicensApplication LocalApplication, int AppointmentID)
         {
             InitializeComponent();
 
-            ApplicationDetails = Application;
+            LocalApplicationDetails = LocalApplication;
             Appointment = AppointmentID;
 
             FillLabels();
@@ -27,12 +27,12 @@ namespace PresentationLayer
 
         private void FillLabels()
         {
-            lblDLAppID.Text = ApplicationDetails.LocalDrivingLicenseApplicationID.ToString();
-            lblApplicationID.Text = ApplicationDetails.ApplicationID.ToString();
+            lblDLAppID.Text = LocalApplicationDetails.LocalDrivingLicenseApplicationID.ToString();
+            lblApplicationID.Text = LocalApplicationDetails.Application.ApplicationID.ToString();
 
-            lblClass.Text = ApplicationDetails.LicenseClassName;
+            lblClass.Text = LocalApplicationDetails.LicenseClassName;
 
-            lblApplicantName.Text = ApplicationDetails.ApplicantName;
+            lblApplicantName.Text = LocalApplicationDetails.Application.ApplicantName;
 
             //lblFees.Text = TestFees.ToString();
         }

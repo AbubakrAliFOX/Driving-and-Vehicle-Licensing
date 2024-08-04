@@ -161,6 +161,7 @@
             // 
             this.tsmIssueDrivingLicenseFirstTime.Enabled = false;
             this.tsmIssueDrivingLicenseFirstTime.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.tsmIssueDrivingLicenseFirstTime.Image = ((System.Drawing.Image)(resources.GetObject("tsmIssueDrivingLicenseFirstTime.Image")));
             this.tsmIssueDrivingLicenseFirstTime.Name = "tsmIssueDrivingLicenseFirstTime";
             this.tsmIssueDrivingLicenseFirstTime.Size = new System.Drawing.Size(418, 36);
             this.tsmIssueDrivingLicenseFirstTime.Text = "Issue Driving License (First Time)";
@@ -170,6 +171,7 @@
             // 
             this.tsmShowLicense.Enabled = false;
             this.tsmShowLicense.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.tsmShowLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowLicense.Image")));
             this.tsmShowLicense.Name = "tsmShowLicense";
             this.tsmShowLicense.Size = new System.Drawing.Size(418, 36);
             this.tsmShowLicense.Text = "Show License";
@@ -179,6 +181,7 @@
             // 
             this.tsmShowPersonLicenseHistory.Enabled = false;
             this.tsmShowPersonLicenseHistory.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.tsmShowPersonLicenseHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowPersonLicenseHistory.Image")));
             this.tsmShowPersonLicenseHistory.Name = "tsmShowPersonLicenseHistory";
             this.tsmShowPersonLicenseHistory.Size = new System.Drawing.Size(418, 36);
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";

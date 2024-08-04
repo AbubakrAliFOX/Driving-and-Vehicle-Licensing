@@ -33,13 +33,13 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
+            this.cmsOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmTakeTest = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.cmsOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmTakeTest = new System.Windows.Forms.ToolStripMenuItem();
             this.ctrlApplicationInfo = new PresentationLayer.ctrlApplicationInfo();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.cmsOptions.SuspendLayout();
@@ -79,6 +79,33 @@
             this.dgvAppointments.RowTemplate.Height = 24;
             this.dgvAppointments.Size = new System.Drawing.Size(772, 150);
             this.dgvAppointments.TabIndex = 33;
+            // 
+            // cmsOptions
+            // 
+            this.cmsOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmEdit,
+            this.tsmTakeTest});
+            this.cmsOptions.Name = "cmsDrivers";
+            this.cmsOptions.Size = new System.Drawing.Size(151, 60);
+            // 
+            // tsmEdit
+            // 
+            this.tsmEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmEdit.Image")));
+            this.tsmEdit.Name = "tsmEdit";
+            this.tsmEdit.Size = new System.Drawing.Size(150, 28);
+            this.tsmEdit.Text = "Edit";
+            this.tsmEdit.Click += new System.EventHandler(this.tsmEdit_Click);
+            // 
+            // tsmTakeTest
+            // 
+            this.tsmTakeTest.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmTakeTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmTakeTest.Image")));
+            this.tsmTakeTest.Name = "tsmTakeTest";
+            this.tsmTakeTest.Size = new System.Drawing.Size(150, 28);
+            this.tsmTakeTest.Text = "Take Test";
+            this.tsmTakeTest.Click += new System.EventHandler(this.tsmTakeTest_Click);
             // 
             // btnAddNew
             // 
@@ -123,36 +150,9 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // cmsOptions
-            // 
-            this.cmsOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmEdit,
-            this.tsmTakeTest});
-            this.cmsOptions.Name = "cmsDrivers";
-            this.cmsOptions.Size = new System.Drawing.Size(151, 60);
-            // 
-            // tsmEdit
-            // 
-            this.tsmEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmEdit.Image")));
-            this.tsmEdit.Name = "tsmEdit";
-            this.tsmEdit.Size = new System.Drawing.Size(150, 28);
-            this.tsmEdit.Text = "Edit";
-            this.tsmEdit.Click += new System.EventHandler(this.tsmEdit_Click);
-            // 
-            // tsmTakeTest
-            // 
-            this.tsmTakeTest.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmTakeTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmTakeTest.Image")));
-            this.tsmTakeTest.Name = "tsmTakeTest";
-            this.tsmTakeTest.Size = new System.Drawing.Size(150, 28);
-            this.tsmTakeTest.Text = "Take Test";
-            this.tsmTakeTest.Click += new System.EventHandler(this.tsmTakeTest_Click);
-            // 
             // ctrlApplicationInfo
             // 
-            this.ctrlApplicationInfo.ApplicationInfo = null;
+            this.ctrlApplicationInfo.LocalApplicationInfo = null;
             this.ctrlApplicationInfo.Location = new System.Drawing.Point(21, 101);
             this.ctrlApplicationInfo.Name = "ctrlApplicationInfo";
             this.ctrlApplicationInfo.Size = new System.Drawing.Size(774, 354);
