@@ -14,7 +14,6 @@ namespace PresentationLayer
     public partial class frmManageLocalDrivingLicenseApplications : Form
     {
         ctrlDataPage LocalLicenseApplicationsPage;
-
         public frmManageLocalDrivingLicenseApplications()
         {
             
@@ -22,7 +21,7 @@ namespace PresentationLayer
 
             LocalLicenseApplicationsPage = new ctrlDataPage();
 
-            LocalLicenseApplicationsPage.Title = "LocalDrivingLicenses";
+            LocalLicenseApplicationsPage.Title = "Local Driving Licenses";
             LocalLicenseApplicationsPage.Location = new System.Drawing.Point(0, 0);
             LocalLicenseApplicationsPage.Visible = true;
 

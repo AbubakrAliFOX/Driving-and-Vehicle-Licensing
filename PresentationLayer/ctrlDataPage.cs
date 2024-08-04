@@ -47,7 +47,7 @@ namespace PresentationLayer
         {
             get
             {
-                _SearchableColumns.TryGetValue(Title, out string [] SearchableItems);
+                _SearchableColumns.TryGetValue(Title.Replace(" ", ""), out string [] SearchableItems);
                 return SearchableItems;
             }
         }
@@ -76,7 +76,8 @@ namespace PresentationLayer
             { "People", clsPerson.GetAllPeople },
             { "Drivers", clsDriver.GetAllDrivers },
             { "Users", clsUser.GetAllUsers },
-            { "LocalDrivingLicenses", clsApplication.GetLocalDrivingLicenseApplications}
+            { "LocalDrivingLicenses", clsApplication.GetLocalDrivingLicenseApplications},
+            { "InternationalDrivingLicenses", clsInternationalLicense.GetAllLicenses}
         };
 
         private Dictionary<string, string[]> _SearchableColumns = new Dictionary<string, string[]>
@@ -84,12 +85,13 @@ namespace PresentationLayer
             { "People", new string[] { "None", "Person ID", "National No", "Full Name", "Nationality", "Gender", "Phone", "Email" }},
             { "Drivers", new string[] { "None","Driver ID","National No","Created By User", "Active Licences" }},
             { "Users", new string[] { "None", "User ID", "Full Name", "User Name" }},
-            { "LocalDrivingLicenses", new string[] { "None", "L.D.L.AppID", "National No", "Full Name", "ApplicationStatus" }}
+            { "LocalDrivingLicenses", new string[] { "None", "L.D.L.AppID", "National No", "Full Name", "Application Status" }},
+            { "InternationalDrivingLicenses", new string[] { "None", "Int.License ID", "L.License ID", "Application ID", "Driver ID"}}
         };
 
         public void RefreshData ()
         {
-            DataSources.TryGetValue(Title, out var DataSourceTable);
+            DataSources.TryGetValue(Title.Replace(" ",""), out var DataSourceTable);
             Data = DataSourceTable();
             RefreshRecordsNumber();
         }

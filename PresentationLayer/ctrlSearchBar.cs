@@ -117,12 +117,12 @@ namespace PresentationLayer
                 {
                     int SearchTerm;
                     int.TryParse(tbSearch.Text, out SearchTerm);
-                    FilteredData.RowFilter = $"{SearchColumn} = {SearchTerm}";
+                    FilteredData.RowFilter = $"[{SearchColumn}] = {SearchTerm}";
 
                 }
                 else
                 {
-                    FilteredData.RowFilter = $"{SearchColumn} LIKE '%{tbSearch.Text}%'";
+                    FilteredData.RowFilter = $"[{SearchColumn}] LIKE '%{tbSearch.Text}%'";
 
                 }
 

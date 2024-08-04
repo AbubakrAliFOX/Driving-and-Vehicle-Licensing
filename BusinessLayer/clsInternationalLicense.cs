@@ -30,6 +30,15 @@ namespace BusinessLayer
             this.PaidFees = PaidFees;
             this.CreatedByUser = CreatedByUser;
         }
+        public static DataTable GetAllPersonLicenses(string NationalNo)
+        {
+            return clsInternationalLicensesDataAccess.GetAllPersonLicenses(NationalNo);
+        }
+
+        public static DataTable GetAllLicenses()
+        {
+            return clsInternationalLicensesDataAccess.GetAllLicenses();
+        }
 
         public static clsInternationalLicense FindInternationalLicenseByLocalLicenseID(int LocalLicenseID)
         {
@@ -82,11 +91,5 @@ namespace BusinessLayer
 
             return clsInternationalLicensesDataAccess.IssueInternationalLicense(LocalLicenseID, ApplicationID, DriverID);
         }
-
-        public static DataTable GetAllPersonLicenses(string NationalNo)
-        {
-            return clsInternationalLicensesDataAccess.GetAllPersonLicenses(NationalNo);
-        }
-
     }
 }

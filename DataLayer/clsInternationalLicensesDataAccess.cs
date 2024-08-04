@@ -10,6 +10,74 @@ namespace DataLayer
 {
     public class clsInternationalLicensesDataAccess
     {
+
+        public static DataTable GetAllPersonLicenses(string NationalNo)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                "SELECT InternationalLicenseID, IssuedUsingLocalLicenseID AS LocalLicenseID, ApplicationID, IssueDate, ExpirationDate, IsActive FROM InternationalLicenses INNER JOIN Drivers ON InternationalLicenses.DriverID = Drivers.DriverID INNER JOIN People ON Drivers.PersonID = People.PersonID WHERE People.NationalNo = @NationalNo";
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+        }
+
+        public static DataTable GetAllLicenses()
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                "SELECT InternationalLicenseID AS [Int.LicenseID], IssuedUsingLocalLicenseID AS [L.LicenseID], ApplicationID, DriverID, IssueDate, ExpirationDate, IsActive FROM InternationalLicenses";
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+        }
+
         public static bool FindInternationalLicenseByLocalLicenseID(int LocalLicenseID, ref int InternationalLicenseID, ref int ILApplicationID, ref DateTime IssueDate, ref DateTime ApplicationDate, ref DateTime ExpirationDate, ref decimal PaidFees, ref string CreatedByUser)
         {
             bool IsFound = false;
@@ -103,41 +171,6 @@ namespace DataLayer
             }
 
             return InternationalLicenseID;
-        }
-
-        public static DataTable GetAllPersonLicenses(string NationalNo)
-        {
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-
-            string query =
-                "SELECT InternationalLicenseID, IssuedUsingLocalLicenseID AS LocalLicenseID, ApplicationID, IssueDate, ExpirationDate, IsActive FROM InternationalLicenses INNER JOIN Drivers ON InternationalLicenses.DriverID = Drivers.DriverID INNER JOIN People ON Drivers.PersonID = People.PersonID WHERE People.NationalNo = @NationalNo";
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            cmd.Parameters.AddWithValue("@NationalNo", NationalNo);
-
-
-            try
-            {
-                connection.Open();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    dt.Load(reader);
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex) { }
-            finally
-            {
-                connection.Close();
-            }
-
-            return dt;
         }
     }
 }
