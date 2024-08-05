@@ -51,12 +51,17 @@ namespace PresentationLayer
             } 
             else if (RenwedLicenseID == -2)
             {
-                MessageBox.Show("Deactivating the previous license failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Driver already has an active license that is not expired!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (RenwedLicenseID == -3)
             {
+                MessageBox.Show("Deactivating the previous license failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (RenwedLicenseID == -4)
+            {
                 MessageBox.Show("Issueing a new license failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else
+            }
+            else
             {
                 MessageBox.Show("Successfully Renewed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 OldLicenseDetails = clsLicense.FindLicenseByID(OldLicenseID);

@@ -81,6 +81,11 @@ namespace BusinessLayer
             return clsLicensesDataAccess.IsLicenseExpired(LicenseID);
         }
 
+        public static bool HasDriverActiveLicenses(int DriverID)
+        {
+            return clsLicensesDataAccess.HasDriverActiveLicenses(DriverID);
+        }
+
         public static int IssueLicense(clsLocalDrivingLicensApplication LocalApplicationDetails, string IssueNotes, int IssueReason)
         {
             int DriverID = clsDriver.GetDriverID(LocalApplicationDetails.Application.ApplicantID);
@@ -231,30 +236,38 @@ namespace BusinessLayer
             
             if (IsLicenseExpired(LicenseID))
             {
-                if(DeactivateLicense(LicenseID))
+                if(!HasDriverActiveLicenses(LicenseInfo.DriverID))
                 {
-                    int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, 2);
-
-                    // Fees for a new license
-                    decimal PaidFees = clsApplication.GetApplicationFees(1);
-
-                    int RenewedLicenseID = clsLicensesDataAccess.IssueLicense(LicenseInfo.DriverID, ApplicationID, LicenseInfo.LicenseClassID, RenewNotes, PaidFees, 2);
-
-                    bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);
-
-                    if (RenewedLicenseID != -1 && IsStatusUpdated)
+                    if (DeactivateLicense(LicenseID))
                     {
-                        return RenewedLicenseID;
+                        int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, 2);
+
+                        // Fees for a new license
+                        decimal PaidFees = clsApplication.GetApplicationFees(1);
+
+                        int RenewedLicenseID = clsLicensesDataAccess.IssueLicense(LicenseInfo.DriverID, ApplicationID, LicenseInfo.LicenseClassID, RenewNotes, PaidFees, 2);
+
+                        bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);
+
+                        if (RenewedLicenseID != -1 && IsStatusUpdated)
+                        {
+                            return RenewedLicenseID;
+                        }
+                        else
+                        {
+                            return -4;
+                        }
                     }
                     else
                     {
                         return -3;
                     }
-                } else
+
+                }
+                else
                 {
                     return -2;
                 }
-
             } else
             {
                 return -1;

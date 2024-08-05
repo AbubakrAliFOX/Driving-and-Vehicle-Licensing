@@ -347,6 +347,39 @@ namespace DataLayer
             return ExpirationDate.CompareTo(DateTime.Now) < 0;
         }
         
+        public static bool HasDriverActiveLicenses(int DriverID)
+        {
+            bool DriverHasActiveLicenses = false;
+
+            string connectionString = clsDataAccessSettings.connectionString;
+
+            string query = "Select Found = 1 From Licenses Where DriverID = @DriverID AND ExpirationDate > GETDATE()";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                DriverHasActiveLicenses = reader.HasRows;
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                // Optionally rethrow or handle the exception as needed
+            }
+
+            return DriverHasActiveLicenses;
+        }
+        
         public static int IssueLicense(int DriverID, int ApplicationID, int LicenseClassID, string IssueNotes, decimal PaidFees, int IssueReason)
         {
             int LicenseID = -1;
