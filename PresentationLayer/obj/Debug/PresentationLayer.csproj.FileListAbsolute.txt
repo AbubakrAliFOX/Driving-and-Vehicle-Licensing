@@ -39,3 +39,4 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.f
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmInternationalLicenseDetails.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmManageInternationalDrivingLicenseApplications.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmRenewLicense.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmReplaceLicense.resources

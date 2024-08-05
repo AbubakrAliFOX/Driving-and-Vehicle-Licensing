@@ -187,6 +187,12 @@
     <Compile Include="frmRenewLicense.Designer.cs">
       <DependentUpon>frmRenewLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReplaceLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReplaceLicense.Designer.cs">
+      <DependentUpon>frmReplaceLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmScheduleTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRenewLicense.resx">
       <DependentUpon>frmRenewLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReplaceLicense.resx">
+      <DependentUpon>frmReplaceLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmScheduleTest.resx">
       <DependentUpon>frmScheduleTest.cs</DependentUpon>

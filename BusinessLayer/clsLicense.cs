@@ -273,5 +273,43 @@ namespace BusinessLayer
                 return -1;
             }
         }
+        
+        public static int ReplaceLicense(int LicenseID, bool IsForDamaged)
+        {
+            clsLicense LicenseInfo = FindLicenseByID(LicenseID);
+            int ApplicationTypeID = IsForDamaged ? 4 : 3;
+            int IssueReason = IsForDamaged ? 3 : 4;
+
+            if (IsLicenseActive(LicenseID))
+            {
+                if (DeactivateLicense(LicenseID))
+                {
+                    int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, ApplicationTypeID);
+
+                    // Fees for a replaced license are 0 (according to the requirements)
+                    decimal PaidFees = 0;
+
+                    int ReplacedLicenseID = clsLicensesDataAccess.IssueLicense(LicenseInfo.DriverID, ApplicationID, LicenseInfo.LicenseClassID, "Replacement", PaidFees, IssueReason);
+
+                    bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);
+
+                    if (ReplacedLicenseID != -1 && IsStatusUpdated)
+                    {
+                        return ReplacedLicenseID;
+                    }
+                    else
+                    {
+                        return -3;
+                    }
+                }
+                else
+                {
+                    return -2;
+                }
+            } else
+            {
+                return -1;
+            }
+        }
     }
 }
