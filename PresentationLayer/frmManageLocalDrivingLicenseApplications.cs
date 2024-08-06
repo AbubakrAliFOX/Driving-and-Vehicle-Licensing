@@ -144,7 +144,10 @@ namespace PresentationLayer
 
         private void tsmShowLicense_Click(object sender, EventArgs e)
         {
-            frmLicenseDetails LicenseDetails = new frmLicenseDetails((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            int LDLApplicationID = (int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value;
+            clsLicense License = clsLicense.FindLicenseByLocalDrivingLicenseApplicationID(LDLApplicationID);
+
+            frmLicenseDetails LicenseDetails = new frmLicenseDetails(License.LicenseID);
             LicenseDetails.ShowDialog();
         }
 

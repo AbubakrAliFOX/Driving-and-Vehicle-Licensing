@@ -275,5 +275,17 @@ namespace PresentationLayer
             frmRenewLicense RenewLicense = new frmRenewLicense();
             RenewLicense.ShowDialog();
         }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense DetainLicense = new frmDetainLicense();
+            DetainLicense.ShowDialog();
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseLicense ReleaseLicense = new frmReleaseLicense();
+            ReleaseLicense.ShowDialog();
+        }
     }
 }

@@ -47,5 +47,10 @@ namespace PresentationLayer
                 }
             }
         }
+
+        public void SetSearchEventHandler(EventHandler eventHandler)
+        {
+            pbSearch.Click += eventHandler; 
+        }
     }
 }

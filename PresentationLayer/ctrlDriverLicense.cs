@@ -55,6 +55,15 @@ namespace PresentationLayer
                 lblIsActive.Text = "No";
             }
 
+            if (LicenseDetails.IsDetained == true)
+            {
+                lblIsDetained.Text = "Yes";
+            }
+            else
+            {
+                lblIsDetained.Text = "No";
+            }
+
             if (LicenseDetails.IssueReason == 1)
             {
                 lblIssueReason.Text = "First Time";
@@ -71,8 +80,6 @@ namespace PresentationLayer
             {
                 lblIssueReason.Text = "Replaced For Lost";
             }
-
-            //lblIsDetained.Text = LicenseDetails.deta.ToString();
 
             // Person Details
             lblNationalNo.Text = PersonDetails.nationalNumber;

@@ -236,22 +236,23 @@
             this.llLicensesHistory.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llLicensesHistory.Location = new System.Drawing.Point(12, 762);
             this.llLicensesHistory.Name = "llLicensesHistory";
-            this.llLicensesHistory.Size = new System.Drawing.Size(175, 22);
+            this.llLicensesHistory.Size = new System.Drawing.Size(129, 22);
             this.llLicensesHistory.TabIndex = 63;
             this.llLicensesHistory.TabStop = true;
-            this.llLicensesHistory.Text = "Show Licenses History";
+            this.llLicensesHistory.Text = "Licenses History";
+            this.llLicensesHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicensesHistory_LinkClicked);
             // 
             // llLicenseInfo
             // 
             this.llLicenseInfo.AutoSize = true;
             this.llLicenseInfo.Enabled = false;
             this.llLicenseInfo.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llLicenseInfo.Location = new System.Drawing.Point(191, 762);
+            this.llLicenseInfo.Location = new System.Drawing.Point(153, 762);
             this.llLicenseInfo.Name = "llLicenseInfo";
-            this.llLicenseInfo.Size = new System.Drawing.Size(149, 22);
+            this.llLicenseInfo.Size = new System.Drawing.Size(138, 22);
             this.llLicenseInfo.TabIndex = 62;
             this.llLicenseInfo.TabStop = true;
-            this.llLicenseInfo.Text = "Show New License";
+            this.llLicenseInfo.Text = "New License Info";
             this.llLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicenseInfo_LinkClicked);
             // 
             // groupBox1

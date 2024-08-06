@@ -22,6 +22,7 @@ namespace BusinessLayer
         public string IssueNotes { set; get; }
         public decimal PaidFees { set; get; }
         public bool IsActive { set; get; }
+        public bool IsDetained { set; get; }
         public int IssueReason { set; get; }
         public int CreatedByUser { set; get; }
 
@@ -37,6 +38,7 @@ namespace BusinessLayer
             string IssueNotes,
             decimal PaidFees,
             bool IsActive,
+            bool IsDetained,
             int IssueReason,
             int CreatedByUser
         )
@@ -52,6 +54,7 @@ namespace BusinessLayer
             this.IssueNotes = IssueNotes;
             this.PaidFees = PaidFees;
             this.IsActive = IsActive;
+            this.IsDetained = IsDetained;
             this.IssueReason = IssueReason;
             this.CreatedByUser = CreatedByUser;
         }
@@ -128,6 +131,8 @@ namespace BusinessLayer
             int IssueReason = 0;
             int CreatedByUser = 0;
 
+            bool IsDetained = clsDetain.IsLicenseDetained(LicenseID);
+
             if (
                 clsLicensesDataAccess.FindLicenseByID(
                     LicenseID,
@@ -158,6 +163,7 @@ namespace BusinessLayer
                     IssueNotes,
                     PaidFees,
                     IsActive,
+                    IsDetained,
                     IssueReason,
                     CreatedByUser
                 );
@@ -203,6 +209,8 @@ namespace BusinessLayer
                 )
             )
             {
+                bool IsDetained = clsDetain.IsLicenseDetained(LicenseID);
+
                 return new clsLicense(
                     LicenseID,
                     PersonID,
@@ -215,6 +223,7 @@ namespace BusinessLayer
                     IssueNotes,
                     PaidFees,
                     IsActive,
+                    IsDetained,
                     IssueReason,
                     CreatedByUser
                 );

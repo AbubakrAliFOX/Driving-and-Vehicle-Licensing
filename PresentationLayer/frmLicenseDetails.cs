@@ -13,11 +13,11 @@ namespace PresentationLayer
 {
     public partial class frmLicenseDetails : Form
     {
-        public frmLicenseDetails(int LDLApplicationID)
+        public frmLicenseDetails(int LicenseID)
         {
             InitializeComponent();
 
-            clsLicense LicenseDetails = clsLicense.FindLicenseByLocalDrivingLicenseApplicationID(LDLApplicationID);
+            clsLicense LicenseDetails = clsLicense.FindLicenseByID(LicenseID);
             ctrlDriverLicense1.LicenseInfo = LicenseDetails;
         }
 

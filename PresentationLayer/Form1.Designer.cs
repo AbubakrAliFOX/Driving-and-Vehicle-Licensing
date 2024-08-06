@@ -62,6 +62,9 @@ namespace PresentationLayer
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmReleaseDetainedDrivingLicenses = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRetakeTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageDetainedLicensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detainLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.releaseDetainedLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDrivers.SuspendLayout();
             this.cmsPeople.SuspendLayout();
             this.cmsApplicationOptions.SuspendLayout();
@@ -254,6 +257,10 @@ namespace PresentationLayer
             // 
             // tsmDetainLicensesToolStripMenuItem
             // 
+            this.tsmDetainLicensesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manageDetainedLicensesToolStripMenuItem,
+            this.detainLicenseToolStripMenuItem,
+            this.releaseDetainedLicenseToolStripMenuItem});
             this.tsmDetainLicensesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tsmDetainLicensesToolStripMenuItem.Image")));
             this.tsmDetainLicensesToolStripMenuItem.Name = "tsmDetainLicensesToolStripMenuItem";
             this.tsmDetainLicensesToolStripMenuItem.Size = new System.Drawing.Size(377, 40);
@@ -317,6 +324,26 @@ namespace PresentationLayer
             this.tsmRetakeTest.Size = new System.Drawing.Size(449, 36);
             this.tsmRetakeTest.Text = "Retake Test";
             // 
+            // manageDetainedLicensesToolStripMenuItem
+            // 
+            this.manageDetainedLicensesToolStripMenuItem.Name = "manageDetainedLicensesToolStripMenuItem";
+            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(376, 36);
+            this.manageDetainedLicensesToolStripMenuItem.Text = "Manage Detained Licenses";
+            // 
+            // detainLicenseToolStripMenuItem
+            // 
+            this.detainLicenseToolStripMenuItem.Name = "detainLicenseToolStripMenuItem";
+            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(376, 36);
+            this.detainLicenseToolStripMenuItem.Text = "Detain License";
+            this.detainLicenseToolStripMenuItem.Click += new System.EventHandler(this.detainLicenseToolStripMenuItem_Click);
+            // 
+            // releaseDetainedLicenseToolStripMenuItem
+            // 
+            this.releaseDetainedLicenseToolStripMenuItem.Name = "releaseDetainedLicenseToolStripMenuItem";
+            this.releaseDetainedLicenseToolStripMenuItem.Size = new System.Drawing.Size(376, 36);
+            this.releaseDetainedLicenseToolStripMenuItem.Text = "Release Detained License";
+            this.releaseDetainedLicenseToolStripMenuItem.Click += new System.EventHandler(this.releaseDetainedLicenseToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -366,6 +393,9 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem tsmReleaseDetainedDrivingLicenses;
         private System.Windows.Forms.ToolStripMenuItem tsmRetakeTest;
+        private System.Windows.Forms.ToolStripMenuItem manageDetainedLicensesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detainLicenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem releaseDetainedLicenseToolStripMenuItem;
     }
 }
 

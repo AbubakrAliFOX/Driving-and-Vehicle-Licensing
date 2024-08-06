@@ -98,5 +98,17 @@ namespace PresentationLayer
             //frmLicenseDetails LicenseDetails = new frmLicenseDetails(ReplacedLicenseDetails.local);
             //LicenseDetails.ShowDialog();
         }
+
+        private void llLicensesHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (ctrlFindLicense1.LicenseInfo == null)
+            {
+                MessageBox.Show("Select a License First", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory(ctrlFindLicense1.LicenseInfo.PersonID);
+            LicenseHistory.ShowDialog();
+        }
     }
 }
