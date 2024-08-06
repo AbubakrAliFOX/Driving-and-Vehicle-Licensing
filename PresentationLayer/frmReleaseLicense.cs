@@ -20,7 +20,15 @@ namespace PresentationLayer
         {
             InitializeComponent();
 
-            ctrlFindLicense1.SetSearchEventHandler(FillDetainLabels_Click);
+            ctrlFindLicense1.SetSearchEventHandlerOnClick(FillDetainLabels_Click);
+        }
+
+        public frmReleaseLicense(int LicenseID)
+        {
+            InitializeComponent();
+
+            ctrlFindLicense1.OnlyForLicense = LicenseID;
+            ctrlFindLicense1.SetSearchEventHandlerOnLoad(FillDetainLabels_Click);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -129,5 +137,6 @@ namespace PresentationLayer
         {
             lblApplicationID.Text = "";
         }
+
     }
 }

@@ -98,7 +98,9 @@ namespace PresentationLayer
 
         private void tsmReleaseLicense_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not Implemented Yet!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmReleaseLicense ReleaseLicense = new frmReleaseLicense((int)DetainedLicensesPage.dgv.CurrentRow.Cells[1].Value);
+            ReleaseLicense.ShowDialog();
+            DetainedLicensesPage.RefreshData();
         }
 
         private void cmsDetainedLicenses_Opened(object sender, EventArgs e)

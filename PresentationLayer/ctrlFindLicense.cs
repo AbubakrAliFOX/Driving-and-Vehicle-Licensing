@@ -27,6 +27,15 @@ namespace PresentationLayer
             }
         }
 
+        public int OnlyForLicense
+        {
+            set
+            {
+                ctrlDriverLicense1.LicenseInfo = clsLicense.FindLicenseByID(value);
+                gbFilter.Enabled = false;
+            }
+        }
+
         private void pbSearch_Click(object sender, EventArgs e)
         {
             if (tbSearch.Text != "")
@@ -48,9 +57,14 @@ namespace PresentationLayer
             }
         }
 
-        public void SetSearchEventHandler(EventHandler eventHandler)
+        public void SetSearchEventHandlerOnClick(EventHandler eventHandler)
         {
             pbSearch.Click += eventHandler; 
+        }
+        
+        public void SetSearchEventHandlerOnLoad(EventHandler eventHandler)
+        {
+            this.Load += eventHandler; 
         }
     }
 }

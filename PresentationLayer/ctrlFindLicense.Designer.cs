@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlFindLicense));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbFilter = new System.Windows.Forms.GroupBox();
             this.pbSearch = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ctrlDriverLicense1 = new PresentationLayer.ctrlDriverLicense();
-            this.groupBox1.SuspendLayout();
+            this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gbFilter
             // 
-            this.groupBox1.Controls.Add(this.pbSearch);
-            this.groupBox1.Controls.Add(this.tbSearch);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(754, 100);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filter";
+            this.gbFilter.Controls.Add(this.pbSearch);
+            this.gbFilter.Controls.Add(this.tbSearch);
+            this.gbFilter.Controls.Add(this.label1);
+            this.gbFilter.Location = new System.Drawing.Point(12, 13);
+            this.gbFilter.Name = "gbFilter";
+            this.gbFilter.Size = new System.Drawing.Size(754, 100);
+            this.gbFilter.TabIndex = 20;
+            this.gbFilter.TabStop = false;
+            this.gbFilter.Text = "Filter";
             // 
             // pbSearch
             // 
@@ -79,6 +79,7 @@
             // 
             // ctrlDriverLicense1
             // 
+            this.ctrlDriverLicense1.LicenseInfo = null;
             this.ctrlDriverLicense1.Location = new System.Drawing.Point(12, 129);
             this.ctrlDriverLicense1.Name = "ctrlDriverLicense1";
             this.ctrlDriverLicense1.Size = new System.Drawing.Size(754, 377);
@@ -89,11 +90,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ctrlDriverLicense1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbFilter);
             this.Name = "ctrlFindLicense";
             this.Size = new System.Drawing.Size(785, 522);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbFilter.ResumeLayout(false);
+            this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).EndInit();
             this.ResumeLayout(false);
 
@@ -101,7 +102,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.PictureBox pbSearch;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Label label1;
