@@ -37,6 +37,7 @@
             this.tbUserName = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
+            this.cbRememberMe = new System.Windows.Forms.CheckBox();
             this.pSideNav.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,7 +124,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(852, 335);
+            this.btnLogin.Location = new System.Drawing.Point(852, 355);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(148, 57);
             this.btnLogin.TabIndex = 7;
@@ -141,11 +142,24 @@
             this.tbPassword.Size = new System.Drawing.Size(203, 25);
             this.tbPassword.TabIndex = 6;
             // 
+            // cbRememberMe
+            // 
+            this.cbRememberMe.AutoSize = true;
+            this.cbRememberMe.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbRememberMe.Location = new System.Drawing.Point(875, 292);
+            this.cbRememberMe.Name = "cbRememberMe";
+            this.cbRememberMe.Size = new System.Drawing.Size(155, 28);
+            this.cbRememberMe.TabIndex = 8;
+            this.cbRememberMe.Text = "Remember Me";
+            this.cbRememberMe.UseVisualStyleBackColor = true;
+            this.cbRememberMe.CheckedChanged += new System.EventHandler(this.cbRememberMe_CheckedChanged);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 465);
+            this.Controls.Add(this.cbRememberMe);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbUserName);
@@ -175,5 +189,6 @@
         private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.CheckBox cbRememberMe;
     }
 }

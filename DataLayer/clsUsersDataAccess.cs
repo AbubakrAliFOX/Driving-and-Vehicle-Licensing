@@ -50,7 +50,7 @@ namespace DataLayer
 
         public static bool Authenticate(string UserName, string Password)
         {
-            string PasswordHash = "null";
+            string PasswordHash = "";
             
             bool AreCredentialsCorrect = false;
 
@@ -82,9 +82,45 @@ namespace DataLayer
                 connection.Close();
             }
 
-            AreCredentialsCorrect = BCrypt.Net.BCrypt.Verify(Password, PasswordHash);
+            if (PasswordHash != "")
+            {
+                AreCredentialsCorrect = BCrypt.Net.BCrypt.Verify(Password, PasswordHash);
+
+            }
 
             return AreCredentialsCorrect;
+        }
+        
+        public static bool IsUserActive(string UserName)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT Found = 1 FROM Users WHERE UserName = @UserName And IsActive = 1";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@UserName", UserName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                IsFound = reader.HasRows;
+                reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
         }
     }
 }
