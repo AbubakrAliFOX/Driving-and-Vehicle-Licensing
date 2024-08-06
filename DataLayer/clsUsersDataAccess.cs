@@ -48,6 +48,94 @@ namespace DataLayer
             return dt;
         }
 
+        public static bool FindUserByID(int UserID, ref int PersonID, ref string UserName, ref string Password, ref bool IsActive)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT PersonID, UserName, Password, IsActive FROM Users WHERE UserID = @UserID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@UserID", UserID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    PersonID = (int)reader["PersonID"];
+                    UserName = (string)reader["UserName"];
+                    Password = (string)reader["Password"];
+                    IsActive = (bool)reader["IsActive"];
+                }
+                else
+                {
+                    IsFound = false;
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
+        public static int CreateUser(int PersonID, string UserName, string Password, bool IsActive)
+        {
+            int UserID = -1;
+            
+            string HashedPassword = BCrypt.Net.BCrypt.HashPassword(Password);
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "INSERT INTO Users (PersonID, UserName, Password, IsActive) VALUES (@PersonID, @UserName, @Password, @IsActive); Select SCOPE_IDENTITY();";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+            cmd.Parameters.AddWithValue("@UserName", UserName);
+            cmd.Parameters.AddWithValue("@Password", HashedPassword);
+            cmd.Parameters.AddWithValue("@IsActive", IsActive? 1 : 0);
+
+            try
+            {
+                connection.Open();
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    UserID = insertedID;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return UserID;
+        }
+
+
         public static bool Authenticate(string UserName, string Password)
         {
             string PasswordHash = "";
@@ -102,6 +190,38 @@ namespace DataLayer
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("@UserName", UserName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                IsFound = reader.HasRows;
+                reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+        
+        public static bool IsUser(int PersonID)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT Found = 1 FROM Users WHERE PersonID = @PersonID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
 
             try
             {

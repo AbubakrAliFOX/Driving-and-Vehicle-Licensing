@@ -65,9 +65,16 @@ namespace PresentationLayer
             this.tsmManageTestTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmHidden = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsSettings = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmUserInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmChangePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmLogout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmHidden1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsDrivers.SuspendLayout();
             this.cmsPeople.SuspendLayout();
             this.cmsApplicationOptions.SuspendLayout();
+            this.cmsSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmsDrivers
@@ -348,6 +355,58 @@ namespace PresentationLayer
             this.tsmHidden.Size = new System.Drawing.Size(377, 40);
             this.tsmHidden.Text = "Hidden";
             // 
+            // cmsSettings
+            // 
+            this.cmsSettings.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsSettings.ImageScalingSize = new System.Drawing.Size(33, 33);
+            this.cmsSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmUserInfo,
+            this.tsmChangePassword,
+            this.tsmLogout,
+            this.toolStripSeparator5,
+            this.tsmHidden1});
+            this.cmsSettings.Name = "cmsApplicationOptions";
+            this.cmsSettings.Size = new System.Drawing.Size(286, 198);
+            this.cmsSettings.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.cmsSettings_Closed);
+            this.cmsSettings.Opened += new System.EventHandler(this.cmsSettings_Opened);
+            // 
+            // tsmUserInfo
+            // 
+            this.tsmUserInfo.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmUserInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmUserInfo.Image")));
+            this.tsmUserInfo.ImageTransparentColor = System.Drawing.Color.White;
+            this.tsmUserInfo.Name = "tsmUserInfo";
+            this.tsmUserInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tsmUserInfo.Size = new System.Drawing.Size(285, 40);
+            this.tsmUserInfo.Text = "User Info";
+            // 
+            // tsmChangePassword
+            // 
+            this.tsmChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("tsmChangePassword.Image")));
+            this.tsmChangePassword.Name = "tsmChangePassword";
+            this.tsmChangePassword.Size = new System.Drawing.Size(285, 40);
+            this.tsmChangePassword.Text = "Change Password";
+            // 
+            // tsmLogout
+            // 
+            this.tsmLogout.Image = ((System.Drawing.Image)(resources.GetObject("tsmLogout.Image")));
+            this.tsmLogout.Name = "tsmLogout";
+            this.tsmLogout.Size = new System.Drawing.Size(285, 40);
+            this.tsmLogout.Text = "Logout";
+            this.tsmLogout.Click += new System.EventHandler(this.tsmLogout_Click);
+            // 
+            // tsmHidden1
+            // 
+            this.tsmHidden1.AutoSize = false;
+            this.tsmHidden1.Name = "tsmHidden1";
+            this.tsmHidden1.Size = new System.Drawing.Size(377, 40);
+            this.tsmHidden1.Text = "Hidden";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(282, 6);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -358,10 +417,10 @@ namespace PresentationLayer
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.cmsDrivers.ResumeLayout(false);
             this.cmsPeople.ResumeLayout(false);
             this.cmsApplicationOptions.ResumeLayout(false);
+            this.cmsSettings.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -400,6 +459,12 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem manageDetainedLicensesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detainLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem releaseDetainedLicenseToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cmsSettings;
+        private System.Windows.Forms.ToolStripMenuItem tsmUserInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmChangePassword;
+        private System.Windows.Forms.ToolStripMenuItem tsmLogout;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem tsmHidden1;
     }
 }
 

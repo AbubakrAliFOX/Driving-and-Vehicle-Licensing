@@ -54,3 +54,4 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Buffers.xml
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Memory.xml
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Numerics.Vectors.xml
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmNewUser.resources

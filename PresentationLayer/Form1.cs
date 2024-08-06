@@ -16,7 +16,6 @@ namespace PresentationLayer
         private ctrlDataPage ctrlDataPagePeople;
         private ctrlDataPage ctrlDataPageDrivers;
         private ctrlDataPage ctrlDataPageUsers;
-        private ctrlDataPage ctrlDataPageSettings;
 
         private ctrlMenuButton ctrlPeopleMenuButton;
         private ctrlMenuButton ctrlDriversMenuButton;
@@ -42,21 +41,17 @@ namespace PresentationLayer
  
             ctrlDataPagePeople = new ctrlDataPage();
             ctrlDataPagePeople.Title = "People";
-            //ctrlDataPagePeople.SearchableColumns = new string[] { "None", "Person ID", "National No", "Full Name", "Nationality", "Gender", "Phone", "Email" };
             FormatPeopleLayout();
 
             ctrlDataPageDrivers = new ctrlDataPage();
             ctrlDataPageDrivers.Title = "Drivers";
-            //ctrlDataPageDrivers.SearchableColumns = new string[] { "None","Driver ID","National No","Created By User", "Active Licences" };
             FormatDriverLayout();
 
             ctrlDataPageUsers = new ctrlDataPage();
             ctrlDataPageUsers.Title = "Users";
-            //ctrlDataPageUsers.SearchableColumns = new string[] { "None", "User ID", "Full Name", "User Name" };
             FormatUserLayout();
+            ctrlDataPageUsers.SetAddNewClickEventHandler(AddNewUser_Click);
 
-            ctrlDataPageSettings = new ctrlDataPage();
-            ctrlDataPageSettings.Title = "Users";
 
             ctrlPeopleMenuButton = new ctrlMenuButton("People", "people.png");
             ctrlPeopleMenuButton.Location = new System.Drawing.Point(0, 13);
@@ -77,15 +72,14 @@ namespace PresentationLayer
             ctrlUsersMenuButton.Page = ctrlDataPageUsers;
 
 
+
             ctrlApplicationsMenuButton = new ctrlMenuButton("Applications", "Application.png");
             ctrlApplicationsMenuButton.Location = new System.Drawing.Point(0, 241);
-            ctrlApplicationsMenuButton.MainButton.Click += new EventHandler(this.MenuDropdownButton_Click);
+            ctrlApplicationsMenuButton.MainButton.Click += new EventHandler(this.ApplicationsMenuDropdownButton_Click);
 
             ctrlSettingsMenuButton = new ctrlMenuButton("Settings", "Settings.png");
             ctrlSettingsMenuButton.Location = new System.Drawing.Point(0, 317);
-            ctrlSettingsMenuButton.MainButton.Click += MenuButtonClick;
-            lMenuButtons.Add(ctrlSettingsMenuButton);
-            ctrlSettingsMenuButton.Page = ctrlDataPageSettings;
+            ctrlSettingsMenuButton.MainButton.Click += new EventHandler(this.SettingsMenuDropdownButton_Click);
         }
 
         private void MenuButtonClick(object sender, EventArgs e)
@@ -104,11 +98,18 @@ namespace PresentationLayer
             }
         }
 
-        private void MenuDropdownButton_Click(object sender, EventArgs e)
+        private void ApplicationsMenuDropdownButton_Click(object sender, EventArgs e)
         {
             tsmHidden.Text = "\n";
             tsmHidden.Visible = false;
             cmsApplicationOptions.Show(ctrlApplicationsMenuButton, ctrlApplicationsMenuButton.Width, 0);
+        }
+
+        private void SettingsMenuDropdownButton_Click(object sender, EventArgs e)
+        {
+            tsmHidden1.Text = "\n";
+            tsmHidden1.Visible = false;
+            cmsSettings.Show(ctrlSettingsMenuButton, ctrlSettingsMenuButton.Width, 0);
         }
 
         private void AddControls()
@@ -121,12 +122,6 @@ namespace PresentationLayer
             pSideNav.Controls.Add(ctrlUsersMenuButton);
             pSideNav.Controls.Add(ctrlApplicationsMenuButton);
             pSideNav.Controls.Add(ctrlSettingsMenuButton);
-        }
-
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void FormatPeopleLayout()
@@ -234,6 +229,16 @@ namespace PresentationLayer
 
         }
 
+        private void cmsSettings_Opened(object sender, EventArgs e)
+        {
+            ctrlSettingsMenuButton.Selected();
+        }
+
+        private void cmsSettings_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        {
+            ctrlSettingsMenuButton.Reset();
+        }
+
         private void tsmManageApplicationTypes_Click(object sender, EventArgs e)
         {
             frmManageApplicationTypes manageApplicationTypes = new frmManageApplicationTypes();
@@ -310,6 +315,20 @@ namespace PresentationLayer
         {
             frmManageLocalDrivingLicenseApplications LocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
             LocalDrivingLicenseApplications.ShowDialog();
+        }
+
+        private void tsmLogout_Click(object sender, EventArgs e)
+        {
+            Close();
+            Login login = new Login();
+            login.ShowDialog();
+        }
+
+        private void AddNewUser_Click(object sender, EventArgs e)
+        {
+            frmNewUser NewUser = new frmNewUser();
+            NewUser.ShowDialog();
+            ctrlDataPageUsers.RefreshData();
         }
     }
 }
