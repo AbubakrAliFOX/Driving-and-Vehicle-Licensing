@@ -77,7 +77,8 @@ namespace PresentationLayer
             { "Drivers", clsDriver.GetAllDrivers },
             { "Users", clsUser.GetAllUsers },
             { "LocalDrivingLicenses", clsApplication.GetLocalDrivingLicenseApplications},
-            { "InternationalDrivingLicenses", clsInternationalLicense.GetAllLicenses}
+            { "InternationalDrivingLicenses", clsInternationalLicense.GetAllLicenses},
+            { "DetainedLicenses", clsDetain.GetAllDetainedLicenses}
         };
 
         private Dictionary<string, string[]> _SearchableColumns = new Dictionary<string, string[]>
@@ -86,7 +87,8 @@ namespace PresentationLayer
             { "Drivers", new string[] { "None","Driver ID","National No","Created By User", "Active Licences" }},
             { "Users", new string[] { "None", "User ID", "Full Name", "User Name" }},
             { "LocalDrivingLicenses", new string[] { "None", "L.D.L.AppID", "National No", "Full Name", "Application Status" }},
-            { "InternationalDrivingLicenses", new string[] { "None", "Int.License ID", "L.License ID", "Application ID", "Driver ID"}}
+            { "InternationalDrivingLicenses", new string[] { "None", "Int.License ID", "L.License ID", "Application ID", "Driver ID"}},
+            { "DetainedLicenses", new string[] { "None", "Detain ID", "National No", "Full Name", "Release Application ID"}}
         };
 
         public void RefreshData ()

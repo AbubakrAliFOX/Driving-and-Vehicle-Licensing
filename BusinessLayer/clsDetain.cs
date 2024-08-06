@@ -1,6 +1,7 @@
 ﻿using DataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -124,6 +125,11 @@ namespace BusinessLayer
             {
                 return -1;
             }
+        }
+
+        public static DataTable GetAllDetainedLicenses()
+        {
+            return clsDetainDataAccess.GetAllDetainedLicenses();
         }
 
     }

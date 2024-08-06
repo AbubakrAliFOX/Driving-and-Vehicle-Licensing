@@ -287,5 +287,29 @@ namespace PresentationLayer
             frmReleaseLicense ReleaseLicense = new frmReleaseLicense();
             ReleaseLicense.ShowDialog();
         }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageDetainedLicenses DetainedLicenses = new frmManageDetainedLicenses();
+            DetainedLicenses.ShowDialog();
+        }
+
+        private void tsmReplacement_Click(object sender, EventArgs e)
+        {
+            frmReplaceLicense ReplaceLicense = new frmReplaceLicense();
+            ReplaceLicense.ShowDialog();
+        }
+
+        private void tsmReleaseDetainedDrivingLicenses_Click(object sender, EventArgs e)
+        {
+            frmReleaseLicense ReleaseLicense = new frmReleaseLicense();
+            ReleaseLicense.ShowDialog();
+        }
+
+        private void tsmRetakeTest_Click(object sender, EventArgs e)
+        {
+            frmManageLocalDrivingLicenseApplications LocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
+            LocalDrivingLicenseApplications.ShowDialog();
+        }
     }
 }

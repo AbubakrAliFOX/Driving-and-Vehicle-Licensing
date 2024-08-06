@@ -65,6 +65,7 @@ namespace PresentationLayer
                 MessageBox.Show("Successfully Released!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetApplicationLabels();
                 FillApplicationLabels();
+                llLicenseInfo.Enabled = true;
             }
         }
 
