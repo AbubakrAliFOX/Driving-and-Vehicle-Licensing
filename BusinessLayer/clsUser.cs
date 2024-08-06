@@ -14,5 +14,10 @@ namespace BusinessLayer
         {
             return clsUsersDataAccess.GetAllUsers();
         }
+
+        public static bool Authenticate(string UserName, string PasswordHash)
+        {
+            return clsUsersDataAccess.Authenticate(UserName, PasswordHash);
+        }
     }
 }

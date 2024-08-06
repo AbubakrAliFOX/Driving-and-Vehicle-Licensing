@@ -7,3 +7,13 @@ E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\DataLayer.pdb
 E:\Downloads\WebDev\Projects\DVL\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
 E:\Downloads\WebDev\Projects\DVL\BusinessLayer\obj\Debug\BusinessLayer.dll
 E:\Downloads\WebDev\Projects\DVL\BusinessLayer\obj\Debug\BusinessLayer.pdb
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\BCrypt.Net-Next.dll
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\System.Memory.dll
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\System.Numerics.Vectors.dll
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\System.Buffers.dll
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\BCrypt.Net-Next.xml
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\System.Memory.xml
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\System.Numerics.Vectors.xml
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Downloads\WebDev\Projects\DVL\BusinessLayer\bin\Debug\System.Buffers.xml

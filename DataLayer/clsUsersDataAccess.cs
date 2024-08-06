@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+
 
 namespace DataLayer
 {
@@ -44,6 +46,45 @@ namespace DataLayer
             }
 
             return dt;
+        }
+
+        public static bool Authenticate(string UserName, string Password)
+        {
+            string PasswordHash = "null";
+            
+            bool AreCredentialsCorrect = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT Password FROM Users WHERE UserName = @UserName";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@UserName", UserName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if(reader.Read())
+                {
+                    PasswordHash = (string)reader["Password"];
+                }
+                reader.Close();
+            }
+            catch
+            {
+                AreCredentialsCorrect = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            AreCredentialsCorrect = BCrypt.Net.BCrypt.Verify(Password, PasswordHash);
+
+            return AreCredentialsCorrect;
         }
     }
 }

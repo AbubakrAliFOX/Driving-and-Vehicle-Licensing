@@ -111,9 +111,8 @@
             this.tbUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbUserName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUserName.Location = new System.Drawing.Point(878, 177);
-            this.tbUserName.Multiline = true;
             this.tbUserName.Name = "tbUserName";
-            this.tbUserName.Size = new System.Drawing.Size(203, 30);
+            this.tbUserName.Size = new System.Drawing.Size(203, 25);
             this.tbUserName.TabIndex = 5;
             // 
             // btnLogin
@@ -137,10 +136,9 @@
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbPassword.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPassword.Location = new System.Drawing.Point(875, 249);
-            this.tbPassword.Multiline = true;
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(203, 30);
+            this.tbPassword.Size = new System.Drawing.Size(203, 25);
             this.tbPassword.TabIndex = 6;
             // 
             // Login

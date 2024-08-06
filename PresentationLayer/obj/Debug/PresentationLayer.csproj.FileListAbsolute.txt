@@ -44,3 +44,13 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.f
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmReleaseLicense.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmManageDetainedLicenses.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.Login.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\BCrypt.Net-Next.dll
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Buffers.dll
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Memory.dll
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Numerics.Vectors.dll
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\BCrypt.Net-Next.xml
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Buffers.xml
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Memory.xml
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Numerics.Vectors.xml
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
