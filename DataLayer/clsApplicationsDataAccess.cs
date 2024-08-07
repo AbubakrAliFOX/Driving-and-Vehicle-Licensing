@@ -415,7 +415,7 @@ namespace DataLayer
             return ApplicationID;
         }
 
-        public static bool CreateLocalDrivingLicenseApplication(int ApplicationID, int ClassID)
+        public static int CreateLocalDrivingLicenseApplication(int ApplicationID, int ClassID)
         {
             int LocalDrivingLicenseID = -1;
 
@@ -449,7 +449,7 @@ namespace DataLayer
                 connection.Close();
             }
 
-            return LocalDrivingLicenseID != -1;
+            return LocalDrivingLicenseID;
         }
         //public static bool CancelApplication(int LDLApplicationID)
         //{
@@ -514,6 +514,5 @@ namespace DataLayer
 
             return dt;
         }
-
     }
 }

@@ -320,5 +320,10 @@ namespace BusinessLayer
                 return -1;
             }
         }
+
+        public static bool IsPersonWithinAgeForLicenseClass(int PersonID, int LicenseClassID)
+        {
+            return clsLicensesDataAccess.IsPersonWithinAgeForLicenseClass(PersonID, LicenseClassID);
+        }
     }
 }

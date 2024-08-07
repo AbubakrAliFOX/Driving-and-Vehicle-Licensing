@@ -532,5 +532,41 @@ namespace DataLayer
 
             return isFound;
         }
+
+        public static bool IsPersonWithinAgeForLicenseClass(int PersonID, int LicenseClassID)
+        {
+            int PersonAge = 0;
+            int MinimumAllowedAge = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT DATEDIFF(year, (SELECT DateOfBirth FROM People WHERE PersonID = @PersonID), GETDATE()) AS PersonAge, CAST((SELECT MinimumAllowedAge FROM LicenseClasses WHERE LicenseClassID = @LicenseClassID) as int) As MinimumAllowedAge";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+            cmd.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    PersonAge = (int)reader["PersonAge"];
+                    MinimumAllowedAge = (int)reader["MinimumAllowedAge"];
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return PersonAge >= MinimumAllowedAge;
+        }
     }
 }

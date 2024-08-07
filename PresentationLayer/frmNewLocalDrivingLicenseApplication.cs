@@ -51,29 +51,37 @@ namespace PresentationLayer
                 return;
             }
 
-            if(!clsLicense.PersonHasApplicationWithLicenseClass(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1))
+            int LDLApplicationID = clsApplication.CreateLocalDrivingLicenseApplication(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1);
+            
+            if(LDLApplicationID != -4)
             {
-                int NewApplicationID = clsApplication.CreateApplication(ctrlFindPerson1.PersonInfo.ID, 1);
-
-                if (NewApplicationID != -1)
+                if (LDLApplicationID != -3)
                 {
-                    if (clsApplication.CreateLocalDrivingLicenseApplication(NewApplicationID, cbLicenseClasses.SelectedIndex + 1))
+                    if (LDLApplicationID != -2)
                     {
-                        lblApplicationID.Text = NewApplicationID.ToString();
-                        MessageBox.Show("Application Created Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    } else
+                        if (LDLApplicationID != -1)
+                        {
+                            lblApplicationID.Text = LDLApplicationID.ToString();
+                            MessageBox.Show("Application Created Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Local driving license application couldn't be made", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
                     {
-                        MessageBox.Show("Local application couldn't be made", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Application couldn't be made", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Application couldn't be made", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("This person already has an open application of the same class type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
+            } else
             {
-                MessageBox.Show("This person already has an open application of the same class type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This person does not meet the minimum age required!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
     }

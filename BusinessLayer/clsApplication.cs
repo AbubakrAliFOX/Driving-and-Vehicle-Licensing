@@ -127,9 +127,39 @@ namespace BusinessLayer
             return clsApplicationsDataAccess.CreateApplication(PersonID, ApplicationTypeID);
         }
 
-        public static bool CreateLocalDrivingLicenseApplication(int ApplicationID, int ClassID)
+        public static int CreateLocalDrivingLicenseApplication(int PersonID, int LicenseClassID)
         {
-            return clsApplicationsDataAccess.CreateLocalDrivingLicenseApplication(ApplicationID, ClassID);
+            if (clsLicense.IsPersonWithinAgeForLicenseClass(PersonID, LicenseClassID))
+            {
+                if (!clsLicense.PersonHasApplicationWithLicenseClass(PersonID, LicenseClassID))
+                {
+                    int ApplicationID = CreateApplication(PersonID, 1);
+
+                    if (ApplicationID != -1)
+                    {
+                        int LDLApplicationID = clsApplicationsDataAccess.CreateLocalDrivingLicenseApplication(ApplicationID, LicenseClassID);
+                        if (LDLApplicationID != -1)
+                        {
+                            return LDLApplicationID;
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    }
+                    else
+                    {
+                        return -2;
+                    }
+                }
+                else
+                {
+                    return -3;
+                }
+            } else
+            {
+                return -4;
+            }
         }
 
         //public static bool CancelLocalDrivingLicenseApplication(int PersonID, int ClassID)
@@ -145,6 +175,5 @@ namespace BusinessLayer
         {
             return clsApplicationsDataAccess.PassedTestsCount(LDLApplicationID);
         }
-
     }
 }
