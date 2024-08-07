@@ -83,6 +83,7 @@
             this.pbAddNew.Size = new System.Drawing.Size(32, 32);
             this.pbAddNew.TabIndex = 14;
             this.pbAddNew.TabStop = false;
+            this.pbAddNew.Click += new System.EventHandler(this.pbAddNew_Click);
             // 
             // pbSearch
             // 

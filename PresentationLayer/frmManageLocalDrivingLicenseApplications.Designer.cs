@@ -44,13 +44,14 @@
             this.tsmIssueDrivingLicenseFirstTime = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmShowLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.LocalLicenseApplicationsPage = new PresentationLayer.ctrlDataPage();
             this.cmsLocalLicences.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(837, 467);
+            this.btnClose.Location = new System.Drawing.Point(1056, 522);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(163, 35);
             this.btnClose.TabIndex = 21;
@@ -72,7 +73,7 @@
             this.tsmShowLicense,
             this.tsmShowPersonLicenseHistory});
             this.cmsLocalLicences.Name = "cmsDrivers";
-            this.cmsLocalLicences.Size = new System.Drawing.Size(419, 326);
+            this.cmsLocalLicences.Size = new System.Drawing.Size(419, 298);
             this.cmsLocalLicences.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.cmsLocalLicences_Closed);
             this.cmsLocalLicences.Opened += new System.EventHandler(this.cmsLocalLicences_Opened);
             // 
@@ -187,16 +188,26 @@
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";
             this.tsmShowPersonLicenseHistory.Click += new System.EventHandler(this.tsmShowPersonLicenseHistory_Click);
             // 
+            // LocalLicenseApplicationsPage
+            // 
+            this.LocalLicenseApplicationsPage.Location = new System.Drawing.Point(1, 0);
+            this.LocalLicenseApplicationsPage.Name = "LocalLicenseApplicationsPage";
+            this.LocalLicenseApplicationsPage.Size = new System.Drawing.Size(1246, 575);
+            this.LocalLicenseApplicationsPage.TabIndex = 22;
+            this.LocalLicenseApplicationsPage.Title = "Local Driving Licenses";
+            // 
             // frmManageLocalDrivingLicenseApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 514);
+            this.ClientSize = new System.Drawing.Size(1254, 573);
             this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.LocalLicenseApplicationsPage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmManageLocalDrivingLicenseApplications";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Local Driving License Applications";
+            this.Load += new System.EventHandler(this.frmManageLocalDrivingLicenseApplications_Load);
             this.cmsLocalLicences.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -217,5 +228,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmIssueDrivingLicenseFirstTime;
         private System.Windows.Forms.ToolStripMenuItem tsmShowLicense;
         private System.Windows.Forms.ToolStripMenuItem tsmShowPersonLicenseHistory;
+        private ctrlDataPage LocalLicenseApplicationsPage;
     }
 }

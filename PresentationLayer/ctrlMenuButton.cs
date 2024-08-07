@@ -13,52 +13,85 @@ namespace PresentationLayer
 {
     public partial class ctrlMenuButton : UserControl
     {
-        UserControl page;
-        public ctrlMenuButton(string buttonText, string btnImage)
+        public ctrlMenuButton()
         {
             InitializeComponent();
-
-            this.Tag = "MenuButton";
-            btnMenuButton.Text = "        " + buttonText;
-            btnMenuButton.Image = Image.FromFile($"E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\{btnImage}");
-            pSidePanel.Visible = false;
         }
 
-        public UserControl Page
+        private string _ButtonName = "";
+
+        public string ButtonName
         {
-            get { return page; }
-            set { page = value; }
+            get { return _ButtonName; }
+            set
+            {
+                _ButtonName = value;
+                this.Name = _ButtonName;
+                btnMenuButton.Text = "        " + _ButtonName;
+            }
         }
-        public Control MainButton
+
+        private string _ImageName = "";
+        public string ImageName
+        {
+            get { return _ImageName; }
+            set
+            {
+                _ImageName = value;
+                btnMenuButton.Image = Image.FromFile($"E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\{_ImageName}");
+            }
+        }
+
+        private ctrlDataPage _Page;
+
+        public ctrlDataPage Page
+        {
+            get { return _Page; }
+            set { _Page = value; }
+        }
+
+        public Button Button
         {
             get { return btnMenuButton; }
         }
 
 
-        public Control SidePanel
+        private bool _IsActive;
+
+        public bool IsActive
         {
-            get { return this.pSidePanel; }
+            get { return _IsActive; }
+            set 
+            { 
+                _IsActive = value;
+                if (_IsActive)
+                {
+                    Selected();
+                } else
+                {
+                    Reset();
+                }
+            }
         }
 
         public void Reset ()
         {
-            this.btnMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95))))); ;
-            this.SidePanel.Visible = false;
-            if (this.Page != null)
+            btnMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95))))); ;
+            pSidePanel.Visible = false;
+            if (Page != null)
             {
-                this.Page.Visible = false;
+                Page.Visible = false;
             }
         }
 
         public void Selected ()
         {
             this.btnMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(200))))); ;
-            this.SidePanel.Visible = true;
-            if (this.Page != null)
+            pSidePanel.Visible = true;
+            if (Page != null)
             {
-                this.Page.Visible = true;
+                Page.Visible = true;
             }
         }
-
     }
 }

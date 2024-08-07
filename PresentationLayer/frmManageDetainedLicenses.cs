@@ -13,24 +13,15 @@ namespace PresentationLayer
 {
     public partial class frmManageDetainedLicenses : Form
     {
-        ctrlDataPage DetainedLicensesPage;
         clsLicense LicenseDetails;
         public frmManageDetainedLicenses()
         {
             InitializeComponent();
-
-            DetainedLicensesPage = new ctrlDataPage();
-
-            DetainedLicensesPage.Title = "Detained Licenses";
-            DetainedLicensesPage.Location = new System.Drawing.Point(0, 0);
-            DetainedLicensesPage.Visible = true;
-
+        }
+        private void frmManageDetainedLicenses_Load(object sender, EventArgs e)
+        {
             DetainedLicensesPage.SetAddNewClickEventHandler(DetainNewLicense_Click);
-
-            this.Controls.Add(DetainedLicensesPage);
-
             FormatLayout();
-
         }
 
         private void FormatLayout()
@@ -44,19 +35,19 @@ namespace PresentationLayer
                 dgv.Columns["IsReleased"].HeaderText = "Is Released";
                 dgv.Columns["FineFees"].HeaderText = "Fine Fees";
                 dgv.Columns["ReleaseDate"].HeaderText = "Release Date";
-                dgv.Columns["NationalNo"].HeaderText = "Nationa lNo";
+                dgv.Columns["NationalNo"].HeaderText = "National No";
                 dgv.Columns["FullName"].HeaderText = "Full Name";
                 dgv.Columns["ReleaseApplicationID"].HeaderText = "Release.App.ID";
 
 
-                dgv.Columns["DetainID"].Width = 60;
-                dgv.Columns["LicenseID"].Width = 60;
-                dgv.Columns["DetainDate"].Width = 100;
-                dgv.Columns["IsReleased"].Width = 60;
-                dgv.Columns["FineFees"].Width = 100;
-                dgv.Columns["ReleaseDate"].Width = 100;
-                dgv.Columns["NationalNo"].Width = 100;
-                dgv.Columns["FullName"].Width = 200;
+                dgv.Columns["DetainID"].Width = 100;
+                dgv.Columns["LicenseID"].Width = 100;
+                dgv.Columns["DetainDate"].Width = 130;
+                dgv.Columns["IsReleased"].Width = 97;
+                dgv.Columns["FineFees"].Width = 110;
+                dgv.Columns["ReleaseDate"].Width = 130;
+                dgv.Columns["NationalNo"].Width = 115;
+                dgv.Columns["FullName"].Width = 250;
                 dgv.Columns["ReleaseApplicationID"].Width = 120;
 
                 dgv.ContextMenuStrip = cmsDetainedLicenses;

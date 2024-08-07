@@ -70,6 +70,20 @@ namespace PresentationLayer
             }
         }
 
+        private void pbAddNew_Click(object sender, EventArgs e)
+        {
+            AddNewPerson NewPerson = new AddNewPerson(-1);
+
+            NewPerson.DataBack += GetPersonID;
+
+            NewPerson.ShowDialog();
+        }
+
+        private void GetPersonID (object sender, int PersonID)
+        {
+            this.PersonInfo = clsPerson.Find(PersonID);
+        }
+
         private void cbFilterList_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchColumn = cbFilterList.SelectedItem.ToString().Replace(" ", "");

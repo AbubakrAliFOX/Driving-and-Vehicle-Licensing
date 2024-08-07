@@ -91,6 +91,7 @@
             this.dgvLocalLicenses.AllowUserToDeleteRows = false;
             this.dgvLocalLicenses.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvLocalLicenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocalLicenses.ContextMenuStrip = this.cmsLocalLicenceDetails;
             this.dgvLocalLicenses.Location = new System.Drawing.Point(0, 0);
             this.dgvLocalLicenses.Name = "dgvLocalLicenses";
             this.dgvLocalLicenses.ReadOnly = true;
@@ -117,6 +118,7 @@
             this.dgvInternationalLicenses.AllowUserToDeleteRows = false;
             this.dgvInternationalLicenses.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvInternationalLicenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInternationalLicenses.ContextMenuStrip = this.cmsInternationalLicenceDetails;
             this.dgvInternationalLicenses.Location = new System.Drawing.Point(0, 0);
             this.dgvInternationalLicenses.Name = "dgvInternationalLicenses";
             this.dgvInternationalLicenses.ReadOnly = true;
@@ -178,7 +180,6 @@
             this.tsmShowLocalLicenseDetails});
             this.cmsLocalLicenceDetails.Name = "cmsDrivers";
             this.cmsLocalLicenceDetails.Size = new System.Drawing.Size(300, 68);
-            this.cmsLocalLicenceDetails.Opening += new System.ComponentModel.CancelEventHandler(this.cmsLocalLicenceDetails_Opening);
             // 
             // tsmShowLocalLicenseDetails
             // 
@@ -187,6 +188,7 @@
             this.tsmShowLocalLicenseDetails.Name = "tsmShowLocalLicenseDetails";
             this.tsmShowLocalLicenseDetails.Size = new System.Drawing.Size(299, 36);
             this.tsmShowLocalLicenseDetails.Text = "Show License Details";
+            this.tsmShowLocalLicenseDetails.Click += new System.EventHandler(this.tsmShowLocalLicenseDetails_Click);
             // 
             // frmLicenseHistory
             // 

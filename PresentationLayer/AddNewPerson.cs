@@ -23,6 +23,11 @@ namespace PresentationLayer
 
         clsPerson newPerson;
         int _PersonID;
+
+        public delegate void DataBackEventHandler(object sender, int PersonID);
+
+        public event DataBackEventHandler DataBack;
+
         public AddNewPerson(int PersonID)
         {
             InitializeComponent();
@@ -167,6 +172,7 @@ namespace PresentationLayer
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            DataBack?.Invoke(this, newPerson.ID);
             this.Close();
         }
 

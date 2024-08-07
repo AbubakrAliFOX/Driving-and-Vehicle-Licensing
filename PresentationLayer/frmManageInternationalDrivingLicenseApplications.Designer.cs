@@ -36,13 +36,14 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmShowLicenseDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.InternationalLicenseApplicationsPage = new PresentationLayer.ctrlDataPage();
             this.cmsInternationalLicences.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(837, 467);
+            this.btnClose.Location = new System.Drawing.Point(1056, 522);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(163, 35);
             this.btnClose.TabIndex = 22;
@@ -93,16 +94,26 @@
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";
             this.tsmShowPersonLicenseHistory.Click += new System.EventHandler(this.tsmShowPersonLicenseHistory_Click);
             // 
+            // InternationalLicenseApplicationsPage
+            // 
+            this.InternationalLicenseApplicationsPage.Location = new System.Drawing.Point(1, 0);
+            this.InternationalLicenseApplicationsPage.Name = "InternationalLicenseApplicationsPage";
+            this.InternationalLicenseApplicationsPage.Size = new System.Drawing.Size(1246, 575);
+            this.InternationalLicenseApplicationsPage.TabIndex = 23;
+            this.InternationalLicenseApplicationsPage.Title = "International Driving Licenses";
+            // 
             // frmManageInternationalDrivingLicenseApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 514);
+            this.ClientSize = new System.Drawing.Size(1254, 573);
             this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.InternationalLicenseApplicationsPage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmManageInternationalDrivingLicenseApplications";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage International Driving License Applications";
+            this.Load += new System.EventHandler(this.frmManageInternationalDrivingLicenseApplications_Load);
             this.cmsInternationalLicences.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -116,5 +127,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmShowLicenseDetails;
         private System.Windows.Forms.ToolStripMenuItem tsmShowPersonLicenseHistory;
+        private ctrlDataPage InternationalLicenseApplicationsPage;
     }
 }

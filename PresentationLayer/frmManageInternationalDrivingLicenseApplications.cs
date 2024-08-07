@@ -13,22 +13,14 @@ namespace PresentationLayer
 {
     public partial class frmManageInternationalDrivingLicenseApplications : Form
     {
-        ctrlDataPage InternationalLicenseApplicationsPage;
         clsInternationalLicense InternationalLicenseDetails;
         public frmManageInternationalDrivingLicenseApplications()
         {
             InitializeComponent();
-
-            InternationalLicenseApplicationsPage = new ctrlDataPage();
-
-            InternationalLicenseApplicationsPage.Title = "International Driving Licenses";
-            InternationalLicenseApplicationsPage.Location = new System.Drawing.Point(0, 0);
-            InternationalLicenseApplicationsPage.Visible = true;
-
+        }
+        private void frmManageInternationalDrivingLicenseApplications_Load(object sender, EventArgs e)
+        {
             InternationalLicenseApplicationsPage.SetAddNewClickEventHandler(AddNewApplication_Click);
-
-            this.Controls.Add(InternationalLicenseApplicationsPage);
-
             FormatLayout();
         }
 

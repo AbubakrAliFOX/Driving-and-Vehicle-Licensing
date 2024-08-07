@@ -38,7 +38,7 @@ namespace PresentationLayer
 
         private void FormatLayout()
         {
-            if (dgvLocalLicenses != null)
+            if (dgvLocalLicenses != null && dgvLocalLicenses.Rows.Count > 0)
             {
                 dgvLocalLicenses.RowHeadersWidth = 20;
                 dgvLocalLicenses.Columns["LicenseID"].HeaderText = "Lic.ID";
@@ -56,7 +56,7 @@ namespace PresentationLayer
                 dgvLocalLicenses.Columns["IsActive"].Width = 60;
             }
 
-            if (dgvInternationalLicenses != null)
+            if (dgvInternationalLicenses != null && dgvInternationalLicenses.Rows.Count > 0)
             {
                 dgvInternationalLicenses.RowHeadersWidth = 20;
                 dgvInternationalLicenses.Columns["InternationalLicenseID"].HeaderText = "International Lic.ID";
@@ -82,16 +82,16 @@ namespace PresentationLayer
 
         private void tsmShowLicenseDetails_Click(object sender, EventArgs e)
         {
-            clsInternationalLicense InternationalLicenseDetails = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID((int)dgvInternationalLicenses.CurrentRow.Cells[1].Value);
-            frmInternationalLicenseDetails InternationalLicenseForm = new frmInternationalLicenseDetails(InternationalLicenseDetails.InternationalLicenseID, InternationalLicenseDetails.LocalLicense.LicenseID);
+            int InternationalLicenseID = (int)dgvInternationalLicenses.CurrentRow.Cells[0].Value;
+            int LocalLicenseID = (int)dgvInternationalLicenses.CurrentRow.Cells[1].Value;
+            frmInternationalLicenseDetails InternationalLicenseForm = new frmInternationalLicenseDetails(InternationalLicenseID, LocalLicenseID);
             InternationalLicenseForm.ShowDialog();
         }
 
-        private void cmsLocalLicenceDetails_Opening(object sender, CancelEventArgs e)
+        private void tsmShowLocalLicenseDetails_Click(object sender, EventArgs e)
         {
-            //clsLicense LocalLicense = clsLicense.FindLicenseByID((int)dgvLocalLicenses.CurrentRow.Cells[0].Value);
-            //clsApplication ApplicationDetails = clsApplication.
-            //frmLicenseDetails LicenseDetails = new frmLicenseDetails(LocalLicense.)
+            frmLicenseDetails LicenseDetails = new frmLicenseDetails((int)dgvLocalLicenses.CurrentRow.Cells[0].Value);
+            LicenseDetails.ShowDialog();
         }
     }
 }

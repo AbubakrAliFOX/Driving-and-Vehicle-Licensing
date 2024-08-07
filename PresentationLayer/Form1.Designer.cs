@@ -37,7 +37,6 @@ namespace PresentationLayer
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmInterLic = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLicHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.pSideNav = new System.Windows.Forms.Panel();
             this.cmsPeople = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmPersonInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,13 +75,27 @@ namespace PresentationLayer
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmAddUser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEditUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmDeleteUser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmChangeUserPassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDeleteUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.pSideNav = new System.Windows.Forms.Panel();
+            this.ctrlSettingsMenuButton = new PresentationLayer.ctrlMenuButton();
+            this.ctrlApplicationsMenuButton = new PresentationLayer.ctrlMenuButton();
+            this.ctrlUsersMenuButton = new PresentationLayer.ctrlMenuButton();
+            this.ctrlDataPageUsers = new PresentationLayer.ctrlDataPage();
+            this.ctrlDriversMenuButton = new PresentationLayer.ctrlMenuButton();
+            this.ctrlDataPageDrivers = new PresentationLayer.ctrlDataPage();
+            this.ctrlPeopleMenuButton = new PresentationLayer.ctrlMenuButton();
+            this.ctrlDataPagePeople = new PresentationLayer.ctrlDataPage();
+            this.pbOff = new System.Windows.Forms.PictureBox();
+            this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.cmsDrivers.SuspendLayout();
             this.cmsPeople.SuspendLayout();
             this.cmsApplicationOptions.SuspendLayout();
             this.cmsSettings.SuspendLayout();
             this.cmsUsers.SuspendLayout();
+            this.pSideNav.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             this.SuspendLayout();
             // 
             // cmsDrivers
@@ -125,15 +138,6 @@ namespace PresentationLayer
             this.tsmLicHistory.Name = "tsmLicHistory";
             this.tsmLicHistory.Size = new System.Drawing.Size(284, 28);
             this.tsmLicHistory.Text = "Show License History";
-            // 
-            // pSideNav
-            // 
-            this.pSideNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95)))));
-            this.pSideNav.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pSideNav.Location = new System.Drawing.Point(0, 0);
-            this.pSideNav.Name = "pSideNav";
-            this.pSideNav.Size = new System.Drawing.Size(246, 478);
-            this.pSideNav.TabIndex = 1;
             // 
             // cmsPeople
             // 
@@ -374,7 +378,7 @@ namespace PresentationLayer
             this.toolStripSeparator5,
             this.tsmHidden1});
             this.cmsSettings.Name = "cmsApplicationOptions";
-            this.cmsSettings.Size = new System.Drawing.Size(286, 198);
+            this.cmsSettings.Size = new System.Drawing.Size(286, 170);
             this.cmsSettings.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.cmsSettings_Closed);
             this.cmsSettings.Opened += new System.EventHandler(this.cmsSettings_Opened);
             // 
@@ -463,15 +467,6 @@ namespace PresentationLayer
             this.tsmEditUser.Text = "Edit";
             this.tsmEditUser.Click += new System.EventHandler(this.tsmEditUser_Click);
             // 
-            // tsmDeleteUser
-            // 
-            this.tsmDeleteUser.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmDeleteUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmDeleteUser.Image")));
-            this.tsmDeleteUser.Name = "tsmDeleteUser";
-            this.tsmDeleteUser.Size = new System.Drawing.Size(217, 28);
-            this.tsmDeleteUser.Text = "Delete";
-            this.tsmDeleteUser.Click += new System.EventHandler(this.tsmDeleteUser_Click);
-            // 
             // tsmChangeUserPassword
             // 
             this.tsmChangeUserPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -481,12 +476,143 @@ namespace PresentationLayer
             this.tsmChangeUserPassword.Text = "Change Password";
             this.tsmChangeUserPassword.Click += new System.EventHandler(this.tsmChangeUserPassword_Click);
             // 
+            // tsmDeleteUser
+            // 
+            this.tsmDeleteUser.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmDeleteUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmDeleteUser.Image")));
+            this.tsmDeleteUser.Name = "tsmDeleteUser";
+            this.tsmDeleteUser.Size = new System.Drawing.Size(217, 28);
+            this.tsmDeleteUser.Text = "Delete";
+            this.tsmDeleteUser.Click += new System.EventHandler(this.tsmDeleteUser_Click);
+            // 
+            // pSideNav
+            // 
+            this.pSideNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(31)))), ((int)(((byte)(95)))));
+            this.pSideNav.Controls.Add(this.ctrlSettingsMenuButton);
+            this.pSideNav.Controls.Add(this.ctrlApplicationsMenuButton);
+            this.pSideNav.Controls.Add(this.ctrlUsersMenuButton);
+            this.pSideNav.Controls.Add(this.ctrlDriversMenuButton);
+            this.pSideNav.Controls.Add(this.ctrlPeopleMenuButton);
+            this.pSideNav.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pSideNav.Location = new System.Drawing.Point(0, 0);
+            this.pSideNav.Name = "pSideNav";
+            this.pSideNav.Size = new System.Drawing.Size(246, 575);
+            this.pSideNav.TabIndex = 1;
+            // 
+            // ctrlSettingsMenuButton
+            // 
+            this.ctrlSettingsMenuButton.ButtonName = "Settings";
+            this.ctrlSettingsMenuButton.ImageName = "Settings.png";
+            this.ctrlSettingsMenuButton.IsActive = false;
+            this.ctrlSettingsMenuButton.Location = new System.Drawing.Point(0, 304);
+            this.ctrlSettingsMenuButton.Name = "ctrlSettingsMenuButton";
+            this.ctrlSettingsMenuButton.Page = null;
+            this.ctrlSettingsMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlSettingsMenuButton.TabIndex = 4;
+            // 
+            // ctrlApplicationsMenuButton
+            // 
+            this.ctrlApplicationsMenuButton.ButtonName = "Applications";
+            this.ctrlApplicationsMenuButton.ImageName = "Application.png";
+            this.ctrlApplicationsMenuButton.IsActive = false;
+            this.ctrlApplicationsMenuButton.Location = new System.Drawing.Point(0, 228);
+            this.ctrlApplicationsMenuButton.Name = "ctrlApplicationsMenuButton";
+            this.ctrlApplicationsMenuButton.Page = null;
+            this.ctrlApplicationsMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlApplicationsMenuButton.TabIndex = 3;
+            // 
+            // ctrlUsersMenuButton
+            // 
+            this.ctrlUsersMenuButton.ButtonName = "Users";
+            this.ctrlUsersMenuButton.ImageName = "Users.png";
+            this.ctrlUsersMenuButton.IsActive = false;
+            this.ctrlUsersMenuButton.Location = new System.Drawing.Point(0, 152);
+            this.ctrlUsersMenuButton.Name = "ctrlUsersMenuButton";
+            this.ctrlUsersMenuButton.Page = this.ctrlDataPageUsers;
+            this.ctrlUsersMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlUsersMenuButton.TabIndex = 2;
+            // 
+            // ctrlDataPageUsers
+            // 
+            this.ctrlDataPageUsers.Location = new System.Drawing.Point(256, 0);
+            this.ctrlDataPageUsers.Name = "ctrlDataPageUsers";
+            this.ctrlDataPageUsers.Size = new System.Drawing.Size(1246, 575);
+            this.ctrlDataPageUsers.TabIndex = 9;
+            this.ctrlDataPageUsers.Title = "Users";
+            this.ctrlDataPageUsers.Visible = false;
+            // 
+            // ctrlDriversMenuButton
+            // 
+            this.ctrlDriversMenuButton.ButtonName = "Drivers";
+            this.ctrlDriversMenuButton.ImageName = "DriverImg.png";
+            this.ctrlDriversMenuButton.IsActive = false;
+            this.ctrlDriversMenuButton.Location = new System.Drawing.Point(0, 76);
+            this.ctrlDriversMenuButton.Name = "ctrlDriversMenuButton";
+            this.ctrlDriversMenuButton.Page = this.ctrlDataPageDrivers;
+            this.ctrlDriversMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlDriversMenuButton.TabIndex = 1;
+            // 
+            // ctrlDataPageDrivers
+            // 
+            this.ctrlDataPageDrivers.Location = new System.Drawing.Point(256, 0);
+            this.ctrlDataPageDrivers.Name = "ctrlDataPageDrivers";
+            this.ctrlDataPageDrivers.Size = new System.Drawing.Size(1246, 575);
+            this.ctrlDataPageDrivers.TabIndex = 10;
+            this.ctrlDataPageDrivers.Title = "Drivers";
+            this.ctrlDataPageDrivers.Visible = false;
+            // 
+            // ctrlPeopleMenuButton
+            // 
+            this.ctrlPeopleMenuButton.ButtonName = "People";
+            this.ctrlPeopleMenuButton.ImageName = "people.png";
+            this.ctrlPeopleMenuButton.IsActive = true;
+            this.ctrlPeopleMenuButton.Location = new System.Drawing.Point(0, 0);
+            this.ctrlPeopleMenuButton.Name = "ctrlPeopleMenuButton";
+            this.ctrlPeopleMenuButton.Page = this.ctrlDataPagePeople;
+            this.ctrlPeopleMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlPeopleMenuButton.TabIndex = 0;
+            // 
+            // ctrlDataPagePeople
+            // 
+            this.ctrlDataPagePeople.Location = new System.Drawing.Point(256, 0);
+            this.ctrlDataPagePeople.Name = "ctrlDataPagePeople";
+            this.ctrlDataPagePeople.Size = new System.Drawing.Size(1246, 575);
+            this.ctrlDataPagePeople.TabIndex = 11;
+            this.ctrlDataPagePeople.Title = "People";
+            // 
+            // pbOff
+            // 
+            this.pbOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOff.Image = ((System.Drawing.Image)(resources.GetObject("pbOff.Image")));
+            this.pbOff.Location = new System.Drawing.Point(1443, 12);
+            this.pbOff.Name = "pbOff";
+            this.pbOff.Size = new System.Drawing.Size(35, 35);
+            this.pbOff.TabIndex = 5;
+            this.pbOff.TabStop = false;
+            this.pbOff.Click += new System.EventHandler(this.pbOff_Click);
+            // 
+            // pbMinimize
+            // 
+            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMinimize.Image = ((System.Drawing.Image)(resources.GetObject("pbMinimize.Image")));
+            this.pbMinimize.Location = new System.Drawing.Point(1390, 12);
+            this.pbMinimize.Name = "pbMinimize";
+            this.pbMinimize.Size = new System.Drawing.Size(35, 35);
+            this.pbMinimize.TabIndex = 7;
+            this.pbMinimize.TabStop = false;
+            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1262, 478);
+            this.ClientSize = new System.Drawing.Size(1490, 575);
+            this.Controls.Add(this.pbMinimize);
+            this.Controls.Add(this.pbOff);
             this.Controls.Add(this.pSideNav);
+            this.Controls.Add(this.ctrlDataPagePeople);
+            this.Controls.Add(this.ctrlDataPageUsers);
+            this.Controls.Add(this.ctrlDataPageDrivers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -496,6 +622,9 @@ namespace PresentationLayer
             this.cmsApplicationOptions.ResumeLayout(false);
             this.cmsSettings.ResumeLayout(false);
             this.cmsUsers.ResumeLayout(false);
+            this.pSideNav.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbOff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -505,7 +634,6 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem tsmDriverInfo;
         private System.Windows.Forms.ToolStripMenuItem tsmInterLic;
         private System.Windows.Forms.ToolStripMenuItem tsmLicHistory;
-        private System.Windows.Forms.Panel pSideNav;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ContextMenuStrip cmsPeople;
         private System.Windows.Forms.ToolStripMenuItem tsmPersonInfo;
@@ -547,6 +675,17 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem tsmEditUser;
         private System.Windows.Forms.ToolStripMenuItem tsmDeleteUser;
         private System.Windows.Forms.ToolStripMenuItem tsmChangeUserPassword;
+        private System.Windows.Forms.Panel pSideNav;
+        private System.Windows.Forms.PictureBox pbOff;
+        private System.Windows.Forms.PictureBox pbMinimize;
+        private ctrlDataPage ctrlDataPageUsers;
+        private ctrlDataPage ctrlDataPageDrivers;
+        private ctrlDataPage ctrlDataPagePeople;
+        private ctrlMenuButton ctrlPeopleMenuButton;
+        private ctrlMenuButton ctrlSettingsMenuButton;
+        private ctrlMenuButton ctrlApplicationsMenuButton;
+        private ctrlMenuButton ctrlUsersMenuButton;
+        private ctrlMenuButton ctrlDriversMenuButton;
     }
 }
 

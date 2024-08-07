@@ -13,73 +13,38 @@ namespace PresentationLayer
 {
     public partial class Form1 : Form
     {
-        private ctrlDataPage ctrlDataPagePeople;
-        private ctrlDataPage ctrlDataPageDrivers;
-        private ctrlDataPage ctrlDataPageUsers;
-
-        private ctrlMenuButton ctrlPeopleMenuButton;
-        private ctrlMenuButton ctrlDriversMenuButton;
-        private ctrlMenuButton ctrlUsersMenuButton;
-        private ctrlMenuButton ctrlApplicationsMenuButton;
-        private ctrlMenuButton ctrlSettingsMenuButton;
-
-        private List<ctrlMenuButton> lMenuButtons;
-
         public Form1()
         {
             InitializeComponent();
-            //this.WindowState = FormWindowState.Maximized;
-            //this.Width = Screen.PrimaryScreen.Bounds.Width;
-            //this.Top = (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2;
+
             InitializeControls();
-            AddControls();
         }
 
         private void InitializeControls()
         {
-            lMenuButtons = new List<ctrlMenuButton>();
- 
-            ctrlDataPagePeople = new ctrlDataPage();
-            ctrlDataPagePeople.Title = "People";
+
             FormatPeopleLayout();
 
-            ctrlDataPageDrivers = new ctrlDataPage();
-            ctrlDataPageDrivers.Title = "Drivers";
             FormatDriverLayout();
 
-            ctrlDataPageUsers = new ctrlDataPage();
-            ctrlDataPageUsers.Title = "Users";
             FormatUserLayout();
-            ctrlDataPageUsers.SetAddNewClickEventHandler(AddNewUser_Click);
 
+            SubscribeToEvents();
+        }
+        private void SubscribeToEvents()
+        {
+            //Override the default add new person picture box in data pages
+            ctrlDataPageUsers.AddNewButton += AddNewUser_Click;
 
-            ctrlPeopleMenuButton = new ctrlMenuButton("People", "people.png");
-            ctrlPeopleMenuButton.Location = new System.Drawing.Point(0, 13);
-            ctrlPeopleMenuButton.MainButton.Click += MenuButtonClick;
-            lMenuButtons.Add(ctrlPeopleMenuButton);
-            ctrlPeopleMenuButton.Page = ctrlDataPagePeople;
+            ctrlMenuButton[]  MenuButtons = new ctrlMenuButton[] { ctrlPeopleMenuButton, ctrlDriversMenuButton, ctrlUsersMenuButton };
 
-            ctrlDriversMenuButton = new ctrlMenuButton("Drivers", "DriverImg.png");
-            ctrlDriversMenuButton.Location = new System.Drawing.Point(0, 89);
-            ctrlDriversMenuButton.MainButton.Click += MenuButtonClick;
-            lMenuButtons.Add(ctrlDriversMenuButton);
-            ctrlDriversMenuButton.Page = ctrlDataPageDrivers;
+            foreach (ctrlMenuButton MenuButton in MenuButtons)
+            {
+                MenuButton.Button.Click += MenuButtonClick;
+            }
 
-            ctrlUsersMenuButton = new ctrlMenuButton("Users", "Users.png");
-            ctrlUsersMenuButton.Location = new System.Drawing.Point(0, 165);
-            ctrlUsersMenuButton.MainButton.Click += MenuButtonClick;
-            lMenuButtons.Add(ctrlUsersMenuButton);
-            ctrlUsersMenuButton.Page = ctrlDataPageUsers;
-
-
-
-            ctrlApplicationsMenuButton = new ctrlMenuButton("Applications", "Application.png");
-            ctrlApplicationsMenuButton.Location = new System.Drawing.Point(0, 241);
-            ctrlApplicationsMenuButton.MainButton.Click += new EventHandler(this.ApplicationsMenuDropdownButton_Click);
-
-            ctrlSettingsMenuButton = new ctrlMenuButton("Settings", "Settings.png");
-            ctrlSettingsMenuButton.Location = new System.Drawing.Point(0, 317);
-            ctrlSettingsMenuButton.MainButton.Click += new EventHandler(this.SettingsMenuDropdownButton_Click);
+            ctrlApplicationsMenuButton.Button.Click += ApplicationsMenuDropdownButton_Click;
+            ctrlSettingsMenuButton.Button.Click += SettingsMenuDropdownButton_Click;
         }
 
         private void MenuButtonClick(object sender, EventArgs e)
@@ -87,14 +52,15 @@ namespace PresentationLayer
             Button button = sender as Button;
             ctrlMenuButton parentControl = button.Parent as ctrlMenuButton;
 
-            foreach (ctrlMenuButton item in lMenuButtons)
+            foreach (ctrlMenuButton MenuButton in pSideNav.Controls)
             {
-                if (item == parentControl)
+                if (MenuButton == parentControl)
                 {
-                    item.Selected();
+                    MenuButton.IsActive = true;
                     continue;
                 }
-                    item.Reset();
+
+                MenuButton.IsActive = false;
             }
         }
 
@@ -112,18 +78,6 @@ namespace PresentationLayer
             cmsSettings.Show(ctrlSettingsMenuButton, ctrlSettingsMenuButton.Width, 0);
         }
 
-        private void AddControls()
-        {
-            this.Controls.Add(ctrlDataPagePeople);
-            this.Controls.Add(ctrlDataPageDrivers);
-            this.Controls.Add(ctrlDataPageUsers);
-            pSideNav.Controls.Add(ctrlPeopleMenuButton);
-            pSideNav.Controls.Add(ctrlDriversMenuButton);
-            pSideNav.Controls.Add(ctrlUsersMenuButton);
-            pSideNav.Controls.Add(ctrlApplicationsMenuButton);
-            pSideNav.Controls.Add(ctrlSettingsMenuButton);
-        }
-
         private void FormatPeopleLayout()
         {
             DataGridView dgv = ctrlDataPagePeople.Controls.OfType<DataGridView>().FirstOrDefault();
@@ -136,10 +90,10 @@ namespace PresentationLayer
                 dgv.Columns["DateOfBirth"].HeaderText = "Birth Date";
 
                 dgv.Columns["FullName"].Width = 220;
-                //dgv.Columns["NationalNo"].Width = 120;
-                //dgv.Columns["CreatedDate"].Width = 120;
-                //dgv.Columns["Username"].Width = 180;
-                //dgv.Columns["ActiveLicences"].Width = 80;
+                dgv.Columns["NationalNo"].Width = 120;
+                dgv.Columns["DateOfBirth"].Width = 120;
+                dgv.Columns["Email"].Width = 150;
+                dgv.Columns["Address"].Width = 120;
 
                 dgv.ContextMenuStrip = cmsPeople;
             }
@@ -156,11 +110,12 @@ namespace PresentationLayer
                 dgv.Columns["CreatedByUser"].HeaderText = "Created By User";
                 dgv.Columns["ActiveLicences"].HeaderText = "Active Licenses";
 
-                dgv.Columns["FullName"].Width = 300;
+                dgv.Columns["DriverID"].Width = 130;
+                dgv.Columns["FullName"].Width = 400;
                 dgv.Columns["NationalNo"].Width = 120;
-                dgv.Columns["CreatedDate"].Width = 120;
+                dgv.Columns["CreatedDate"].Width = 193;
                 dgv.Columns["CreatedByUser"].Width = 180;
-                dgv.Columns["ActiveLicences"].Width = 80;
+                dgv.Columns["ActiveLicences"].Width = 130;
 
                 dgv.ContextMenuStrip = cmsDrivers;
             }
@@ -176,8 +131,10 @@ namespace PresentationLayer
                 dgv.Columns["UserName"].HeaderText = "User Name";
                 dgv.Columns["IsActive"].HeaderText = "Is Active";
 
-                dgv.Columns["FullName"].Width = 330;
-                dgv.Columns["Username"].Width = 120;
+                dgv.Columns["UserID"].Width = 130;
+                dgv.Columns["FullName"].Width = 450;
+                dgv.Columns["Username"].Width = 180;
+                dgv.Columns["IsActive"].Width = 180;
 
                 dgv.ContextMenuStrip = cmsUsers;
             }
@@ -340,7 +297,7 @@ namespace PresentationLayer
         {
             frmNewUser NewUser = new frmNewUser();
             NewUser.ShowDialog();
-            ctrlDataPageUsers.RefreshData();
+            //ctrlDataPageUsers.RefreshData();
         }
 
         private void tsmUserInformation_Click(object sender, EventArgs e)
@@ -383,6 +340,16 @@ namespace PresentationLayer
                     MessageBox.Show("This user is associated with other data. He can't be deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void pbOff_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -47,24 +47,24 @@
             this.DataGridView.ReadOnly = true;
             this.DataGridView.RowHeadersWidth = 51;
             this.DataGridView.RowTemplate.Height = 24;
-            this.DataGridView.Size = new System.Drawing.Size(960, 273);
+            this.DataGridView.Size = new System.Drawing.Size(1185, 356);
             this.DataGridView.TabIndex = 0;
             // 
             // lblRecordsNumber
             // 
             this.lblRecordsNumber.AutoSize = true;
             this.lblRecordsNumber.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsNumber.Location = new System.Drawing.Point(180, 431);
+            this.lblRecordsNumber.Location = new System.Drawing.Point(180, 526);
             this.lblRecordsNumber.Name = "lblRecordsNumber";
             this.lblRecordsNumber.Size = new System.Drawing.Size(24, 28);
             this.lblRecordsNumber.TabIndex = 5;
-            this.lblRecordsNumber.Text = "6";
+            this.lblRecordsNumber.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(32, 431);
+            this.label2.Location = new System.Drawing.Point(32, 526);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 28);
             this.label2.TabIndex = 4;
@@ -76,16 +76,16 @@
             this.lblTitle.Font = new System.Drawing.Font("Calibri", 26F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Location = new System.Drawing.Point(32, 22);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(307, 54);
+            this.lblTitle.Size = new System.Drawing.Size(218, 54);
             this.lblTitle.TabIndex = 6;
-            this.lblTitle.Text = "Manage People";
+            this.lblTitle.Text = "Manage ...";
             // 
             // btnAddNew
             // 
             this.btnAddNew.FlatAppearance.BorderSize = 0;
             this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.Image")));
-            this.btnAddNew.Location = new System.Drawing.Point(942, 90);
+            this.btnAddNew.Location = new System.Drawing.Point(1173, 90);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(50, 47);
             this.btnAddNew.TabIndex = 7;
@@ -113,7 +113,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DataGridView);
             this.Name = "ctrlDataPage";
-            this.Size = new System.Drawing.Size(1014, 478);
+            this.Size = new System.Drawing.Size(1246, 575);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

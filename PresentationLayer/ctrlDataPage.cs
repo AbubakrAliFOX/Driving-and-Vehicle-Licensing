@@ -21,13 +21,17 @@ namespace PresentationLayer
         }
         private void FormatStyles()
         {
-            this.Location = new System.Drawing.Point(256, 0);
-            this.Size = new System.Drawing.Size(1010, 478);
-            this.Visible = false;
+            //this.Location = new System.Drawing.Point(256, 0);
+            //this.Size = new System.Drawing.Size(1010, 478);
+            //this.Visible = false;
             this.DataGridView.RowHeadersWidth = 30;
         }
 
-        private string _Title;
+        public delegate void DataBackEventHandler(object sender, EventArgs e);
+
+        public event DataBackEventHandler AddNewButton;
+
+        private string _Title = "";
         public string Title
         {
             get
@@ -36,10 +40,13 @@ namespace PresentationLayer
             }
             set
             {
-                _Title = value;
-                lblTitle.Text = $"Manage {Title}";
-                RefreshData();
-                ctrlSearchBar1.SearchableColumns = SearchableColumns;
+                if(value != "")
+                {
+                    _Title = value;
+                    lblTitle.Text = $"Manage {Title}";
+                    RefreshData();
+                    ctrlSearchBar1.SearchableColumns = SearchableColumns;
+                }
             }
         }
 
@@ -105,8 +112,14 @@ namespace PresentationLayer
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            AddNewPerson addNewPersonForm = new AddNewPerson(-1);
-            addNewPersonForm.ShowDialog();
+            if(AddNewButton != null)
+            {
+                AddNewButton.Invoke(this, e);
+            } else
+            {
+                AddNewPerson addNewPersonForm = new AddNewPerson(-1);
+                addNewPersonForm.ShowDialog();
+            }
             RefreshData();
         }
         public void SetAddNewClickEventHandler(EventHandler eventHandler)
