@@ -67,6 +67,23 @@ namespace BusinessLayer
         {
             return clsUsersDataAccess.DeleteUser(UserID);
         }
+        
+        public static int ChangePassword(string UserName, string OldPassword, string NewPassword)
+        {
+            if (clsUsersDataAccess.Authenticate(UserName, OldPassword))
+            {
+                if(clsUsersDataAccess.ChangePassword(UserName, NewPassword))
+                {
+                    return 1;
+                } else
+                {
+                    return -1;
+                }
+            } else
+            {
+                return -2;
+            }
+        }
 
         public static bool IsUser(int PersonID)
         {

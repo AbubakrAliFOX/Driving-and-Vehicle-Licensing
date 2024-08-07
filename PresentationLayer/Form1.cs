@@ -317,6 +317,17 @@ namespace PresentationLayer
             frmManageLocalDrivingLicenseApplications LocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
             LocalDrivingLicenseApplications.ShowDialog();
         }
+        private void tsmUserInfo_Click(object sender, EventArgs e)
+        {
+            frmUserInfo UserInfo = new frmUserInfo(1);
+            UserInfo.ShowDialog();
+        }
+
+        private void tsmChangePassword_Click(object sender, EventArgs e)
+        {
+            frmChangePassword ChangePassword = new frmChangePassword(1);
+            ChangePassword.ShowDialog();
+        }
 
         private void tsmLogout_Click(object sender, EventArgs e)
         {
@@ -338,6 +349,7 @@ namespace PresentationLayer
             UserInfo.ShowDialog();
         }
 
+
         private void tsmAddUser_Click(object sender, EventArgs e)
         {
             frmNewUser NewUser = new frmNewUser();
@@ -350,6 +362,12 @@ namespace PresentationLayer
             frmNewUser EditUser = new frmNewUser((int)ctrlDataPageUsers.dgv.CurrentRow.Cells[0].Value);
             EditUser.ShowDialog();
             ctrlDataPageUsers.RefreshData();
+        }
+
+        private void tsmChangeUserPassword_Click(object sender, EventArgs e)
+        {
+            frmChangePassword ChangePassword = new frmChangePassword((int)ctrlDataPageUsers.dgv.CurrentRow.Cells[0].Value);
+            ChangePassword.ShowDialog();
         }
 
         private void tsmDeleteUser_Click(object sender, EventArgs e)
@@ -365,12 +383,6 @@ namespace PresentationLayer
                     MessageBox.Show("This user is associated with other data. He can't be deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void tsmUserInfo_Click(object sender, EventArgs e)
-        {
-            frmUserInfo UserInfo = new frmUserInfo(1);
-            UserInfo.ShowDialog();
         }
     }
 }

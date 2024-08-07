@@ -200,6 +200,40 @@ namespace DataLayer
 
             return (RowsAffected > 0);
         }
+        public static bool ChangePassword(string UserName, string NewPassword)
+        {
+            int RowsAffected = 0;
+
+            string HashedPassword = BCrypt.Net.BCrypt.HashPassword(NewPassword);
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                    @"Update Users 
+                    Set Password = @Password
+                    Where UserName = @UserName";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@UserName", UserName);
+            cmd.Parameters.AddWithValue("@Password", HashedPassword);
+
+            try
+            {
+                connection.Open();
+                RowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return RowsAffected > 0;
+        }
 
         public static bool Authenticate(string UserName, string Password)
         {

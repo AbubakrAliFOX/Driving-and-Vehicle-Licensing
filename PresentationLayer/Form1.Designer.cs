@@ -77,6 +77,7 @@ namespace PresentationLayer
             this.tsmAddUser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEditUser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDeleteUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmChangeUserPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDrivers.SuspendLayout();
             this.cmsPeople.SuspendLayout();
             this.cmsApplicationOptions.SuspendLayout();
@@ -394,6 +395,7 @@ namespace PresentationLayer
             this.tsmChangePassword.Name = "tsmChangePassword";
             this.tsmChangePassword.Size = new System.Drawing.Size(285, 40);
             this.tsmChangePassword.Text = "Change Password";
+            this.tsmChangePassword.Click += new System.EventHandler(this.tsmChangePassword_Click);
             // 
             // tsmLogout
             // 
@@ -423,9 +425,10 @@ namespace PresentationLayer
             this.toolStripSeparator6,
             this.tsmAddUser,
             this.tsmEditUser,
+            this.tsmChangeUserPassword,
             this.tsmDeleteUser});
             this.cmsUsers.Name = "cmsPeople";
-            this.cmsUsers.Size = new System.Drawing.Size(193, 122);
+            this.cmsUsers.Size = new System.Drawing.Size(218, 150);
             // 
             // tsmUserInformation
             // 
@@ -433,21 +436,21 @@ namespace PresentationLayer
             this.tsmUserInformation.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tsmUserInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsmUserInformation.Image")));
             this.tsmUserInformation.Name = "tsmUserInformation";
-            this.tsmUserInformation.Size = new System.Drawing.Size(214, 28);
+            this.tsmUserInformation.Size = new System.Drawing.Size(217, 28);
             this.tsmUserInformation.Text = "Show Details";
             this.tsmUserInformation.Click += new System.EventHandler(this.tsmUserInformation_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(211, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(214, 6);
             // 
             // tsmAddUser
             // 
             this.tsmAddUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmAddUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmAddUser.Image")));
             this.tsmAddUser.Name = "tsmAddUser";
-            this.tsmAddUser.Size = new System.Drawing.Size(214, 28);
+            this.tsmAddUser.Size = new System.Drawing.Size(217, 28);
             this.tsmAddUser.Text = "Add New User";
             this.tsmAddUser.Click += new System.EventHandler(this.tsmAddUser_Click);
             // 
@@ -456,7 +459,7 @@ namespace PresentationLayer
             this.tsmEditUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmEditUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmEditUser.Image")));
             this.tsmEditUser.Name = "tsmEditUser";
-            this.tsmEditUser.Size = new System.Drawing.Size(214, 28);
+            this.tsmEditUser.Size = new System.Drawing.Size(217, 28);
             this.tsmEditUser.Text = "Edit";
             this.tsmEditUser.Click += new System.EventHandler(this.tsmEditUser_Click);
             // 
@@ -465,9 +468,18 @@ namespace PresentationLayer
             this.tsmDeleteUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmDeleteUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmDeleteUser.Image")));
             this.tsmDeleteUser.Name = "tsmDeleteUser";
-            this.tsmDeleteUser.Size = new System.Drawing.Size(214, 28);
+            this.tsmDeleteUser.Size = new System.Drawing.Size(217, 28);
             this.tsmDeleteUser.Text = "Delete";
             this.tsmDeleteUser.Click += new System.EventHandler(this.tsmDeleteUser_Click);
+            // 
+            // tsmChangeUserPassword
+            // 
+            this.tsmChangeUserPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmChangeUserPassword.Image = ((System.Drawing.Image)(resources.GetObject("tsmChangeUserPassword.Image")));
+            this.tsmChangeUserPassword.Name = "tsmChangeUserPassword";
+            this.tsmChangeUserPassword.Size = new System.Drawing.Size(217, 28);
+            this.tsmChangeUserPassword.Text = "Change Password";
+            this.tsmChangeUserPassword.Click += new System.EventHandler(this.tsmChangeUserPassword_Click);
             // 
             // Form1
             // 
@@ -534,6 +546,7 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem tsmAddUser;
         private System.Windows.Forms.ToolStripMenuItem tsmEditUser;
         private System.Windows.Forms.ToolStripMenuItem tsmDeleteUser;
+        private System.Windows.Forms.ToolStripMenuItem tsmChangeUserPassword;
     }
 }
 
