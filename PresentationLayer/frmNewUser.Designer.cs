@@ -209,6 +209,7 @@
             this.Controls.Add(this.btnCreateUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmNewUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New User";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

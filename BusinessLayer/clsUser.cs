@@ -57,6 +57,16 @@ namespace BusinessLayer
                 return clsUsersDataAccess.CreateUser(PersonID, UserName, Password, IsActive);
             }
         }
+        
+        public static bool UpdateUser(int UserID, string UserName, bool IsActive)
+        {
+            return clsUsersDataAccess.UpdateUser(UserID, UserName, IsActive);
+        }
+        
+        public static bool DeleteUser(int UserID)
+        {
+            return clsUsersDataAccess.DeleteUser(UserID);
+        }
 
         public static bool IsUser(int PersonID)
         {

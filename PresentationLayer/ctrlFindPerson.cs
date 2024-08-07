@@ -29,6 +29,15 @@ namespace PresentationLayer
             }
         }
 
+        public int OnlyForPerson
+        {
+            set
+            {
+                ctrlPersonCard1.PersonInfo= clsPerson.Find(value);
+                gbFilter.Enabled = false;
+            }
+        }
+
         private string SearchColumn;
 
 

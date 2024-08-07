@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlFindPerson));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ctrlPersonCard1 = new PresentationLayer.ctrlPersonCard();
+            this.gbFilter = new System.Windows.Forms.GroupBox();
             this.pbAddNew = new System.Windows.Forms.PictureBox();
             this.pbSearch = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.cbFilterList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ctrlPersonCard1 = new PresentationLayer.ctrlPersonCard();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAddNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).BeginInit();
             this.SuspendLayout();
@@ -53,19 +53,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Person Info";
             // 
-            // groupBox1
+            // ctrlPersonCard1
             // 
-            this.groupBox1.Controls.Add(this.pbAddNew);
-            this.groupBox1.Controls.Add(this.pbSearch);
-            this.groupBox1.Controls.Add(this.tbSearch);
-            this.groupBox1.Controls.Add(this.cbFilterList);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(1, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(772, 100);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filter";
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(20, 21);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.PersonInfo = null;
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(740, 384);
+            this.ctrlPersonCard1.TabIndex = 16;
+            // 
+            // gbFilter
+            // 
+            this.gbFilter.Controls.Add(this.pbAddNew);
+            this.gbFilter.Controls.Add(this.pbSearch);
+            this.gbFilter.Controls.Add(this.tbSearch);
+            this.gbFilter.Controls.Add(this.cbFilterList);
+            this.gbFilter.Controls.Add(this.label1);
+            this.gbFilter.Location = new System.Drawing.Point(1, 3);
+            this.gbFilter.Name = "gbFilter";
+            this.gbFilter.Size = new System.Drawing.Size(772, 100);
+            this.gbFilter.TabIndex = 19;
+            this.gbFilter.TabStop = false;
+            this.gbFilter.Text = "Filter";
             // 
             // pbAddNew
             // 
@@ -115,25 +123,17 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Find By";
             // 
-            // ctrlPersonCard1
-            // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(20, 21);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.PersonInfo = null;
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(740, 384);
-            this.ctrlPersonCard1.TabIndex = 16;
-            // 
             // ctrlFindPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbFilter);
             this.Name = "ctrlFindPerson";
             this.Size = new System.Drawing.Size(790, 556);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbFilter.ResumeLayout(false);
+            this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAddNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).EndInit();
             this.ResumeLayout(false);
@@ -144,7 +144,7 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private ctrlPersonCard ctrlPersonCard1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.PictureBox pbAddNew;
         private System.Windows.Forms.PictureBox pbSearch;
         private System.Windows.Forms.TextBox tbSearch;

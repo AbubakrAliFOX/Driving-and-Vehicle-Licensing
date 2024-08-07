@@ -179,6 +179,7 @@ namespace PresentationLayer
                 dgv.Columns["FullName"].Width = 330;
                 dgv.Columns["Username"].Width = 120;
 
+                dgv.ContextMenuStrip = cmsUsers;
             }
         }
 
@@ -207,12 +208,12 @@ namespace PresentationLayer
         }
         private void tsmDelete_Click(object sender, EventArgs e)
         {
-            
             if (MessageBox.Show("Are you sure you want to delete this entry?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                if(clsPerson.Delete((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value)) 
+                if(clsPerson.Delete((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value))
                 {
                     MessageBox.Show("Successfully Deleted!", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ctrlDataPagePeople.RefreshData();
                 }
             }
         }
@@ -329,6 +330,47 @@ namespace PresentationLayer
             frmNewUser NewUser = new frmNewUser();
             NewUser.ShowDialog();
             ctrlDataPageUsers.RefreshData();
+        }
+
+        private void tsmUserInformation_Click(object sender, EventArgs e)
+        {
+            frmUserInfo UserInfo = new frmUserInfo((int)ctrlDataPageUsers.dgv.CurrentRow.Cells[0].Value);
+            UserInfo.ShowDialog();
+        }
+
+        private void tsmAddUser_Click(object sender, EventArgs e)
+        {
+            frmNewUser NewUser = new frmNewUser();
+            NewUser.ShowDialog();
+            ctrlDataPageUsers.RefreshData();
+        }
+
+        private void tsmEditUser_Click(object sender, EventArgs e)
+        {
+            frmNewUser EditUser = new frmNewUser((int)ctrlDataPageUsers.dgv.CurrentRow.Cells[0].Value);
+            EditUser.ShowDialog();
+            ctrlDataPageUsers.RefreshData();
+        }
+
+        private void tsmDeleteUser_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete this entry?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                if (clsUser.DeleteUser((int)ctrlDataPageUsers.dgv.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("Successfully Deleted!", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ctrlDataPageUsers.RefreshData();
+                } else
+                {
+                    MessageBox.Show("This user is associated with other data. He can't be deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void tsmUserInfo_Click(object sender, EventArgs e)
+        {
+            frmUserInfo UserInfo = new frmUserInfo(1);
+            UserInfo.ShowDialog();
         }
     }
 }

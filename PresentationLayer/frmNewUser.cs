@@ -13,10 +13,40 @@ namespace PresentationLayer
 {
     public partial class frmNewUser : Form
     {
-        int UserID;
+        clsUser UserInfo;
+        bool IsEditMode = false;
         public frmNewUser()
         {
             InitializeComponent();
+        }
+
+        public frmNewUser(int UserID)
+        {
+            InitializeComponent();
+            
+            //Edit Mode
+            IsEditMode = true;
+            UserInfo = clsUser.FindUserByID(UserID);
+            ctrlFindPerson1.OnlyForPerson = UserInfo.PersonID;
+            lblTitle.Text = "Update User";
+            btnCreateUser.Text = "Update";
+
+            FillUserInfo();
+        }
+
+        private void FillUserInfo()
+        {
+            FillLabels();
+
+            tbUserName.Text = UserInfo.UserName;
+            tbPassword.Enabled = false;
+            tbConfirmPassword.Enabled = false;
+            cbIsActive.Checked = UserInfo.IsActive;
+        }
+        
+        private void FillLabels()
+        {
+            lblUserID.Text = UserInfo.UserID.ToString();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -32,27 +62,34 @@ namespace PresentationLayer
                 return;
             }
 
-            int NewUserID = clsUser.CreateUser(ctrlFindPerson1.PersonInfo.ID, tbUserName.Text, tbPassword.Text, cbIsActive.Checked);
+            if (!IsEditMode)
+            {
+                int NewUserID = clsUser.CreateUser(ctrlFindPerson1.PersonInfo.ID, tbUserName.Text, tbPassword.Text, cbIsActive.Checked);
 
-            if (NewUserID == -1)
+                if (NewUserID == -1)
+                {
+                    MessageBox.Show("Failed to create new user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (NewUserID == -2)
+                {
+                    MessageBox.Show("Person is already a user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("User created successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    UserInfo = clsUser.FindUserByID(NewUserID);
+                    FillLabels();
+                }
+            } else
             {
-                MessageBox.Show("Failed to create new user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
-            else if (NewUserID == -2)
-            {
-                MessageBox.Show("Person is already a user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if(clsUser.UpdateUser(UserInfo.UserID, tbUserName.Text, cbIsActive.Checked))
+                {
+                    MessageBox.Show("User updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show("Failed to update user!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                MessageBox.Show("Something went wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                UserID = NewUserID;
-                FillLabels();
-            }
-        }
-
-        private void FillLabels()
-        {
-            lblUserID.Text = UserID.ToString();
         }
     }
 }

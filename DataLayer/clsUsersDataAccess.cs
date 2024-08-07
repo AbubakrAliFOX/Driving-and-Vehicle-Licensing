@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Net;
 
 
 namespace DataLayer
@@ -135,6 +136,70 @@ namespace DataLayer
             return UserID;
         }
 
+        public static bool UpdateUser(int UserID, string UserName, bool IsActive)
+        {
+            int RowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query =
+                    @"Update Users 
+                    Set UserName = @UserName,
+                        IsActive = @IsActive
+                    Where UserID = @UserID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@UserID", UserID);
+            cmd.Parameters.AddWithValue("@UserName", UserName);
+            cmd.Parameters.AddWithValue("@IsActive", IsActive ? 1 : 0);
+
+            try
+            {
+                connection.Open();
+                RowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return RowsAffected > 0;
+        }
+
+        public static bool DeleteUser(int UserID)
+        {
+            int RowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = @"DELETE FROM Users
+                                WHERE UserID = @UserID;";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@UserID", UserID);
+
+            try
+            {
+                connection.Open();
+                RowsAffected = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (RowsAffected > 0);
+        }
 
         public static bool Authenticate(string UserName, string Password)
         {

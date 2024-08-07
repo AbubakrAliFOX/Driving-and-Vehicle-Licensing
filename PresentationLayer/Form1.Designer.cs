@@ -69,12 +69,19 @@ namespace PresentationLayer
             this.tsmUserInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLogout = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmHidden1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmHidden1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmUserInformation = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmAddUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmEditUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDeleteUser = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDrivers.SuspendLayout();
             this.cmsPeople.SuspendLayout();
             this.cmsApplicationOptions.SuspendLayout();
             this.cmsSettings.SuspendLayout();
+            this.cmsUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmsDrivers
@@ -379,6 +386,7 @@ namespace PresentationLayer
             this.tsmUserInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tsmUserInfo.Size = new System.Drawing.Size(285, 40);
             this.tsmUserInfo.Text = "User Info";
+            this.tsmUserInfo.Click += new System.EventHandler(this.tsmUserInfo_Click);
             // 
             // tsmChangePassword
             // 
@@ -395,6 +403,11 @@ namespace PresentationLayer
             this.tsmLogout.Text = "Logout";
             this.tsmLogout.Click += new System.EventHandler(this.tsmLogout_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(282, 6);
+            // 
             // tsmHidden1
             // 
             this.tsmHidden1.AutoSize = false;
@@ -402,10 +415,59 @@ namespace PresentationLayer
             this.tsmHidden1.Size = new System.Drawing.Size(377, 40);
             this.tsmHidden1.Text = "Hidden";
             // 
-            // toolStripSeparator5
+            // cmsUsers
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(282, 6);
+            this.cmsUsers.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmUserInformation,
+            this.toolStripSeparator6,
+            this.tsmAddUser,
+            this.tsmEditUser,
+            this.tsmDeleteUser});
+            this.cmsUsers.Name = "cmsPeople";
+            this.cmsUsers.Size = new System.Drawing.Size(193, 122);
+            // 
+            // tsmUserInformation
+            // 
+            this.tsmUserInformation.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmUserInformation.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tsmUserInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsmUserInformation.Image")));
+            this.tsmUserInformation.Name = "tsmUserInformation";
+            this.tsmUserInformation.Size = new System.Drawing.Size(214, 28);
+            this.tsmUserInformation.Text = "Show Details";
+            this.tsmUserInformation.Click += new System.EventHandler(this.tsmUserInformation_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(211, 6);
+            // 
+            // tsmAddUser
+            // 
+            this.tsmAddUser.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmAddUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmAddUser.Image")));
+            this.tsmAddUser.Name = "tsmAddUser";
+            this.tsmAddUser.Size = new System.Drawing.Size(214, 28);
+            this.tsmAddUser.Text = "Add New User";
+            this.tsmAddUser.Click += new System.EventHandler(this.tsmAddUser_Click);
+            // 
+            // tsmEditUser
+            // 
+            this.tsmEditUser.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmEditUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmEditUser.Image")));
+            this.tsmEditUser.Name = "tsmEditUser";
+            this.tsmEditUser.Size = new System.Drawing.Size(214, 28);
+            this.tsmEditUser.Text = "Edit";
+            this.tsmEditUser.Click += new System.EventHandler(this.tsmEditUser_Click);
+            // 
+            // tsmDeleteUser
+            // 
+            this.tsmDeleteUser.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsmDeleteUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmDeleteUser.Image")));
+            this.tsmDeleteUser.Name = "tsmDeleteUser";
+            this.tsmDeleteUser.Size = new System.Drawing.Size(214, 28);
+            this.tsmDeleteUser.Text = "Delete";
+            this.tsmDeleteUser.Click += new System.EventHandler(this.tsmDeleteUser_Click);
             // 
             // Form1
             // 
@@ -421,6 +483,7 @@ namespace PresentationLayer
             this.cmsPeople.ResumeLayout(false);
             this.cmsApplicationOptions.ResumeLayout(false);
             this.cmsSettings.ResumeLayout(false);
+            this.cmsUsers.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -465,6 +528,12 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem tsmLogout;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem tsmHidden1;
+        private System.Windows.Forms.ContextMenuStrip cmsUsers;
+        private System.Windows.Forms.ToolStripMenuItem tsmUserInformation;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem tsmAddUser;
+        private System.Windows.Forms.ToolStripMenuItem tsmEditUser;
+        private System.Windows.Forms.ToolStripMenuItem tsmDeleteUser;
     }
 }
 
