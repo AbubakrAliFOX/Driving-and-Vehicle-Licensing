@@ -14,7 +14,6 @@ namespace PresentationLayer
     public partial class frmTestAppointment : Form
     {
         clsLocalDrivingLicensApplication LocalApplicationDetails;
-        int LDLAppID;
         int TestTypeID;
         string[] TestTypeName = new string[] {"Vision", "Written", "Field"};
         public frmTestAppointment(int LDLApplicationID, int TestType)
@@ -22,7 +21,6 @@ namespace PresentationLayer
             InitializeComponent();
 
             LocalApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
-            LDLAppID = LDLApplicationID;
             TestTypeID = TestType;
             lblTitle.Text = $"{TestTypeName[TestTypeID-1]} Test Appointments";
 
@@ -33,7 +31,7 @@ namespace PresentationLayer
         
         private void RefreshData ()
         {
-            dgvAppointments.DataSource = clsTest.GetTestAppointments(LDLAppID, TestTypeID);
+            dgvAppointments.DataSource = clsTest.GetTestAppointments(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestTypeID);
 
         }
         private void FormatDataGridView()
@@ -60,32 +58,27 @@ namespace PresentationLayer
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            if(!clsTest.IsAppointmentActiveForTest(LDLAppID, TestTypeID))
+            if(!clsTest.IsAppointmentActiveForTest(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestTypeID))
             {
-                if (clsTest.HasApplicantPassedTest(LDLAppID, TestTypeID))
+                // 1: Passed, 0: Not Taken Test, -1: Failed
+                int PreviousTestResult = clsTest.ApplicationPreviousTestResult(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestTypeID);
+                
+                if (PreviousTestResult == 1)
                 {
                     MessageBox.Show("Person already has passed this test", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-                else
+                
+                frmScheduleTest Appointment = new frmScheduleTest(LocalApplicationDetails, TestTypeID);
+
+                if (PreviousTestResult == -1)
                 {
-                    // Implement retake test fee later
-                    frmScheduleTest Appointment;
-
-                    if (clsTest.HasApplicantFailedTest(LDLAppID, TestTypeID))
-                    {
-                        Appointment = new frmScheduleTest(LocalApplicationDetails, TestTypeID);
-                    }
-                    else
-                    {
-                        Appointment = new frmScheduleTest(LocalApplicationDetails, TestTypeID);
-                    }
-
-                    Appointment.ShowDialog();
-                    RefreshData();
-
+                    Appointment.IsRetakeTest = true;
                 }
-                
-                
+
+                Appointment.ShowDialog();
+                RefreshData();
+
             } else
             {
                 MessageBox.Show("Person already has an active test.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

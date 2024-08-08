@@ -269,6 +269,8 @@
     <Compile Include="frmUserInfo.Designer.cs">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global Classes\clsGlobal.cs" />
+    <Compile Include="Global Classes\clsUtils.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

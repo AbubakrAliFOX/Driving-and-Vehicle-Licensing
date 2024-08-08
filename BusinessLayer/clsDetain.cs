@@ -89,11 +89,11 @@ namespace BusinessLayer
             return clsDetainDataAccess.IsLicenseDetained(LicenseID);
         }
 
-        public static int DetainLicense(int LicenseID, decimal Fine)
+        public static int DetainLicense(int LicenseID, decimal Fine, int CreatedByUserID)
         {
             if (!IsLicenseDetained(LicenseID))
             {
-                return clsDetainDataAccess.DetainLicense(LicenseID, Fine);
+                return clsDetainDataAccess.DetainLicense(LicenseID, Fine, CreatedByUserID);
 
             }
             else
@@ -102,12 +102,12 @@ namespace BusinessLayer
             }
         }
 
-        public static int ReleaseLicense(int LicenseID)
+        public static int ReleaseLicense(int LicenseID, int CreatedByUserID)
         {
             if (IsLicenseDetained(LicenseID))
             {
                 clsLicense LicenseInfo = clsLicense.FindLicenseByID(LicenseID);
-                int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, 5);
+                int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, 5, CreatedByUserID);
 
                 bool IsLicenseReleased = clsDetainDataAccess.ReleaseLicense(LicenseID, ApplicationID);
                 bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);

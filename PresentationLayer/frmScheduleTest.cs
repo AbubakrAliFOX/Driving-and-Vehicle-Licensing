@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,11 @@ namespace PresentationLayer
     public partial class frmScheduleTest : Form
     {
         clsLocalDrivingLicensApplication LocalApplicationDetails;
-
-        int LDLApplicationID;
         int TestTypeID;
         decimal TestFees;
+
+        private int RetakeTestApplicationID = 0;
+
 
         string[] TestTypeName = new string[] { "Vision", "Written", "Field" };
 
@@ -27,18 +29,15 @@ namespace PresentationLayer
 
             LocalApplicationDetails = LocalApplication;
 
-
-            LDLApplicationID = LocalApplication.LocalDrivingLicenseApplicationID;
             TestTypeID = TestType;
             lblTitle.Text = $"Schedule {TestTypeName[TestTypeID - 1]} Test";
             TestFees = clsTest.GetTestFees(TestTypeID);
 
-            FillLabels();
-            //IsTestFailed = TestFailed;
-            //if(TestFailed)
-            //{
+        }
 
-            //}
+        private void frmScheduleTest_Load(object sender, EventArgs e)
+        {
+            FillLabels();
         }
 
         private bool _IsEditMode = false;
@@ -72,22 +71,26 @@ namespace PresentationLayer
         }
 
 
-        private bool _IsTestFailed = false;
+        private bool _IsRetakeTest = false;
         private decimal _RetestFee = 0;
 
-        public bool IsTestFailed
+        public bool IsRetakeTest
         {
-            get { return _IsTestFailed;}
+            get { return _IsRetakeTest;}
 
             set
             {
-                _IsTestFailed = value;
-                _RetestFee = clsApplication.GetApplicationFees(2);
+                _IsRetakeTest = value;
+
+                if(_IsRetakeTest == true)
+                {
+                    _RetestFee = clsApplication.GetApplicationFees(7);
+                }
             }
         }
         private void FillLabels()
         {
-            lblDLAppID.Text = LDLApplicationID.ToString();
+            lblDLAppID.Text = LocalApplicationDetails.LocalDrivingLicenseApplicationID.ToString();
             lblApplicationID.Text = LocalApplicationDetails.Application.ApplicationID.ToString();
 
             lblClass.Text = LocalApplicationDetails.LicenseClassName;
@@ -97,6 +100,28 @@ namespace PresentationLayer
             lblFees.Text = TestFees.ToString();
 
             dtpTestDate.Value = DateTime.Now;
+
+            if(IsEditMode)
+            {
+                btnSave.Text = "Reschedule Test";
+                lblTitle.Text = $"Reschedule {TestTypeName[TestTypeID - 1]} Test";
+
+            }
+
+            if (IsRetakeTest)
+            {
+                gbRetakeTestInfo.Enabled = true;
+                lblRetakeTestFees.Text = _RetestFee.ToString();
+
+                if(RetakeTestApplicationID == 0)
+                {
+                    lblRetakeTestID.Text = "??";
+                } else
+                {
+                    lblRetakeTestID.Text = RetakeTestApplicationID.ToString();
+                }
+
+            } 
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -108,17 +133,35 @@ namespace PresentationLayer
         {
             if (!IsEditMode)
             {
-                if (clsTest.CreateTestAppointment(TestTypeID, LDLApplicationID, dtpTestDate.Value, TestFees) != -1)
+                if(IsRetakeTest)
+                {
+                    RetakeTestApplicationID = clsApplication.CreateApplication(LocalApplicationDetails.Application.ApplicantID, 7, clsGlobal.LoggedInUser.UserID);
+                }
+
+                int CreatedAppointmentID = clsTest.CreateTestAppointment(
+                    TestTypeID, 
+                    LocalApplicationDetails.LocalDrivingLicenseApplicationID, 
+                    dtpTestDate.Value, 
+                    TestFees,
+                    RetakeTestApplicationID,
+                    clsGlobal.LoggedInUser.UserID
+                );
+
+                if (CreatedAppointmentID != -1)
                 {
                     MessageBox.Show("Appointment Created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    IsEditMode = true;
+                    AppointmentID = CreatedAppointmentID;
+                    FillLabels();
                 }
                 else
                 {
                     MessageBox.Show("Creating Appointment Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             } else
             {
-                if (clsTest.UpdateAppointment(AppointmentID,dtpTestDate.Value))
+                if (clsTest.UpdateAppointment(AppointmentID, dtpTestDate.Value))
                 {
                     MessageBox.Show("Rescheduling Was Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -128,12 +171,8 @@ namespace PresentationLayer
                 }
             }
 
-            this.Close();
+            //this.Close();
         }
 
-        private void frmScheduleTest_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

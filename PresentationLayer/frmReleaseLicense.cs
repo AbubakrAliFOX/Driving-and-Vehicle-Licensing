@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,7 +59,7 @@ namespace PresentationLayer
 
             //..int DetainID = clsDetain.ReleaseLicense(ctrlFindLicense1.LicenseInfo.LicenseID);
 
-            ApplicationID = clsDetain.ReleaseLicense(ctrlFindLicense1.LicenseInfo.LicenseID);
+            ApplicationID = clsDetain.ReleaseLicense(ctrlFindLicense1.LicenseInfo.LicenseID, clsGlobal.LoggedInUser.UserID);
 
             if (ApplicationID == -1)
             {

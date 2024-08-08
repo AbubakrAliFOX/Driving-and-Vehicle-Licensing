@@ -46,7 +46,7 @@ namespace DataLayer
             return dt;
         }
 
-        public static int CreateDriver(int PersonID)
+        public static int CreateDriver(int PersonID, int CreatedByUserID)
         {
             int DriverID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
@@ -56,7 +56,7 @@ namespace DataLayer
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("@PersonID", PersonID);
-            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
             cmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
 
 

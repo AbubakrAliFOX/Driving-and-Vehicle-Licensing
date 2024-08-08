@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,13 @@ namespace PresentationLayer
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        Login _frmLogin;
+
+        public Form1(Login LoginForm)
         {
             InitializeComponent();
+
+            _frmLogin = LoginForm;
 
             InitializeControls();
         }
@@ -276,21 +281,19 @@ namespace PresentationLayer
         }
         private void tsmUserInfo_Click(object sender, EventArgs e)
         {
-            frmUserInfo UserInfo = new frmUserInfo(1);
+            frmUserInfo UserInfo = new frmUserInfo(clsGlobal.LoggedInUser.UserID);
             UserInfo.ShowDialog();
         }
 
         private void tsmChangePassword_Click(object sender, EventArgs e)
         {
-            frmChangePassword ChangePassword = new frmChangePassword(1);
+            frmChangePassword ChangePassword = new frmChangePassword(clsGlobal.LoggedInUser.UserID);
             ChangePassword.ShowDialog();
         }
 
         private void tsmLogout_Click(object sender, EventArgs e)
         {
-            Close();
-            Login login = new Login();
-            login.ShowDialog();
+            this.Close();
         }
 
         private void AddNewUser_Click(object sender, EventArgs e)
@@ -350,6 +353,12 @@ namespace PresentationLayer
         private void pbMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            clsGlobal.LoggedInUser = null;
+            _frmLogin.Show();
         }
     }
 }

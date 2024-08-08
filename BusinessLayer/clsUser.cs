@@ -70,9 +70,11 @@ namespace BusinessLayer
         
         public static int ChangePassword(string UserName, string OldPassword, string NewPassword)
         {
-            if (clsUsersDataAccess.Authenticate(UserName, OldPassword))
+            int UserID = clsUsersDataAccess.Authenticate(UserName, OldPassword);
+
+            if (UserID != -1)
             {
-                if(clsUsersDataAccess.ChangePassword(UserName, NewPassword))
+                if(clsUsersDataAccess.ChangePassword(UserID, NewPassword))
                 {
                     return 1;
                 } else
@@ -102,11 +104,13 @@ namespace BusinessLayer
 
         public static int Authenticate(string UserName, string PasswordHash)
         {
-            if(clsUsersDataAccess.Authenticate(UserName, PasswordHash))
+            int UserID = clsUsersDataAccess.Authenticate(UserName, PasswordHash);
+
+            if (UserID != -1)
             {
                 if (clsUsersDataAccess.IsUserActive(UserName))
                 {
-                    return 1;
+                    return UserID;
                 }
                 else
                 {

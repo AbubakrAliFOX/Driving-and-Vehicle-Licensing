@@ -380,7 +380,7 @@ namespace DataLayer
             return DriverHasActiveLicenses;
         }
         
-        public static int IssueLicense(int DriverID, int ApplicationID, int LicenseClassID, string IssueNotes, decimal PaidFees, int IssueReason)
+        public static int IssueLicense(int DriverID, int ApplicationID, int LicenseClassID, string IssueNotes, decimal PaidFees, int IssueReason, int CreatedByUserID)
         {
             int LicenseID = -1;
 
@@ -405,7 +405,7 @@ namespace DataLayer
             cmd.Parameters.AddWithValue("@PaidFees", PaidFees);
             cmd.Parameters.AddWithValue("@IsActive", 1);
             cmd.Parameters.AddWithValue("@IssueReason", IssueReason);
-            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
             try
             {

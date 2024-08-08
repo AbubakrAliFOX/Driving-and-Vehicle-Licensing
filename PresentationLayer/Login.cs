@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PresentationLayer.Global_Classes;
 using System.Windows.Forms;
 using BusinessLayer;
 
@@ -14,80 +15,56 @@ namespace PresentationLayer
 {
     public partial class Login : Form
     {
-        string FilePath = @"..\..\Remember.txt";
 
         public Login()
         {
             InitializeComponent();
 
-            FillCredentials();
-
-            cbRememberMe.Checked = true;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            int AuthResult = clsUser.Authenticate(tbUserName.Text, tbPassword.Text);
-            bool RememberCredentials = cbRememberMe.Checked;
+            int UserID = clsUser.Authenticate(tbUserName.Text, tbPassword.Text);
 
-            if (AuthResult == -1)
+            if (UserID == -1)
             {
                 MessageBox.Show("Incorrect username / password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else if (AuthResult == -2)
+            } else if (UserID == -2)
             {
                 MessageBox.Show("Your account is deactivated, contact your admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (AuthResult == 1)
+            else 
             {
-                MessageBox.Show("Successfully logged in!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                if (RememberCredentials)
+                clsUser User = clsUser.FindUserByID(UserID);
+
+                clsGlobal.LoggedInUser = User;
+
+                if (cbRememberMe.Checked)
                 {
-                    SaveCredentials(tbUserName.Text, tbPassword.Text);
+                    clsUtils.SaveCredentials(tbUserName.Text, tbPassword.Text);
+                } else
+                {
+                    clsUtils.SaveCredentials("", "");
                 }
 
-                this.Close();
-
+                this.Hide();
+                Form1 Application = new Form1(this);
+                Application.ShowDialog();
             }
         }
 
-        private void SaveCredentials(string UserName, string Password)
+        private void Login_Load(object sender, EventArgs e)
         {
-            using (StreamWriter Writer = new StreamWriter(FilePath, false))
+            string UserName = "", Password = "";
+
+            if (clsUtils.GetStoredCredentials(ref UserName, ref Password))
             {
-                Writer.WriteLine(UserName);
-                Writer.WriteLine(Password);
-            }         
-        }
-        
-        private void FillCredentials()
-        {
-            FilePath = @"..\..\Remember.txt";
-
-            if (File.Exists(FilePath))
-            {
-                using (StreamReader Reader = new StreamReader(FilePath))
-                {
-                    string Line;
-                    List<string> Credentials = new List<string>();
-
-                    while ((Line = Reader.ReadLine()) != null)
-                    {
-                        Credentials.Add(Line);
-                    }
-
-                    tbUserName.Text = Credentials[0];
-                    tbPassword.Text = Credentials[1];
-                }
+                tbUserName.Text = UserName;
+                tbPassword.Text = Password;
+                cbRememberMe.Checked = true;
             }
-        }
-
-        private void cbRememberMe_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!cbRememberMe.Checked)
-            {
-                File.Delete(FilePath);
-            }
+            else
+                cbRememberMe.Checked = false;
         }
     }
 }

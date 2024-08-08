@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,7 +44,7 @@ namespace PresentationLayer
 
             int OldLicenseID = ctrlFindLicense1.LicenseInfo.LicenseID;
                       
-            int ReplacementLicenseID = clsLicense.ReplaceLicense(OldLicenseID, IsForDamaged);
+            int ReplacementLicenseID = clsLicense.ReplaceLicense(OldLicenseID, IsForDamaged, clsGlobal.LoggedInUser.UserID);
 
             if (ReplacementLicenseID == -1)
             {

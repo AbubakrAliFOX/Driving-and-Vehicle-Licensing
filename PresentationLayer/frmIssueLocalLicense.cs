@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,7 @@ namespace PresentationLayer
         {
             if (MessageBox.Show("Issue License?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
-                if (clsLicense.IssueLicense(LocalApplicationDetails, tbNotes.Text, 1) != -1)
+                if (clsLicense.IssueLicense(LocalApplicationDetails, tbNotes.Text, 1, clsGlobal.LoggedInUser.UserID) != -1)
                 {
                     MessageBox.Show("License Issued Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } else

@@ -25,9 +25,9 @@ namespace BusinessLayer
             return clsTestsDataAccess.GetTestFees(TestTypeID);
         }
 
-        public static int CreateTestAppointment(int TestType, int LDLApplicationID, DateTime Date, decimal PaidFees)
+        public static int CreateTestAppointment(int TestType, int LDLApplicationID, DateTime Date, decimal PaidFees, int RetakeTestApplicationID, int CreatedByUserID)
         {
-            return clsTestsDataAccess.CreateTestAppointment(TestType, LDLApplicationID, Date, PaidFees);
+            return clsTestsDataAccess.CreateTestAppointment(TestType, LDLApplicationID, Date, PaidFees, RetakeTestApplicationID, CreatedByUserID);
         }
 
         public static DataTable GetTestAppointments(int LDLApplicationID, int TestType)
@@ -40,9 +40,9 @@ namespace BusinessLayer
             return clsTestsDataAccess.UpdateAppointment(AppointmentID, NewDate);
         }
         
-        public static int TakeTest(int AppointmentID, byte Result, string Notes = null)
+        public static int TakeTest(int AppointmentID, byte Result, int CreatedByUserID, string Notes = null)
         {
-            return clsTestsDataAccess.TakeTest(AppointmentID, Result, Notes);
+            return clsTestsDataAccess.TakeTest(AppointmentID, Result, CreatedByUserID, Notes);
         }
         public static bool IsAppointmentActiveForTest(int LDLAppID, int TestTypeID)
         {
@@ -53,10 +53,25 @@ namespace BusinessLayer
         {
             return clsTestsDataAccess.HasApplicantPassedTest(LDLAppID, TestTypeID);
         }
-        
+
         public static bool HasApplicantFailedTest(int LDLAppID, int TestTypeID)
         {
             return clsTestsDataAccess.HasApplicantFailedTest(LDLAppID, TestTypeID);
+        }
+        public static int ApplicationPreviousTestResult(int LDLAppID, int TestTypeID)
+        {
+            // 1: Passed already, -1: Failed (Retake test), 0: Not taken before
+
+            if(HasApplicantPassedTest(LDLAppID, TestTypeID))
+            {
+                return 1;
+            } else if (HasApplicantFailedTest(LDLAppID, TestTypeID))
+            {
+                return -1;
+            } else
+            {
+                return 0;
+            }
         }
     }
 }

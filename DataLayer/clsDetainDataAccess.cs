@@ -73,7 +73,7 @@ namespace DataLayer
             return isFound;
         }
 
-        public static int DetainLicense(int LicenseID, decimal FineFees)
+        public static int DetainLicense(int LicenseID, decimal FineFees, int CreatedByUserID)
         {
             int DetainID = -1;
 
@@ -86,7 +86,7 @@ namespace DataLayer
             cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
             cmd.Parameters.AddWithValue("@DetainDate", DateTime.Now);
             cmd.Parameters.AddWithValue("@FineFees", FineFees);
-            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
             try
             {

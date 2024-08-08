@@ -200,7 +200,7 @@ namespace DataLayer
 
             return (RowsAffected > 0);
         }
-        public static bool ChangePassword(string UserName, string NewPassword)
+        public static bool ChangePassword(int UserID, string NewPassword)
         {
             int RowsAffected = 0;
 
@@ -211,11 +211,11 @@ namespace DataLayer
             string query =
                     @"Update Users 
                     Set Password = @Password
-                    Where UserName = @UserName";
+                    Where UserID = @UserID";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
-            cmd.Parameters.AddWithValue("@UserName", UserName);
+            cmd.Parameters.AddWithValue("@UserID", UserID);
             cmd.Parameters.AddWithValue("@Password", HashedPassword);
 
             try
@@ -235,15 +235,16 @@ namespace DataLayer
             return RowsAffected > 0;
         }
 
-        public static bool Authenticate(string UserName, string Password)
+        public static int Authenticate(string UserName, string Password)
         {
+            int UserID = -1;
             string PasswordHash = "";
             
             bool AreCredentialsCorrect = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
-            string query = "SELECT Password FROM Users WHERE UserName = @UserName";
+            string query = "SELECT Password, UserID FROM Users WHERE UserName = @UserName";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -256,6 +257,7 @@ namespace DataLayer
 
                 if(reader.Read())
                 {
+                    UserID = (int)reader["UserID"];
                     PasswordHash = (string)reader["Password"];
                 }
                 reader.Close();
@@ -275,7 +277,7 @@ namespace DataLayer
 
             }
 
-            return AreCredentialsCorrect;
+            return AreCredentialsCorrect ? UserID : -1;
         }
         
         public static bool IsUserActive(string UserName)

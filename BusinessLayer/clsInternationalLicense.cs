@@ -76,7 +76,7 @@ namespace BusinessLayer
             return clsLicensesDataAccess.HasInternationalLicense(LocalLicenseID);
         }
 
-        public static int IssueInternationalLicense(int LocalLicenseID)
+        public static int IssueInternationalLicense(int LocalLicenseID, int CreatedByUserID)
         {
             clsLicense LocalLicenseDetails = clsLicense.FindLicenseByID(LocalLicenseID);
 
@@ -85,11 +85,11 @@ namespace BusinessLayer
                 return -2;
             }
 
-            int ApplicationID = clsApplication.CreateApplication(LocalLicenseDetails.PersonID, 6);
+            int ApplicationID = clsApplication.CreateApplication(LocalLicenseDetails.PersonID, 6, CreatedByUserID);
             int DriverID = LocalLicenseDetails.DriverID;
 
 
-            return clsInternationalLicensesDataAccess.IssueInternationalLicense(LocalLicenseID, ApplicationID, DriverID);
+            return clsInternationalLicensesDataAccess.IssueInternationalLicense(LocalLicenseID, ApplicationID, DriverID, CreatedByUserID);
         }
     }
 }

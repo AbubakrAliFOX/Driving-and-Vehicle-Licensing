@@ -122,18 +122,18 @@ namespace BusinessLayer
                 return null;
             }
         }
-        public static int CreateApplication(int PersonID, int ApplicationTypeID)
+        public static int CreateApplication(int PersonID, int ApplicationTypeID, int CreatedByUserID)
         {
-            return clsApplicationsDataAccess.CreateApplication(PersonID, ApplicationTypeID);
+            return clsApplicationsDataAccess.CreateApplication(PersonID, ApplicationTypeID, CreatedByUserID);
         }
 
-        public static int CreateLocalDrivingLicenseApplication(int PersonID, int LicenseClassID)
+        public static int CreateLocalDrivingLicenseApplication(int PersonID, int LicenseClassID, int CreatedByUserID)
         {
             if (clsLicense.IsPersonWithinAgeForLicenseClass(PersonID, LicenseClassID))
             {
                 if (!clsLicense.PersonHasApplicationWithLicenseClass(PersonID, LicenseClassID))
                 {
-                    int ApplicationID = CreateApplication(PersonID, 1);
+                    int ApplicationID = CreateApplication(PersonID, 1, CreatedByUserID);
 
                     if (ApplicationID != -1)
                     {

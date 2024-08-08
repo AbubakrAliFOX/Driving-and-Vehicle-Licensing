@@ -127,7 +127,7 @@ namespace DataLayer
             return IsFound;
         }
 
-        public static int IssueInternationalLicense(int LocalLicenseID, int ApplicationID, int DriverID)
+        public static int IssueInternationalLicense(int LocalLicenseID, int ApplicationID, int DriverID, int CreatedByUserID)
         {
             int InternationalLicenseID = -1;
 
@@ -147,7 +147,7 @@ namespace DataLayer
             cmd.Parameters.AddWithValue("@IssueDate", IssueDate);
             cmd.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
             cmd.Parameters.AddWithValue("@IsActive", 1);
-            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
             try
             {

@@ -115,12 +115,12 @@ namespace DataLayer
             return Fees;
         }
 
-        public static int CreateTestAppointment(int TestType, int LDLApplicationID, DateTime Date, decimal PaidFees)
+        public static int CreateTestAppointment(int TestType, int LDLApplicationID, DateTime Date, decimal PaidFees, int RetakeTestApplicationID, int CreatedByUserID)
         {
             int TestAppointmentID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
 
-            string query = "INSERT INTO TestAppointments (TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, CreatedByUserID, IsLocked) VALUES (@TestTypeID, @LDLApplicationID, @Date, @PaidFees, @CreatedByUserID, @IsLocked); Select SCOPE_IDENTITY();";
+            string query = "INSERT INTO TestAppointments (TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, CreatedByUserID, IsLocked, RetakeTestApplicationID) VALUES (@TestTypeID, @LDLApplicationID, @Date, @PaidFees, @CreatedByUserID, @IsLocked, @RetakeTestApplicationID); Select SCOPE_IDENTITY();";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -128,8 +128,16 @@ namespace DataLayer
             cmd.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
             cmd.Parameters.AddWithValue("@Date", Date);
             cmd.Parameters.AddWithValue("@PaidFees", PaidFees);
-            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
             cmd.Parameters.AddWithValue("@IsLocked", (byte)0);
+
+            if (RetakeTestApplicationID == 0)
+            {
+                cmd.Parameters.AddWithValue("@RetakeTestApplicationID", DBNull.Value);
+            } else
+            {
+                cmd.Parameters.AddWithValue("@RetakeTestApplicationID", RetakeTestApplicationID);
+            }
 
 
 
@@ -226,7 +234,7 @@ namespace DataLayer
             return rowsAffected > 0;
         }
 
-        public static int TakeTest(int AppointmentID, byte Result, string Notes = null)
+        public static int TakeTest(int AppointmentID, byte Result, int CreatedByUserID, string Notes = null)
         {
             int TestID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
@@ -237,7 +245,7 @@ namespace DataLayer
 
             cmd.Parameters.AddWithValue("@TestAppointmentID", AppointmentID);
             cmd.Parameters.AddWithValue("@TestResult", Result);
-            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
             if (Notes == null)
             {

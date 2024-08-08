@@ -152,7 +152,6 @@
             this.cbRememberMe.TabIndex = 8;
             this.cbRememberMe.Text = "Remember Me";
             this.cbRememberMe.UseVisualStyleBackColor = true;
-            this.cbRememberMe.CheckedChanged += new System.EventHandler(this.cbRememberMe_CheckedChanged);
             // 
             // Login
             // 
@@ -171,6 +170,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.pSideNav.ResumeLayout(false);
             this.pSideNav.PerformLayout();
             this.ResumeLayout(false);

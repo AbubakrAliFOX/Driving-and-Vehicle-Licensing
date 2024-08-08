@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,7 +50,7 @@ namespace PresentationLayer
 
             if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
-                if  (clsTest.TakeTest(Appointment, Result, Notes) != -1)
+                if  (clsTest.TakeTest(Appointment, Result, clsGlobal.LoggedInUser.UserID, Notes) != -1)
                 {
                     MessageBox.Show("Test result has been set", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

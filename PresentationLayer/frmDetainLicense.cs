@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PresentationLayer.Global_Classes;
 
 namespace PresentationLayer
 {
@@ -46,7 +47,7 @@ namespace PresentationLayer
                 return;
             }
 
-            int DetainID = clsDetain.DetainLicense(ctrlFindLicense1.LicenseInfo.LicenseID, decimal.Parse(tbFine.Text));
+            int DetainID = clsDetain.DetainLicense(ctrlFindLicense1.LicenseInfo.LicenseID, decimal.Parse(tbFine.Text), clsGlobal.LoggedInUser.UserID);
 
             if (DetainID == -2)
             {

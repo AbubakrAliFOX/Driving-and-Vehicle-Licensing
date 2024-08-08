@@ -99,8 +99,9 @@
             this.lblUser.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.Location = new System.Drawing.Point(174, 188);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(0, 21);
+            this.lblUser.Size = new System.Drawing.Size(26, 21);
             this.lblUser.TabIndex = 14;
+            this.lblUser.Text = "??";
             // 
             // label4
             // 
@@ -196,6 +197,7 @@
             // 
             this.ctrlFindPerson1.Location = new System.Drawing.Point(21, 88);
             this.ctrlFindPerson1.Name = "ctrlFindPerson1";
+            this.ctrlFindPerson1.PersonInfo = null;
             this.ctrlFindPerson1.Size = new System.Drawing.Size(790, 556);
             this.ctrlFindPerson1.TabIndex = 20;
             // 

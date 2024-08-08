@@ -89,13 +89,13 @@ namespace BusinessLayer
             return clsLicensesDataAccess.HasDriverActiveLicenses(DriverID);
         }
 
-        public static int IssueLicense(clsLocalDrivingLicensApplication LocalApplicationDetails, string IssueNotes, int IssueReason)
+        public static int IssueLicense(clsLocalDrivingLicensApplication LocalApplicationDetails, string IssueNotes, int IssueReason, int CreatedByUserID)
         {
             int DriverID = clsDriver.GetDriverID(LocalApplicationDetails.Application.ApplicantID);
 
             if (clsDriver.GetDriverID(LocalApplicationDetails.Application.ApplicantID) == -1)
             {
-                DriverID = clsDriver.CreateDriver(LocalApplicationDetails.Application.ApplicantID);
+                DriverID = clsDriver.CreateDriver(LocalApplicationDetails.Application.ApplicantID, CreatedByUserID);
             }
 
             int ApplicationID = LocalApplicationDetails.Application.ApplicationID;
@@ -104,7 +104,7 @@ namespace BusinessLayer
 
             decimal PaidFees = clsApplication.GetApplicationFees(clsApplication.GetApplicationTypeByName(LocalApplicationDetails.Application.ApplicationType));
 
-            int IssuedLicenseID = clsLicensesDataAccess.IssueLicense(DriverID, ApplicationID, LicenseClassID, IssueNotes, PaidFees, IssueReason);
+            int IssuedLicenseID = clsLicensesDataAccess.IssueLicense(DriverID, ApplicationID, LicenseClassID, IssueNotes, PaidFees, IssueReason, CreatedByUserID);
 
             bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);
 
@@ -239,7 +239,7 @@ namespace BusinessLayer
             return clsLicensesDataAccess.GetAllPersonLicenses(NationalNo);
         }
 
-        public static int RenewLicense(int LicenseID, string RenewNotes)
+        public static int RenewLicense(int LicenseID, string RenewNotes, int CreatedByUserID)
         {
             clsLicense LicenseInfo = FindLicenseByID(LicenseID);
             
@@ -249,12 +249,12 @@ namespace BusinessLayer
                 {
                     if (DeactivateLicense(LicenseID))
                     {
-                        int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, 2);
+                        int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, 2, CreatedByUserID);
 
                         // Fees for a new license
                         decimal PaidFees = clsApplication.GetApplicationFees(1);
 
-                        int RenewedLicenseID = clsLicensesDataAccess.IssueLicense(LicenseInfo.DriverID, ApplicationID, LicenseInfo.LicenseClassID, RenewNotes, PaidFees, 2);
+                        int RenewedLicenseID = clsLicensesDataAccess.IssueLicense(LicenseInfo.DriverID, ApplicationID, LicenseInfo.LicenseClassID, RenewNotes, PaidFees, 2, CreatedByUserID);
 
                         bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);
 
@@ -283,7 +283,7 @@ namespace BusinessLayer
             }
         }
         
-        public static int ReplaceLicense(int LicenseID, bool IsForDamaged)
+        public static int ReplaceLicense(int LicenseID, bool IsForDamaged, int CreatedByUserID)
         {
             clsLicense LicenseInfo = FindLicenseByID(LicenseID);
             int ApplicationTypeID = IsForDamaged ? 4 : 3;
@@ -293,12 +293,12 @@ namespace BusinessLayer
             {
                 if (DeactivateLicense(LicenseID))
                 {
-                    int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, ApplicationTypeID);
+                    int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, ApplicationTypeID, CreatedByUserID);
 
                     // Fees for a replaced license are 0 (according to the requirements)
                     decimal PaidFees = 0;
 
-                    int ReplacedLicenseID = clsLicensesDataAccess.IssueLicense(LicenseInfo.DriverID, ApplicationID, LicenseInfo.LicenseClassID, "Replacement", PaidFees, IssueReason);
+                    int ReplacedLicenseID = clsLicensesDataAccess.IssueLicense(LicenseInfo.DriverID, ApplicationID, LicenseInfo.LicenseClassID, "Replacement", PaidFees, IssueReason, CreatedByUserID);
 
                     bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);
 

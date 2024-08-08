@@ -376,7 +376,7 @@ namespace DataLayer
 
             return PassedTests;
         }
-        public static int CreateApplication(int PersonID, int ApplicationTypeID)
+        public static int CreateApplication(int PersonID, int ApplicationTypeID, int CreatedByUserID)
         {
             int ApplicationID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
@@ -389,7 +389,7 @@ namespace DataLayer
             cmd.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
             cmd.Parameters.AddWithValue("@ApplicationStatus", 1);
             cmd.Parameters.AddWithValue("@LastStatusDate", DateTime.Now);
-            cmd.Parameters.AddWithValue("@CreatedByUserID", 1);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
 
             try

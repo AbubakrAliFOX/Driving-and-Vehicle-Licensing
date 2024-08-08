@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace PresentationLayer
             //btnSave.Enabled = false;
             lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy");
             lblFees.Text = clsApplication.GetApplicationFees(1).ToString();
+            lblUser.Text = clsGlobal.LoggedInUser.UserName;
             //this.Location = new Point(940, 640);
 
             FillLicenseClassesComboBox();
@@ -51,7 +53,7 @@ namespace PresentationLayer
                 return;
             }
 
-            int LDLApplicationID = clsApplication.CreateLocalDrivingLicenseApplication(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1);
+            int LDLApplicationID = clsApplication.CreateLocalDrivingLicenseApplication(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1, clsGlobal.LoggedInUser.UserID);
             
             if(LDLApplicationID != -4)
             {
