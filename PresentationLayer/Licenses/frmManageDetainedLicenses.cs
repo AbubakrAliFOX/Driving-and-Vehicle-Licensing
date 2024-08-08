@@ -69,7 +69,7 @@ namespace PresentationLayer
         private void tsmShowPersonDetails_Click(object sender, EventArgs e)
         {
             LicenseDetails = clsLicense.FindLicenseByID((int)DetainedLicensesPage.dgv.CurrentRow.Cells[1].Value);
-            ShowPersonDetails PersonDetails = new ShowPersonDetails(LicenseDetails.PersonID);
+            frmPersonDetails PersonDetails = new frmPersonDetails(LicenseDetails.PersonID);
             PersonDetails.ShowDialog();
         }
 

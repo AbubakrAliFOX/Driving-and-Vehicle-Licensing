@@ -117,7 +117,7 @@ namespace PresentationLayer
                 AddNewButton.Invoke(this, e);
             } else
             {
-                AddNewPerson addNewPersonForm = new AddNewPerson(-1);
+                frmAddEditPerson addNewPersonForm = new frmAddEditPerson();
                 addNewPersonForm.ShowDialog();
             }
             RefreshData();

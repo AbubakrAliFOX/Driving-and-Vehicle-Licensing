@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class AddNewPerson
+    partial class frmAddEditPerson
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewPerson));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditPerson));
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,7 +57,9 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.llAddPhoto = new System.Windows.Forms.LinkLabel();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonPhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -155,6 +158,7 @@
             this.pbPersonPhoto.Location = new System.Drawing.Point(24, 30);
             this.pbPersonPhoto.Name = "pbPersonPhoto";
             this.pbPersonPhoto.Size = new System.Drawing.Size(189, 241);
+            this.pbPersonPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPersonPhoto.TabIndex = 22;
             this.pbPersonPhoto.TabStop = false;
             // 
@@ -174,7 +178,7 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(80, 29);
             this.tbFirstName.TabIndex = 32;
-            this.tbFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.tbFirstName_Validating);
+            this.tbFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // tbLastName
             // 
@@ -183,6 +187,7 @@
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(80, 29);
             this.tbLastName.TabIndex = 35;
+            this.tbLastName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // tbThirdName
             // 
@@ -199,6 +204,7 @@
             this.tbSecondName.Name = "tbSecondName";
             this.tbSecondName.Size = new System.Drawing.Size(80, 29);
             this.tbSecondName.TabIndex = 33;
+            this.tbSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // tbNationalNumber
             // 
@@ -207,6 +213,7 @@
             this.tbNationalNumber.Name = "tbNationalNumber";
             this.tbNationalNumber.Size = new System.Drawing.Size(343, 29);
             this.tbNationalNumber.TabIndex = 36;
+            this.tbNationalNumber.Validating += new System.ComponentModel.CancelEventHandler(this.tbNationalNumber_Validating);
             // 
             // tbEmail
             // 
@@ -215,6 +222,7 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(343, 29);
             this.tbEmail.TabIndex = 39;
+            this.tbEmail.Validating += new System.ComponentModel.CancelEventHandler(this.tbEmail_Validating);
             // 
             // tbAddress
             // 
@@ -223,6 +231,7 @@
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(343, 29);
             this.tbAddress.TabIndex = 40;
+            this.tbAddress.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // tbPhone
             // 
@@ -231,6 +240,7 @@
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(343, 29);
             this.tbPhone.TabIndex = 42;
+            this.tbPhone.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // rbMale
             // 
@@ -258,7 +268,9 @@
             // 
             // dtpDateTime
             // 
+            this.dtpDateTime.CustomFormat = "";
             this.dtpDateTime.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateTime.Location = new System.Drawing.Point(346, 315);
             this.dtpDateTime.Name = "dtpDateTime";
             this.dtpDateTime.Size = new System.Drawing.Size(343, 29);
@@ -316,7 +328,11 @@
             this.lblTitle.TabIndex = 47;
             this.lblTitle.Text = "Add New Person";
             // 
-            // AddNewPerson
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // frmAddEditPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -349,9 +365,11 @@
             this.Controls.Add(this.pbPersonPhoto);
             this.Controls.Add(this.lblPersonID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "AddNewPerson";
+            this.Name = "frmAddEditPerson";
             this.Text = "AddNewPerson";
+            this.Load += new System.EventHandler(this.frmAddEditPerson_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonPhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,5 +404,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.LinkLabel llAddPhoto;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -64,7 +64,7 @@ namespace PresentationLayer
         private void tsmShowPersonDetails_Click(object sender, EventArgs e)
         {
             InternationalLicenseDetails = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID((int)InternationalLicenseApplicationsPage.dgv.CurrentRow.Cells[1].Value);
-            ShowPersonDetails PersonDetails = new ShowPersonDetails(InternationalLicenseDetails.LocalLicense.PersonID);
+            frmPersonDetails PersonDetails = new frmPersonDetails(InternationalLicenseDetails.LocalLicense.PersonID);
             PersonDetails.ShowDialog();
         }
 

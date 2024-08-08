@@ -18,7 +18,7 @@ namespace PresentationLayer
         {
             InitializeComponent();
 
-            PersonDetails = clsPerson.FindByNationalNo(NationalNo);
+            PersonDetails = clsPerson.Find(NationalNo);
         }
         public frmLicenseHistory(int PersonID)
         {
@@ -31,8 +31,8 @@ namespace PresentationLayer
         {
             ctrlPersonCard1.PersonInfo = PersonDetails;
 
-            dgvLocalLicenses.DataSource = clsLicense.GetAllPersonLicenses(PersonDetails.nationalNumber);
-            dgvInternationalLicenses.DataSource = clsInternationalLicense.GetAllPersonLicenses(PersonDetails.nationalNumber);
+            dgvLocalLicenses.DataSource = clsLicense.GetAllPersonLicenses(PersonDetails.NationalNumber);
+            dgvInternationalLicenses.DataSource = clsInternationalLicense.GetAllPersonLicenses(PersonDetails.NationalNumber);
             FormatLayout();
         }
 

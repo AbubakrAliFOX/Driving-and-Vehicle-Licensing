@@ -55,7 +55,7 @@ namespace PresentationLayer
 
                 } else
                 {
-                    GetPerson = clsPerson.FindByNationalNo(tbSearch.Text);
+                    GetPerson = clsPerson.Find(tbSearch.Text);
                 }
 
                 if (GetPerson != null)
@@ -72,7 +72,7 @@ namespace PresentationLayer
 
         private void pbAddNew_Click(object sender, EventArgs e)
         {
-            AddNewPerson NewPerson = new AddNewPerson(-1);
+            frmAddEditPerson NewPerson = new frmAddEditPerson();
 
             NewPerson.DataBack += GetPersonID;
 

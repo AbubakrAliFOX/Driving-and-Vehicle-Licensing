@@ -8,16 +8,13 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.c
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.csproj.CoreCompileInputs.cache
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.exe
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.pdb
-E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.Form1.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.csproj.CopyComplete
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlDataPage.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlMenuButton.resources
-E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ShowPersonDetails.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\BusinessLayer.dll
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\DataLayer.dll
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\BusinessLayer.pdb
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\DataLayer.pdb
-E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.AddNewPerson.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmManageApplicationTypes.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmEditApplicationType.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmEditTestType.resources
@@ -58,3 +55,6 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.f
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlUserCard.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmUserInfo.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmChangePassword.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmAddEditPerson.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmPersonDetails.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.MainScreen.resources

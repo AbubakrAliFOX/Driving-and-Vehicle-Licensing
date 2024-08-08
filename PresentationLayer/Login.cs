@@ -48,7 +48,7 @@ namespace PresentationLayer
                 }
 
                 this.Hide();
-                Form1 Application = new Form1(this);
+                MainScreen Application = new MainScreen(this);
                 Application.ShowDialog();
             }
         }

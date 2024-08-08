@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace PresentationLayer
 {
-    public partial class ShowPersonDetails : Form
+    public partial class frmPersonDetails : Form
     {
         ctrlPersonCard ctrlPerson;
         clsPerson newPerson;
-        public ShowPersonDetails(int personID)
+        public frmPersonDetails(int personID)
         {
             InitializeComponent();
             SetFormPosition();

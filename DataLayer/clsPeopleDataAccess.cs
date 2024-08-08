@@ -450,5 +450,35 @@ namespace DataLayer
 
             return (rowsAffected > 0);
         }
+    
+        public static bool PersonExists(string NationalNo)
+        {
+            bool IsFound = false;
+
+            string connectionString = clsDataAccessSettings.connectionString;
+
+            string query = "SELECT Found = 1 FROM People WHERE NationalNo = @NationalNo";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                IsFound = reader.HasRows;
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+
+            return IsFound;
+        }
     }
 }

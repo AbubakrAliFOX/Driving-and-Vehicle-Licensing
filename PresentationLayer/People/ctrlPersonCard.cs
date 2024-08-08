@@ -40,24 +40,24 @@ namespace PresentationLayer
 
         private void FillPersonCard(clsPerson personInfo)
         {
-            if (personInfo.imgPath != "")
+            if (personInfo.ImagePath != "")
             {
-                pbPersonPhoto.Image = Image.FromFile(personInfo.imgPath);
+                pbPersonPhoto.Image = Image.FromFile(personInfo.ImagePath);
             } else
             {
                 pbPersonPhoto.Image = Image.FromFile("E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\user1.png");
             }
 
             lblPersonID.Text = personInfo.ID.ToString();
-            lblName.Text = $"{personInfo.firstName} {personInfo.lastName}";
-            lblNationalNumber.Text = personInfo.nationalNumber;
-            lblGender.Text = personInfo.gender == 1 ? "Female" : "Male";
-            lblEmail.Text = personInfo.email;
-            lblPhone.Text = personInfo.phone;
-            lblAddress.Text = personInfo.address;
-            lblDateOfBirth.Text = personInfo.dateOfBirth.ToString("dd/MM/yyyy");
+            lblName.Text = $"{personInfo.FirstName} {personInfo.LastName}";
+            lblNationalNumber.Text = personInfo.NationalNumber;
+            lblGender.Text = personInfo.Gender == 1 ? "Female" : "Male";
+            lblEmail.Text = personInfo.Email;
+            lblPhone.Text = personInfo.Phone;
+            lblAddress.Text = personInfo.Address;
+            lblDateOfBirth.Text = personInfo.DateOfBirth.ToString("dd/MM/yyyy");
 
-            lblCountry.Text = clsCountry.Find(personInfo.countryID);
+            lblCountry.Text = clsCountry.Find(personInfo.CountryID);
         }
 
         private void ResetPersonCard()

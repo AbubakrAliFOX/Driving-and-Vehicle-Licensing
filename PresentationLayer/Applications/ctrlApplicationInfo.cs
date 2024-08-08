@@ -55,7 +55,7 @@ namespace PresentationLayer
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ShowPersonDetails PersonDetails = new ShowPersonDetails(LocalLicenseApplicationDetails.Application.ApplicantID);
+            frmPersonDetails PersonDetails = new frmPersonDetails(LocalLicenseApplicationDetails.Application.ApplicantID);
             PersonDetails.ShowDialog();
         }
     }

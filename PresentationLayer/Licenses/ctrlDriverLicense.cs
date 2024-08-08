@@ -82,13 +82,13 @@ namespace PresentationLayer
             }
 
             // Person Details
-            lblNationalNo.Text = PersonDetails.nationalNumber;
-            lblGender.Text = PersonDetails.gender == 1 ? "Female" : "Male";
-            lblDOB.Text = PersonDetails.dateOfBirth.ToString("dd MMM yyyy");
+            lblNationalNo.Text = PersonDetails.NationalNumber;
+            lblGender.Text = PersonDetails.Gender == 1 ? "Female" : "Male";
+            lblDOB.Text = PersonDetails.DateOfBirth.ToString("dd MMM yyyy");
 
-            if (PersonDetails.imgPath != "")
+            if (PersonDetails.ImagePath != "")
             {
-                pbPersonPhoto.Image = Image.FromFile(PersonDetails.imgPath);
+                pbPersonPhoto.Image = Image.FromFile(PersonDetails.ImagePath);
             }
             else
             {

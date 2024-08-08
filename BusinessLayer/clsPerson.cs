@@ -15,34 +15,34 @@ namespace BusinessLayer
         public enum enMode { AddNew = 0, Update};
         private enMode _Mode;
         public int ID { set; get; }
-        public string nationalNumber { set; get; }
-        public string firstName { set; get; }
-        public string secondName { set; get; }
-        public string thirdName { set; get; }
-        public string lastName { set; get; }
-        public byte gender { set; get; }
-        public string email { set; get; }
-        public string phone { set; get; }
-        public string address { set; get; }
-        public DateTime dateOfBirth { set; get; }
-        public string imgPath { set; get; }
-        public int countryID { set; get; }
+        public string NationalNumber { set; get; }
+        public string FirstName { set; get; }
+        public string SecondName { set; get; }
+        public string ThirdName { set; get; }
+        public string LastName { set; get; }
+        public byte Gender { set; get; }
+        public string Email { set; get; }
+        public string Phone { set; get; }
+        public string Address { set; get; }
+        public DateTime DateOfBirth { set; get; }
+        public string ImagePath { set; get; }
+        public int CountryID { set; get; }
 
         public clsPerson()
         {
             this.ID = -1;
-            this.nationalNumber = "";
-            this.firstName = "";
-            this.secondName = "";
-            this.thirdName = "";
-            this.lastName = "";
-            this.gender = 0;
-            this.email = "";
-            this.phone = "";
-            this.address = "";
-            this.dateOfBirth = DateTime.Now;
-            this.countryID = -1;
-            this.imgPath = "";
+            this.NationalNumber = "";
+            this.FirstName = "";
+            this.SecondName = "";
+            this.ThirdName = "";
+            this.LastName = "";
+            this.Gender = 0;
+            this.Email = "";
+            this.Phone = "";
+            this.Address = "";
+            this.DateOfBirth = DateTime.Now;
+            this.CountryID = -1;
+            this.ImagePath = "";
             _Mode = enMode.AddNew;
         }
         public clsPerson(
@@ -62,18 +62,18 @@ namespace BusinessLayer
         )
         {
             this.ID = ID;
-            this.nationalNumber = NationalNumber;
-            this.firstName = FirstName;
-            this.secondName = SecondName;
-            this.thirdName = ThirdName;
-            this.lastName = LastName;
-            this.gender = Gender;
-            this.email = Email;
-            this.phone = Phone;
-            this.address = Address;
-            this.dateOfBirth = DateOfBirth;
-            this.countryID = CountryID;
-            this.imgPath = ImagePath;
+            this.NationalNumber = NationalNumber;
+            this.FirstName = FirstName;
+            this.SecondName = SecondName;
+            this.ThirdName = ThirdName;
+            this.LastName = LastName;
+            this.Gender = Gender;
+            this.Email = Email;
+            this.Phone = Phone;
+            this.Address = Address;
+            this.DateOfBirth = DateOfBirth;
+            this.CountryID = CountryID;
+            this.ImagePath = ImagePath;
             _Mode = enMode.Update;
         }
 
@@ -132,7 +132,7 @@ namespace BusinessLayer
             }
         }
 
-        public static clsPerson FindByNationalNo(string NationalNo)
+        public static clsPerson Find(string NationalNo)
         {
             int ID = -1;
             string firstName = "",
@@ -194,30 +194,30 @@ namespace BusinessLayer
 
         private bool _AddNewPerson()
         {
-            this.ID = clsPeopleDataAccess.AddNewPerson(this.nationalNumber,this.firstName, this.secondName, 
-            this.thirdName, this.lastName,
-            this.gender,
-            this.email,
-            this.phone,
-            this.address,
-            this.dateOfBirth,
-            this.countryID,
-            this.imgPath);
+            this.ID = clsPeopleDataAccess.AddNewPerson(this.NationalNumber,this.FirstName, this.SecondName, 
+            this.ThirdName, this.LastName,
+            this.Gender,
+            this.Email,
+            this.Phone,
+            this.Address,
+            this.DateOfBirth,
+            this.CountryID,
+            this.ImagePath);
             return (this.ID != -1);
         }
 
         private bool _UpdatePerson ()
         {
-            return clsPeopleDataAccess.UpdatePerson(this.ID, this.nationalNumber,
-            this.firstName, this.secondName,
-            this.thirdName, this.lastName,
-            this.gender,
-            this.email,
-            this.phone,
-            this.address,
-            this.dateOfBirth,
-            this.countryID,
-            this.imgPath);
+            return clsPeopleDataAccess.UpdatePerson(this.ID, this.NationalNumber,
+            this.FirstName, this.SecondName,
+            this.ThirdName, this.LastName,
+            this.Gender,
+            this.Email,
+            this.Phone,
+            this.Address,
+            this.DateOfBirth,
+            this.CountryID,
+            this.ImagePath);
         }
 
         public static bool Delete (int ID)
@@ -244,6 +244,11 @@ namespace BusinessLayer
 
             }
             return false; 
+        }
+    
+        public static bool PersonExists(string NationalNo)
+        {
+            return clsPeopleDataAccess.PersonExists(NationalNo);
         }
     }
 }

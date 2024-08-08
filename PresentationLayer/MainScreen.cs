@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace PresentationLayer
 {
-    public partial class Form1 : Form
+    public partial class MainScreen : Form
     {
         Login _frmLogin;
 
-        public Form1(Login LoginForm)
+        public MainScreen(Login LoginForm)
         {
             InitializeComponent();
 
@@ -147,25 +147,25 @@ namespace PresentationLayer
 
         private void tsmDriverInfo_Click(object sender, EventArgs e)
         {
-            ShowPersonDetails showPersonDetailsForm = new ShowPersonDetails((int)ctrlDataPageDrivers.dgv.CurrentRow.Cells[0].Value);
+            frmPersonDetails showPersonDetailsForm = new frmPersonDetails((int)ctrlDataPageDrivers.dgv.CurrentRow.Cells[0].Value);
             showPersonDetailsForm.ShowDialog();
             //_RefreshContactsList();
         }
 
         private void tsmPersonInfo_Click(object sender, EventArgs e)
         {
-            ShowPersonDetails showPersonDetailsForm = new ShowPersonDetails((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value);
+            frmPersonDetails showPersonDetailsForm = new frmPersonDetails((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value);
             showPersonDetailsForm.ShowDialog();
         }
 
         private void tsmAdd_Click(object sender, EventArgs e)
         {
-            AddNewPerson addNewPersonForm = new AddNewPerson(-1);
+            frmAddEditPerson addNewPersonForm = new frmAddEditPerson();
             addNewPersonForm.ShowDialog();
         }
         private void tsmEdit_Click(object sender, EventArgs e)
         {
-            AddNewPerson addNewPersonForm = new AddNewPerson((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value);
+            frmAddEditPerson addNewPersonForm = new frmAddEditPerson((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value);
             addNewPersonForm.ShowDialog();
         }
         private void tsmDelete_Click(object sender, EventArgs e)
