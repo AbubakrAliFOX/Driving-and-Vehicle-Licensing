@@ -200,6 +200,7 @@ namespace DataLayer
 
             return (RowsAffected > 0);
         }
+        
         public static bool ChangePassword(int UserID, string NewPassword)
         {
             int RowsAffected = 0;
@@ -323,6 +324,38 @@ namespace DataLayer
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                IsFound = reader.HasRows;
+                reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+        
+        public static bool IsUser(string UserName)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT Found = 1 FROM Users WHERE UserName = @UserName";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@UserName", UserName);
 
             try
             {

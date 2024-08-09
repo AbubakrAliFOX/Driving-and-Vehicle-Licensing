@@ -222,11 +222,11 @@
     <Compile Include="Licenses\frmNewLocalDrivingLicenseApplication.Designer.cs">
       <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\frmNewUser.cs">
+    <Compile Include="Users\frmAddEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\frmNewUser.Designer.cs">
-      <DependentUpon>frmNewUser.cs</DependentUpon>
+    <Compile Include="Users\frmAddEditUser.Designer.cs">
+      <DependentUpon>frmAddEditUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Licenses\frmReleaseLicense.cs">
       <SubType>Form</SubType>
@@ -364,8 +364,8 @@
     <EmbeddedResource Include="Licenses\frmNewLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\frmNewUser.resx">
-      <DependentUpon>frmNewUser.cs</DependentUpon>
+    <EmbeddedResource Include="Users\frmAddEditUser.resx">
+      <DependentUpon>frmAddEditUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\frmReleaseLicense.resx">
       <DependentUpon>frmReleaseLicense.cs</DependentUpon>

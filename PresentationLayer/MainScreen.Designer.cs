@@ -432,7 +432,7 @@ namespace PresentationLayer
             this.tsmChangeUserPassword,
             this.tsmDeleteUser});
             this.cmsUsers.Name = "cmsPeople";
-            this.cmsUsers.Size = new System.Drawing.Size(218, 150);
+            this.cmsUsers.Size = new System.Drawing.Size(228, 150);
             // 
             // tsmUserInformation
             // 
@@ -440,21 +440,21 @@ namespace PresentationLayer
             this.tsmUserInformation.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tsmUserInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsmUserInformation.Image")));
             this.tsmUserInformation.Name = "tsmUserInformation";
-            this.tsmUserInformation.Size = new System.Drawing.Size(217, 28);
+            this.tsmUserInformation.Size = new System.Drawing.Size(227, 28);
             this.tsmUserInformation.Text = "Show Details";
             this.tsmUserInformation.Click += new System.EventHandler(this.tsmUserInformation_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(214, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(224, 6);
             // 
             // tsmAddUser
             // 
             this.tsmAddUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmAddUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmAddUser.Image")));
             this.tsmAddUser.Name = "tsmAddUser";
-            this.tsmAddUser.Size = new System.Drawing.Size(217, 28);
+            this.tsmAddUser.Size = new System.Drawing.Size(227, 28);
             this.tsmAddUser.Text = "Add New User";
             this.tsmAddUser.Click += new System.EventHandler(this.tsmAddUser_Click);
             // 
@@ -463,8 +463,8 @@ namespace PresentationLayer
             this.tsmEditUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmEditUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmEditUser.Image")));
             this.tsmEditUser.Name = "tsmEditUser";
-            this.tsmEditUser.Size = new System.Drawing.Size(217, 28);
-            this.tsmEditUser.Text = "Edit";
+            this.tsmEditUser.Size = new System.Drawing.Size(227, 28);
+            this.tsmEditUser.Text = "Change UserName";
             this.tsmEditUser.Click += new System.EventHandler(this.tsmEditUser_Click);
             // 
             // tsmChangeUserPassword
@@ -472,7 +472,7 @@ namespace PresentationLayer
             this.tsmChangeUserPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmChangeUserPassword.Image = ((System.Drawing.Image)(resources.GetObject("tsmChangeUserPassword.Image")));
             this.tsmChangeUserPassword.Name = "tsmChangeUserPassword";
-            this.tsmChangeUserPassword.Size = new System.Drawing.Size(217, 28);
+            this.tsmChangeUserPassword.Size = new System.Drawing.Size(227, 28);
             this.tsmChangeUserPassword.Text = "Change Password";
             this.tsmChangeUserPassword.Click += new System.EventHandler(this.tsmChangeUserPassword_Click);
             // 
@@ -481,7 +481,7 @@ namespace PresentationLayer
             this.tsmDeleteUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmDeleteUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmDeleteUser.Image")));
             this.tsmDeleteUser.Name = "tsmDeleteUser";
-            this.tsmDeleteUser.Size = new System.Drawing.Size(217, 28);
+            this.tsmDeleteUser.Size = new System.Drawing.Size(227, 28);
             this.tsmDeleteUser.Text = "Delete";
             this.tsmDeleteUser.Click += new System.EventHandler(this.tsmDeleteUser_Click);
             // 
@@ -602,7 +602,7 @@ namespace PresentationLayer
             this.pbMinimize.TabStop = false;
             this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
             // 
-            // Form1
+            // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -614,7 +614,7 @@ namespace PresentationLayer
             this.Controls.Add(this.ctrlDataPageUsers);
             this.Controls.Add(this.ctrlDataPageDrivers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

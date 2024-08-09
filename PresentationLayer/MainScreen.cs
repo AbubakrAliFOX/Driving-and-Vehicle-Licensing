@@ -297,7 +297,7 @@ namespace PresentationLayer
 
         private void AddNewUser_Click(object sender, EventArgs e)
         {
-            frmNewUser NewUser = new frmNewUser();
+            frmAddEditUser NewUser = new frmAddEditUser();
             NewUser.ShowDialog();
             //ctrlDataPageUsers.RefreshData();
         }
@@ -311,14 +311,14 @@ namespace PresentationLayer
 
         private void tsmAddUser_Click(object sender, EventArgs e)
         {
-            frmNewUser NewUser = new frmNewUser();
+            frmAddEditUser NewUser = new frmAddEditUser();
             NewUser.ShowDialog();
             ctrlDataPageUsers.RefreshData();
         }
 
         private void tsmEditUser_Click(object sender, EventArgs e)
         {
-            frmNewUser EditUser = new frmNewUser((int)ctrlDataPageUsers.dgv.CurrentRow.Cells[0].Value);
+            frmAddEditUser EditUser = new frmAddEditUser((int)ctrlDataPageUsers.dgv.CurrentRow.Cells[0].Value);
             EditUser.ShowDialog();
             ctrlDataPageUsers.RefreshData();
         }

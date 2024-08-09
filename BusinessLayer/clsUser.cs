@@ -91,6 +91,10 @@ namespace BusinessLayer
         {
             return clsUsersDataAccess.IsUser(PersonID);
         }
+        public static bool IsUser(string UserName)
+        {
+            return clsUsersDataAccess.IsUser(UserName);
+        }
 
         public static DataTable GetAllUsers()
         {
@@ -108,7 +112,7 @@ namespace BusinessLayer
 
             if (UserID != -1)
             {
-                if (clsUsersDataAccess.IsUserActive(UserName))
+                if (IsUserActive(UserName))
                 {
                     return UserID;
                 }
