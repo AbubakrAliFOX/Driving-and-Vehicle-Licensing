@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.tbTestTitle = new System.Windows.Forms.TextBox();
@@ -39,6 +40,8 @@
             this.lblTestID = new System.Windows.Forms.Label();
             this.tbTestDesc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -47,7 +50,7 @@
             this.btnSave.Location = new System.Drawing.Point(355, 314);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(163, 35);
-            this.btnSave.TabIndex = 70;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -58,7 +61,7 @@
             this.btnClose.Location = new System.Drawing.Point(175, 314);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(163, 35);
-            this.btnClose.TabIndex = 69;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -69,7 +72,8 @@
             this.tbTestTitle.Location = new System.Drawing.Point(174, 116);
             this.tbTestTitle.Name = "tbTestTitle";
             this.tbTestTitle.Size = new System.Drawing.Size(343, 29);
-            this.tbTestTitle.TabIndex = 62;
+            this.tbTestTitle.TabIndex = 1;
+            this.tbTestTitle.Validating += new System.ComponentModel.CancelEventHandler(this.tbTestTitle_Validating);
             // 
             // label1
             // 
@@ -97,7 +101,8 @@
             this.tbTestFees.Location = new System.Drawing.Point(174, 267);
             this.tbTestFees.Name = "tbTestFees";
             this.tbTestFees.Size = new System.Drawing.Size(343, 29);
-            this.tbTestFees.TabIndex = 63;
+            this.tbTestFees.TabIndex = 3;
+            this.tbTestFees.Validating += new System.ComponentModel.CancelEventHandler(this.tbTestFees_Validating);
             // 
             // label4
             // 
@@ -135,7 +140,8 @@
             this.tbTestDesc.Multiline = true;
             this.tbTestDesc.Name = "tbTestDesc";
             this.tbTestDesc.Size = new System.Drawing.Size(343, 90);
-            this.tbTestDesc.TabIndex = 71;
+            this.tbTestDesc.TabIndex = 2;
+            this.tbTestDesc.Validating += new System.ComponentModel.CancelEventHandler(this.tbTestDesc_Validating);
             // 
             // label2
             // 
@@ -146,6 +152,10 @@
             this.label2.Size = new System.Drawing.Size(98, 22);
             this.label2.TabIndex = 72;
             this.label2.Text = "Description:";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmEditTestType
             // 
@@ -166,6 +176,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmEditTestType";
             this.Text = "Edit Test Type";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,5 +195,6 @@
         private System.Windows.Forms.Label lblTestID;
         private System.Windows.Forms.TextBox tbTestDesc;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.tbApplicationFees = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,6 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -55,7 +58,8 @@
             this.tbApplicationFees.Location = new System.Drawing.Point(109, 161);
             this.tbApplicationFees.Name = "tbApplicationFees";
             this.tbApplicationFees.Size = new System.Drawing.Size(343, 29);
-            this.tbApplicationFees.TabIndex = 3;
+            this.tbApplicationFees.TabIndex = 2;
+            this.tbApplicationFees.Validating += new System.ComponentModel.CancelEventHandler(this.tbApplicationFees_Validating);
             // 
             // label4
             // 
@@ -92,7 +96,8 @@
             this.tbApplicationTitle.Location = new System.Drawing.Point(109, 117);
             this.tbApplicationTitle.Name = "tbApplicationTitle";
             this.tbApplicationTitle.Size = new System.Drawing.Size(343, 29);
-            this.tbApplicationTitle.TabIndex = 2;
+            this.tbApplicationTitle.TabIndex = 1;
+            this.tbApplicationTitle.Validating += new System.ComponentModel.CancelEventHandler(this.tbApplicationTitle_Validating);
             // 
             // label1
             // 
@@ -110,7 +115,7 @@
             this.btnClose.Location = new System.Drawing.Point(109, 211);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(163, 35);
-            this.btnClose.TabIndex = 60;
+            this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -121,10 +126,14 @@
             this.btnSave.Location = new System.Drawing.Point(289, 211);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(163, 35);
-            this.btnSave.TabIndex = 61;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmEditApplicationType
             // 
@@ -143,6 +152,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmEditApplicationType";
             this.Text = "Edit Application Type";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,5 +169,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
