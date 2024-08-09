@@ -41,6 +41,7 @@
             this.tbSearch.TabIndex = 12;
             this.tbSearch.Visible = false;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
             // 
             // cbFilterList
             // 

@@ -91,7 +91,6 @@ namespace PresentationLayer
                 dgv.Columns["PersonID"].HeaderText = "Person ID";
                 dgv.Columns["NationalNo"].HeaderText = "National No";
                 dgv.Columns["FullName"].HeaderText = "Full Name";
-                dgv.Columns["Gendor"].HeaderText = "Gender";
                 dgv.Columns["DateOfBirth"].HeaderText = "Birth Date";
 
                 dgv.Columns["FullName"].Width = 220;

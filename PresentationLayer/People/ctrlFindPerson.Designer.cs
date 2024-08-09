@@ -32,15 +32,13 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ctrlPersonCard1 = new PresentationLayer.ctrlPersonCard();
             this.gbFilter = new System.Windows.Forms.GroupBox();
-            this.pbAddNew = new System.Windows.Forms.PictureBox();
-            this.pbSearch = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.cbFilterList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.gbFilter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAddNew)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -63,8 +61,8 @@
             // 
             // gbFilter
             // 
-            this.gbFilter.Controls.Add(this.pbAddNew);
-            this.gbFilter.Controls.Add(this.pbSearch);
+            this.gbFilter.Controls.Add(this.btnAdd);
+            this.gbFilter.Controls.Add(this.btnSearch);
             this.gbFilter.Controls.Add(this.tbSearch);
             this.gbFilter.Controls.Add(this.cbFilterList);
             this.gbFilter.Controls.Add(this.label1);
@@ -75,32 +73,13 @@
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
             // 
-            // pbAddNew
-            // 
-            this.pbAddNew.Image = ((System.Drawing.Image)(resources.GetObject("pbAddNew.Image")));
-            this.pbAddNew.Location = new System.Drawing.Point(558, 42);
-            this.pbAddNew.Name = "pbAddNew";
-            this.pbAddNew.Size = new System.Drawing.Size(32, 32);
-            this.pbAddNew.TabIndex = 14;
-            this.pbAddNew.TabStop = false;
-            this.pbAddNew.Click += new System.EventHandler(this.pbAddNew_Click);
-            // 
-            // pbSearch
-            // 
-            this.pbSearch.Image = ((System.Drawing.Image)(resources.GetObject("pbSearch.Image")));
-            this.pbSearch.Location = new System.Drawing.Point(514, 42);
-            this.pbSearch.Name = "pbSearch";
-            this.pbSearch.Size = new System.Drawing.Size(32, 32);
-            this.pbSearch.TabIndex = 13;
-            this.pbSearch.TabStop = false;
-            this.pbSearch.Click += new System.EventHandler(this.pbSearch_Click);
-            // 
             // tbSearch
             // 
             this.tbSearch.Location = new System.Drawing.Point(249, 47);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(255, 22);
             this.tbSearch.TabIndex = 12;
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
             // 
             // cbFilterList
             // 
@@ -124,6 +103,34 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Find By";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.Location = new System.Drawing.Point(510, 41);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(35, 35);
+            this.btnSearch.TabIndex = 15;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(560, 42);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(35, 35);
+            this.btnAdd.TabIndex = 16;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // ctrlFindPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -135,8 +142,6 @@
             this.groupBox2.ResumeLayout(false);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAddNew)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -146,10 +151,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.GroupBox gbFilter;
-        private System.Windows.Forms.PictureBox pbAddNew;
-        private System.Windows.Forms.PictureBox pbSearch;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.ComboBox cbFilterList;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

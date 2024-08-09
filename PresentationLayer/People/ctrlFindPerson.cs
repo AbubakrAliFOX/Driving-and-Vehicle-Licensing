@@ -40,8 +40,7 @@ namespace PresentationLayer
 
         private string SearchColumn;
 
-
-        private void pbSearch_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             if (tbSearch.Text != "")
             {
@@ -53,7 +52,8 @@ namespace PresentationLayer
                     int.TryParse(tbSearch.Text, out SearchTerm);
                     GetPerson = clsPerson.Find(SearchTerm);
 
-                } else
+                }
+                else
                 {
                     GetPerson = clsPerson.Find(tbSearch.Text);
                 }
@@ -70,7 +70,7 @@ namespace PresentationLayer
             }
         }
 
-        private void pbAddNew_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             frmAddEditPerson NewPerson = new frmAddEditPerson();
 
@@ -87,6 +87,19 @@ namespace PresentationLayer
         private void cbFilterList_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchColumn = cbFilterList.SelectedItem.ToString().Replace(" ", "");
+        }
+
+        private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+
+                btnSearch.PerformClick();
+            }
+
+            //this will allow only digits if person id is selected
+            if (cbFilterList.Text == "Person ID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

@@ -22,8 +22,6 @@ namespace PresentationLayer
         public ctrlSearchBar()
         {
             InitializeComponent();
-
-            //PopulateSearchableList(SearchableColumns);
         }
 
         private string SearchColumn;
@@ -35,6 +33,7 @@ namespace PresentationLayer
                 PopulateSearchableList(value);
             }
         }
+
         public DataView FilteredData { get; private set; }
 
         private DataView _UnfilteredData;
@@ -103,9 +102,11 @@ namespace PresentationLayer
             SearchColumn = cbFilterList.SelectedItem.ToString().Replace(" ", "");
         }
 
+        private Type ColumnDataType;
+
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            Type ColumnDataType = GetColumnType(UnfilteredData, SearchColumn);
+            ColumnDataType = GetColumnType(UnfilteredData, SearchColumn);
 
             if (string.IsNullOrWhiteSpace(tbSearch.Text))
             {
@@ -131,7 +132,13 @@ namespace PresentationLayer
             OnFilterChanged(EventArgs.Empty);
         }
 
- 
+        private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ColumnDataType == typeof(Int32))
+            {
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            }               
+        }
     }
 
 
