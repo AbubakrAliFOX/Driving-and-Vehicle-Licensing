@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
             this.ctrlUserCard1 = new PresentationLayer.ctrlUserCard();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -39,7 +40,9 @@
             this.LisenceClass = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnChange = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -78,6 +81,7 @@
             this.tbConfirmPassword.PasswordChar = '*';
             this.tbConfirmPassword.Size = new System.Drawing.Size(188, 22);
             this.tbConfirmPassword.TabIndex = 92;
+            this.tbConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbConfirmPassword_Validating);
             // 
             // tbNewPassword
             // 
@@ -86,6 +90,7 @@
             this.tbNewPassword.PasswordChar = '*';
             this.tbNewPassword.Size = new System.Drawing.Size(188, 22);
             this.tbNewPassword.TabIndex = 91;
+            this.tbNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbNewPassword_Validating);
             // 
             // tbOldPassword
             // 
@@ -94,6 +99,7 @@
             this.tbOldPassword.PasswordChar = '*';
             this.tbOldPassword.Size = new System.Drawing.Size(188, 22);
             this.tbOldPassword.TabIndex = 90;
+            this.tbOldPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbOldPassword_Validating);
             // 
             // label5
             // 
@@ -151,6 +157,10 @@
             this.btnChange.UseVisualStyleBackColor = true;
             this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -167,6 +177,7 @@
             this.Text = "Change Password";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +196,6 @@
         private System.Windows.Forms.Label LisenceClass;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnChange;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -68,29 +68,16 @@ namespace BusinessLayer
             return clsUsersDataAccess.DeleteUser(UserID);
         }
         
-        public static int ChangePassword(string UserName, string OldPassword, string NewPassword)
+        public static bool ChangePassword(int UserID, string NewPassword)
         {
-            int UserID = clsUsersDataAccess.Authenticate(UserName, OldPassword);
-
-            if (UserID != -1)
-            {
-                if(clsUsersDataAccess.ChangePassword(UserID, NewPassword))
-                {
-                    return 1;
-                } else
-                {
-                    return -1;
-                }
-            } else
-            {
-                return -2;
-            }
+            return clsUsersDataAccess.ChangePassword(UserID, NewPassword);
         }
 
         public static bool IsUser(int PersonID)
         {
             return clsUsersDataAccess.IsUser(PersonID);
         }
+        
         public static bool IsUser(string UserName)
         {
             return clsUsersDataAccess.IsUser(UserName);
@@ -106,9 +93,14 @@ namespace BusinessLayer
             return clsUsersDataAccess.IsUserActive(UserName);
         }
 
-        public static int Authenticate(string UserName, string PasswordHash)
+        public static int Authenticate(string UserName, string Password)
         {
-            int UserID = clsUsersDataAccess.Authenticate(UserName, PasswordHash);
+            return clsUsersDataAccess.Authenticate(UserName, Password);
+        }
+        
+        public static int AuthenticateForLogin(string UserName, string Password)
+        {
+            int UserID = Authenticate(UserName, Password);
 
             if (UserID != -1)
             {

@@ -24,7 +24,7 @@ namespace PresentationLayer
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            int UserID = clsUser.Authenticate(tbUserName.Text, tbPassword.Text);
+            int UserID = clsUser.AuthenticateForLogin(tbUserName.Text, tbPassword.Text);
 
             if (UserID == -1)
             {
