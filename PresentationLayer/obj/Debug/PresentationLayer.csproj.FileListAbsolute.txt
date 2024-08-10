@@ -58,3 +58,4 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.f
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.MainScreen.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmAddEditUser.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlLDLApplicationInfo.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.Applications.frmLDLApplicatinoInfo.resources

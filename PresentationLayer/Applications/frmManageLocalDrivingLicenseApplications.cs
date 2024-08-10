@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Applications;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,7 +61,8 @@ namespace PresentationLayer
 
         private void tsmShowApplicationDetails_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not Implemented Yet!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmLDLApplicatinoInfo LDLApplicatinoInfo = new frmLDLApplicatinoInfo((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            LDLApplicatinoInfo.ShowDialog();
         }
 
         private void tsmEditApplication_Click(object sender, EventArgs e)
@@ -70,7 +72,7 @@ namespace PresentationLayer
 
         private void tsmCancelApplication_Click(object sender, EventArgs e)
         {
-            clsLocalDrivingLicensApplication LDLApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            clsLocalDrivingLicensApplication LDLApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplicationByID((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
 
             if (LDLApplicationDetails.Application.ApplicationStatus == "New")
             {
@@ -96,7 +98,7 @@ namespace PresentationLayer
 
         private void tsmDeleteApplication_Click(object sender, EventArgs e)
         {
-            clsLocalDrivingLicensApplication LDLApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            clsLocalDrivingLicensApplication LDLApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplicationByID((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
 
             if (LDLApplicationDetails.Application.ApplicationStatus != "Completed")
             {

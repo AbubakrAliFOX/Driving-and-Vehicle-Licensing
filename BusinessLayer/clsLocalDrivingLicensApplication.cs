@@ -32,7 +32,7 @@ namespace BusinessLayer
             this.LicenseClassName = LicenseClassName;
         }
 
-        public static clsLocalDrivingLicensApplication FindLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
+        public static clsLocalDrivingLicensApplication FindLocalDrivingLicenseApplicationByID(int LocalDrivingLicenseApplicationID)
         {
             int ApplicationID = -1;
             int ApplicantID = -1;

@@ -20,7 +20,7 @@ namespace PresentationLayer
         {
             InitializeComponent();
 
-            LocalApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
+            LocalApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplicationByID(LDLApplicationID);
             TestTypeID = TestType;
             lblTitle.Text = $"{TestTypeName[TestTypeID-1]} Test Appointments";
 

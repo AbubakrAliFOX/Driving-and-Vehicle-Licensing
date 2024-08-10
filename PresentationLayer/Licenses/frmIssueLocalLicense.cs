@@ -19,7 +19,7 @@ namespace PresentationLayer
         {
             InitializeComponent();
 
-            LocalApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication(LDLApplicationID);
+            LocalApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplicationByID(LDLApplicationID);
 
             ctrlApplicationInfo.LocalApplicationInfo = LocalApplicationDetails;
         }

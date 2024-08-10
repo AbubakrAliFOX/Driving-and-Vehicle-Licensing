@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\frmLDLApplicatinoInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\frmLDLApplicatinoInfo.Designer.cs">
+      <DependentUpon>frmLDLApplicatinoInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global Classes\clsValidate.cs" />
     <Compile Include="People\frmAddEditPerson.cs">
       <SubType>Form</SubType>
@@ -283,6 +289,9 @@
     <Compile Include="People\frmPersonDetails.Designer.cs">
       <DependentUpon>frmPersonDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Applications\frmLDLApplicatinoInfo.resx">
+      <DependentUpon>frmLDLApplicatinoInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="People\frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>

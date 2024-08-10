@@ -69,13 +69,13 @@ namespace PresentationLayer
             lblDetainID.Text = DetainDetails.DetainID.ToString();
             lblDetainDate.Text = DetainDetails.DetainDate.ToString("dd MMM yyyy");
 
-            lblLicenseID.Text = DetainDetails.LicenseID.ToString();
+            lblLicenseID.Text = DetainDetails.LicenseInfo.LicenseID.ToString();
             lblCreatedBy.Text = DetainDetails.CreatedByUser;
         }
 
         private void llLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicenseDetails License = new frmLicenseDetails(DetainDetails.LicenseID);
+            frmLicenseDetails License = new frmLicenseDetails(DetainDetails.LicenseInfo.LicenseID);
             License.ShowDialog();
         }
     }

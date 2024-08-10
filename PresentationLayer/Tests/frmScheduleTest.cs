@@ -20,7 +20,6 @@ namespace PresentationLayer
 
         private int RetakeTestApplicationID = 0;
 
-
         string[] TestTypeName = new string[] { "Vision", "Written", "Field" };
 
         public frmScheduleTest(clsLocalDrivingLicensApplication LocalApplication, int TestType)
