@@ -65,13 +65,13 @@ namespace PresentationLayer
             LDLApplicatinoInfo.ShowDialog();
         }
 
-        private void tsmEditApplication_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Not Implemented Yet!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void tsmCancelApplication_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Are you sure you want to cancel this application?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) != DialogResult.OK)
+            {
+                return;
+            }
+
             clsLocalDrivingLicensApplication LDLApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplicationByID((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
 
             if (LDLApplicationDetails.Application.ApplicationStatus == "New")
@@ -98,6 +98,11 @@ namespace PresentationLayer
 
         private void tsmDeleteApplication_Click(object sender, EventArgs e)
         {
+            if(MessageBox.Show("Are you sure you want to delete this application?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) != DialogResult.OK)
+            {
+                return;
+            }
+
             clsLocalDrivingLicensApplication LDLApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplicationByID((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
 
             if (LDLApplicationDetails.Application.ApplicationStatus != "Completed")
@@ -193,7 +198,6 @@ namespace PresentationLayer
             {
                 tsmCancelApplication.Enabled = false;
                 tsmDeleteApplication.Enabled = false;
-                tsmEditApplication.Enabled = false;
 
                 tsmShowLicense.Enabled = true;
                 tsmShowPersonLicenseHistory.Enabled = true;
@@ -201,7 +205,6 @@ namespace PresentationLayer
             else if (ApplicationStatus == "Cancelled")
             {
                 tsmCancelApplication.Enabled = false;
-                tsmEditApplication.Enabled = false;
 
                 tsmShowLicense.Enabled = false;
                 tsmShowPersonLicenseHistory.Enabled = true;
@@ -212,8 +215,6 @@ namespace PresentationLayer
             //Default settings
             tsmCancelApplication.Enabled = true;
             tsmDeleteApplication.Enabled = true;
-            tsmEditApplication.Enabled = true;
-
 
             tsmScheduleTests.Enabled = false;
 

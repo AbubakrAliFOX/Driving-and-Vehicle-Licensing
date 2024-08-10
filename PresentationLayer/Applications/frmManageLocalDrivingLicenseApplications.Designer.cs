@@ -34,7 +34,6 @@
             this.cmsLocalLicences = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmShowApplicationDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmEditApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDeleteApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCancelApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScheduleTests = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +64,6 @@
             this.cmsLocalLicences.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmShowApplicationDetails,
             this.toolStripSeparator1,
-            this.tsmEditApplication,
             this.tsmDeleteApplication,
             this.tsmCancelApplication,
             this.tsmScheduleTests,
@@ -73,7 +71,7 @@
             this.tsmShowLicense,
             this.tsmShowPersonLicenseHistory});
             this.cmsLocalLicences.Name = "cmsDrivers";
-            this.cmsLocalLicences.Size = new System.Drawing.Size(419, 298);
+            this.cmsLocalLicences.Size = new System.Drawing.Size(419, 290);
             this.cmsLocalLicences.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.cmsLocalLicences_Closed);
             this.cmsLocalLicences.Opened += new System.EventHandler(this.cmsLocalLicences_Opened);
             // 
@@ -90,15 +88,6 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(415, 6);
-            // 
-            // tsmEditApplication
-            // 
-            this.tsmEditApplication.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmEditApplication.Image = ((System.Drawing.Image)(resources.GetObject("tsmEditApplication.Image")));
-            this.tsmEditApplication.Name = "tsmEditApplication";
-            this.tsmEditApplication.Size = new System.Drawing.Size(418, 36);
-            this.tsmEditApplication.Text = "Edit Application";
-            this.tsmEditApplication.Click += new System.EventHandler(this.tsmEditApplication_Click);
             // 
             // tsmDeleteApplication
             // 
@@ -218,7 +207,6 @@
         private System.Windows.Forms.ContextMenuStrip cmsLocalLicences;
         private System.Windows.Forms.ToolStripMenuItem tsmShowApplicationDetails;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem tsmEditApplication;
         private System.Windows.Forms.ToolStripMenuItem tsmDeleteApplication;
         private System.Windows.Forms.ToolStripMenuItem tsmCancelApplication;
         private System.Windows.Forms.ToolStripMenuItem tsmScheduleTests;
