@@ -55,10 +55,12 @@ namespace BusinessLayer
         {
             return clsApplicationsDataAccess.GetApplicationTypes();
         }
+        
         public static int GetApplicationTypeByName(string ApplicationName)
         {
             return clsApplicationsDataAccess.GetApplicationTypeByName(ApplicationName);
         }
+        
         public static bool UpdateApplicationType(int ApplicationID, string ApplicationTitle, decimal ApplicationFees)
         {
             return clsApplicationsDataAccess.UpdateApplicationType(ApplicationID, ApplicationTitle, ApplicationFees);
@@ -122,58 +124,10 @@ namespace BusinessLayer
                 return null;
             }
         }
+        
         public static int CreateApplication(int PersonID, int ApplicationTypeID, int CreatedByUserID)
         {
             return clsApplicationsDataAccess.CreateApplication(PersonID, ApplicationTypeID, CreatedByUserID);
-        }
-
-        public static int CreateLocalDrivingLicenseApplication(int PersonID, int LicenseClassID, int CreatedByUserID)
-        {
-            if (clsLicense.IsPersonWithinAgeForLicenseClass(PersonID, LicenseClassID))
-            {
-                if (!clsLicense.PersonHasApplicationWithLicenseClass(PersonID, LicenseClassID))
-                {
-                    int ApplicationID = CreateApplication(PersonID, 1, CreatedByUserID);
-
-                    if (ApplicationID != -1)
-                    {
-                        int LDLApplicationID = clsApplicationsDataAccess.CreateLocalDrivingLicenseApplication(ApplicationID, LicenseClassID);
-                        if (LDLApplicationID != -1)
-                        {
-                            return LDLApplicationID;
-                        }
-                        else
-                        {
-                            return -1;
-                        }
-                    }
-                    else
-                    {
-                        return -2;
-                    }
-                }
-                else
-                {
-                    return -3;
-                }
-            } else
-            {
-                return -4;
-            }
-        }
-
-        //public static bool CancelLocalDrivingLicenseApplication(int PersonID, int ClassID)
-        //{
-        //    return clsApplicationsDataAccess.CreateLocalDrivingLicenseApplication(PersonID, ClassID);
-        //}
-
-        public static DataTable GetLocalDrivingLicenseApplications()
-        {
-            return clsApplicationsDataAccess.GetLocalDrivingLicenseApplications();
-        }
-        public static int PassedTestsCount(int LDLApplicationID)
-        {
-            return clsApplicationsDataAccess.PassedTestsCount(LDLApplicationID);
         }
     }
 }

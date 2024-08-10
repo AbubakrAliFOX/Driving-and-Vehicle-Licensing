@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlApplicationInfo = new PresentationLayer.ctrlApplicationInfo();
+            this.ctrlApplicationInfo = new PresentationLayer.ctrlLDLApplicationInfo();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.tbNotes = new System.Windows.Forms.TextBox();
@@ -104,7 +104,7 @@
 
         #endregion
 
-        private ctrlApplicationInfo ctrlApplicationInfo;
+        private ctrlLDLApplicationInfo ctrlApplicationInfo;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox tbNotes;

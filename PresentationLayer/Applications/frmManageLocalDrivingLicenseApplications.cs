@@ -70,11 +70,11 @@ namespace PresentationLayer
 
         private void tsmCancelApplication_Click(object sender, EventArgs e)
         {
-            clsLocalDrivingLicensApplication ApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            clsLocalDrivingLicensApplication LDLApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
 
-            if (ApplicationDetails.Application.ApplicationStatus == "New")
+            if (LDLApplicationDetails.Application.ApplicationStatus == "New")
             {
-                if (clsApplication.UpdateApplicationStatus(ApplicationDetails.Application.ApplicationID, 2))
+                if (LDLApplicationDetails.Cancel())
                 {
                     MessageBox.Show("Application Cancelled Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -84,16 +84,23 @@ namespace PresentationLayer
 
                 }
                 LocalLicenseApplicationsPage.RefreshData();
+
+            } else if (LDLApplicationDetails.Application.ApplicationStatus == "Completed")
+            {
+                MessageBox.Show("You can't cancell a complete application!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else
+            {
+                MessageBox.Show("The application is already cancelled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void tsmDeleteApplication_Click(object sender, EventArgs e)
         {
-            clsLocalDrivingLicensApplication ApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
+            clsLocalDrivingLicensApplication LDLApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplication((int)LocalLicenseApplicationsPage.dgv.CurrentRow.Cells[0].Value);
 
-            if (ApplicationDetails.Application.ApplicationStatus != "Completed")
+            if (LDLApplicationDetails.Application.ApplicationStatus != "Completed")
             {
-                if (clsApplication.DeleteApplication(ApplicationDetails.Application.ApplicationID))
+                if (LDLApplicationDetails.Delete())
                 {
                     MessageBox.Show("Application Deleted Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -102,6 +109,9 @@ namespace PresentationLayer
                     MessageBox.Show("You can't delete an application that has active tests!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 LocalLicenseApplicationsPage.RefreshData();
+            } else
+            {
+                MessageBox.Show("You can't delete a completed application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace PresentationLayer
 {
-    public partial class ctrlApplicationInfo : UserControl
+    public partial class ctrlLDLApplicationInfo : UserControl
     {
-        public ctrlApplicationInfo()
+        public ctrlLDLApplicationInfo()
         {
             InitializeComponent();
         }
@@ -50,7 +50,7 @@ namespace PresentationLayer
 
             lblUser.Text = LocalLicenseApplicationDetails.Application.CreatedByUser;
 
-            lblPassedTests.Text = $"{clsApplication.PassedTestsCount(LocalLicenseApplicationDetails.LocalDrivingLicenseApplicationID).ToString()}/3";
+            lblPassedTests.Text = $"{clsTest.PassedTestsCount(LocalLicenseApplicationDetails.LocalDrivingLicenseApplicationID).ToString()}/3";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

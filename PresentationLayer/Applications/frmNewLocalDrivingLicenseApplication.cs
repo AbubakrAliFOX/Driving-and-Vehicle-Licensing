@@ -53,7 +53,7 @@ namespace PresentationLayer
                 return;
             }
 
-            int LDLApplicationID = clsApplication.CreateLocalDrivingLicenseApplication(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1, clsGlobal.LoggedInUser.UserID);
+            int LDLApplicationID = clsLocalDrivingLicensApplication.CreateLocalDrivingLicenseApplication(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1, clsGlobal.LoggedInUser.UserID);
             
             if(LDLApplicationID != -4)
             {

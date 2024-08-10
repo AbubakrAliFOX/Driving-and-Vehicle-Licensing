@@ -246,6 +246,7 @@ namespace DataLayer
 
             return (ApplicationStatus != 2 && FoundApplication);
         }
+        
         public static bool DeactivateLicense(int LicenseID)
         {
             int RowsAffected = 0;

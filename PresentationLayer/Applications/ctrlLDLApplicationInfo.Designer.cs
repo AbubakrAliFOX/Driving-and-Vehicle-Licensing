@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class ctrlApplicationInfo
+    partial class ctrlLDLApplicationInfo
     {
         /// <summary> 
         /// Required designer variable.
@@ -297,9 +297,9 @@
             this.label6.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(22, 39);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 22);
+            this.label6.Size = new System.Drawing.Size(104, 22);
             this.label6.TabIndex = 8;
-            this.label6.Text = "D.L.AppID:";
+            this.label6.Text = "L.D.L.AppID:";
             // 
             // lblDLAppID
             // 

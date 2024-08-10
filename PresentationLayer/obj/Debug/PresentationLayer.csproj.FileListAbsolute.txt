@@ -26,7 +26,6 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.f
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmTestAppointment.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmScheduleTest.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmTakeTest.resources
-E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlApplicationInfo.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmIssueLocalLicense.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmLicenseDetails.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmLicenseHistory.resources
@@ -58,3 +57,4 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.f
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmPersonDetails.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.MainScreen.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmAddEditUser.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlLDLApplicationInfo.resources

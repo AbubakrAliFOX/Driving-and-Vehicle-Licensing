@@ -44,6 +44,7 @@ namespace BusinessLayer
         {
             return clsTestsDataAccess.TakeTest(AppointmentID, Result, CreatedByUserID, Notes);
         }
+        
         public static bool IsAppointmentActiveForTest(int LDLAppID, int TestTypeID)
         {
             return clsTestsDataAccess.IsAppointmentActiveForTest(LDLAppID, TestTypeID);
@@ -58,6 +59,7 @@ namespace BusinessLayer
         {
             return clsTestsDataAccess.HasApplicantFailedTest(LDLAppID, TestTypeID);
         }
+        
         public static int ApplicationPreviousTestResult(int LDLAppID, int TestTypeID)
         {
             // 1: Passed already, -1: Failed (Retake test), 0: Not taken before
@@ -72,6 +74,11 @@ namespace BusinessLayer
             {
                 return 0;
             }
+        }
+
+        public static int PassedTestsCount(int LDLApplicationID)
+        {
+            return clsApplicationsDataAccess.PassedTestsCount(LDLApplicationID);
         }
     }
 }

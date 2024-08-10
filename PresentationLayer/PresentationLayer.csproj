@@ -69,14 +69,11 @@
     <Compile Include="People\frmAddEditPerson.Designer.cs">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\ctrlApplicationInfo.cs">
+    <Compile Include="Applications\ctrlLDLApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Applications\ctrlApplicationInfo.Designer.cs">
-      <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Applications\ctrlApplicationOption.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Applications\ctrlLDLApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlLDLApplicationInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Licenses\ctrlDriverLicense.cs">
       <SubType>UserControl</SubType>
@@ -192,16 +189,16 @@
     <Compile Include="Licenses\frmManageDetainedLicenses.Designer.cs">
       <DependentUpon>frmManageDetainedLicenses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\frmManageInternationalDrivingLicenseApplications.cs">
+    <Compile Include="Applications\frmManageInternationalDrivingLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Licenses\frmManageInternationalDrivingLicenseApplications.Designer.cs">
+    <Compile Include="Applications\frmManageInternationalDrivingLicenseApplications.Designer.cs">
       <DependentUpon>frmManageInternationalDrivingLicenseApplications.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\frmManageLocalDrivingLicenseApplications.cs">
+    <Compile Include="Applications\frmManageLocalDrivingLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Licenses\frmManageLocalDrivingLicenseApplications.Designer.cs">
+    <Compile Include="Applications\frmManageLocalDrivingLicenseApplications.Designer.cs">
       <DependentUpon>frmManageLocalDrivingLicenseApplications.cs</DependentUpon>
     </Compile>
     <Compile Include="Tests\frmManageTestTypes.cs">
@@ -210,16 +207,16 @@
     <Compile Include="Tests\frmManageTestTypes.Designer.cs">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\frmNewInternationalDrivingLicenseApplication.cs">
+    <Compile Include="Applications\frmNewInternationalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Licenses\frmNewInternationalDrivingLicenseApplication.Designer.cs">
+    <Compile Include="Applications\frmNewInternationalDrivingLicenseApplication.Designer.cs">
       <DependentUpon>frmNewInternationalDrivingLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\frmNewLocalDrivingLicenseApplication.cs">
+    <Compile Include="Applications\frmNewLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Licenses\frmNewLocalDrivingLicenseApplication.Designer.cs">
+    <Compile Include="Applications\frmNewLocalDrivingLicenseApplication.Designer.cs">
       <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\frmAddEditUser.cs">
@@ -289,8 +286,8 @@
     <EmbeddedResource Include="People\frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\ctrlApplicationInfo.resx">
-      <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Applications\ctrlLDLApplicationInfo.resx">
+      <DependentUpon>ctrlLDLApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\ctrlDriverLicense.resx">
       <DependentUpon>ctrlDriverLicense.cs</DependentUpon>
@@ -349,19 +346,19 @@
     <EmbeddedResource Include="Licenses\frmManageDetainedLicenses.resx">
       <DependentUpon>frmManageDetainedLicenses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\frmManageInternationalDrivingLicenseApplications.resx">
+    <EmbeddedResource Include="Applications\frmManageInternationalDrivingLicenseApplications.resx">
       <DependentUpon>frmManageInternationalDrivingLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\frmManageLocalDrivingLicenseApplications.resx">
+    <EmbeddedResource Include="Applications\frmManageLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmManageLocalDrivingLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\frmManageTestTypes.resx">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\frmNewInternationalDrivingLicenseApplication.resx">
+    <EmbeddedResource Include="Applications\frmNewInternationalDrivingLicenseApplication.resx">
       <DependentUpon>frmNewInternationalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\frmNewLocalDrivingLicenseApplication.resx">
+    <EmbeddedResource Include="Applications\frmNewLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmNewLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmAddEditUser.resx">

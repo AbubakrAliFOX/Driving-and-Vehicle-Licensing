@@ -1,6 +1,7 @@
 ﻿using DataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,9 @@ namespace BusinessLayer
     public class clsLocalDrivingLicensApplication
     {
         public int LocalDrivingLicenseApplicationID { set; get; }
+        
         public int LicenseClassID { set; get; }
+        
         public string LicenseClassName { set; get; }
 
         public clsApplication Application { set; get; }
@@ -83,6 +86,62 @@ namespace BusinessLayer
             {
                 return null;
             }
+        }
+
+        public static int CreateLocalDrivingLicenseApplication(int PersonID, int LicenseClassID, int CreatedByUserID)
+        {
+            if (clsLicense.IsPersonWithinAgeForLicenseClass(PersonID, LicenseClassID))
+            {
+                if (!clsLicense.PersonHasApplicationWithLicenseClass(PersonID, LicenseClassID))
+                {
+                    int ApplicationID = clsApplication.CreateApplication(PersonID, 1, CreatedByUserID);
+
+                    if (ApplicationID != -1)
+                    {
+                        int LDLApplicationID = clsApplicationsDataAccess.CreateLocalDrivingLicenseApplication(ApplicationID, LicenseClassID);
+                        if (LDLApplicationID != -1)
+                        {
+                            return LDLApplicationID;
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    }
+                    else
+                    {
+                        return -2;
+                    }
+                }
+                else
+                {
+                    return -3;
+                }
+            }
+            else
+            {
+                return -4;
+            }
+        }
+
+        //public static bool CancelLocalDrivingLicenseApplication(int PersonID, int ClassID)
+        //{
+        //    return clsApplicationsDataAccess.CreateLocalDrivingLicenseApplication(PersonID, ClassID);
+        //}
+
+        public static DataTable GetLocalDrivingLicenseApplications()
+        {
+            return clsApplicationsDataAccess.GetLocalDrivingLicenseApplications();
+        }
+    
+        public bool Cancel ()
+        {
+            return clsApplication.UpdateApplicationStatus(this.Application.ApplicationID, 2);
+        }
+
+        public bool Delete ()
+        {
+            return clsApplication.DeleteApplication(this.Application.ApplicationID);
         }
     }
 }

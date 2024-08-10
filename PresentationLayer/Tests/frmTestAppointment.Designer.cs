@@ -40,7 +40,7 @@
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlApplicationInfo = new PresentationLayer.ctrlApplicationInfo();
+            this.ctrlApplicationInfo = new PresentationLayer.ctrlLDLApplicationInfo();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.cmsOptions.SuspendLayout();
             this.SuspendLayout();
@@ -194,6 +194,6 @@
         private System.Windows.Forms.ContextMenuStrip cmsOptions;
         private System.Windows.Forms.ToolStripMenuItem tsmEdit;
         private System.Windows.Forms.ToolStripMenuItem tsmTakeTest;
-        private ctrlApplicationInfo ctrlApplicationInfo;
+        private ctrlLDLApplicationInfo ctrlApplicationInfo;
     }
 }

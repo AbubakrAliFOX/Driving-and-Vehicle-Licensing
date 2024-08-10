@@ -83,7 +83,7 @@ namespace PresentationLayer
             { "People", clsPerson.GetAllPeople },
             { "Drivers", clsDriver.GetAllDrivers },
             { "Users", clsUser.GetAllUsers },
-            { "LocalDrivingLicenses", clsApplication.GetLocalDrivingLicenseApplications},
+            { "LocalDrivingLicenses", clsLocalDrivingLicensApplication.GetLocalDrivingLicenseApplications},
             { "InternationalDrivingLicenses", clsInternationalLicense.GetAllLicenses},
             { "DetainedLicenses", clsDetain.GetAllDetainedLicenses}
         };

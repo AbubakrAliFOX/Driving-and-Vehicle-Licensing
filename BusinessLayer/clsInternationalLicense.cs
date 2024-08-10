@@ -80,6 +80,17 @@ namespace BusinessLayer
         {
             clsLicense LocalLicenseDetails = clsLicense.FindLicenseByID(LocalLicenseID);
 
+            if (HasInternationalLicense(LocalLicenseID))
+            {
+                return -4;
+            }
+
+            if (!clsLicense.IsLicenseActive(LocalLicenseID))
+            {
+                return -3;
+            } 
+
+
             if (LocalLicenseDetails.LicenseClassID != 3)
             {
                 return -2;
@@ -87,7 +98,6 @@ namespace BusinessLayer
 
             int ApplicationID = clsApplication.CreateApplication(LocalLicenseDetails.PersonID, 6, CreatedByUserID);
             int DriverID = LocalLicenseDetails.DriverID;
-
 
             return clsInternationalLicensesDataAccess.IssueInternationalLicense(LocalLicenseID, ApplicationID, DriverID, CreatedByUserID);
         }
