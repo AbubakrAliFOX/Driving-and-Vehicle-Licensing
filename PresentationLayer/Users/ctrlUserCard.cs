@@ -28,7 +28,7 @@ namespace PresentationLayer
                 _UserInfo = value;
                 if (_UserInfo != null)
                 {
-                    ctrlPersonCard1.PersonInfo = clsPerson.Find(_UserInfo.PersonID);
+                    ctrlPersonCard1.PersonInfo = clsPerson.Find(_UserInfo.PersonInfo.ID);
                     FillUserCard(_UserInfo);
                 }
             }

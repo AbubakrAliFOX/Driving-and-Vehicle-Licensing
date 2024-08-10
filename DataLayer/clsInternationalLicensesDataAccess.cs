@@ -127,6 +127,55 @@ namespace DataLayer
             return IsFound;
         }
 
+        public static bool FindInternationalLicenseByID(int InternationalLicenseID, ref int LocalLicenseID, ref int ILApplicationID, ref DateTime IssueDate, ref DateTime ApplicationDate, ref DateTime ExpirationDate, ref decimal PaidFees, ref string CreatedByUser)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT InternationalLicenses.ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, (SELECT UserName FROM Users WHERE UserID = InternationalLicenses.CreatedByUserID) AS CreatedByUser, PaidFees, Applications.ApplicationDate FROM InternationalLicenses INNER JOIN Applications ON InternationalLicenses.ApplicationID = Applications.ApplicationID  WHERE InternationalLicenseID = @InternationalLicenseID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@InternationalLicenseID", InternationalLicenseID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    LocalLicenseID = (int)reader["IssuedUsingLocalLicenseID"];
+                    ILApplicationID = (int)reader["ApplicationID"];
+                    IssueDate = (DateTime)reader["IssueDate"];
+                    ApplicationDate = (DateTime)reader["ApplicationDate"];
+                    ExpirationDate = (DateTime)reader["ExpirationDate"];
+                    PaidFees = (decimal)reader["PaidFees"];
+                    CreatedByUser = (string)reader["CreatedByUser"];
+
+                }
+                else
+                {
+                    IsFound = false;
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
         public static int IssueInternationalLicense(int LocalLicenseID, int ApplicationID, int DriverID, int CreatedByUserID)
         {
             int InternationalLicenseID = -1;

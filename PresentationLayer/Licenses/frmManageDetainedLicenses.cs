@@ -69,7 +69,7 @@ namespace PresentationLayer
         private void tsmShowPersonDetails_Click(object sender, EventArgs e)
         {
             LicenseDetails = clsLicense.FindLicenseByID((int)DetainedLicensesPage.dgv.CurrentRow.Cells[1].Value);
-            frmPersonDetails PersonDetails = new frmPersonDetails(LicenseDetails.PersonID);
+            frmPersonDetails PersonDetails = new frmPersonDetails(LicenseDetails.PersonInfo.ID);
             PersonDetails.ShowDialog();
         }
 
@@ -83,7 +83,7 @@ namespace PresentationLayer
         private void tsmShowLicenseHistory_Click(object sender, EventArgs e)
         {
             LicenseDetails = clsLicense.FindLicenseByID((int)DetainedLicensesPage.dgv.CurrentRow.Cells[1].Value);
-            frmLicenseHistory LicenseHistory = new frmLicenseHistory(LicenseDetails.PersonID);
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory(LicenseDetails.PersonInfo.ID);
             LicenseHistory.ShowDialog();
         }
 

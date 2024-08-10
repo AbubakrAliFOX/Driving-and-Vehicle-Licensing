@@ -10,7 +10,7 @@ namespace BusinessLayer
 {
     public class clsInternationalLicense
     {
-        public clsLicense LocalLicense;
+        public clsLicense LocalLicenseInfo;
         public int ILApplicationID { set; get; }
         public int InternationalLicenseID { set; get; }
         public DateTime IssueDate { set; get; }
@@ -19,10 +19,10 @@ namespace BusinessLayer
         public decimal PaidFees { set; get; }
         public string CreatedByUser { set; get; }
 
-        public clsInternationalLicense(clsLicense LocalLicense, int InternationalLicenseID, int ILApplicationID, DateTime IssueDate, DateTime ApplicationDate, DateTime ExpirationDate, decimal PaidFees, string CreatedByUser)
+        public clsInternationalLicense(int LocalLicenseID, int InternationalLicenseID, int ILApplicationID, DateTime IssueDate, DateTime ApplicationDate, DateTime ExpirationDate, decimal PaidFees, string CreatedByUser)
         {
             this.InternationalLicenseID = InternationalLicenseID;
-            this.LocalLicense = LocalLicense;
+            this.LocalLicenseInfo = clsLicense.FindLicenseByID(LocalLicenseID);
             this.ILApplicationID = ILApplicationID;
             this.IssueDate = IssueDate;
             this.ApplicationDate = ApplicationDate;
@@ -30,6 +30,7 @@ namespace BusinessLayer
             this.PaidFees = PaidFees;
             this.CreatedByUser = CreatedByUser;
         }
+        
         public static DataTable GetAllPersonLicenses(string NationalNo)
         {
             return clsInternationalLicensesDataAccess.GetAllPersonLicenses(NationalNo);
@@ -40,10 +41,37 @@ namespace BusinessLayer
             return clsInternationalLicensesDataAccess.GetAllLicenses();
         }
 
+        public static clsInternationalLicense FindInternationalLicenseByID(int InternationalLicenseID)
+        {
+            int LocalLicenseID = -1;
+            int ILApplicationID = -1;
+            DateTime IssueDate = DateTime.Now;
+            DateTime ApplicationDate = DateTime.Now;
+            DateTime ExpirationDate = DateTime.Now;
+            decimal PaidFees = 0;
+            string CreatedByUser = "";
+
+            if (clsInternationalLicensesDataAccess.FindInternationalLicenseByID(
+                InternationalLicenseID,
+                ref LocalLicenseID,
+                ref ILApplicationID,
+                ref IssueDate,
+                ref ApplicationDate,
+                ref ExpirationDate,
+                ref PaidFees,
+                ref CreatedByUser
+            ))
+            {
+                return new clsInternationalLicense(LocalLicenseID, InternationalLicenseID, ILApplicationID, IssueDate, ApplicationDate, ExpirationDate, PaidFees, CreatedByUser);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static clsInternationalLicense FindInternationalLicenseByLocalLicenseID(int LocalLicenseID)
         {
-            clsLicense LocalLicenseDetails = clsLicense.FindLicenseByID(LocalLicenseID);
-
             int InternationalLicenseID = -1;
             int ILApplicationID = -1;
             DateTime IssueDate = DateTime.Now;
@@ -63,7 +91,7 @@ namespace BusinessLayer
                 ref CreatedByUser
             ))
             {
-                return new clsInternationalLicense(LocalLicenseDetails, InternationalLicenseID, ILApplicationID, IssueDate, ApplicationDate, ExpirationDate, PaidFees, CreatedByUser);
+                return new clsInternationalLicense(LocalLicenseID, InternationalLicenseID, ILApplicationID, IssueDate, ApplicationDate, ExpirationDate, PaidFees, CreatedByUser);
             }
             else
             {
@@ -96,7 +124,7 @@ namespace BusinessLayer
                 return -2;
             }
 
-            int ApplicationID = clsApplication.CreateApplication(LocalLicenseDetails.PersonID, 6, CreatedByUserID);
+            int ApplicationID = clsApplication.CreateApplication(LocalLicenseDetails.PersonInfo.ID, 6, CreatedByUserID);
             int DriverID = LocalLicenseDetails.DriverID;
 
             return clsInternationalLicensesDataAccess.IssueInternationalLicense(LocalLicenseID, ApplicationID, DriverID, CreatedByUserID);

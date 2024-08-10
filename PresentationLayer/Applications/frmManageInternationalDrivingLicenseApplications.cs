@@ -64,21 +64,24 @@ namespace PresentationLayer
         private void tsmShowPersonDetails_Click(object sender, EventArgs e)
         {
             InternationalLicenseDetails = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID((int)InternationalLicenseApplicationsPage.dgv.CurrentRow.Cells[1].Value);
-            frmPersonDetails PersonDetails = new frmPersonDetails(InternationalLicenseDetails.LocalLicense.PersonID);
+            
+            frmPersonDetails PersonDetails = new frmPersonDetails(InternationalLicenseDetails.LocalLicenseInfo.PersonInfo.ID);
             PersonDetails.ShowDialog();
         }
 
         private void tsmShowLicenseDetails_Click(object sender, EventArgs e)
         {
             InternationalLicenseDetails = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID((int)InternationalLicenseApplicationsPage.dgv.CurrentRow.Cells[1].Value);
-            frmInternationalLicenseDetails InternationalLicenseForm = new frmInternationalLicenseDetails(InternationalLicenseDetails.InternationalLicenseID, InternationalLicenseDetails.LocalLicense.LicenseID);
+            
+            frmInternationalLicenseDetails InternationalLicenseForm = new frmInternationalLicenseDetails(InternationalLicenseDetails.InternationalLicenseID);
             InternationalLicenseForm.ShowDialog();
         }
 
         private void tsmShowPersonLicenseHistory_Click(object sender, EventArgs e)
         {
             InternationalLicenseDetails = clsInternationalLicense.FindInternationalLicenseByLocalLicenseID((int)InternationalLicenseApplicationsPage.dgv.CurrentRow.Cells[1].Value);
-            frmLicenseHistory LicenseHistory = new frmLicenseHistory(InternationalLicenseDetails.LocalLicense.PersonID);
+            
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory(InternationalLicenseDetails.LocalLicenseInfo.PersonInfo.ID);
             LicenseHistory.ShowDialog();
         }
     }

@@ -83,8 +83,8 @@ namespace PresentationLayer
         private void tsmShowLicenseDetails_Click(object sender, EventArgs e)
         {
             int InternationalLicenseID = (int)dgvInternationalLicenses.CurrentRow.Cells[0].Value;
-            int LocalLicenseID = (int)dgvInternationalLicenses.CurrentRow.Cells[1].Value;
-            frmInternationalLicenseDetails InternationalLicenseForm = new frmInternationalLicenseDetails(InternationalLicenseID, LocalLicenseID);
+            
+            frmInternationalLicenseDetails InternationalLicenseForm = new frmInternationalLicenseDetails(InternationalLicenseID);
             InternationalLicenseForm.ShowDialog();
         }
 

@@ -13,14 +13,15 @@ namespace PresentationLayer
 {
     public partial class frmInternationalLicenseDetails : Form
     {
-        public frmInternationalLicenseDetails(int InternationalLicenseID,int LocalLicenseID)
+        public frmInternationalLicenseDetails(int InternationalLicenseID)
         {
             InitializeComponent();
 
-            clsLicense LicenseDetails = clsLicense.FindLicenseByID(LocalLicenseID);
-            ctrlDriverLicense1.LicenseInfo = LicenseDetails;
+            clsInternationalLicense IntLicense = clsInternationalLicense.FindInternationalLicenseByID(InternationalLicenseID);
 
-            lblInternationalLicenseID.Text = InternationalLicenseID.ToString();
+            ctrlDriverLicense1.LicenseInfo = IntLicense.LocalLicenseInfo;
+
+            lblInternationalLicenseID.Text = IntLicense.InternationalLicenseID.ToString();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

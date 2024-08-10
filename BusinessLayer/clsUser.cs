@@ -11,7 +11,7 @@ namespace BusinessLayer
     public class clsUser
     {
         public int UserID { set; get; }
-        public int PersonID { set; get; }
+        public clsPerson PersonInfo { set; get; }
         public string UserName { set; get; }
         public string Password { set; get; }
         public bool IsActive { set; get; }
@@ -25,7 +25,7 @@ namespace BusinessLayer
         )
         {
             this.UserID = UserID;
-            this.PersonID = PersonID;
+            this.PersonInfo = clsPerson.Find(PersonID);
             this.UserName = UserName;
             this.Password = Password;
             this.IsActive = IsActive;

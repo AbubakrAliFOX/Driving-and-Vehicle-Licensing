@@ -15,7 +15,7 @@ namespace PresentationLayer
     public partial class frmReleaseLicense : Form
     {
         clsDetain DetainDetails;
-        int ApplicationID;
+        int ReleaseApplicationID;
 
         public frmReleaseLicense()
         {
@@ -45,7 +45,7 @@ namespace PresentationLayer
                 return;
             }
 
-            frmLicenseHistory LicenseHistory = new frmLicenseHistory(ctrlFindLicense1.LicenseInfo.PersonID);
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory(ctrlFindLicense1.LicenseInfo.PersonInfo.ID);
             LicenseHistory.ShowDialog();
         }
 
@@ -59,13 +59,13 @@ namespace PresentationLayer
 
             //..int DetainID = clsDetain.ReleaseLicense(ctrlFindLicense1.LicenseInfo.LicenseID);
 
-            ApplicationID = clsDetain.ReleaseLicense(ctrlFindLicense1.LicenseInfo.LicenseID, clsGlobal.LoggedInUser.UserID);
+            ReleaseApplicationID = clsDetain.ReleaseLicense(ctrlFindLicense1.LicenseInfo.LicenseID, clsGlobal.LoggedInUser.UserID);
 
-            if (ApplicationID == -1)
+            if (ReleaseApplicationID == -1)
             {
                 MessageBox.Show("License is not detained!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (ApplicationID == -2)
+            else if (ReleaseApplicationID == -2)
             {
                 MessageBox.Show("License release failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -112,7 +112,7 @@ namespace PresentationLayer
             lblApplicationFees.Text = ApplicationFees.ToString();
             lblTotalFees.Text = TotalFees.ToString();
 
-            lblLicenseID.Text = DetainDetails.LicenseID.ToString();
+            lblLicenseID.Text = DetainDetails.LicenseInfo.LicenseID.ToString();
             lblCreatedBy.Text = DetainDetails.CreatedByUser;
         }
 
@@ -131,7 +131,7 @@ namespace PresentationLayer
 
         private void FillApplicationLabels()
         {
-            lblApplicationID.Text = ApplicationID.ToString();
+            lblApplicationID.Text = ReleaseApplicationID.ToString();
         }
 
         private void ResetApplicationLabels()

@@ -55,35 +55,26 @@ namespace PresentationLayer
 
             int LDLApplicationID = clsLocalDrivingLicensApplication.CreateLocalDrivingLicenseApplication(ctrlFindPerson1.PersonInfo.ID, cbLicenseClasses.SelectedIndex + 1, clsGlobal.LoggedInUser.UserID);
             
-            if(LDLApplicationID != -4)
-            {
-                if (LDLApplicationID != -3)
-                {
-                    if (LDLApplicationID != -2)
-                    {
-                        if (LDLApplicationID != -1)
-                        {
-                            lblApplicationID.Text = LDLApplicationID.ToString();
-                            MessageBox.Show("Application Created Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Local driving license application couldn't be made", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Application couldn't be made", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("This person already has an open application of the same class type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            } else
+            if(LDLApplicationID == -4)
             {
                 MessageBox.Show("This person does not meet the minimum age required!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            } 
+            else if (LDLApplicationID == -3)
+            {
+                MessageBox.Show("This person already has an open application of the same class type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (LDLApplicationID == -2)
+            {
+                MessageBox.Show("Application couldn't be made", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (LDLApplicationID == -1)
+            {
+                MessageBox.Show("Something went wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                lblApplicationID.Text = LDLApplicationID.ToString();
+                MessageBox.Show("Application Created Successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

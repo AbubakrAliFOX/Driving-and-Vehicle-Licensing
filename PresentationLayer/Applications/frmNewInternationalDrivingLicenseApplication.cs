@@ -29,7 +29,7 @@ namespace PresentationLayer
             lblExpirationDate.Text = InternationalLicense.ExpirationDate.ToString("dd MMM yyyy");
             lblFees.Text = InternationalLicense.PaidFees.ToString();
             lblUser.Text = InternationalLicense.CreatedByUser;
-            lblLicenseID.Text = InternationalLicense.LocalLicense.LicenseID.ToString();
+            lblLicenseID.Text = InternationalLicense.LocalLicenseInfo.LicenseID.ToString();
             lblInternationalLicenseID.Text = InternationalLicense.InternationalLicenseID.ToString();
         }
 
@@ -79,13 +79,13 @@ namespace PresentationLayer
                 return;
             }
 
-            frmLicenseHistory LicenseHistory = new frmLicenseHistory(ctrlFindLicense1.LicenseInfo.PersonID);
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory(ctrlFindLicense1.LicenseInfo.PersonInfo.ID);
             LicenseHistory.ShowDialog();
         }
 
         private void llLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmInternationalLicenseDetails InternationalLicenseDetails = new frmInternationalLicenseDetails(InternationalLicense.InternationalLicenseID, InternationalLicense.LocalLicense.LicenseID);
+            frmInternationalLicenseDetails InternationalLicenseDetails = new frmInternationalLicenseDetails(InternationalLicense.InternationalLicenseID);
             InternationalLicenseDetails.ShowDialog();
         }
     }

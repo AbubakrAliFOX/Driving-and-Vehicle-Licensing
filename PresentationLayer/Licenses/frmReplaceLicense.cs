@@ -108,7 +108,7 @@ namespace PresentationLayer
                 return;
             }
 
-            frmLicenseHistory LicenseHistory = new frmLicenseHistory(ctrlFindLicense1.LicenseInfo.PersonID);
+            frmLicenseHistory LicenseHistory = new frmLicenseHistory(ctrlFindLicense1.LicenseInfo.PersonInfo.ID);
             LicenseHistory.ShowDialog();
         }
     }

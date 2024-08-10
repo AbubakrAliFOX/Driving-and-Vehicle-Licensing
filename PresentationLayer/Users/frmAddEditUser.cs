@@ -39,7 +39,7 @@ namespace PresentationLayer
                 _IsEditMode = value;
                 if (UserInfo != null)
                 {
-                    ctrlFindPerson1.OnlyForPerson = UserInfo.PersonID;
+                    ctrlFindPerson1.OnlyForPerson = UserInfo.PersonInfo.ID;
                     lblTitle.Text = "Update User";
                     btnCreateUser.Text = "Update";
 

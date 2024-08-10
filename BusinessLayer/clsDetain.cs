@@ -11,7 +11,7 @@ namespace BusinessLayer
     public class clsDetain
     {
         public int DetainID { set; get; }
-        public int LicenseID { set; get; }
+        public clsLicense LicenseInfo { set; get; }
         public DateTime DetainDate { set; get; }
         public decimal FineFees { set; get; }
         public string CreatedByUser { set; get; }
@@ -33,7 +33,7 @@ namespace BusinessLayer
         )
         {
             this.DetainID = DetainID;
-            this.LicenseID = LicenseID;
+            this.LicenseInfo = clsLicense.FindLicenseByID(LicenseID);
             this.DetainDate = DetainDate;
             this.FineFees = FineFees;
             this.CreatedByUser = CreatedByUser;
@@ -107,14 +107,14 @@ namespace BusinessLayer
             if (IsLicenseDetained(LicenseID))
             {
                 clsLicense LicenseInfo = clsLicense.FindLicenseByID(LicenseID);
-                int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, 5, CreatedByUserID);
+                int ReleaseApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonInfo.ID, 5, CreatedByUserID);
 
-                bool IsLicenseReleased = clsDetainDataAccess.ReleaseLicense(LicenseID, ApplicationID);
-                bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ApplicationID, 3);
+                bool IsLicenseReleased = clsDetainDataAccess.ReleaseLicense(LicenseID, ReleaseApplicationID);
+                bool IsStatusUpdated = clsApplication.UpdateApplicationStatus(ReleaseApplicationID, 3);
 
                 if (IsLicenseReleased && IsStatusUpdated)
                 {
-                    return ApplicationID;
+                    return ReleaseApplicationID;
                 }
                 else
                 {

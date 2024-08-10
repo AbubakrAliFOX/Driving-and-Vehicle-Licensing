@@ -13,7 +13,7 @@ namespace BusinessLayer
     {
         public int LicenseID { set; get; }
         public int DriverID { set; get; }
-        public int PersonID { set; get; }
+        public clsPerson PersonInfo { set; get; }
         public int ApplicationID { set; get; }
         public int LicenseClassID { set; get; }
         public string LicenseClassName { set; get; }
@@ -44,7 +44,7 @@ namespace BusinessLayer
         )
         {
             this.LicenseID = LicenseID;
-            this.PersonID = PersonID;
+            this.PersonInfo = clsPerson.Find(PersonID);
             this.DriverID = DriverID;
             this.ApplicationID = ApplicationID;
             this.LicenseClassID = LicenseClassID;
@@ -249,7 +249,7 @@ namespace BusinessLayer
                 {
                     if (DeactivateLicense(LicenseID))
                     {
-                        int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, 2, CreatedByUserID);
+                        int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonInfo.ID, 2, CreatedByUserID);
 
                         // Fees for a new license
                         decimal PaidFees = clsApplication.GetApplicationFees(1);
@@ -293,7 +293,7 @@ namespace BusinessLayer
             {
                 if (DeactivateLicense(LicenseID))
                 {
-                    int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonID, ApplicationTypeID, CreatedByUserID);
+                    int ApplicationID = clsApplication.CreateApplication(LicenseInfo.PersonInfo.ID, ApplicationTypeID, CreatedByUserID);
 
                     // Fees for a replaced license are 0 (according to the requirements)
                     decimal PaidFees = 0;

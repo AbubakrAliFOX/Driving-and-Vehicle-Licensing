@@ -14,7 +14,7 @@ namespace PresentationLayer
     public partial class ctrlDriverLicense : UserControl
     {
         private clsLicense LicenseDetails;
-        private clsPerson PersonDetails;
+        
         public ctrlDriverLicense()
         {
             InitializeComponent();
@@ -30,7 +30,6 @@ namespace PresentationLayer
 
                 if (LicenseDetails != null)
                 {
-                    PersonDetails = clsPerson.Find(LicenseDetails.PersonID);
                     FillLabels();
                 }
             }
@@ -82,13 +81,13 @@ namespace PresentationLayer
             }
 
             // Person Details
-            lblNationalNo.Text = PersonDetails.NationalNumber;
-            lblGender.Text = PersonDetails.Gender == 1 ? "Female" : "Male";
-            lblDOB.Text = PersonDetails.DateOfBirth.ToString("dd MMM yyyy");
+            lblNationalNo.Text = LicenseDetails.PersonInfo.NationalNumber;
+            lblGender.Text = LicenseDetails.PersonInfo.Gender == 1 ? "Female" : "Male";
+            lblDOB.Text = LicenseDetails.PersonInfo.DateOfBirth.ToString("dd MMM yyyy");
 
-            if (PersonDetails.ImagePath != "")
+            if (LicenseDetails.PersonInfo.ImagePath != "")
             {
-                pbPersonPhoto.Image = Image.FromFile(PersonDetails.ImagePath);
+                pbPersonPhoto.Image = Image.FromFile(LicenseDetails.PersonInfo.ImagePath);
             }
             else
             {
