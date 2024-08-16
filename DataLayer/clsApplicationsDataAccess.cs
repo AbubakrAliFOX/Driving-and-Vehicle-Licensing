@@ -45,7 +45,8 @@ namespace DataLayer
 
             return dt;
         }
-        public static int GetApplicationTypeByName(string ApplicationName)
+        
+        public static int GetApplicationTypeIDByName(string ApplicationName)
         {
             int ApplicationID = -1;
 

@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using System.ComponentModel;
 
 namespace DataLayer
 {
@@ -41,6 +43,112 @@ namespace DataLayer
             }
 
             return dt;
+        }
+
+        public static bool FindTestAppointmentByID(int TestID, ref int LDLApplicationID, ref int TestTypeID, ref int RetakeTestApplicationID, ref decimal PaidFees)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT LocalDrivingLicenseApplicationID as LDLApplicationID, TestTypeID, RetakeTestApplicationID, PaidFees FROM TestAppointments WHERE TestAppointmentID = @TestAppointmentID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@TestAppointmentID", TestID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    LDLApplicationID = (int)reader["LDLApplicationID"];
+                    TestTypeID = (int)reader["TestTypeID"];
+                    PaidFees = (decimal)reader["PaidFees"];
+
+                    if (reader["RetakeTestApplicationID"] != DBNull.Value)
+                    {
+                        RetakeTestApplicationID = (int)reader["RetakeTestApplicationID"];
+                    }
+                    else
+                    {
+                        RetakeTestApplicationID = -1;
+                    }
+                }
+                else
+                {
+                    IsFound = false;
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+        
+        public static bool FindTestAppointmentByLocalDrivingLicenseApplicationID(int LDLApplicationID, ref int TestAppointmentID, ref int TestTypeID, ref int RetakeTestApplicationID, ref decimal PaidFees)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+
+            string query = "SELECT TestAppointmentID, TestTypeID, RetakeTestApplicationID, PaidFees FROM TestAppointments WHERE LocalDrivingLicenseApplicationID  = @LocalDrivingLicenseApplicationID ";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID ", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    TestAppointmentID = (int)reader["TestAppointmentID"];
+                    TestTypeID = (int)reader["TestTypeID"];
+                    PaidFees = (decimal)reader["PaidFees"];
+
+                    if (reader["RetakeTestApplicationID"] != DBNull.Value)
+                    {
+                        RetakeTestApplicationID = (int)reader["RetakeTestApplicationID"];
+                    }
+                    else
+                    {
+                        RetakeTestApplicationID = -1;
+                    }
+                }
+                else
+                {
+                    IsFound = false;
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
         }
 
         public static bool UpdateTestType(int TestID, string TestTitle, string TestDescription, decimal TestFees)
@@ -138,8 +246,6 @@ namespace DataLayer
             {
                 cmd.Parameters.AddWithValue("@RetakeTestApplicationID", RetakeTestApplicationID);
             }
-
-
 
             try
             {

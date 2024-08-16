@@ -61,7 +61,7 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Calibri", 26F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(26, 9);
+            this.lblTitle.Location = new System.Drawing.Point(30, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(396, 54);
             this.lblTitle.TabIndex = 8;
@@ -92,6 +92,7 @@
             // 
             // dtpTestDate
             // 
+            this.dtpTestDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpTestDate.Location = new System.Drawing.Point(178, 267);
             this.dtpTestDate.Name = "dtpTestDate";
             this.dtpTestDate.Size = new System.Drawing.Size(162, 22);

@@ -18,15 +18,32 @@ namespace PresentationLayer
         clsLicense ReplacedLicenseDetails;
         clsApplication ApplicationDetails;
         decimal ApplicationFees;
-        bool IsForDamaged;
+        
         public frmReplaceLicense()
         {
             InitializeComponent();
 
-            rbDamaged.Checked = true;
             IsForDamaged = true;
-            ApplicationFees = clsApplication.GetApplicationFees(4);
-            lblApplicationFees.Text = ApplicationFees.ToString();
+        }
+
+        private bool _IsForDamaged;
+
+        public bool IsForDamaged
+        {
+            get { return _IsForDamaged; }
+            set
+            {
+                _IsForDamaged = value;
+                if (_IsForDamaged)
+                {
+                    ApplicationFees = clsApplication.GetApplicationFees(4);
+                } else
+                {
+                    ApplicationFees = clsApplication.GetApplicationFees(3);
+                }
+
+                lblApplicationFees.Text = ApplicationFees.ToString();
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -83,15 +100,12 @@ namespace PresentationLayer
         {            
             if (rbDamaged.Checked)
             {
-                ApplicationFees = clsApplication.GetApplicationFees(4);
                 IsForDamaged = true;
             } else
             {
-                ApplicationFees = clsApplication.GetApplicationFees(3);
                 IsForDamaged = false;
             }
             
-            lblApplicationFees.Text = ApplicationFees.ToString();
         }
 
         private void llLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

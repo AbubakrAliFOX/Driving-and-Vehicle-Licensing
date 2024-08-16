@@ -75,18 +75,19 @@ namespace PresentationLayer
 
         public bool IsRetakeTest
         {
-            get { return _IsRetakeTest;}
+            get { return _IsRetakeTest; }
 
             set
             {
                 _IsRetakeTest = value;
 
-                if(_IsRetakeTest == true)
+                if (_IsRetakeTest == true)
                 {
                     _RetestFee = clsApplication.GetApplicationFees(7);
                 }
             }
         }
+        
         private void FillLabels()
         {
             lblDLAppID.Text = LocalApplicationDetails.LocalDrivingLicenseApplicationID.ToString();
@@ -100,7 +101,7 @@ namespace PresentationLayer
 
             dtpTestDate.Value = DateTime.Now;
 
-            if(IsEditMode)
+            if (IsEditMode)
             {
                 btnSave.Text = "Reschedule Test";
                 lblTitle.Text = $"Reschedule {TestTypeName[TestTypeID - 1]} Test";
@@ -112,15 +113,16 @@ namespace PresentationLayer
                 gbRetakeTestInfo.Enabled = true;
                 lblRetakeTestFees.Text = _RetestFee.ToString();
 
-                if(RetakeTestApplicationID == 0)
+                if (RetakeTestApplicationID == 0)
                 {
                     lblRetakeTestID.Text = "??";
-                } else
+                }
+                else
                 {
                     lblRetakeTestID.Text = RetakeTestApplicationID.ToString();
                 }
 
-            } 
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -132,15 +134,15 @@ namespace PresentationLayer
         {
             if (!IsEditMode)
             {
-                if(IsRetakeTest)
+                if (IsRetakeTest)
                 {
                     RetakeTestApplicationID = clsApplication.CreateApplication(LocalApplicationDetails.Application.ApplicantID, 7, clsGlobal.LoggedInUser.UserID);
                 }
 
                 int CreatedAppointmentID = clsTest.CreateTestAppointment(
-                    TestTypeID, 
-                    LocalApplicationDetails.LocalDrivingLicenseApplicationID, 
-                    dtpTestDate.Value, 
+                    TestTypeID,
+                    LocalApplicationDetails.LocalDrivingLicenseApplicationID,
+                    dtpTestDate.Value,
                     TestFees,
                     RetakeTestApplicationID,
                     clsGlobal.LoggedInUser.UserID
@@ -158,7 +160,8 @@ namespace PresentationLayer
                     MessageBox.Show("Creating Appointment Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-            } else
+            }
+            else
             {
                 if (clsTest.UpdateAppointment(AppointmentID, dtpTestDate.Value))
                 {

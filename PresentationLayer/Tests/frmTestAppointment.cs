@@ -32,8 +32,8 @@ namespace PresentationLayer
         private void RefreshData ()
         {
             dgvAppointments.DataSource = clsTest.GetTestAppointments(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestTypeID);
-
         }
+
         private void FormatDataGridView()
         {
             if (dgvAppointments.Rows.Count != 0)

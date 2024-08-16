@@ -274,13 +274,13 @@
             this.rbLost.Name = "rbLost";
             this.rbLost.Size = new System.Drawing.Size(114, 25);
             this.rbLost.TabIndex = 1;
-            this.rbLost.TabStop = true;
             this.rbLost.Text = "Lost License";
             this.rbLost.UseVisualStyleBackColor = true;
             // 
             // rbDamaged
             // 
             this.rbDamaged.AutoSize = true;
+            this.rbDamaged.Checked = true;
             this.rbDamaged.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbDamaged.Location = new System.Drawing.Point(16, 25);
             this.rbDamaged.Name = "rbDamaged";

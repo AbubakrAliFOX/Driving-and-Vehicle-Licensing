@@ -102,7 +102,7 @@ namespace BusinessLayer
 
             int LicenseClassID = LocalApplicationDetails.LicenseClassID;
 
-            decimal PaidFees = clsApplication.GetApplicationFees(clsApplication.GetApplicationTypeByName(LocalApplicationDetails.Application.ApplicationType));
+            decimal PaidFees = clsApplication.GetApplicationFees(clsApplication.GetApplicationTypeIDByName(LocalApplicationDetails.Application.ApplicationType));
 
             int IssuedLicenseID = clsLicensesDataAccess.IssueLicense(DriverID, ApplicationID, LicenseClassID, IssueNotes, PaidFees, IssueReason, CreatedByUserID);
 

@@ -21,7 +21,8 @@ namespace BusinessLayer
         public DateTime Date { set; get; }
         public int LicenseClassID { set; get; }
         public string LicenseClassName { set; get; }
-        public decimal Fees { set; get; }
+        public decimal PaidFees { set; get; }
+        public decimal ApplicationTypeFees { set; get; }
 
         public clsApplication()
         {
@@ -37,7 +38,7 @@ namespace BusinessLayer
             string CreatedByUser,
             DateTime StatusDate,
             DateTime Date,
-            decimal Fees
+            decimal PaidFees
         )
         {
             this.ApplicationID = ApplicationID;
@@ -48,7 +49,8 @@ namespace BusinessLayer
             this.CreatedByUser = CreatedByUser;
             this.StatusDate = StatusDate;
             this.Date = Date;
-            this.Fees = Fees;
+            this.PaidFees = PaidFees;
+            this.ApplicationTypeFees = GetApplicationFees(GetApplicationTypeIDByName(ApplicationType));
         }
 
         public static DataTable GetApplicationTypes()
@@ -56,9 +58,9 @@ namespace BusinessLayer
             return clsApplicationsDataAccess.GetApplicationTypes();
         }
         
-        public static int GetApplicationTypeByName(string ApplicationName)
+        public static int GetApplicationTypeIDByName(string ApplicationName)
         {
-            return clsApplicationsDataAccess.GetApplicationTypeByName(ApplicationName);
+            return clsApplicationsDataAccess.GetApplicationTypeIDByName(ApplicationName);
         }
         
         public static bool UpdateApplicationType(int ApplicationID, string ApplicationTitle, decimal ApplicationFees)

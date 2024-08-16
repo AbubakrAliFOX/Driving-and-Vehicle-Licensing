@@ -42,7 +42,7 @@ namespace PresentationLayer
             lblClass.Text = LocalLicenseApplicationDetails.LicenseClassName;
             lblType.Text = LocalLicenseApplicationDetails.Application.ApplicationType;
             lblStatus.Text = LocalLicenseApplicationDetails.Application.ApplicationStatus;
-            lblFees.Text = LocalLicenseApplicationDetails.Application.Fees.ToString();
+            lblFees.Text = LocalLicenseApplicationDetails.Application.PaidFees.ToString();
             lblApplicantName.Text = LocalLicenseApplicationDetails.Application.ApplicantName;
 
             lblDate.Text = LocalLicenseApplicationDetails.Application.Date.ToString("dd MMM yyyy");
