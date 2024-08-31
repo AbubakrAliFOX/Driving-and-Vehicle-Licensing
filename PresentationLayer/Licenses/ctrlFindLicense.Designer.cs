@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlFindLicense));
             this.gbFilter = new System.Windows.Forms.GroupBox();
             this.pbSearch = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
@@ -52,7 +51,7 @@
             // 
             // pbSearch
             // 
-            this.pbSearch.Image = ((System.Drawing.Image)(resources.GetObject("pbSearch.Image")));
+            this.pbSearch.Image = global::PresentationLayer.Properties.Resources.magnifying_glass;
             this.pbSearch.Location = new System.Drawing.Point(450, 42);
             this.pbSearch.Name = "pbSearch";
             this.pbSearch.Size = new System.Drawing.Size(32, 32);

@@ -59,3 +59,9 @@ E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.M
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.frmAddEditUser.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.ctrlLDLApplicationInfo.resources
 E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.Applications.frmLDLApplicatinoInfo.resources
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\PresentationLayer.exe.manifest
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\PresentationLayer.application
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.exe.manifest
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\obj\Debug\PresentationLayer.application
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\DVLD.mdf
+E:\Downloads\WebDev\Projects\DVL\PresentationLayer\bin\Debug\DVLD_log.ldf

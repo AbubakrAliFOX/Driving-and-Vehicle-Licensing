@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlDriverLicense));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pbPersonPhoto = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -95,7 +94,7 @@
             // 
             // pbPersonPhoto
             // 
-            this.pbPersonPhoto.Image = ((System.Drawing.Image)(resources.GetObject("pbPersonPhoto.Image")));
+            this.pbPersonPhoto.Image = global::PresentationLayer.Properties.Resources.user1;
             this.pbPersonPhoto.Location = new System.Drawing.Point(30, 59);
             this.pbPersonPhoto.Name = "pbPersonPhoto";
             this.pbPersonPhoto.Size = new System.Drawing.Size(188, 241);

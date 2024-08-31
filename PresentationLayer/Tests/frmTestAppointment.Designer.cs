@@ -111,7 +111,7 @@
             // 
             this.btnAddNew.FlatAppearance.BorderSize = 0;
             this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.Image")));
+            this.btnAddNew.Image = global::PresentationLayer.Properties.Resources.add;
             this.btnAddNew.Location = new System.Drawing.Point(743, 477);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(50, 47);

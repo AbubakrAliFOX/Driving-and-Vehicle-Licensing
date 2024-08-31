@@ -60,12 +60,12 @@
             this.tsmShowLicenseDetails,
             this.tsmShowPersonLicenseHistory});
             this.cmsInternationalLicences.Name = "cmsDrivers";
-            this.cmsInternationalLicences.Size = new System.Drawing.Size(376, 118);
+            this.cmsInternationalLicences.Size = new System.Drawing.Size(376, 146);
             // 
             // tsmShowPersonDetails
             // 
             this.tsmShowPersonDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsmShowPersonDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowPersonDetails.Image")));
+            this.tsmShowPersonDetails.Image = global::PresentationLayer.Properties.Resources.information;
             this.tsmShowPersonDetails.Name = "tsmShowPersonDetails";
             this.tsmShowPersonDetails.Size = new System.Drawing.Size(375, 36);
             this.tsmShowPersonDetails.Text = "Show Person Details";
@@ -79,7 +79,7 @@
             // tsmShowLicenseDetails
             // 
             this.tsmShowLicenseDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmShowLicenseDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowLicenseDetails.Image")));
+            this.tsmShowLicenseDetails.Image = global::PresentationLayer.Properties.Resources.licence;
             this.tsmShowLicenseDetails.Name = "tsmShowLicenseDetails";
             this.tsmShowLicenseDetails.Size = new System.Drawing.Size(375, 36);
             this.tsmShowLicenseDetails.Text = "Show License Details";
@@ -88,7 +88,7 @@
             // tsmShowPersonLicenseHistory
             // 
             this.tsmShowPersonLicenseHistory.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmShowPersonLicenseHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowPersonLicenseHistory.Image")));
+            this.tsmShowPersonLicenseHistory.Image = global::PresentationLayer.Properties.Resources.history;
             this.tsmShowPersonLicenseHistory.Name = "tsmShowPersonLicenseHistory";
             this.tsmShowPersonLicenseHistory.Size = new System.Drawing.Size(375, 36);
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";

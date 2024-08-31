@@ -502,7 +502,6 @@ namespace PresentationLayer
             // ctrlSettingsMenuButton
             // 
             this.ctrlSettingsMenuButton.ButtonName = "Settings";
-            this.ctrlSettingsMenuButton.ImageName = "Settings.png";
             this.ctrlSettingsMenuButton.IsActive = false;
             this.ctrlSettingsMenuButton.Location = new System.Drawing.Point(0, 304);
             this.ctrlSettingsMenuButton.Name = "ctrlSettingsMenuButton";
@@ -513,7 +512,6 @@ namespace PresentationLayer
             // ctrlApplicationsMenuButton
             // 
             this.ctrlApplicationsMenuButton.ButtonName = "Applications";
-            this.ctrlApplicationsMenuButton.ImageName = "Application.png";
             this.ctrlApplicationsMenuButton.IsActive = false;
             this.ctrlApplicationsMenuButton.Location = new System.Drawing.Point(0, 228);
             this.ctrlApplicationsMenuButton.Name = "ctrlApplicationsMenuButton";
@@ -524,7 +522,6 @@ namespace PresentationLayer
             // ctrlUsersMenuButton
             // 
             this.ctrlUsersMenuButton.ButtonName = "Users";
-            this.ctrlUsersMenuButton.ImageName = "Users.png";
             this.ctrlUsersMenuButton.IsActive = false;
             this.ctrlUsersMenuButton.Location = new System.Drawing.Point(0, 152);
             this.ctrlUsersMenuButton.Name = "ctrlUsersMenuButton";
@@ -544,7 +541,6 @@ namespace PresentationLayer
             // ctrlDriversMenuButton
             // 
             this.ctrlDriversMenuButton.ButtonName = "Drivers";
-            this.ctrlDriversMenuButton.ImageName = "DriverImg.png";
             this.ctrlDriversMenuButton.IsActive = false;
             this.ctrlDriversMenuButton.Location = new System.Drawing.Point(0, 76);
             this.ctrlDriversMenuButton.Name = "ctrlDriversMenuButton";
@@ -564,7 +560,6 @@ namespace PresentationLayer
             // ctrlPeopleMenuButton
             // 
             this.ctrlPeopleMenuButton.ButtonName = "People";
-            this.ctrlPeopleMenuButton.ImageName = "people.png";
             this.ctrlPeopleMenuButton.IsActive = true;
             this.ctrlPeopleMenuButton.Location = new System.Drawing.Point(0, 0);
             this.ctrlPeopleMenuButton.Name = "ctrlPeopleMenuButton";

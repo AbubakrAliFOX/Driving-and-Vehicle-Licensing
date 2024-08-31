@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditPerson));
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -154,7 +153,7 @@
             // 
             // pbPersonPhoto
             // 
-            this.pbPersonPhoto.Image = ((System.Drawing.Image)(resources.GetObject("pbPersonPhoto.Image")));
+            this.pbPersonPhoto.Image = global::PresentationLayer.Properties.Resources.user1;
             this.pbPersonPhoto.Location = new System.Drawing.Point(24, 30);
             this.pbPersonPhoto.Name = "pbPersonPhoto";
             this.pbPersonPhoto.Size = new System.Drawing.Size(189, 241);

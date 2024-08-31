@@ -10,5 +10,7 @@ namespace PresentationLayer.Global_Classes
     internal static class clsGlobal
     {
         public static clsUser LoggedInUser { get; set; }
+
+        public static string ProfileImagesDirectory = "E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\ProfilePics";
     }
 }

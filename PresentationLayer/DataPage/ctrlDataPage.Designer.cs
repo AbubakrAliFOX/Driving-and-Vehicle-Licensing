@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlDataPage));
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -84,7 +83,7 @@
             // 
             this.btnAddNew.FlatAppearance.BorderSize = 0;
             this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.Image")));
+            this.btnAddNew.Image = global::PresentationLayer.Properties.Resources.add;
             this.btnAddNew.Location = new System.Drawing.Point(1173, 90);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(50, 47);

@@ -4,6 +4,6 @@ namespace DataLayer
 {
     public static class clsDataAccessSettings
     {
-        public static string connectionString = "server=.;Database=DVLD;Integrated Security=True;";
+        public static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DVLD.mdf;Integrated Security=True;Connect Timeout=30";
     }
 }

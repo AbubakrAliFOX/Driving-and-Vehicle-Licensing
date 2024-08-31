@@ -78,7 +78,7 @@
             // tsmShowApplicationDetails
             // 
             this.tsmShowApplicationDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsmShowApplicationDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowApplicationDetails.Image")));
+            this.tsmShowApplicationDetails.Image = global::PresentationLayer.Properties.Resources.information;
             this.tsmShowApplicationDetails.Name = "tsmShowApplicationDetails";
             this.tsmShowApplicationDetails.Size = new System.Drawing.Size(418, 36);
             this.tsmShowApplicationDetails.Text = "Show Application Details";
@@ -92,7 +92,7 @@
             // tsmDeleteApplication
             // 
             this.tsmDeleteApplication.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmDeleteApplication.Image = ((System.Drawing.Image)(resources.GetObject("tsmDeleteApplication.Image")));
+            this.tsmDeleteApplication.Image = global::PresentationLayer.Properties.Resources.delete;
             this.tsmDeleteApplication.Name = "tsmDeleteApplication";
             this.tsmDeleteApplication.Size = new System.Drawing.Size(418, 36);
             this.tsmDeleteApplication.Text = "Delete Application";
@@ -101,7 +101,7 @@
             // tsmCancelApplication
             // 
             this.tsmCancelApplication.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmCancelApplication.Image = ((System.Drawing.Image)(resources.GetObject("tsmCancelApplication.Image")));
+            this.tsmCancelApplication.Image = global::PresentationLayer.Properties.Resources.detain;
             this.tsmCancelApplication.Name = "tsmCancelApplication";
             this.tsmCancelApplication.Size = new System.Drawing.Size(418, 36);
             this.tsmCancelApplication.Text = "Cancel Application";
@@ -115,7 +115,7 @@
             this.tsmScheduleStreetTest});
             this.tsmScheduleTests.Enabled = false;
             this.tsmScheduleTests.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmScheduleTests.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleTests.Image")));
+            this.tsmScheduleTests.Image = global::PresentationLayer.Properties.Resources.schedule;
             this.tsmScheduleTests.Name = "tsmScheduleTests";
             this.tsmScheduleTests.Size = new System.Drawing.Size(418, 36);
             this.tsmScheduleTests.Text = "Schedule Tests";
@@ -123,7 +123,7 @@
             // tsmScheduleVisionTest
             // 
             this.tsmScheduleVisionTest.Enabled = false;
-            this.tsmScheduleVisionTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleVisionTest.Image")));
+            this.tsmScheduleVisionTest.Image = global::PresentationLayer.Properties.Resources.eye;
             this.tsmScheduleVisionTest.Name = "tsmScheduleVisionTest";
             this.tsmScheduleVisionTest.Size = new System.Drawing.Size(323, 36);
             this.tsmScheduleVisionTest.Text = "Schedule Vision Test";
@@ -132,7 +132,7 @@
             // tsmScheduleWrittenTest
             // 
             this.tsmScheduleWrittenTest.Enabled = false;
-            this.tsmScheduleWrittenTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleWrittenTest.Image")));
+            this.tsmScheduleWrittenTest.Image = global::PresentationLayer.Properties.Resources.application1;
             this.tsmScheduleWrittenTest.Name = "tsmScheduleWrittenTest";
             this.tsmScheduleWrittenTest.Size = new System.Drawing.Size(323, 36);
             this.tsmScheduleWrittenTest.Text = "Schedule Written Test";
@@ -141,7 +141,7 @@
             // tsmScheduleStreetTest
             // 
             this.tsmScheduleStreetTest.Enabled = false;
-            this.tsmScheduleStreetTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleStreetTest.Image")));
+            this.tsmScheduleStreetTest.Image = global::PresentationLayer.Properties.Resources.test_drive;
             this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
             this.tsmScheduleStreetTest.Size = new System.Drawing.Size(323, 36);
             this.tsmScheduleStreetTest.Text = "Schedule Street Test";
@@ -151,7 +151,7 @@
             // 
             this.tsmIssueDrivingLicenseFirstTime.Enabled = false;
             this.tsmIssueDrivingLicenseFirstTime.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmIssueDrivingLicenseFirstTime.Image = ((System.Drawing.Image)(resources.GetObject("tsmIssueDrivingLicenseFirstTime.Image")));
+            this.tsmIssueDrivingLicenseFirstTime.Image = global::PresentationLayer.Properties.Resources.application1;
             this.tsmIssueDrivingLicenseFirstTime.Name = "tsmIssueDrivingLicenseFirstTime";
             this.tsmIssueDrivingLicenseFirstTime.Size = new System.Drawing.Size(418, 36);
             this.tsmIssueDrivingLicenseFirstTime.Text = "Issue Driving License (First Time)";
@@ -161,7 +161,7 @@
             // 
             this.tsmShowLicense.Enabled = false;
             this.tsmShowLicense.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmShowLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowLicense.Image")));
+            this.tsmShowLicense.Image = global::PresentationLayer.Properties.Resources.licence;
             this.tsmShowLicense.Name = "tsmShowLicense";
             this.tsmShowLicense.Size = new System.Drawing.Size(418, 36);
             this.tsmShowLicense.Text = "Show License";
@@ -171,7 +171,7 @@
             // 
             this.tsmShowPersonLicenseHistory.Enabled = false;
             this.tsmShowPersonLicenseHistory.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmShowPersonLicenseHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowPersonLicenseHistory.Image")));
+            this.tsmShowPersonLicenseHistory.Image = global::PresentationLayer.Properties.Resources.history;
             this.tsmShowPersonLicenseHistory.Name = "tsmShowPersonLicenseHistory";
             this.tsmShowPersonLicenseHistory.Size = new System.Drawing.Size(418, 36);
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";

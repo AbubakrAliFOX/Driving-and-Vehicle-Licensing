@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlPersonCard));
             this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblCountry = new System.Windows.Forms.Label();
@@ -80,7 +79,7 @@
             // 
             // pbPersonPhoto
             // 
-            this.pbPersonPhoto.Image = ((System.Drawing.Image)(resources.GetObject("pbPersonPhoto.Image")));
+            this.pbPersonPhoto.Image = global::PresentationLayer.Properties.Resources.user1;
             this.pbPersonPhoto.Location = new System.Drawing.Point(33, 35);
             this.pbPersonPhoto.Name = "pbPersonPhoto";
             this.pbPersonPhoto.Size = new System.Drawing.Size(188, 241);

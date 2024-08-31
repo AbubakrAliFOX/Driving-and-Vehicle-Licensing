@@ -16,7 +16,17 @@ namespace PresentationLayer
         public ctrlMenuButton()
         {
             InitializeComponent();
+
         }
+
+        private Dictionary<string, Image> ButtonImages = new Dictionary<string, Image>
+        {
+            { "People", Properties.Resources.people },
+            { "Drivers", Properties.Resources.DriverImg },
+            { "Users", Properties.Resources.Users },
+            { "Applications", Properties.Resources.Application},
+            { "Settings", Properties.Resources.Settings}
+        };
 
         private string _ButtonName = "";
 
@@ -28,17 +38,18 @@ namespace PresentationLayer
                 _ButtonName = value;
                 this.Name = _ButtonName;
                 btnMenuButton.Text = "        " + _ButtonName;
+
+                ButtonImages.TryGetValue(_ButtonName, out Image FoundImage);
+
+                ButtonImage = FoundImage;
             }
         }
 
-        private string _ImageName = "";
-        public string ImageName
+        private Image ButtonImage
         {
-            get { return _ImageName; }
             set
             {
-                _ImageName = value;
-                btnMenuButton.Image = Image.FromFile($"E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\{_ImageName}");
+                btnMenuButton.Image = value;
             }
         }
 

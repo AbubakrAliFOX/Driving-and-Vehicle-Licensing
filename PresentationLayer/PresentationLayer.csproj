@@ -12,6 +12,22 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +47,21 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>FE38DFF14CB7B159B2FF68F5B94556E0D103DDE2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>PresentationLayer_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>steeringwheel-svgrepo-com.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
@@ -405,11 +436,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="People\frmPersonDetails.resx">
       <DependentUpon>frmPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="PresentationLayer_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -428,6 +461,73 @@
       <Project>{2ebd5426-5fce-4b92-8758-cbded5f936dd}</Project>
       <Name>BusinessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.15.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2019 Express LocalDB</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\add.png" />
+    <None Include="Assets\Application.png" />
+    <None Include="Assets\application_types.png" />
+    <None Include="Assets\application1.png" />
+    <None Include="Assets\delete.png" />
+    <None Include="Assets\detain.png" />
+    <None Include="Assets\Driver.png" />
+    <None Include="Assets\DriverImg.png" />
+    <None Include="Assets\edit.png" />
+    <None Include="Assets\eye.png" />
+    <None Include="Assets\globe-earth.png" />
+    <None Include="Assets\history.png" />
+    <None Include="Assets\id-card.png" />
+    <None Include="Assets\id-card1.png" />
+    <None Include="Assets\information.png" />
+    <None Include="Assets\licence.png" />
+    <None Include="Assets\logout.png" />
+    <None Include="Assets\magnifying-glass.png" />
+    <None Include="Assets\minimize-sign.png" />
+    <None Include="Assets\minus.png" />
+    <None Include="Assets\padlock.png" />
+    <None Include="Assets\people.png" />
+    <None Include="Assets\Person1.jpg" />
+    <None Include="Assets\Person2.jpg" />
+    <None Include="Assets\person-fill-svgrepo-com.png" />
+    <None Include="Assets\power-off.png" />
+    <None Include="Assets\profile.png" />
+    <None Include="Assets\schedule.png" />
+    <None Include="Assets\Settings.png" />
+    <None Include="Assets\switch.png" />
+    <None Include="Assets\test_types.png" />
+    <None Include="Assets\test_types1.png" />
+    <None Include="Assets\test-drive.png" />
+    <None Include="Assets\unboxing.png" />
+    <None Include="Assets\user.png" />
+    <None Include="Assets\user1.png" />
+    <None Include="Assets\Users.png" />
+    <None Include="Assets\Wheel.jpg" />
+    <None Include="Assets\Wheel.png" />
+    <None Include="Assets\Wheel1.jpg" />
+    <Content Include="DVLD.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DVLD_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>DVLD.mdf</DependentUpon>
+    </Content>
+    <Content Include="steeringwheel-svgrepo-com.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

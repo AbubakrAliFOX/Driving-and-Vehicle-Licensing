@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageApplicationTypes));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
             this.cmsDataGridView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.cmsDataGridView.SuspendLayout();
             this.SuspendLayout();
@@ -85,17 +84,6 @@
             this.dgv.Size = new System.Drawing.Size(751, 374);
             this.dgv.TabIndex = 10;
             // 
-            // btnClose
-            // 
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(622, 535);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(163, 35);
-            this.btnClose.TabIndex = 15;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // cmsDataGridView
             // 
             this.cmsDataGridView.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -107,11 +95,22 @@
             // tsmEdit
             // 
             this.tsmEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmEdit.Image")));
+            this.tsmEdit.Image = global::PresentationLayer.Properties.Resources.edit;
             this.tsmEdit.Name = "tsmEdit";
             this.tsmEdit.Size = new System.Drawing.Size(214, 28);
             this.tsmEdit.Text = "Edit";
             this.tsmEdit.Click += new System.EventHandler(this.tsmEdit_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(622, 535);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(163, 35);
+            this.btnClose.TabIndex = 15;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmManageApplicationTypes
             // 
