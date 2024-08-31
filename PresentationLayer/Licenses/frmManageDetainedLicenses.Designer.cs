@@ -44,7 +44,7 @@
             // tsmShowPersonDetails
             // 
             this.tsmShowPersonDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsmShowPersonDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowPersonDetails.Image")));
+            this.tsmShowPersonDetails.Image = global::PresentationLayer.Properties.Resources.information;
             this.tsmShowPersonDetails.Name = "tsmShowPersonDetails";
             this.tsmShowPersonDetails.Size = new System.Drawing.Size(375, 36);
             this.tsmShowPersonDetails.Text = "Show Person Details";
@@ -58,7 +58,7 @@
             // tsmShowLicenseDetails
             // 
             this.tsmShowLicenseDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmShowLicenseDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowLicenseDetails.Image")));
+            this.tsmShowLicenseDetails.Image = global::PresentationLayer.Properties.Resources.licence;
             this.tsmShowLicenseDetails.Name = "tsmShowLicenseDetails";
             this.tsmShowLicenseDetails.Size = new System.Drawing.Size(375, 36);
             this.tsmShowLicenseDetails.Text = "Show License Details";
@@ -67,7 +67,7 @@
             // tsmShowLicenseHistory
             // 
             this.tsmShowLicenseHistory.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmShowLicenseHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowLicenseHistory.Image")));
+            this.tsmShowLicenseHistory.Image = global::PresentationLayer.Properties.Resources.history;
             this.tsmShowLicenseHistory.Name = "tsmShowLicenseHistory";
             this.tsmShowLicenseHistory.Size = new System.Drawing.Size(375, 36);
             this.tsmShowLicenseHistory.Text = "Show Person License History";
@@ -76,7 +76,7 @@
             // tsmReleaseLicense
             // 
             this.tsmReleaseLicense.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.tsmReleaseLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmReleaseLicense.Image")));
+            this.tsmReleaseLicense.Image = global::PresentationLayer.Properties.Resources.unboxing;
             this.tsmReleaseLicense.Name = "tsmReleaseLicense";
             this.tsmReleaseLicense.Size = new System.Drawing.Size(375, 36);
             this.tsmReleaseLicense.Text = "Release License";
@@ -92,7 +92,7 @@
             this.tsmShowLicenseHistory,
             this.tsmReleaseLicense});
             this.cmsDetainedLicenses.Name = "cmsDrivers";
-            this.cmsDetainedLicenses.Size = new System.Drawing.Size(376, 154);
+            this.cmsDetainedLicenses.Size = new System.Drawing.Size(376, 182);
             this.cmsDetainedLicenses.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.cmsDetainedLicenses_Closed);
             this.cmsDetainedLicenses.Opened += new System.EventHandler(this.cmsDetainedLicenses_Opened);
             // 

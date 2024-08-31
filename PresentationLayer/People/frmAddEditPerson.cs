@@ -109,6 +109,24 @@ namespace PresentationLayer
             }
         }
         
+        private string SaveImage (string ImagePath)
+        {
+            string ImageExtension = Path.GetExtension(ImagePath);
+            string NewImageName = $"{Guid.NewGuid()}{ImageExtension}";
+
+            string FolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "ProfilePics");
+
+            if (!Directory.Exists(FolderPath))
+            {
+                Directory.CreateDirectory(FolderPath);
+            }
+
+            string NewFilePath = Path.Combine(FolderPath, NewImageName);
+            File.Copy(ImagePath, NewFilePath);
+
+            return NewImageName;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())
@@ -134,7 +152,7 @@ namespace PresentationLayer
 
             if (pbPersonPhoto.ImageLocation != null)
             {
-                PersonDetails.ImagePath = pbPersonPhoto.ImageLocation.ToString();
+                PersonDetails.ImagePath = SaveImage(pbPersonPhoto.ImageLocation);
             }
             else
             {
@@ -167,9 +185,7 @@ namespace PresentationLayer
             if (result == DialogResult.OK)
             {
                 // Get the file path selected by the user
-                string filePath = openFileDialog.FileName;
-
-                pbPersonPhoto.Load(filePath);
+                pbPersonPhoto.Load(openFileDialog.FileName);
             }
 
         }

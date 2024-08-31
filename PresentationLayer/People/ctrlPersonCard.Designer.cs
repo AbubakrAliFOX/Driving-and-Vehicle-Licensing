@@ -80,7 +80,7 @@
             // pbPersonPhoto
             // 
             this.pbPersonPhoto.Image = global::PresentationLayer.Properties.Resources.user1;
-            this.pbPersonPhoto.Location = new System.Drawing.Point(33, 35);
+            this.pbPersonPhoto.Location = new System.Drawing.Point(30, 35);
             this.pbPersonPhoto.Name = "pbPersonPhoto";
             this.pbPersonPhoto.Size = new System.Drawing.Size(188, 241);
             this.pbPersonPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

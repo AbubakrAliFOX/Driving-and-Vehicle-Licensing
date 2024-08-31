@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTestAppointment));
             this.lblTitle = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
@@ -87,23 +86,23 @@
             this.tsmEdit,
             this.tsmTakeTest});
             this.cmsOptions.Name = "cmsDrivers";
-            this.cmsOptions.Size = new System.Drawing.Size(151, 60);
+            this.cmsOptions.Size = new System.Drawing.Size(215, 88);
             // 
             // tsmEdit
             // 
             this.tsmEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmEdit.Image")));
+            this.tsmEdit.Image = global::PresentationLayer.Properties.Resources.information;
             this.tsmEdit.Name = "tsmEdit";
-            this.tsmEdit.Size = new System.Drawing.Size(150, 28);
+            this.tsmEdit.Size = new System.Drawing.Size(214, 28);
             this.tsmEdit.Text = "Edit";
             this.tsmEdit.Click += new System.EventHandler(this.tsmEdit_Click);
             // 
             // tsmTakeTest
             // 
             this.tsmTakeTest.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmTakeTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmTakeTest.Image")));
+            this.tsmTakeTest.Image = global::PresentationLayer.Properties.Resources.globe_earth;
             this.tsmTakeTest.Name = "tsmTakeTest";
-            this.tsmTakeTest.Size = new System.Drawing.Size(150, 28);
+            this.tsmTakeTest.Size = new System.Drawing.Size(214, 28);
             this.tsmTakeTest.Text = "Take Test";
             this.tsmTakeTest.Click += new System.EventHandler(this.tsmTakeTest_Click);
             // 

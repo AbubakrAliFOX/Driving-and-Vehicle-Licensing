@@ -45,7 +45,7 @@ namespace PresentationLayer
                 pbPersonPhoto.Image = Image.FromFile(personInfo.ImagePath);
             } else
             {
-                pbPersonPhoto.Image = Image.FromFile("E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\user1.png");
+                pbPersonPhoto.Image = Properties.Resources.user1;
             }
 
             lblPersonID.Text = personInfo.ID.ToString();
@@ -62,7 +62,7 @@ namespace PresentationLayer
 
         private void ResetPersonCard()
         {
-            pbPersonPhoto.Image = Image.FromFile("E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\user1.png");
+            pbPersonPhoto.Image = Properties.Resources.user1;
 
             lblPersonID.Text = "";
             lblName.Text = "";

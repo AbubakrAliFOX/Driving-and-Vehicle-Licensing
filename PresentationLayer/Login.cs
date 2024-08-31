@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using PresentationLayer.Global_Classes;
 using System.Windows.Forms;
 using BusinessLayer;
+using System.Xml.Linq;
 
 namespace PresentationLayer
 {
@@ -55,6 +56,8 @@ namespace PresentationLayer
 
         private void Login_Load(object sender, EventArgs e)
         {
+            //File.Copy(Path.Combine(sourceDir, fName), Path.Combine(backupDir, fName), true);
+
             string UserName = "", Password = "";
 
             if (clsUtils.GetStoredCredentials(ref UserName, ref Password))
