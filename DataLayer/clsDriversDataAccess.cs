@@ -14,7 +14,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Drivers.DriverID, People.NationalNo, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, Drivers.CreatedDate, Users.Username AS CreatedByUser, (SELECT COUNT(*) FROM Licenses WHERE Licenses.DriverID = Drivers.DriverID and Licenses.IsActive = 1) AS ActiveLicences FROM Drivers INNER JOIN People ON Drivers.PersonID = People.PersonID INNER JOIN Users ON Drivers.CreatedByUserID = Users.UserID;";
 
@@ -49,7 +49,7 @@ namespace DataLayer
         public static int CreateDriver(int PersonID, int CreatedByUserID)
         {
             int DriverID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO Drivers (PersonID, CreatedByUserID, CreatedDate) VALUES (@PersonID, @CreatedByUserID, @CreatedDate); Select SCOPE_IDENTITY();";
 
@@ -87,7 +87,7 @@ namespace DataLayer
         {
             int DriverID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT DriverID FROM Drivers WHERE PersonID = @PersonID";

@@ -38,7 +38,11 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.cbRememberMe = new System.Windows.Forms.CheckBox();
+            this.pbMinimize = new System.Windows.Forms.PictureBox();
+            this.pbOff = new System.Windows.Forms.PictureBox();
             this.pSideNav.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOff)).BeginInit();
             this.SuspendLayout();
             // 
             // pSideNav
@@ -153,11 +157,35 @@
             this.cbRememberMe.Text = "Remember Me";
             this.cbRememberMe.UseVisualStyleBackColor = true;
             // 
+            // pbMinimize
+            // 
+            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMinimize.Image = global::PresentationLayer.Properties.Resources.minus;
+            this.pbMinimize.Location = new System.Drawing.Point(1020, 12);
+            this.pbMinimize.Name = "pbMinimize";
+            this.pbMinimize.Size = new System.Drawing.Size(35, 35);
+            this.pbMinimize.TabIndex = 10;
+            this.pbMinimize.TabStop = false;
+            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
+            // 
+            // pbOff
+            // 
+            this.pbOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOff.Image = global::PresentationLayer.Properties.Resources.power_off;
+            this.pbOff.Location = new System.Drawing.Point(1073, 12);
+            this.pbOff.Name = "pbOff";
+            this.pbOff.Size = new System.Drawing.Size(35, 35);
+            this.pbOff.TabIndex = 9;
+            this.pbOff.TabStop = false;
+            this.pbOff.Click += new System.EventHandler(this.pbOff_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 465);
+            this.Controls.Add(this.pbMinimize);
+            this.Controls.Add(this.pbOff);
             this.Controls.Add(this.cbRememberMe);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.btnLogin);
@@ -173,6 +201,8 @@
             this.Load += new System.EventHandler(this.Login_Load);
             this.pSideNav.ResumeLayout(false);
             this.pSideNav.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +220,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.CheckBox cbRememberMe;
+        private System.Windows.Forms.PictureBox pbMinimize;
+        private System.Windows.Forms.PictureBox pbOff;
     }
 }

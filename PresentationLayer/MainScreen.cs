@@ -146,7 +146,7 @@ namespace PresentationLayer
 
         private void tsmDriverInfo_Click(object sender, EventArgs e)
         {
-            frmPersonDetails showPersonDetailsForm = new frmPersonDetails((int)ctrlDataPageDrivers.dgv.CurrentRow.Cells[0].Value);
+            frmPersonDetails showPersonDetailsForm = new frmPersonDetails((string)ctrlDataPageDrivers.dgv.CurrentRow.Cells[1].Value);
             showPersonDetailsForm.ShowDialog();
             //_RefreshContactsList();
         }
@@ -176,6 +176,8 @@ namespace PresentationLayer
                     MessageBox.Show("Successfully Deleted!", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ctrlDataPagePeople.RefreshData();
                 }
+            } else { 
+                MessageBox.Show("This person is associated with other data. He can't be deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -358,6 +360,13 @@ namespace PresentationLayer
         {
             clsGlobal.LoggedInUser = null;
             _frmLogin.Show();
+        }
+
+        private void tsmLicHistory_Click(object sender, EventArgs e)
+        {
+            frmLicenseHistory History = new frmLicenseHistory((string)ctrlDataPageDrivers.dgv.CurrentRow.Cells[1].Value);
+            History.ShowDialog();
+            ctrlDataPageDrivers.RefreshData();
         }
     }
 }

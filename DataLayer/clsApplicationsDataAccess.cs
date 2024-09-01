@@ -17,7 +17,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT ApplicationTypeID AS ID, ApplicationTypeTitle AS Title, ApplicationFees AS Fees FROM ApplicationTypes";
@@ -50,7 +50,7 @@ namespace DataLayer
         {
             int ApplicationID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT ApplicationTypeID FROM ApplicationTypes WHERE ApplicationTypeTitle = @ApplicationName";
 
@@ -86,7 +86,7 @@ namespace DataLayer
         {
             int rowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update ApplicationTypes 
@@ -121,7 +121,7 @@ namespace DataLayer
         {
             int rowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update Applications 
@@ -154,7 +154,7 @@ namespace DataLayer
         {
             int rowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"DELETE FROM Applications 
@@ -185,7 +185,7 @@ namespace DataLayer
         {
             decimal Fees = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT ApplicationFees FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
@@ -233,7 +233,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Applications.PaidFees AS Fees, People.PersonID, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, Applications.ApplicationDate, CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' ELSE 'Completed' END AS ApplicationStatus, Applications.ApplicationID, Applications.LastStatusDate AS StatusDate, Users.UserName AS CreatedByUser, LicenseClasses.LicenseClassID, LicenseClasses.ClassName AS DrivingClass, ApplicationTypes.ApplicationTypeTitle AS ApplicationType FROM Applications INNER JOIN LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN People ON Applications.ApplicantPersonID = People.PersonID INNER JOIN ApplicationTypes ON Applications.ApplicationTypeID = ApplicationTypes.ApplicationTypeID INNER JOIN Users ON Applications.CreatedByUserID = Users.UserID WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID= @LDLApplication";
 
@@ -297,7 +297,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Applications.PaidFees AS Fees, People.PersonID, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, \r\nApplications.ApplicationDate, CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' ELSE 'Completed' END AS ApplicationStatus, \r\nApplications.ApplicationID, Applications.LastStatusDate AS StatusDate, Users.UserName AS CreatedByUser, ApplicationTypes.ApplicationTypeTitle AS ApplicationType \r\nFROM Applications \r\nINNER JOIN People ON Applications.ApplicantPersonID = People.PersonID INNER JOIN ApplicationTypes ON Applications.ApplicationTypeID = ApplicationTypes.ApplicationTypeID \r\nINNER JOIN Users ON Applications.CreatedByUserID = Users.UserID WHERE Applications.ApplicationID = @ApplicationID";
 
@@ -348,7 +348,7 @@ namespace DataLayer
         {
             int PassedTests = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT COUNT(*) AS PassedTests FROM TestAppointments INNER JOIN Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID WHERE Tests.TestResult = 1 AND TestAppointments.LocalDrivingLicenseApplicationID = @LDLApplicationID";
             SqlCommand cmd = new SqlCommand(query, connection);
@@ -380,7 +380,7 @@ namespace DataLayer
         public static int CreateApplication(int PersonID, int ApplicationTypeID, int CreatedByUserID)
         {
             int ApplicationID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO Applications(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID) VALUES(@ApplicantPersonID, @ApplicationDate, @ApplicationTypeID, @ApplicationStatus, @LastStatusDate, (SELECT ApplicationFees FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID), @CreatedByUserID); Select SCOPE_IDENTITY();";
             SqlCommand cmd = new SqlCommand(query, connection);
@@ -420,7 +420,7 @@ namespace DataLayer
         {
             int LocalDrivingLicenseID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO LocalDrivingLicenseApplications (ApplicationID, LicenseClassID) VALUES (@ApplicationID, @LicenseClassID); Select SCOPE_IDENTITY();";
 
@@ -488,7 +488,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                "SELECT LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID AS [L.D.L.AppID], LicenseClasses.ClassName AS DrivingClass, People.NationalNo, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, (SELECT COUNT(*) AS PassedTests FROM TestAppointments INNER JOIN Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID WHERE Tests.TestResult = 1 AND TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID) AS PassedTests, Applications.ApplicationDate, CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' ELSE 'Completed' END AS ApplicationStatus FROM     Applications INNER JOIN LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN People ON Applications.ApplicantPersonID = People.PersonID";

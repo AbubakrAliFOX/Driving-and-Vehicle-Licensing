@@ -35,7 +35,6 @@ namespace PresentationLayer
             this.cmsDrivers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmDriverInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmInterLic = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLicHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsPeople = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmPersonInfo = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,17 +103,16 @@ namespace PresentationLayer
             this.cmsDrivers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmDriverInfo,
             this.toolStripSeparator1,
-            this.tsmInterLic,
             this.tsmLicHistory});
             this.cmsDrivers.Name = "cmsDrivers";
-            this.cmsDrivers.Size = new System.Drawing.Size(285, 94);
+            this.cmsDrivers.Size = new System.Drawing.Size(243, 94);
             // 
             // tsmDriverInfo
             // 
             this.tsmDriverInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmDriverInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmDriverInfo.Image")));
             this.tsmDriverInfo.Name = "tsmDriverInfo";
-            this.tsmDriverInfo.Size = new System.Drawing.Size(284, 28);
+            this.tsmDriverInfo.Size = new System.Drawing.Size(242, 28);
             this.tsmDriverInfo.Text = "Show Details";
             this.tsmDriverInfo.Click += new System.EventHandler(this.tsmDriverInfo_Click);
             // 
@@ -123,14 +121,6 @@ namespace PresentationLayer
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(281, 6);
             // 
-            // tsmInterLic
-            // 
-            this.tsmInterLic.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tsmInterLic.Image = ((System.Drawing.Image)(resources.GetObject("tsmInterLic.Image")));
-            this.tsmInterLic.Name = "tsmInterLic";
-            this.tsmInterLic.Size = new System.Drawing.Size(284, 28);
-            this.tsmInterLic.Text = "Issue International License";
-            // 
             // tsmLicHistory
             // 
             this.tsmLicHistory.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -138,6 +128,7 @@ namespace PresentationLayer
             this.tsmLicHistory.Name = "tsmLicHistory";
             this.tsmLicHistory.Size = new System.Drawing.Size(284, 28);
             this.tsmLicHistory.Text = "Show License History";
+            this.tsmLicHistory.Click += new System.EventHandler(this.tsmLicHistory_Click);
             // 
             // cmsPeople
             // 
@@ -578,7 +569,7 @@ namespace PresentationLayer
             // pbOff
             // 
             this.pbOff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbOff.Image = ((System.Drawing.Image)(resources.GetObject("pbOff.Image")));
+            this.pbOff.Image = global::PresentationLayer.Properties.Resources.power_off;
             this.pbOff.Location = new System.Drawing.Point(1443, 12);
             this.pbOff.Name = "pbOff";
             this.pbOff.Size = new System.Drawing.Size(35, 35);
@@ -589,7 +580,7 @@ namespace PresentationLayer
             // pbMinimize
             // 
             this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = ((System.Drawing.Image)(resources.GetObject("pbMinimize.Image")));
+            this.pbMinimize.Image = global::PresentationLayer.Properties.Resources.minus;
             this.pbMinimize.Location = new System.Drawing.Point(1390, 12);
             this.pbMinimize.Name = "pbMinimize";
             this.pbMinimize.Size = new System.Drawing.Size(35, 35);
@@ -628,7 +619,6 @@ namespace PresentationLayer
         #endregion
         private System.Windows.Forms.ContextMenuStrip cmsDrivers;
         private System.Windows.Forms.ToolStripMenuItem tsmDriverInfo;
-        private System.Windows.Forms.ToolStripMenuItem tsmInterLic;
         private System.Windows.Forms.ToolStripMenuItem tsmLicHistory;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ContextMenuStrip cmsPeople;

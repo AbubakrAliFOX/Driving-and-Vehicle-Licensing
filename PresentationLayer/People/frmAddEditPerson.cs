@@ -102,14 +102,14 @@ namespace PresentationLayer
 
                 if (PersonDetails.ImagePath != "")
                 {
-                    pbPersonPhoto.Load(PersonDetails.ImagePath);
+                    pbPersonPhoto.Load(clsUtils.GetProfileImage(PersonDetails.ImagePath));
                 }
 
                 //LLRemoveImg.Visible = (newPerson.imgPath != "");
             }
         }
         
-        private string SaveImage (string ImagePath)
+        private string SaveProfileImage (string ImagePath)
         {
             string ImageExtension = Path.GetExtension(ImagePath);
             string NewImageName = $"{Guid.NewGuid()}{ImageExtension}";
@@ -152,7 +152,7 @@ namespace PresentationLayer
 
             if (pbPersonPhoto.ImageLocation != null)
             {
-                PersonDetails.ImagePath = SaveImage(pbPersonPhoto.ImageLocation);
+                PersonDetails.ImagePath = SaveProfileImage(pbPersonPhoto.ImageLocation);
             }
             else
             {

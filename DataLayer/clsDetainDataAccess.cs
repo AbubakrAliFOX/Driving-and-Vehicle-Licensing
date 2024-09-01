@@ -15,7 +15,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT DetainID, DetainDate, FineFees, Users.UserName AS CreatedByUserName, CAST(IsReleased as bit) AS IsReleased, ReleaseDate, (SELECT UserName FROM Users WHERE UserID = DetainedLicenses.ReleasedByUserID) AS ReleasedByUser, ReleaseApplicationID FROM DetainedLicenses INNER JOIN Users ON Users.UserID = DetainedLicenses.CreatedByUserID WHERE LicenseID = @LicenseID";
 
@@ -77,7 +77,7 @@ namespace DataLayer
         {
             int DetainID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO DetainedLicenses (LicenseID, DetainDate, FineFees, CreatedByUserID, IsReleased) VALUES (@LicenseID, @DetainDate, @FineFees, @CreatedByUserID, 0); Select SCOPE_IDENTITY();";
 
@@ -116,7 +116,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Found = 1 FROM DetainedLicenses WHERE LicenseID = @LicenseID AND IsReleased = 0";
 
@@ -148,7 +148,7 @@ namespace DataLayer
         {
             int RowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update DetainedLicenses 
@@ -187,7 +187,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "Select DetainID, LicenseID, DetainDate, IsReleased, FineFees, ReleaseDate, NationalNo, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, ReleaseApplicationID FROM DetainedLicenses LEFT JOIN Applications ON ApplicationID = ReleaseApplicationID LEFT JOIN People ON ApplicantPersonID = PersonID";
             SqlCommand cmd = new SqlCommand(query, connection);

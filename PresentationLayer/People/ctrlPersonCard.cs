@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
+using PresentationLayer.Global_Classes;
 
 namespace PresentationLayer
 {
@@ -42,7 +43,7 @@ namespace PresentationLayer
         {
             if (personInfo.ImagePath != "")
             {
-                pbPersonPhoto.Image = Image.FromFile(personInfo.ImagePath);
+                pbPersonPhoto.Image = Image.FromFile(clsUtils.GetProfileImage(personInfo.ImagePath));
             } else
             {
                 pbPersonPhoto.Image = Properties.Resources.user1;

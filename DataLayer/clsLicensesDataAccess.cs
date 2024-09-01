@@ -19,7 +19,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT LicenseClassID AS ID, ClassName FROM LicenseClasses";
@@ -66,7 +66,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT LicenseID, Licenses.DriverID, PersonID, ApplicationID, LicenseClass, ClassName, IssueDate, ExpirationDate, Notes, PaidFees, CAST(IsActive as bit) AS IsActive, IssueReason, Licenses.CreatedByUserID FROM Licenses INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID INNER JOIN Drivers ON Licenses.DriverID = Drivers.DriverID WHERE LicenseID  = @LicenseID";
 
@@ -144,7 +144,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT LicenseID, Licenses.DriverID, PersonID, ApplicationID, LicenseClass, ClassName, IssueDate, ExpirationDate, Notes, PaidFees, CAST(IsActive as bit) AS IsActive, IssueReason, Licenses.CreatedByUserID FROM Licenses INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID INNER JOIN Drivers ON Licenses.DriverID = Drivers.DriverID WHERE ApplicationID = (SELECT ApplicationID from LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID  = @LDLApplicationID)";
             
@@ -210,7 +210,7 @@ namespace DataLayer
             int ApplicationStatus = 0;
             bool FoundApplication = false;
 
-            string connectionString = clsDataAccessSettings.connectionString;
+            string connectionString = clsDataAccessSettings.ConnectionString;
 
             string query = "SELECT CAST(ApplicationStatus as int) AS Status FROM Applications INNER JOIN LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID WHERE ApplicationStatus in (1,3) and Applications.ApplicantPersonID = @PersonID and LocalDrivingLicenseApplications.LicenseClassID = @ClassID";
 
@@ -251,7 +251,7 @@ namespace DataLayer
         {
             int RowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update Licenses 
@@ -283,7 +283,7 @@ namespace DataLayer
         {
             bool IsLicenseActive = false;
 
-            string connectionString = clsDataAccessSettings.connectionString;
+            string connectionString = clsDataAccessSettings.ConnectionString;
 
             string query = "SELECT Found = 1 FROM Licenses WHERE IsActive = 1 and LicenseID = @LicenseID";
 
@@ -316,7 +316,7 @@ namespace DataLayer
         {
             DateTime ExpirationDate = DateTime.Now;
 
-            string connectionString = clsDataAccessSettings.connectionString;
+            string connectionString = clsDataAccessSettings.ConnectionString;
 
             string query = "SELECT ExpirationDate FROM Licenses WHERE LicenseID = @LicenseID";
 
@@ -352,7 +352,7 @@ namespace DataLayer
         {
             bool DriverHasActiveLicenses = false;
 
-            string connectionString = clsDataAccessSettings.connectionString;
+            string connectionString = clsDataAccessSettings.ConnectionString;
 
             string query = "Select Found = 1 From Licenses Where DriverID = @DriverID AND ExpirationDate > GETDATE()";
 
@@ -391,7 +391,7 @@ namespace DataLayer
 
             DateTime ExpirationDate = IssueDate.AddYears(LicenseValidity);
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO Licenses (DriverID, ApplicationID, LicenseClass, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, IssueReason, CreatedByUserID) VALUES (@DriverID, @ApplicationID, @LicenseClass, @IssueDate, @ExpirationDate, @Notes, @PaidFees, @IsActive, @IssueReason, @CreatedByUserID); Select SCOPE_IDENTITY();";
 
@@ -436,7 +436,7 @@ namespace DataLayer
         {
             int Validity = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT CAST(DefaultValidityLength as int) AS Validity FROM LicenseClasses WHERE LicenseClassID = @LicenseClassID";
@@ -470,7 +470,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT LicenseID, ApplicationID, ClassName, IssueDate, ExpirationDate, IsActive FROM Licenses INNER JOIN LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID INNER JOIN Drivers ON Licenses.DriverID = Drivers.DriverID INNER JOIN People ON Drivers.PersonID = People.PersonID WHERE People.NationalNo = @NationalNo";
@@ -506,7 +506,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Found = 1 FROM InternationalLicenses WHERE IssuedUsingLocalLicenseID = @LocalLicenseID";
 
@@ -539,7 +539,7 @@ namespace DataLayer
             int PersonAge = 0;
             int MinimumAllowedAge = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT DATEDIFF(year, (SELECT DateOfBirth FROM People WHERE PersonID = @PersonID), GETDATE()) AS PersonAge, CAST((SELECT MinimumAllowedAge FROM LicenseClasses WHERE LicenseClassID = @LicenseClassID) as int) As MinimumAllowedAge";
 

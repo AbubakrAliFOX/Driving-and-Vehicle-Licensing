@@ -13,7 +13,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "select * from Countries where CountryID = @CountryID";
 
@@ -54,7 +54,7 @@ namespace DataLayer
         {
             int CountryID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "select CountryID from Countries where CountryName = @CountryName";
 
@@ -89,7 +89,7 @@ namespace DataLayer
         {
             List<string> Countries = new List<string>();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "select CountryName from Countries";
 

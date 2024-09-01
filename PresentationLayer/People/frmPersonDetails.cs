@@ -13,16 +13,31 @@ namespace PresentationLayer
 {
     public partial class frmPersonDetails : Form
     {
+        clsPerson PersonDetails;
+
         public frmPersonDetails(int PersonID)
         {
             InitializeComponent();
 
-            ctrlPersonCard1.PersonInfo = clsPerson.Find(PersonID);
+            PersonDetails = clsPerson.Find(PersonID);
+        }
+
+        public frmPersonDetails(string NationalNo)
+        {
+            InitializeComponent();
+
+            PersonDetails = clsPerson.Find(NationalNo);
+        }
+
+        private void frmPersonDetails_Load(object sender, EventArgs e)
+        {
+            ctrlPersonCard1.PersonInfo = PersonDetails;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

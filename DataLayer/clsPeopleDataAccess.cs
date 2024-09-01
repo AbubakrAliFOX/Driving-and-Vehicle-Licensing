@@ -30,7 +30,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "select * from People where PersonID = @PersonID";
 
@@ -125,7 +125,7 @@ namespace DataLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "select * from People where NationalNo = @NationalNo";
 
@@ -205,7 +205,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT PersonID, NationalNo, CONCAT(FirstName, ' ', SecondName, ' ', ThirdName, ' ', LastName) AS FullName, DateOfBirth, Countries.CountryName AS Nationality, CASE WHEN Gendor = 0 THEN 'Male' ELSE 'Female' END AS Gender, Address, Phone, Email FROM People INNER JOIN Countries ON People.NationalityCountryID = Countries.CountryID";
@@ -250,7 +250,7 @@ namespace DataLayer
         )
         {
             int PersonID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 @"INSERT INTO People (NationalNo ,FirstName, SecondName, ThirdName, 
@@ -342,7 +342,7 @@ namespace DataLayer
         {
             int rowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update People 
@@ -423,7 +423,7 @@ namespace DataLayer
         public static bool Delete (int ID)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"DELETE FROM People
                                 WHERE PersonID = @PersonID;";
@@ -455,7 +455,7 @@ namespace DataLayer
         {
             bool IsFound = false;
 
-            string connectionString = clsDataAccessSettings.connectionString;
+            string connectionString = clsDataAccessSettings.ConnectionString;
 
             string query = "SELECT Found = 1 FROM People WHERE NationalNo = @NationalNo";
 

@@ -50,5 +50,10 @@ namespace PresentationLayer.Global_Classes
                 return false;
             }
         }
+
+        public static string GetProfileImage(string ImageName)
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "ProfilePics", ImageName);
+        }
     }
 }

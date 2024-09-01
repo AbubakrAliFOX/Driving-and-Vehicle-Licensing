@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using PresentationLayer.Global_Classes;
 using System.Windows.Forms;
 using BusinessLayer;
-using System.Xml.Linq;
 
 namespace PresentationLayer
 {
@@ -25,6 +24,11 @@ namespace PresentationLayer
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (tbUserName.Text == string.Empty || tbPassword.Text == string.Empty)
+            {
+                return;
+            }
+
             int UserID = clsUser.AuthenticateForLogin(tbUserName.Text, tbPassword.Text);
 
             if (UserID == -1)
@@ -56,8 +60,6 @@ namespace PresentationLayer
 
         private void Login_Load(object sender, EventArgs e)
         {
-            //File.Copy(Path.Combine(sourceDir, fName), Path.Combine(backupDir, fName), true);
-
             string UserName = "", Password = "";
 
             if (clsUtils.GetStoredCredentials(ref UserName, ref Password))
@@ -68,6 +70,16 @@ namespace PresentationLayer
             }
             else
                 cbRememberMe.Checked = false;
+        }
+
+        private void pbMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pbOff_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

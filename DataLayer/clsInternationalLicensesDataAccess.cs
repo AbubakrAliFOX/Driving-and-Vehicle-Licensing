@@ -15,7 +15,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT InternationalLicenseID, IssuedUsingLocalLicenseID AS LocalLicenseID, ApplicationID, IssueDate, ExpirationDate, IsActive FROM InternationalLicenses INNER JOIN Drivers ON InternationalLicenses.DriverID = Drivers.DriverID INNER JOIN People ON Drivers.PersonID = People.PersonID WHERE People.NationalNo = @NationalNo";
@@ -50,7 +50,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT InternationalLicenseID AS [Int.LicenseID], IssuedUsingLocalLicenseID AS [L.LicenseID], ApplicationID, DriverID, IssueDate, ExpirationDate, IsActive FROM InternationalLicenses";
@@ -82,7 +82,7 @@ namespace DataLayer
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT InternationalLicenseID, InternationalLicenses.ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, (SELECT UserName FROM Users WHERE UserID = InternationalLicenses.CreatedByUserID) AS CreatedByUser, PaidFees, Applications.ApplicationDate FROM InternationalLicenses INNER JOIN Applications ON InternationalLicenses.ApplicationID = Applications.ApplicationID  WHERE IssuedUsingLocalLicenseID = @LocalLicenseID";
 
@@ -131,7 +131,7 @@ namespace DataLayer
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT InternationalLicenses.ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, (SELECT UserName FROM Users WHERE UserID = InternationalLicenses.CreatedByUserID) AS CreatedByUser, PaidFees, Applications.ApplicationDate FROM InternationalLicenses INNER JOIN Applications ON InternationalLicenses.ApplicationID = Applications.ApplicationID  WHERE InternationalLicenseID = @InternationalLicenseID";
 
@@ -184,7 +184,7 @@ namespace DataLayer
 
             DateTime ExpirationDate = IssueDate.AddYears(1);
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO InternationalLicenses (ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, CreatedByUserID) VALUES (@ApplicationID, @DriverID, @IssuedUsingLocalLicenseID, @IssueDate, @ExpirationDate, @IsActive, @CreatedByUserID); Select SCOPE_IDENTITY();";
 

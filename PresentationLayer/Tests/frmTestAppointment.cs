@@ -77,12 +77,13 @@ namespace PresentationLayer
                 }
 
                 Appointment.ShowDialog();
-                RefreshData();
 
             } else
             {
                 MessageBox.Show("Person already has an active test.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            RefreshData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

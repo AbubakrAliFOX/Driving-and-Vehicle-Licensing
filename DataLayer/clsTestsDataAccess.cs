@@ -16,7 +16,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT TestTypeID AS ID, TestTypeTitle AS Title, TestTypeDescription AS Description, TestTypeFees AS Fees FROM TestTypes";
@@ -49,7 +49,7 @@ namespace DataLayer
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT LocalDrivingLicenseApplicationID as LDLApplicationID, TestTypeID, RetakeTestApplicationID, PaidFees FROM TestAppointments WHERE TestAppointmentID = @TestAppointmentID";
 
@@ -102,7 +102,7 @@ namespace DataLayer
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT TestAppointmentID, TestTypeID, RetakeTestApplicationID, PaidFees FROM TestAppointments WHERE LocalDrivingLicenseApplicationID  = @LocalDrivingLicenseApplicationID ";
 
@@ -155,7 +155,7 @@ namespace DataLayer
         {
             int rowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update TestTypes 
@@ -192,7 +192,7 @@ namespace DataLayer
         {
             decimal Fees = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT TestTypeFees FROM TestTypes WHERE TestTypeID = @TestTypeID";
@@ -226,7 +226,7 @@ namespace DataLayer
         public static int CreateTestAppointment(int TestType, int LDLApplicationID, DateTime Date, decimal PaidFees, int RetakeTestApplicationID, int CreatedByUserID)
         {
             int TestAppointmentID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO TestAppointments (TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, CreatedByUserID, IsLocked, RetakeTestApplicationID) VALUES (@TestTypeID, @LDLApplicationID, @Date, @PaidFees, @CreatedByUserID, @IsLocked, @RetakeTestApplicationID); Select SCOPE_IDENTITY();";
 
@@ -274,7 +274,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                 "SELECT TestAppointmentID AS AppointmentID, AppointmentDate, PaidFees, IsLocked FROM TestAppointments WHERE LocalDrivingLicenseApplicationID = @LDLApplicationID AND TestTypeID = @TestTypeID";
@@ -311,7 +311,7 @@ namespace DataLayer
         {
             int rowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update TestAppointments 
@@ -343,7 +343,7 @@ namespace DataLayer
         public static int TakeTest(int AppointmentID, byte Result, int CreatedByUserID, string Notes = null)
         {
             int TestID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO Tests (TestAppointmentID, TestResult, Notes, CreatedByUserID) VALUES (@TestAppointmentID, @TestResult, @Notes, @CreatedByUserID); Select SCOPE_IDENTITY();";
 
@@ -394,7 +394,7 @@ namespace DataLayer
         {
             int rowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update TestAppointments 
@@ -427,7 +427,7 @@ namespace DataLayer
         {
             bool isActive = false;
 
-            string connectionString = clsDataAccessSettings.connectionString;
+            string connectionString = clsDataAccessSettings.ConnectionString;
 
             string query = "SELECT Found = 1 FROM TestAppointments LEFT JOIN TESTS ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID WHERE (LocalDrivingLicenseApplicationID = @LDLAppID AND TestTypeID = @TestTypeID) AND Tests.TestResult is NULL";
             
@@ -458,7 +458,7 @@ namespace DataLayer
         {
             bool hasPassed = false;
 
-            string connectionString = clsDataAccessSettings.connectionString;
+            string connectionString = clsDataAccessSettings.ConnectionString;
 
             string query = "SELECT Tests.TestResult FROM TestAppointments INNER JOIN TESTS ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID WHERE (LocalDrivingLicenseApplicationID = @LDLAppID AND TestTypeID = @TestTypeID) AND TestResult = 1";
             
@@ -489,7 +489,7 @@ namespace DataLayer
         {
             bool hasFailed = false;
 
-            string connectionString = clsDataAccessSettings.connectionString;
+            string connectionString = clsDataAccessSettings.ConnectionString;
 
             string query = "SELECT Tests.TestResult FROM TestAppointments INNER JOIN TESTS ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID WHERE (LocalDrivingLicenseApplicationID = @LDLAppID AND TestTypeID = @TestTypeID) AND TestResult = 0";
             

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -87,11 +88,12 @@ namespace PresentationLayer
 
             if (LicenseDetails.PersonInfo.ImagePath != "")
             {
-                pbPersonPhoto.Image = Image.FromFile(LicenseDetails.PersonInfo.ImagePath);
+                pbPersonPhoto.Image = Image.FromFile(clsUtils.GetProfileImage(LicenseDetails.PersonInfo.ImagePath));
             }
             else
             {
-                pbPersonPhoto.Image = Image.FromFile("E:\\Downloads\\WebDev\\Projects\\DVL\\Assets\\user1.png");
+                pbPersonPhoto.Image = Properties.Resources.user1;
+
             }
         }
     }

@@ -17,7 +17,7 @@ namespace DataLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Users.UserID, CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS FullName, Users.UserName, Users.IsActive FROM Users INNER JOIN People ON Users.PersonID = People.PersonID";
 
@@ -53,7 +53,7 @@ namespace DataLayer
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT PersonID, UserName, Password, IsActive FROM Users WHERE UserID = @UserID";
 
@@ -100,7 +100,7 @@ namespace DataLayer
             
             string HashedPassword = BCrypt.Net.BCrypt.HashPassword(Password);
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO Users (PersonID, UserName, Password, IsActive) VALUES (@PersonID, @UserName, @Password, @IsActive); Select SCOPE_IDENTITY();";
 
@@ -139,7 +139,7 @@ namespace DataLayer
         public static bool UpdateUser(int UserID, string UserName, bool IsActive)
         {
             int RowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update Users 
@@ -173,7 +173,7 @@ namespace DataLayer
         public static bool DeleteUser(int UserID)
         {
             int RowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"DELETE FROM Users
                                 WHERE UserID = @UserID;";
@@ -207,7 +207,7 @@ namespace DataLayer
 
             string HashedPassword = BCrypt.Net.BCrypt.HashPassword(NewPassword);
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query =
                     @"Update Users 
@@ -243,7 +243,7 @@ namespace DataLayer
             
             bool AreCredentialsCorrect = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Password, UserID FROM Users WHERE UserName = @UserName";
 
@@ -285,7 +285,7 @@ namespace DataLayer
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Found = 1 FROM Users WHERE UserName = @UserName And IsActive = 1";
 
@@ -317,7 +317,7 @@ namespace DataLayer
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Found = 1 FROM Users WHERE PersonID = @PersonID";
 
@@ -349,7 +349,7 @@ namespace DataLayer
         {
             bool IsFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT Found = 1 FROM Users WHERE UserName = @UserName";
 
