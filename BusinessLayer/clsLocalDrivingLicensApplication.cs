@@ -124,11 +124,6 @@ namespace BusinessLayer
             }
         }
 
-        //public static bool CancelLocalDrivingLicenseApplication(int PersonID, int ClassID)
-        //{
-        //    return clsApplicationsDataAccess.CreateLocalDrivingLicenseApplication(PersonID, ClassID);
-        //}
-
         public static DataTable GetLocalDrivingLicenseApplications()
         {
             return clsApplicationsDataAccess.GetLocalDrivingLicenseApplications();

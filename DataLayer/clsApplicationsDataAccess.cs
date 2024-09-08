@@ -419,37 +419,6 @@ namespace DataLayer
 
             return LocalDrivingLicenseID;
         }
-        //public static bool CancelApplication(int LDLApplicationID)
-        //{
-        //    int rowsAffected = 0;
-        //    SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-
-        //    string query = @"UPDATE Applications
-        //                    SET ApplicationStatus = 2
-        //                    WHERE ApplicationID = (SELECT ApplicationID FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LDLApplicationID)";
-
-        //    SqlCommand cmd = new SqlCommand(query, connection);
-
-        //    cmd.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
-
-
-        //    try
-        //    {
-        //        connection.Open();
-        //        rowsAffected = cmd.ExecuteNonQuery();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //Console.WriteLine("Error: " + ex.Message);
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-
-        //    return (rowsAffected > 0);
-        //}
 
         public static DataTable GetLocalDrivingLicenseApplications()
         {

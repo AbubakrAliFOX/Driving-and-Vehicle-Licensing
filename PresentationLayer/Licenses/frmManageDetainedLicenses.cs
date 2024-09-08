@@ -40,6 +40,7 @@ namespace PresentationLayer
                 dgv.Columns["FullName"].HeaderText = "Full Name";
                 dgv.Columns["ReleaseApplicationID"].HeaderText = "Release.App.ID";
 
+                clsUtils.dgvWidth = dgv.Width - dgv.RowHeadersWidth;
 
                 dgv.Columns["DetainID"].Width = clsUtils.SetCellWidth(10);
                 dgv.Columns["LicenseID"].Width = clsUtils.SetCellWidth(10);

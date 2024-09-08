@@ -31,10 +31,12 @@ namespace PresentationLayer
 
             if (dgv != null && dgv.RowCount > 0)
             {
-                dgv.Columns["ID"].Width = clsUtils.SetSmallCellWidth(10);
-                dgv.Columns["Title"].Width = clsUtils.SetSmallCellWidth(25);
-                dgv.Columns["Description"].Width = clsUtils.SetSmallCellWidth(40);
-                dgv.Columns["Fees"].Width = clsUtils.SetSmallCellWidth(25);
+                clsUtils.dgvWidth = dgv.Width - dgv.RowHeadersWidth;
+
+                dgv.Columns["ID"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["Title"].Width = clsUtils.SetCellWidth(25);
+                dgv.Columns["Description"].Width = clsUtils.SetCellWidth(40);
+                dgv.Columns["Fees"].Width = clsUtils.SetCellWidth(25);
 
             }
         }

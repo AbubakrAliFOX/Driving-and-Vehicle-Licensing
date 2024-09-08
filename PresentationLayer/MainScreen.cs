@@ -89,10 +89,13 @@ namespace PresentationLayer
             DataGridView dgv = ctrlDataPagePeople.Controls.OfType<DataGridView>().FirstOrDefault();
             if (dgv != null && dgv.RowCount > 0)
             {
+
                 dgv.Columns["PersonID"].HeaderText = "Person ID";
                 dgv.Columns["NationalNo"].HeaderText = "National No";
                 dgv.Columns["FullName"].HeaderText = "Full Name";
                 dgv.Columns["DateOfBirth"].HeaderText = "Birth Date";
+
+                clsUtils.dgvWidth = dgv.Width - dgv.RowHeadersWidth;
 
                 dgv.Columns["PersonID"].Width = clsUtils.SetCellWidth(10);
                 dgv.Columns["NationalNo"].Width = clsUtils.SetCellWidth(10);
@@ -119,6 +122,8 @@ namespace PresentationLayer
                 dgv.Columns["CreatedByUser"].HeaderText = "Created By User";
                 dgv.Columns["ActiveLicences"].HeaderText = "Active Licenses";
 
+                clsUtils.dgvWidth = dgv.Width - dgv.RowHeadersWidth;
+
                 dgv.Columns["DriverID"].Width = clsUtils.SetCellWidth(15);
                 dgv.Columns["FullName"].Width = clsUtils.SetCellWidth(30);
                 dgv.Columns["NationalNo"].Width = clsUtils.SetCellWidth(15);
@@ -139,6 +144,8 @@ namespace PresentationLayer
                 dgv.Columns["FullName"].HeaderText = "Full Name";
                 dgv.Columns["UserName"].HeaderText = "User Name";
                 dgv.Columns["IsActive"].HeaderText = "Is Active";
+
+                clsUtils.dgvWidth = dgv.Width - dgv.RowHeadersWidth;
 
                 dgv.Columns["UserID"].Width = clsUtils.SetCellWidth(20);
                 dgv.Columns["FullName"].Width = clsUtils.SetCellWidth(30);
@@ -193,13 +200,11 @@ namespace PresentationLayer
         private void cmsApplicationOptions_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
             ctrlApplicationsMenuButton.Reset();
-
         }
 
         private void cmsApplicationOptions_Opened(object sender, EventArgs e)
         {
             ctrlApplicationsMenuButton.Selected();
-
         }
 
         private void cmsSettings_Opened(object sender, EventArgs e)

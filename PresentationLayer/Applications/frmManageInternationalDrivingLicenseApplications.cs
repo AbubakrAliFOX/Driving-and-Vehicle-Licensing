@@ -38,6 +38,8 @@ namespace PresentationLayer
                 dgv.Columns["ExpirationDate"].HeaderText = "Expiration Date";
                 dgv.Columns["IsActive"].HeaderText = "Is Active";
 
+                clsUtils.dgvWidth = dgv.Width - dgv.RowHeadersWidth;
+
                 dgv.Columns["Int.LicenseID"].Width = clsUtils.SetCellWidth(12);
                 dgv.Columns["L.LicenseID"].Width = clsUtils.SetCellWidth(12);
                 dgv.Columns["ApplicationID"].Width = clsUtils.SetCellWidth(12);

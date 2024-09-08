@@ -38,6 +38,8 @@ namespace PresentationLayer
                 dgv.Columns["PassedTests"].HeaderText = "Passed Tests";
                 dgv.Columns["ApplicationStatus"].HeaderText = "Application Status";
 
+                clsUtils.dgvWidth = dgv.Width - dgv.RowHeadersWidth;
+
                 dgv.Columns["L.D.L.AppID"].Width = clsUtils.SetCellWidth(10);
                 dgv.Columns["DrivingClass"].Width = clsUtils.SetCellWidth(20);
                 dgv.Columns["NationalNo"].Width = clsUtils.SetCellWidth(10);

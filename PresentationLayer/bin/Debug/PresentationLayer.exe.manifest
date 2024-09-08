@@ -79,14 +79,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PresentationLayer.exe" size="383984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PresentationLayer.exe" size="384496">
       <assemblyIdentity name="PresentationLayer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>k4TbFyYbMuP1Of5Ac3ZMLqdH2MRxYEMdNFqh/U0u9Cs=</dsig:DigestValue>
+        <dsig:DigestValue>GOYeM/pp0XTq3wUhasv6Z04mBuQSKXFymYWQaMwJTQY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
