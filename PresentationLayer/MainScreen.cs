@@ -23,6 +23,7 @@ namespace PresentationLayer
             _frmLogin = LoginForm;
 
             InitializeControls();
+
         }
 
         private void InitializeControls()
@@ -86,18 +87,22 @@ namespace PresentationLayer
         private void FormatPeopleLayout()
         {
             DataGridView dgv = ctrlDataPagePeople.Controls.OfType<DataGridView>().FirstOrDefault();
-            if (dgv != null)
+            if (dgv != null && dgv.RowCount > 0)
             {
                 dgv.Columns["PersonID"].HeaderText = "Person ID";
                 dgv.Columns["NationalNo"].HeaderText = "National No";
                 dgv.Columns["FullName"].HeaderText = "Full Name";
                 dgv.Columns["DateOfBirth"].HeaderText = "Birth Date";
 
-                dgv.Columns["FullName"].Width = 220;
-                dgv.Columns["NationalNo"].Width = 120;
-                dgv.Columns["DateOfBirth"].Width = 120;
-                dgv.Columns["Email"].Width = 150;
-                dgv.Columns["Address"].Width = 120;
+                dgv.Columns["PersonID"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["NationalNo"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["FullName"].Width = clsUtils.SetCellWidth(20);
+                dgv.Columns["DateOfBirth"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["Nationality"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["Gender"].Width = clsUtils.SetCellWidth(9);
+                dgv.Columns["Address"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["Phone"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["Email"].Width = clsUtils.SetCellWidth(10);
 
                 dgv.ContextMenuStrip = cmsPeople;
             }
@@ -105,7 +110,7 @@ namespace PresentationLayer
         private void FormatDriverLayout()
         {
             DataGridView dgv = ctrlDataPageDrivers.Controls.OfType<DataGridView>().FirstOrDefault();
-            if (dgv != null)
+            if (dgv != null && dgv.RowCount > 0)
             {
                 dgv.Columns["DriverID"].HeaderText = "Driver ID";
                 dgv.Columns["NationalNo"].HeaderText = "National No";
@@ -114,12 +119,12 @@ namespace PresentationLayer
                 dgv.Columns["CreatedByUser"].HeaderText = "Created By User";
                 dgv.Columns["ActiveLicences"].HeaderText = "Active Licenses";
 
-                dgv.Columns["DriverID"].Width = 130;
-                dgv.Columns["FullName"].Width = 400;
-                dgv.Columns["NationalNo"].Width = 120;
-                dgv.Columns["CreatedDate"].Width = 193;
-                dgv.Columns["CreatedByUser"].Width = 180;
-                dgv.Columns["ActiveLicences"].Width = 130;
+                dgv.Columns["DriverID"].Width = clsUtils.SetCellWidth(15);
+                dgv.Columns["FullName"].Width = clsUtils.SetCellWidth(30);
+                dgv.Columns["NationalNo"].Width = clsUtils.SetCellWidth(15);
+                dgv.Columns["CreatedDate"].Width = clsUtils.SetCellWidth(15);
+                dgv.Columns["CreatedByUser"].Width = clsUtils.SetCellWidth(15);
+                dgv.Columns["ActiveLicences"].Width = clsUtils.SetCellWidth(10);
 
                 dgv.ContextMenuStrip = cmsDrivers;
             }
@@ -128,17 +133,17 @@ namespace PresentationLayer
         private void FormatUserLayout()
         {
             DataGridView dgv = ctrlDataPageUsers.Controls.OfType<DataGridView>().FirstOrDefault();
-            if (dgv != null)
+            if (dgv != null && dgv.RowCount > 0)
             {
                 dgv.Columns["UserID"].HeaderText = "User ID";
                 dgv.Columns["FullName"].HeaderText = "Full Name";
                 dgv.Columns["UserName"].HeaderText = "User Name";
                 dgv.Columns["IsActive"].HeaderText = "Is Active";
 
-                dgv.Columns["UserID"].Width = 130;
-                dgv.Columns["FullName"].Width = 450;
-                dgv.Columns["Username"].Width = 180;
-                dgv.Columns["IsActive"].Width = 180;
+                dgv.Columns["UserID"].Width = clsUtils.SetCellWidth(20);
+                dgv.Columns["FullName"].Width = clsUtils.SetCellWidth(30);
+                dgv.Columns["Username"].Width = clsUtils.SetCellWidth(30);
+                dgv.Columns["IsActive"].Width = clsUtils.SetCellWidth(20);
 
                 dgv.ContextMenuStrip = cmsUsers;
             }
@@ -161,11 +166,13 @@ namespace PresentationLayer
         {
             frmAddEditPerson addNewPersonForm = new frmAddEditPerson();
             addNewPersonForm.ShowDialog();
+            ctrlDataPagePeople.RefreshData();
         }
         private void tsmEdit_Click(object sender, EventArgs e)
         {
             frmAddEditPerson addNewPersonForm = new frmAddEditPerson((int)ctrlDataPagePeople.dgv.CurrentRow.Cells[0].Value);
             addNewPersonForm.ShowDialog();
+            ctrlDataPagePeople.RefreshData();
         }
         private void tsmDelete_Click(object sender, EventArgs e)
         {
@@ -176,9 +183,11 @@ namespace PresentationLayer
                     MessageBox.Show("Successfully Deleted!", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ctrlDataPagePeople.RefreshData();
                 }
-            } else { 
-                MessageBox.Show("This person is associated with other data. He can't be deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                else
+                {
+                    MessageBox.Show("This person is associated with other data. He can't be deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } 
         }
 
         private void cmsApplicationOptions_Closed(object sender, ToolStripDropDownClosedEventArgs e)
@@ -301,7 +310,7 @@ namespace PresentationLayer
         {
             frmAddEditUser NewUser = new frmAddEditUser();
             NewUser.ShowDialog();
-            //ctrlDataPageUsers.RefreshData();
+            ctrlDataPageUsers.RefreshData();
         }
 
         private void tsmUserInformation_Click(object sender, EventArgs e)
@@ -367,6 +376,10 @@ namespace PresentationLayer
             frmLicenseHistory History = new frmLicenseHistory((string)ctrlDataPageDrivers.dgv.CurrentRow.Cells[1].Value);
             History.ShowDialog();
             ctrlDataPageDrivers.RefreshData();
+        }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
         }
     }
 }

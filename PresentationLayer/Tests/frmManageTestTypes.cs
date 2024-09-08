@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,12 +29,12 @@ namespace PresentationLayer
         {
             RefreshData();
 
-            if (dgv != null)
+            if (dgv != null && dgv.RowCount > 0)
             {
-                dgv.Columns["ID"].Width = 100;
-                dgv.Columns["Title"].Width = 190;
-                dgv.Columns["Description"].Width = 300;
-                dgv.Columns["Fees"].Width = 100;
+                dgv.Columns["ID"].Width = clsUtils.SetSmallCellWidth(10);
+                dgv.Columns["Title"].Width = clsUtils.SetSmallCellWidth(25);
+                dgv.Columns["Description"].Width = clsUtils.SetSmallCellWidth(40);
+                dgv.Columns["Fees"].Width = clsUtils.SetSmallCellWidth(25);
 
             }
         }

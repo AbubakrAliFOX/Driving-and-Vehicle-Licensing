@@ -52,7 +52,7 @@ namespace PresentationLayer
             lblPersonID.Text = personInfo.ID.ToString();
             lblName.Text = $"{personInfo.FirstName} {personInfo.LastName}";
             lblNationalNumber.Text = personInfo.NationalNumber;
-            lblGender.Text = personInfo.Gender == 1 ? "Female" : "Male";
+            lblGender.Text = personInfo.Gender.ToString();
             lblEmail.Text = personInfo.Email;
             lblPhone.Text = personInfo.Phone;
             lblAddress.Text = personInfo.Address;

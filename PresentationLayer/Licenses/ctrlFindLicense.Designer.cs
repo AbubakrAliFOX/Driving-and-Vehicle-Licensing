@@ -42,9 +42,11 @@
             this.gbFilter.Controls.Add(this.pbSearch);
             this.gbFilter.Controls.Add(this.tbSearch);
             this.gbFilter.Controls.Add(this.label1);
-            this.gbFilter.Location = new System.Drawing.Point(12, 13);
+            this.gbFilter.Location = new System.Drawing.Point(9, 11);
+            this.gbFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(754, 100);
+            this.gbFilter.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbFilter.Size = new System.Drawing.Size(566, 81);
             this.gbFilter.TabIndex = 20;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
@@ -52,46 +54,51 @@
             // pbSearch
             // 
             this.pbSearch.Image = global::PresentationLayer.Properties.Resources.magnifying_glass;
-            this.pbSearch.Location = new System.Drawing.Point(450, 42);
+            this.pbSearch.Location = new System.Drawing.Point(338, 34);
+            this.pbSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbSearch.Name = "pbSearch";
-            this.pbSearch.Size = new System.Drawing.Size(32, 32);
+            this.pbSearch.Size = new System.Drawing.Size(35, 35);
             this.pbSearch.TabIndex = 13;
             this.pbSearch.TabStop = false;
             this.pbSearch.Click += new System.EventHandler(this.pbSearch_Click);
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(136, 48);
+            this.tbSearch.Location = new System.Drawing.Point(102, 39);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(297, 22);
+            this.tbSearch.Size = new System.Drawing.Size(224, 20);
             this.tbSearch.TabIndex = 12;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 42);
+            this.label1.Location = new System.Drawing.Point(11, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 28);
+            this.label1.Size = new System.Drawing.Size(95, 23);
             this.label1.TabIndex = 10;
             this.label1.Text = "License ID:";
             // 
             // ctrlDriverLicense1
             // 
             this.ctrlDriverLicense1.LicenseInfo = null;
-            this.ctrlDriverLicense1.Location = new System.Drawing.Point(12, 129);
+            this.ctrlDriverLicense1.Location = new System.Drawing.Point(9, 105);
+            this.ctrlDriverLicense1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ctrlDriverLicense1.Name = "ctrlDriverLicense1";
-            this.ctrlDriverLicense1.Size = new System.Drawing.Size(754, 377);
+            this.ctrlDriverLicense1.Size = new System.Drawing.Size(566, 306);
             this.ctrlDriverLicense1.TabIndex = 21;
             // 
             // ctrlFindLicense
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ctrlDriverLicense1);
             this.Controls.Add(this.gbFilter);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ctrlFindLicense";
-            this.Size = new System.Drawing.Size(785, 522);
+            this.Size = new System.Drawing.Size(589, 424);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).EndInit();

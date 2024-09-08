@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,15 +17,15 @@ namespace PresentationLayer
         public ctrlDataPage()
         {
             InitializeComponent();
-
-            FormatStyles();
         }
         private void FormatStyles()
         {
             //this.Location = new System.Drawing.Point(256, 0);
             //this.Size = new System.Drawing.Size(1010, 478);
-            //this.Visible = false;
-            this.DataGridView.RowHeadersWidth = 30;
+            //this.Visible = true;
+            this.DataGridView.RowHeadersWidth = 27;
+            //SetDataPageRelativeSize();
+            //SetDgvRelativeSize();
         }
 
         public delegate void DataBackEventHandler(object sender, EventArgs e);
@@ -131,6 +132,29 @@ namespace PresentationLayer
         private void ctrlSearchBar1_FilterChanged(object sender, EventArgs e)
         {
             RefreshRecordsNumber();
+        }
+
+        //private void SetDataPageRelativeSize ()
+        //{
+        //    int NewWidth = Convert.ToInt32(Math.Ceiling(((float)84 / 100) * this.Parent.Size.Width));
+        //    int NewHeight = Convert.ToInt32(Math.Ceiling(((float)100 / 100) * this.Parent.Size.Height));
+        //    //this.Location = new System.Drawing.Point(1, 1);
+
+        //    clsUtils.SetSize(this, NewWidth, NewHeight);
+        //}
+
+        //private void SetDgvRelativeSize()
+        //{
+        //    int NewWidth = Convert.ToInt32(Math.Ceiling(((float)94 / 100) * this.Size.Width));
+        //    int NewHeight = Convert.ToInt32(Math.Ceiling(((float)64 / 100) * this.Size.Height));
+
+        //    clsUtils.SetSize(DataGridView, NewWidth, NewHeight);
+        //}
+
+
+        private void ctrlDataPage_Load(object sender, EventArgs e)
+        {
+            FormatStyles();
         }
     }
 }

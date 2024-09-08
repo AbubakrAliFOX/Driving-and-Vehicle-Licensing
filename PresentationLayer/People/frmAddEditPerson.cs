@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 using PresentationLayer.Global_Classes;
+using static BusinessLayer.clsPerson;
 
 
 namespace PresentationLayer
@@ -85,11 +86,11 @@ namespace PresentationLayer
                 tbThirdName.Text = PersonDetails.ThirdName;
                 tbLastName.Text = PersonDetails.LastName;
 
-                if (PersonDetails.Gender == 0)
+                if (PersonDetails.Gender.ToString() == "Male")
                 {
                     rbMale.Checked = true;
                 }
-                else if (PersonDetails.Gender == 1)
+                else 
                 {
                     rbFemale.Checked = true;
                 }
@@ -143,7 +144,7 @@ namespace PresentationLayer
             PersonDetails.ThirdName = tbThirdName.Text;
             PersonDetails.LastName = tbLastName.Text;
 
-            PersonDetails.Gender = rbMale.Checked ? (byte)0 : (byte)1;
+            PersonDetails.Gender = rbMale.Checked ? (enGender)1 : (enGender)0;
             PersonDetails.DateOfBirth = dtpDateTime.Value;
             PersonDetails.Email = tbEmail.Text;
             PersonDetails.Address = tbAddress.Text;

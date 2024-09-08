@@ -80,13 +80,13 @@ namespace PresentationLayer
             this.ctrlSettingsMenuButton = new PresentationLayer.ctrlMenuButton();
             this.ctrlApplicationsMenuButton = new PresentationLayer.ctrlMenuButton();
             this.ctrlUsersMenuButton = new PresentationLayer.ctrlMenuButton();
-            this.ctrlDataPageUsers = new PresentationLayer.ctrlDataPage();
             this.ctrlDriversMenuButton = new PresentationLayer.ctrlMenuButton();
-            this.ctrlDataPageDrivers = new PresentationLayer.ctrlDataPage();
             this.ctrlPeopleMenuButton = new PresentationLayer.ctrlMenuButton();
-            this.ctrlDataPagePeople = new PresentationLayer.ctrlDataPage();
             this.pbOff = new System.Windows.Forms.PictureBox();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
+            this.ctrlDataPageUsers = new PresentationLayer.ctrlDataPage();
+            this.ctrlDataPageDrivers = new PresentationLayer.ctrlDataPage();
+            this.ctrlDataPagePeople = new PresentationLayer.ctrlDataPage();
             this.cmsDrivers.SuspendLayout();
             this.cmsPeople.SuspendLayout();
             this.cmsApplicationOptions.SuspendLayout();
@@ -105,28 +105,28 @@ namespace PresentationLayer
             this.toolStripSeparator1,
             this.tsmLicHistory});
             this.cmsDrivers.Name = "cmsDrivers";
-            this.cmsDrivers.Size = new System.Drawing.Size(243, 94);
+            this.cmsDrivers.Size = new System.Drawing.Size(210, 62);
             // 
             // tsmDriverInfo
             // 
             this.tsmDriverInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmDriverInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmDriverInfo.Image")));
             this.tsmDriverInfo.Name = "tsmDriverInfo";
-            this.tsmDriverInfo.Size = new System.Drawing.Size(242, 28);
+            this.tsmDriverInfo.Size = new System.Drawing.Size(209, 26);
             this.tsmDriverInfo.Text = "Show Details";
             this.tsmDriverInfo.Click += new System.EventHandler(this.tsmDriverInfo_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(281, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(206, 6);
             // 
             // tsmLicHistory
             // 
             this.tsmLicHistory.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmLicHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsmLicHistory.Image")));
             this.tsmLicHistory.Name = "tsmLicHistory";
-            this.tsmLicHistory.Size = new System.Drawing.Size(284, 28);
+            this.tsmLicHistory.Size = new System.Drawing.Size(209, 26);
             this.tsmLicHistory.Text = "Show License History";
             this.tsmLicHistory.Click += new System.EventHandler(this.tsmLicHistory_Click);
             // 
@@ -140,7 +140,7 @@ namespace PresentationLayer
             this.tsmEdit,
             this.tsmDelete});
             this.cmsPeople.Name = "cmsPeople";
-            this.cmsPeople.Size = new System.Drawing.Size(210, 122);
+            this.cmsPeople.Size = new System.Drawing.Size(182, 114);
             // 
             // tsmPersonInfo
             // 
@@ -148,21 +148,21 @@ namespace PresentationLayer
             this.tsmPersonInfo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tsmPersonInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmPersonInfo.Image")));
             this.tsmPersonInfo.Name = "tsmPersonInfo";
-            this.tsmPersonInfo.Size = new System.Drawing.Size(209, 28);
+            this.tsmPersonInfo.Size = new System.Drawing.Size(181, 26);
             this.tsmPersonInfo.Text = "Show Details";
             this.tsmPersonInfo.Click += new System.EventHandler(this.tsmPersonInfo_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(206, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(178, 6);
             // 
             // tsmAdd
             // 
             this.tsmAdd.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsmAdd.Image")));
             this.tsmAdd.Name = "tsmAdd";
-            this.tsmAdd.Size = new System.Drawing.Size(209, 28);
+            this.tsmAdd.Size = new System.Drawing.Size(181, 26);
             this.tsmAdd.Text = "Add New Person";
             this.tsmAdd.Click += new System.EventHandler(this.tsmAdd_Click);
             // 
@@ -171,7 +171,7 @@ namespace PresentationLayer
             this.tsmEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmEdit.Image")));
             this.tsmEdit.Name = "tsmEdit";
-            this.tsmEdit.Size = new System.Drawing.Size(209, 28);
+            this.tsmEdit.Size = new System.Drawing.Size(181, 26);
             this.tsmEdit.Text = "Edit";
             this.tsmEdit.Click += new System.EventHandler(this.tsmEdit_Click);
             // 
@@ -180,7 +180,7 @@ namespace PresentationLayer
             this.tsmDelete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsmDelete.Image")));
             this.tsmDelete.Name = "tsmDelete";
-            this.tsmDelete.Size = new System.Drawing.Size(209, 28);
+            this.tsmDelete.Size = new System.Drawing.Size(181, 26);
             this.tsmDelete.Text = "Delete";
             this.tsmDelete.Click += new System.EventHandler(this.tsmDelete_Click);
             // 
@@ -197,7 +197,7 @@ namespace PresentationLayer
             this.toolStripSeparator3,
             this.tsmHidden});
             this.cmsApplicationOptions.Name = "cmsApplicationOptions";
-            this.cmsApplicationOptions.Size = new System.Drawing.Size(378, 250);
+            this.cmsApplicationOptions.Size = new System.Drawing.Size(324, 250);
             this.cmsApplicationOptions.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.cmsApplicationOptions_Closed);
             this.cmsApplicationOptions.Opened += new System.EventHandler(this.cmsApplicationOptions_Opened);
             // 
@@ -215,7 +215,7 @@ namespace PresentationLayer
             this.tsmDrivingLicenseServices.ImageTransparentColor = System.Drawing.Color.White;
             this.tsmDrivingLicenseServices.Name = "tsmDrivingLicenseServices";
             this.tsmDrivingLicenseServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tsmDrivingLicenseServices.Size = new System.Drawing.Size(377, 40);
+            this.tsmDrivingLicenseServices.Size = new System.Drawing.Size(323, 40);
             this.tsmDrivingLicenseServices.Text = "Driving Licenses Services";
             // 
             // newDrivingLicenseToolStripMenuItem1
@@ -224,53 +224,53 @@ namespace PresentationLayer
             this.localDrivingLicenseToolStripMenuItem,
             this.internationalDrivingLicenseToolStripMenuItem});
             this.newDrivingLicenseToolStripMenuItem1.Name = "newDrivingLicenseToolStripMenuItem1";
-            this.newDrivingLicenseToolStripMenuItem1.Size = new System.Drawing.Size(449, 36);
+            this.newDrivingLicenseToolStripMenuItem1.Size = new System.Drawing.Size(369, 30);
             this.newDrivingLicenseToolStripMenuItem1.Text = "New Driving License";
             // 
             // localDrivingLicenseToolStripMenuItem
             // 
             this.localDrivingLicenseToolStripMenuItem.Name = "localDrivingLicenseToolStripMenuItem";
-            this.localDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(313, 36);
+            this.localDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(259, 30);
             this.localDrivingLicenseToolStripMenuItem.Text = "Local License";
             this.localDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.localDrivingLicenseToolStripMenuItem_Click);
             // 
             // internationalDrivingLicenseToolStripMenuItem
             // 
             this.internationalDrivingLicenseToolStripMenuItem.Name = "internationalDrivingLicenseToolStripMenuItem";
-            this.internationalDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(313, 36);
+            this.internationalDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(259, 30);
             this.internationalDrivingLicenseToolStripMenuItem.Text = "International License";
             this.internationalDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.internationalDrivingLicenseToolStripMenuItem_Click);
             // 
             // tsmRenewDrivingLicense
             // 
             this.tsmRenewDrivingLicense.Name = "tsmRenewDrivingLicense";
-            this.tsmRenewDrivingLicense.Size = new System.Drawing.Size(449, 36);
+            this.tsmRenewDrivingLicense.Size = new System.Drawing.Size(369, 30);
             this.tsmRenewDrivingLicense.Text = "Renew Driving License";
             this.tsmRenewDrivingLicense.Click += new System.EventHandler(this.tsmRenewDrivingLicense_Click);
             // 
             // tsmReplacement
             // 
             this.tsmReplacement.Name = "tsmReplacement";
-            this.tsmReplacement.Size = new System.Drawing.Size(449, 36);
+            this.tsmReplacement.Size = new System.Drawing.Size(369, 30);
             this.tsmReplacement.Text = "Replacement (Lost / Damaged)";
             this.tsmReplacement.Click += new System.EventHandler(this.tsmReplacement_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(446, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(366, 6);
             // 
             // tsmReleaseDetainedDrivingLicenses
             // 
             this.tsmReleaseDetainedDrivingLicenses.Name = "tsmReleaseDetainedDrivingLicenses";
-            this.tsmReleaseDetainedDrivingLicenses.Size = new System.Drawing.Size(449, 36);
+            this.tsmReleaseDetainedDrivingLicenses.Size = new System.Drawing.Size(369, 30);
             this.tsmReleaseDetainedDrivingLicenses.Text = "Release Detained Driving Licenses";
             this.tsmReleaseDetainedDrivingLicenses.Click += new System.EventHandler(this.tsmReleaseDetainedDrivingLicenses_Click);
             // 
             // tsmRetakeTest
             // 
             this.tsmRetakeTest.Name = "tsmRetakeTest";
-            this.tsmRetakeTest.Size = new System.Drawing.Size(449, 36);
+            this.tsmRetakeTest.Size = new System.Drawing.Size(369, 30);
             this.tsmRetakeTest.Text = "Retake Test";
             this.tsmRetakeTest.Click += new System.EventHandler(this.tsmRetakeTest_Click);
             // 
@@ -281,20 +281,20 @@ namespace PresentationLayer
             this.tsmInternationalDrivingLicenseApplicationsToolStripMenuItem});
             this.tsmManageApplicationsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tsmManageApplicationsToolStripMenuItem.Image")));
             this.tsmManageApplicationsToolStripMenuItem.Name = "tsmManageApplicationsToolStripMenuItem";
-            this.tsmManageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(377, 40);
+            this.tsmManageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(323, 40);
             this.tsmManageApplicationsToolStripMenuItem.Text = "Manage Applications";
             // 
             // tsmLocalDrivingLicenseApplicationsToolStripMenuItem
             // 
             this.tsmLocalDrivingLicenseApplicationsToolStripMenuItem.Name = "tsmLocalDrivingLicenseApplicationsToolStripMenuItem";
-            this.tsmLocalDrivingLicenseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(527, 36);
+            this.tsmLocalDrivingLicenseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(434, 30);
             this.tsmLocalDrivingLicenseApplicationsToolStripMenuItem.Text = "Local Driving License Applications";
             this.tsmLocalDrivingLicenseApplicationsToolStripMenuItem.Click += new System.EventHandler(this.tsmLocalDrivingLicenseApplicationsToolStripMenuItem_Click);
             // 
             // tsmInternationalDrivingLicenseApplicationsToolStripMenuItem
             // 
             this.tsmInternationalDrivingLicenseApplicationsToolStripMenuItem.Name = "tsmInternationalDrivingLicenseApplicationsToolStripMenuItem";
-            this.tsmInternationalDrivingLicenseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(527, 36);
+            this.tsmInternationalDrivingLicenseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(434, 30);
             this.tsmInternationalDrivingLicenseApplicationsToolStripMenuItem.Text = "International Driving License Applications";
             this.tsmInternationalDrivingLicenseApplicationsToolStripMenuItem.Click += new System.EventHandler(this.tsmInternationalDrivingLicenseApplicationsToolStripMenuItem_Click);
             // 
@@ -306,27 +306,27 @@ namespace PresentationLayer
             this.releaseDetainedLicenseToolStripMenuItem});
             this.tsmDetainLicensesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tsmDetainLicensesToolStripMenuItem.Image")));
             this.tsmDetainLicensesToolStripMenuItem.Name = "tsmDetainLicensesToolStripMenuItem";
-            this.tsmDetainLicensesToolStripMenuItem.Size = new System.Drawing.Size(377, 40);
+            this.tsmDetainLicensesToolStripMenuItem.Size = new System.Drawing.Size(323, 40);
             this.tsmDetainLicensesToolStripMenuItem.Text = "Detain Licenses";
             // 
             // manageDetainedLicensesToolStripMenuItem
             // 
             this.manageDetainedLicensesToolStripMenuItem.Name = "manageDetainedLicensesToolStripMenuItem";
-            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(376, 36);
+            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(309, 30);
             this.manageDetainedLicensesToolStripMenuItem.Text = "Manage Detained Licenses";
             this.manageDetainedLicensesToolStripMenuItem.Click += new System.EventHandler(this.manageDetainedLicensesToolStripMenuItem_Click);
             // 
             // detainLicenseToolStripMenuItem
             // 
             this.detainLicenseToolStripMenuItem.Name = "detainLicenseToolStripMenuItem";
-            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(376, 36);
+            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(309, 30);
             this.detainLicenseToolStripMenuItem.Text = "Detain License";
             this.detainLicenseToolStripMenuItem.Click += new System.EventHandler(this.detainLicenseToolStripMenuItem_Click);
             // 
             // releaseDetainedLicenseToolStripMenuItem
             // 
             this.releaseDetainedLicenseToolStripMenuItem.Name = "releaseDetainedLicenseToolStripMenuItem";
-            this.releaseDetainedLicenseToolStripMenuItem.Size = new System.Drawing.Size(376, 36);
+            this.releaseDetainedLicenseToolStripMenuItem.Size = new System.Drawing.Size(309, 30);
             this.releaseDetainedLicenseToolStripMenuItem.Text = "Release Detained License";
             this.releaseDetainedLicenseToolStripMenuItem.Click += new System.EventHandler(this.releaseDetainedLicenseToolStripMenuItem_Click);
             // 
@@ -334,7 +334,7 @@ namespace PresentationLayer
             // 
             this.tsmManageApplicationTypes.Image = ((System.Drawing.Image)(resources.GetObject("tsmManageApplicationTypes.Image")));
             this.tsmManageApplicationTypes.Name = "tsmManageApplicationTypes";
-            this.tsmManageApplicationTypes.Size = new System.Drawing.Size(377, 40);
+            this.tsmManageApplicationTypes.Size = new System.Drawing.Size(323, 40);
             this.tsmManageApplicationTypes.Text = "Manage Application Types";
             this.tsmManageApplicationTypes.Click += new System.EventHandler(this.tsmManageApplicationTypes_Click);
             // 
@@ -342,14 +342,14 @@ namespace PresentationLayer
             // 
             this.tsmManageTestTypes.Image = ((System.Drawing.Image)(resources.GetObject("tsmManageTestTypes.Image")));
             this.tsmManageTestTypes.Name = "tsmManageTestTypes";
-            this.tsmManageTestTypes.Size = new System.Drawing.Size(377, 40);
+            this.tsmManageTestTypes.Size = new System.Drawing.Size(323, 40);
             this.tsmManageTestTypes.Text = "Manage Test Types";
             this.tsmManageTestTypes.Click += new System.EventHandler(this.tsmManageTestTypes_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(374, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(320, 6);
             // 
             // tsmHidden
             // 
@@ -369,7 +369,7 @@ namespace PresentationLayer
             this.toolStripSeparator5,
             this.tsmHidden1});
             this.cmsSettings.Name = "cmsApplicationOptions";
-            this.cmsSettings.Size = new System.Drawing.Size(286, 170);
+            this.cmsSettings.Size = new System.Drawing.Size(251, 170);
             this.cmsSettings.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.cmsSettings_Closed);
             this.cmsSettings.Opened += new System.EventHandler(this.cmsSettings_Opened);
             // 
@@ -380,7 +380,7 @@ namespace PresentationLayer
             this.tsmUserInfo.ImageTransparentColor = System.Drawing.Color.White;
             this.tsmUserInfo.Name = "tsmUserInfo";
             this.tsmUserInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tsmUserInfo.Size = new System.Drawing.Size(285, 40);
+            this.tsmUserInfo.Size = new System.Drawing.Size(250, 40);
             this.tsmUserInfo.Text = "User Info";
             this.tsmUserInfo.Click += new System.EventHandler(this.tsmUserInfo_Click);
             // 
@@ -388,7 +388,7 @@ namespace PresentationLayer
             // 
             this.tsmChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("tsmChangePassword.Image")));
             this.tsmChangePassword.Name = "tsmChangePassword";
-            this.tsmChangePassword.Size = new System.Drawing.Size(285, 40);
+            this.tsmChangePassword.Size = new System.Drawing.Size(250, 40);
             this.tsmChangePassword.Text = "Change Password";
             this.tsmChangePassword.Click += new System.EventHandler(this.tsmChangePassword_Click);
             // 
@@ -396,14 +396,14 @@ namespace PresentationLayer
             // 
             this.tsmLogout.Image = ((System.Drawing.Image)(resources.GetObject("tsmLogout.Image")));
             this.tsmLogout.Name = "tsmLogout";
-            this.tsmLogout.Size = new System.Drawing.Size(285, 40);
+            this.tsmLogout.Size = new System.Drawing.Size(250, 40);
             this.tsmLogout.Text = "Logout";
             this.tsmLogout.Click += new System.EventHandler(this.tsmLogout_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(282, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(247, 6);
             // 
             // tsmHidden1
             // 
@@ -423,7 +423,7 @@ namespace PresentationLayer
             this.tsmChangeUserPassword,
             this.tsmDeleteUser});
             this.cmsUsers.Name = "cmsPeople";
-            this.cmsUsers.Size = new System.Drawing.Size(228, 150);
+            this.cmsUsers.Size = new System.Drawing.Size(196, 140);
             // 
             // tsmUserInformation
             // 
@@ -431,21 +431,21 @@ namespace PresentationLayer
             this.tsmUserInformation.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tsmUserInformation.Image = ((System.Drawing.Image)(resources.GetObject("tsmUserInformation.Image")));
             this.tsmUserInformation.Name = "tsmUserInformation";
-            this.tsmUserInformation.Size = new System.Drawing.Size(227, 28);
+            this.tsmUserInformation.Size = new System.Drawing.Size(195, 26);
             this.tsmUserInformation.Text = "Show Details";
             this.tsmUserInformation.Click += new System.EventHandler(this.tsmUserInformation_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(224, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(192, 6);
             // 
             // tsmAddUser
             // 
             this.tsmAddUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmAddUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmAddUser.Image")));
             this.tsmAddUser.Name = "tsmAddUser";
-            this.tsmAddUser.Size = new System.Drawing.Size(227, 28);
+            this.tsmAddUser.Size = new System.Drawing.Size(195, 26);
             this.tsmAddUser.Text = "Add New User";
             this.tsmAddUser.Click += new System.EventHandler(this.tsmAddUser_Click);
             // 
@@ -454,7 +454,7 @@ namespace PresentationLayer
             this.tsmEditUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmEditUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmEditUser.Image")));
             this.tsmEditUser.Name = "tsmEditUser";
-            this.tsmEditUser.Size = new System.Drawing.Size(227, 28);
+            this.tsmEditUser.Size = new System.Drawing.Size(195, 26);
             this.tsmEditUser.Text = "Change UserName";
             this.tsmEditUser.Click += new System.EventHandler(this.tsmEditUser_Click);
             // 
@@ -463,7 +463,7 @@ namespace PresentationLayer
             this.tsmChangeUserPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmChangeUserPassword.Image = ((System.Drawing.Image)(resources.GetObject("tsmChangeUserPassword.Image")));
             this.tsmChangeUserPassword.Name = "tsmChangeUserPassword";
-            this.tsmChangeUserPassword.Size = new System.Drawing.Size(227, 28);
+            this.tsmChangeUserPassword.Size = new System.Drawing.Size(195, 26);
             this.tsmChangeUserPassword.Text = "Change Password";
             this.tsmChangeUserPassword.Click += new System.EventHandler(this.tsmChangeUserPassword_Click);
             // 
@@ -472,7 +472,7 @@ namespace PresentationLayer
             this.tsmDeleteUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tsmDeleteUser.Image = ((System.Drawing.Image)(resources.GetObject("tsmDeleteUser.Image")));
             this.tsmDeleteUser.Name = "tsmDeleteUser";
-            this.tsmDeleteUser.Size = new System.Drawing.Size(227, 28);
+            this.tsmDeleteUser.Size = new System.Drawing.Size(195, 26);
             this.tsmDeleteUser.Text = "Delete";
             this.tsmDeleteUser.Click += new System.EventHandler(this.tsmDeleteUser_Click);
             // 
@@ -486,91 +486,73 @@ namespace PresentationLayer
             this.pSideNav.Controls.Add(this.ctrlPeopleMenuButton);
             this.pSideNav.Dock = System.Windows.Forms.DockStyle.Left;
             this.pSideNav.Location = new System.Drawing.Point(0, 0);
+            this.pSideNav.Margin = new System.Windows.Forms.Padding(2);
             this.pSideNav.Name = "pSideNav";
-            this.pSideNav.Size = new System.Drawing.Size(246, 575);
+            this.pSideNav.Size = new System.Drawing.Size(190, 467);
             this.pSideNav.TabIndex = 1;
             // 
             // ctrlSettingsMenuButton
             // 
             this.ctrlSettingsMenuButton.ButtonName = "Settings";
             this.ctrlSettingsMenuButton.IsActive = false;
-            this.ctrlSettingsMenuButton.Location = new System.Drawing.Point(0, 304);
+            this.ctrlSettingsMenuButton.Location = new System.Drawing.Point(0, 247);
+            this.ctrlSettingsMenuButton.Margin = new System.Windows.Forms.Padding(2);
             this.ctrlSettingsMenuButton.Name = "ctrlSettingsMenuButton";
             this.ctrlSettingsMenuButton.Page = null;
-            this.ctrlSettingsMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlSettingsMenuButton.Size = new System.Drawing.Size(190, 62);
             this.ctrlSettingsMenuButton.TabIndex = 4;
             // 
             // ctrlApplicationsMenuButton
             // 
             this.ctrlApplicationsMenuButton.ButtonName = "Applications";
             this.ctrlApplicationsMenuButton.IsActive = false;
-            this.ctrlApplicationsMenuButton.Location = new System.Drawing.Point(0, 228);
+            this.ctrlApplicationsMenuButton.Location = new System.Drawing.Point(0, 185);
+            this.ctrlApplicationsMenuButton.Margin = new System.Windows.Forms.Padding(2);
             this.ctrlApplicationsMenuButton.Name = "ctrlApplicationsMenuButton";
             this.ctrlApplicationsMenuButton.Page = null;
-            this.ctrlApplicationsMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlApplicationsMenuButton.Size = new System.Drawing.Size(190, 62);
             this.ctrlApplicationsMenuButton.TabIndex = 3;
             // 
             // ctrlUsersMenuButton
             // 
             this.ctrlUsersMenuButton.ButtonName = "Users";
             this.ctrlUsersMenuButton.IsActive = false;
-            this.ctrlUsersMenuButton.Location = new System.Drawing.Point(0, 152);
+            this.ctrlUsersMenuButton.Location = new System.Drawing.Point(0, 124);
+            this.ctrlUsersMenuButton.Margin = new System.Windows.Forms.Padding(2);
             this.ctrlUsersMenuButton.Name = "ctrlUsersMenuButton";
             this.ctrlUsersMenuButton.Page = this.ctrlDataPageUsers;
-            this.ctrlUsersMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlUsersMenuButton.Size = new System.Drawing.Size(190, 62);
             this.ctrlUsersMenuButton.TabIndex = 2;
-            // 
-            // ctrlDataPageUsers
-            // 
-            this.ctrlDataPageUsers.Location = new System.Drawing.Point(256, 0);
-            this.ctrlDataPageUsers.Name = "ctrlDataPageUsers";
-            this.ctrlDataPageUsers.Size = new System.Drawing.Size(1246, 575);
-            this.ctrlDataPageUsers.TabIndex = 9;
-            this.ctrlDataPageUsers.Title = "Users";
-            this.ctrlDataPageUsers.Visible = false;
             // 
             // ctrlDriversMenuButton
             // 
             this.ctrlDriversMenuButton.ButtonName = "Drivers";
             this.ctrlDriversMenuButton.IsActive = false;
-            this.ctrlDriversMenuButton.Location = new System.Drawing.Point(0, 76);
+            this.ctrlDriversMenuButton.Location = new System.Drawing.Point(0, 62);
+            this.ctrlDriversMenuButton.Margin = new System.Windows.Forms.Padding(2);
             this.ctrlDriversMenuButton.Name = "ctrlDriversMenuButton";
             this.ctrlDriversMenuButton.Page = this.ctrlDataPageDrivers;
-            this.ctrlDriversMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlDriversMenuButton.Size = new System.Drawing.Size(190, 62);
             this.ctrlDriversMenuButton.TabIndex = 1;
-            // 
-            // ctrlDataPageDrivers
-            // 
-            this.ctrlDataPageDrivers.Location = new System.Drawing.Point(256, 0);
-            this.ctrlDataPageDrivers.Name = "ctrlDataPageDrivers";
-            this.ctrlDataPageDrivers.Size = new System.Drawing.Size(1246, 575);
-            this.ctrlDataPageDrivers.TabIndex = 10;
-            this.ctrlDataPageDrivers.Title = "Drivers";
-            this.ctrlDataPageDrivers.Visible = false;
             // 
             // ctrlPeopleMenuButton
             // 
             this.ctrlPeopleMenuButton.ButtonName = "People";
             this.ctrlPeopleMenuButton.IsActive = true;
             this.ctrlPeopleMenuButton.Location = new System.Drawing.Point(0, 0);
+            this.ctrlPeopleMenuButton.Margin = new System.Windows.Forms.Padding(2);
             this.ctrlPeopleMenuButton.Name = "ctrlPeopleMenuButton";
             this.ctrlPeopleMenuButton.Page = this.ctrlDataPagePeople;
-            this.ctrlPeopleMenuButton.Size = new System.Drawing.Size(253, 76);
+            this.ctrlPeopleMenuButton.Size = new System.Drawing.Size(190, 62);
             this.ctrlPeopleMenuButton.TabIndex = 0;
-            // 
-            // ctrlDataPagePeople
-            // 
-            this.ctrlDataPagePeople.Location = new System.Drawing.Point(256, 0);
-            this.ctrlDataPagePeople.Name = "ctrlDataPagePeople";
-            this.ctrlDataPagePeople.Size = new System.Drawing.Size(1246, 575);
-            this.ctrlDataPagePeople.TabIndex = 11;
-            this.ctrlDataPagePeople.Title = "People";
             // 
             // pbOff
             // 
+            this.pbOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbOff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbOff.Image = global::PresentationLayer.Properties.Resources.power_off;
-            this.pbOff.Location = new System.Drawing.Point(1443, 12);
+            this.pbOff.Location = new System.Drawing.Point(1077, 10);
+            this.pbOff.Margin = new System.Windows.Forms.Padding(2);
             this.pbOff.Name = "pbOff";
             this.pbOff.Size = new System.Drawing.Size(35, 35);
             this.pbOff.TabIndex = 5;
@@ -579,31 +561,65 @@ namespace PresentationLayer
             // 
             // pbMinimize
             // 
+            this.pbMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::PresentationLayer.Properties.Resources.minus;
-            this.pbMinimize.Location = new System.Drawing.Point(1390, 12);
+            this.pbMinimize.Location = new System.Drawing.Point(1037, 10);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
             this.pbMinimize.Size = new System.Drawing.Size(35, 35);
             this.pbMinimize.TabIndex = 7;
             this.pbMinimize.TabStop = false;
             this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
             // 
+            // ctrlDataPageUsers
+            // 
+            this.ctrlDataPageUsers.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ctrlDataPageUsers.Location = new System.Drawing.Point(181, 0);
+            this.ctrlDataPageUsers.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlDataPageUsers.Name = "ctrlDataPageUsers";
+            this.ctrlDataPageUsers.Size = new System.Drawing.Size(934, 466);
+            this.ctrlDataPageUsers.TabIndex = 11;
+            this.ctrlDataPageUsers.Title = "Users";
+            // 
+            // ctrlDataPageDrivers
+            // 
+            this.ctrlDataPageDrivers.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ctrlDataPageDrivers.Location = new System.Drawing.Point(181, 0);
+            this.ctrlDataPageDrivers.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlDataPageDrivers.Name = "ctrlDataPageDrivers";
+            this.ctrlDataPageDrivers.Size = new System.Drawing.Size(934, 466);
+            this.ctrlDataPageDrivers.TabIndex = 12;
+            this.ctrlDataPageDrivers.Title = "Drivers";
+            // 
+            // ctrlDataPagePeople
+            // 
+            this.ctrlDataPagePeople.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ctrlDataPagePeople.Location = new System.Drawing.Point(181, 0);
+            this.ctrlDataPagePeople.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlDataPagePeople.Name = "ctrlDataPagePeople";
+            this.ctrlDataPagePeople.Size = new System.Drawing.Size(934, 466);
+            this.ctrlDataPagePeople.TabIndex = 13;
+            this.ctrlDataPagePeople.Title = "People";
+            // 
             // MainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1490, 575);
+            this.ClientSize = new System.Drawing.Size(1118, 467);
             this.Controls.Add(this.pbMinimize);
             this.Controls.Add(this.pbOff);
             this.Controls.Add(this.pSideNav);
             this.Controls.Add(this.ctrlDataPagePeople);
-            this.Controls.Add(this.ctrlDataPageUsers);
             this.Controls.Add(this.ctrlDataPageDrivers);
+            this.Controls.Add(this.ctrlDataPageUsers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.MainScreen_Load);
             this.cmsDrivers.ResumeLayout(false);
             this.cmsPeople.ResumeLayout(false);
             this.cmsApplicationOptions.ResumeLayout(false);
@@ -664,14 +680,13 @@ namespace PresentationLayer
         private System.Windows.Forms.Panel pSideNav;
         private System.Windows.Forms.PictureBox pbOff;
         private System.Windows.Forms.PictureBox pbMinimize;
-        private ctrlDataPage ctrlDataPageUsers;
-        private ctrlDataPage ctrlDataPageDrivers;
-        private ctrlDataPage ctrlDataPagePeople;
         private ctrlMenuButton ctrlPeopleMenuButton;
         private ctrlMenuButton ctrlSettingsMenuButton;
         private ctrlMenuButton ctrlApplicationsMenuButton;
         private ctrlMenuButton ctrlUsersMenuButton;
         private ctrlMenuButton ctrlDriversMenuButton;
+        private ctrlDataPage ctrlDataPageUsers;
+        private ctrlDataPage ctrlDataPageDrivers;
+        private ctrlDataPage ctrlDataPagePeople;
     }
 }
-

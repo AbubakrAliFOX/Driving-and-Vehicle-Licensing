@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace PresentationLayer
         private void FormatLayout()
         {
             DataGridView dgv = DetainedLicensesPage.Controls.OfType<DataGridView>().FirstOrDefault();
-            if (dgv != null)
+            if (dgv != null && dgv.RowCount > 0)
             {
                 dgv.Columns["DetainID"].HeaderText = "Detain ID";
                 dgv.Columns["LicenseID"].HeaderText = "License ID";
@@ -40,15 +41,15 @@ namespace PresentationLayer
                 dgv.Columns["ReleaseApplicationID"].HeaderText = "Release.App.ID";
 
 
-                dgv.Columns["DetainID"].Width = 100;
-                dgv.Columns["LicenseID"].Width = 100;
-                dgv.Columns["DetainDate"].Width = 130;
-                dgv.Columns["IsReleased"].Width = 97;
-                dgv.Columns["FineFees"].Width = 110;
-                dgv.Columns["ReleaseDate"].Width = 130;
-                dgv.Columns["NationalNo"].Width = 115;
-                dgv.Columns["FullName"].Width = 250;
-                dgv.Columns["ReleaseApplicationID"].Width = 120;
+                dgv.Columns["DetainID"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["LicenseID"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["DetainDate"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["IsReleased"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["FineFees"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["ReleaseDate"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["NationalNo"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["FullName"].Width = clsUtils.SetCellWidth(19);
+                dgv.Columns["ReleaseApplicationID"].Width = clsUtils.SetCellWidth(10);
 
                 dgv.ContextMenuStrip = cmsDetainedLicenses;
             }

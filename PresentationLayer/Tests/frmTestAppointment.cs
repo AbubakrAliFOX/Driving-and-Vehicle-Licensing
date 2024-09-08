@@ -14,15 +14,15 @@ namespace PresentationLayer
     public partial class frmTestAppointment : Form
     {
         clsLocalDrivingLicensApplication LocalApplicationDetails;
-        int TestTypeID;
-        string[] TestTypeName = new string[] {"Vision", "Written", "Field"};
-        public frmTestAppointment(int LDLApplicationID, int TestType)
+        clsTest TestDetails;
+
+        public frmTestAppointment(int LDLApplicationID, int TestTypeID)
         {
             InitializeComponent();
 
             LocalApplicationDetails = clsLocalDrivingLicensApplication.FindLocalDrivingLicenseApplicationByID(LDLApplicationID);
-            TestTypeID = TestType;
-            lblTitle.Text = $"{TestTypeName[TestTypeID-1]} Test Appointments";
+            TestDetails = new clsTest(TestTypeID);
+            lblTitle.Text = $"{TestDetails.TestName} Test Appointments";
 
             ctrlApplicationInfo.LocalApplicationInfo = LocalApplicationDetails;
             RefreshData();
@@ -31,7 +31,7 @@ namespace PresentationLayer
         
         private void RefreshData ()
         {
-            dgvAppointments.DataSource = clsTest.GetTestAppointments(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestTypeID);
+            dgvAppointments.DataSource = clsTestAppointment.GetTestAppointments(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestDetails.TestTypeID);
         }
 
         private void FormatDataGridView()
@@ -58,10 +58,10 @@ namespace PresentationLayer
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            if(!clsTest.IsAppointmentActiveForTest(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestTypeID))
+            if(!clsTestAppointment.IsAppointmentActiveForTest(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestDetails.TestTypeID))
             {
                 // 1: Passed, 0: Not Taken Test, -1: Failed
-                int PreviousTestResult = clsTest.ApplicationPreviousTestResult(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestTypeID);
+                int PreviousTestResult = clsTestAppointment.ApplicationPreviousTestResult(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestDetails.TestTypeID);
                 
                 if (PreviousTestResult == 1)
                 {
@@ -69,13 +69,7 @@ namespace PresentationLayer
                     return;
                 }
                 
-                frmScheduleTest Appointment = new frmScheduleTest(LocalApplicationDetails, TestTypeID);
-
-                if (PreviousTestResult == -1)
-                {
-                    Appointment.IsRetakeTest = true;
-                }
-
+                frmScheduleTest Appointment = new frmScheduleTest(LocalApplicationDetails.LocalDrivingLicenseApplicationID, TestDetails.TestTypeID);
                 Appointment.ShowDialog();
 
             } else
@@ -93,18 +87,14 @@ namespace PresentationLayer
 
         private void tsmEdit_Click(object sender, EventArgs e)
         {
-
             if (IsAppointmentLocked())
             {
                 MessageBox.Show("Person already took this test. This appointment is locked", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             } else
             {
-                frmScheduleTest ScheduleTest = new frmScheduleTest(LocalApplicationDetails, TestTypeID);
-
-                ScheduleTest.IsEditMode = true;
-                ScheduleTest.AppointmentID = (int)dgvAppointments.CurrentRow.Cells[0].Value;
-
+                int AppointmentID = (int)dgvAppointments.CurrentRow.Cells[0].Value;
+                frmScheduleTest ScheduleTest = new frmScheduleTest(AppointmentID);
                 ScheduleTest.ShowDialog();
 
                 RefreshData();

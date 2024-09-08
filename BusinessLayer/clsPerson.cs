@@ -20,7 +20,12 @@ namespace BusinessLayer
         public string SecondName { set; get; }
         public string ThirdName { set; get; }
         public string LastName { set; get; }
-        public byte Gender { set; get; }
+        public enum enGender
+        {
+            Female = 0,
+            Male = 1,
+        }
+        public enGender Gender { get; set; }
         public string Email { set; get; }
         public string Phone { set; get; }
         public string Address { set; get; }
@@ -36,7 +41,7 @@ namespace BusinessLayer
             this.SecondName = "";
             this.ThirdName = "";
             this.LastName = "";
-            this.Gender = 0;
+            this.Gender = (enGender)0;
             this.Email = "";
             this.Phone = "";
             this.Address = "";
@@ -67,7 +72,7 @@ namespace BusinessLayer
             this.SecondName = SecondName;
             this.ThirdName = ThirdName;
             this.LastName = LastName;
-            this.Gender = Gender;
+            this.Gender = (enGender)Gender;
             this.Email = Email;
             this.Phone = Phone;
             this.Address = Address;
@@ -79,51 +84,51 @@ namespace BusinessLayer
 
         public static clsPerson Find(int ID)
         {
-            string nationalNumber = "",
-                firstName = "",
-                secondName = "",
-                thirdName = "",
-                lastName = "",
-                email = "",
-                phone = "",
-                address = "",
-                imgPath = "";
-            DateTime dateOfBirth = DateTime.Now;
-            int countryID = -1;
-            byte gender = 0;
+            string NationalNumber = "",
+                FirstName = "",
+                SecondName = "",
+                ThirdName = "",
+                LastName = "",
+                Email = "",
+                Phone = "",
+                Address = "",
+                ImgPath = "";
+            DateTime DateOfBirth = DateTime.Now;
+            int CountryID = -1;
+            byte Gender = 0;
 
             if (
                 clsPeopleDataAccess.GetPersonByID(
                     ID,
-                    ref nationalNumber,
-                    ref firstName,
-                    ref secondName,
-                    ref thirdName,
-                    ref lastName,
-                    ref gender,
-                    ref email,
-                    ref phone,
-                    ref address,
-                    ref dateOfBirth,
-                    ref countryID,
-                    ref imgPath
+                    ref NationalNumber,
+                    ref FirstName,
+                    ref SecondName,
+                    ref ThirdName,
+                    ref LastName,
+                    ref Gender,
+                    ref Email,
+                    ref Phone,
+                    ref Address,
+                    ref DateOfBirth,
+                    ref CountryID,
+                    ref ImgPath
                 )
             )
             {
                 return new clsPerson(
                     ID,
-                    nationalNumber,
-                    firstName,
-                    secondName,
-                    thirdName,
-                    lastName,
-                    gender,
-                    email,
-                    phone,
-                    address,
-                    dateOfBirth,
-                    countryID,
-                    imgPath
+                    NationalNumber,
+                    FirstName,
+                    SecondName,
+                    ThirdName,
+                    LastName,
+                    Gender,
+                    Email,
+                    Phone,
+                    Address,
+                    DateOfBirth,
+                    CountryID,
+                    ImgPath
                 );
             }
             else
@@ -135,50 +140,50 @@ namespace BusinessLayer
         public static clsPerson Find(string NationalNo)
         {
             int ID = -1;
-            string firstName = "",
-                secondName = "",
-                thirdName = "",
-                lastName = "",
-                email = "",
-                phone = "",
-                address = "",
-                imgPath = "";
-            DateTime dateOfBirth = DateTime.Now;
-            int countryID = -1;
-            byte gender = 0;
+            string FirstName = "",
+                SecondName = "",
+                ThirdName = "",
+                LastName = "",
+                Email = "",
+                Phone = "",
+                Address = "",
+                ImgPath = "";
+            DateTime DateOfBirth = DateTime.Now;
+            int CountryID = -1;
+            byte Gender = 0;
 
             if (
                 clsPeopleDataAccess.GetPersonByNationalNo(
                     NationalNo,
                     ref ID,
-                    ref firstName,
-                    ref secondName,
-                    ref thirdName,
-                    ref lastName,
-                    ref gender,
-                    ref email,
-                    ref phone,
-                    ref address,
-                    ref dateOfBirth,
-                    ref countryID,
-                    ref imgPath
+                    ref FirstName,
+                    ref SecondName,
+                    ref ThirdName,
+                    ref LastName,
+                    ref Gender,
+                    ref Email,
+                    ref Phone,
+                    ref Address,
+                    ref DateOfBirth,
+                    ref CountryID,
+                    ref ImgPath
                 )
             )
             {
                 return new clsPerson(
                     ID,
                     NationalNo,
-                    firstName,
-                    secondName,
-                    thirdName,
-                    lastName,
-                    gender,
-                    email,
-                    phone,
-                    address,
-                    dateOfBirth,
-                    countryID,
-                    imgPath
+                    FirstName,
+                    SecondName,
+                    ThirdName,
+                    LastName,
+                    Gender,
+                    Email,
+                    Phone,
+                    Address,
+                    DateOfBirth,
+                    CountryID,
+                    ImgPath
                 );
             }
             else
@@ -196,7 +201,7 @@ namespace BusinessLayer
         {
             this.ID = clsPeopleDataAccess.AddNewPerson(this.NationalNumber,this.FirstName, this.SecondName, 
             this.ThirdName, this.LastName,
-            this.Gender,
+            (byte)this.Gender,
             this.Email,
             this.Phone,
             this.Address,
@@ -211,7 +216,7 @@ namespace BusinessLayer
             return clsPeopleDataAccess.UpdatePerson(this.ID, this.NationalNumber,
             this.FirstName, this.SecondName,
             this.ThirdName, this.LastName,
-            this.Gender,
+            (byte)this.Gender,
             this.Email,
             this.Phone,
             this.Address,

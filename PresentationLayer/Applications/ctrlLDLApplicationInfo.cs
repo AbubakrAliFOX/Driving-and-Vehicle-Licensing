@@ -50,7 +50,7 @@ namespace PresentationLayer
 
             lblUser.Text = LocalLicenseApplicationDetails.Application.CreatedByUser;
 
-            lblPassedTests.Text = $"{clsTest.PassedTestsCount(LocalLicenseApplicationDetails.LocalDrivingLicenseApplicationID).ToString()}/3";
+            lblPassedTests.Text = $"{clsTestAppointment.PassedTestsCount(LocalLicenseApplicationDetails.LocalDrivingLicenseApplicationID).ToString()}/3";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -83,7 +83,7 @@ namespace PresentationLayer
 
             // Person Details
             lblNationalNo.Text = LicenseDetails.PersonInfo.NationalNumber;
-            lblGender.Text = LicenseDetails.PersonInfo.Gender == 1 ? "Female" : "Male";
+            lblGender.Text = LicenseDetails.PersonInfo.Gender.ToString();
             lblDOB.Text = LicenseDetails.PersonInfo.DateOfBirth.ToString("dd MMM yyyy");
 
             if (LicenseDetails.PersonInfo.ImagePath != "")

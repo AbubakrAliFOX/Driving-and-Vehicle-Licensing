@@ -344,39 +344,6 @@ namespace DataLayer
             return isFound;
         }
         
-        public static int PassedTestsCount(int LDLApplicationID)
-        {
-            int PassedTests = 0;
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT COUNT(*) AS PassedTests FROM TestAppointments INNER JOIN Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID WHERE Tests.TestResult = 1 AND TestAppointments.LocalDrivingLicenseApplicationID = @LDLApplicationID";
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            cmd.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
-
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    PassedTests = (int)reader["PassedTests"];
-                }
-
-                reader.Close();
-            }
-            catch
-            {
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return PassedTests;
-        }
         public static int CreateApplication(int PersonID, int ApplicationTypeID, int CreatedByUserID)
         {
             int ApplicationID = -1;

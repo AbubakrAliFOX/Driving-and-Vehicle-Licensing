@@ -1,0 +1,17 @@
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\DataLayer.dll
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\DataLayer.pdb
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\BCrypt.Net-Next.dll
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\System.Buffers.dll
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\System.Memory.dll
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\System.Numerics.Vectors.dll
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\BCrypt.Net-Next.xml
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\System.Buffers.xml
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\System.Memory.xml
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\System.Numerics.Vectors.xml
+E:\Downloads\WebDev\Projects\DVL\DataLayer\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+E:\Downloads\WebDev\Projects\DVL\DataLayer\obj\Release\DataLayer.csproj.AssemblyReference.cache
+E:\Downloads\WebDev\Projects\DVL\DataLayer\obj\Release\DataLayer.csproj.CoreCompileInputs.cache
+E:\Downloads\WebDev\Projects\DVL\DataLayer\obj\Release\DataLayer.csproj.CopyComplete
+E:\Downloads\WebDev\Projects\DVL\DataLayer\obj\Release\DataLayer.dll
+E:\Downloads\WebDev\Projects\DVL\DataLayer\obj\Release\DataLayer.pdb

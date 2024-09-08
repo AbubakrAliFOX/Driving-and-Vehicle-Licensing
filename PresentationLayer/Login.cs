@@ -19,7 +19,7 @@ namespace PresentationLayer
         public Login()
         {
             InitializeComponent();
-
+            //FormatLayout();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -81,5 +81,13 @@ namespace PresentationLayer
         {
             this.Close();
         }
+        
+        //private void FormatLayout()
+        //{
+        //    clsUtils.WorkingScreenSize = new System.Drawing.Rectangle(0,0, 2500, 1500);
+
+        //    clsUtils.SetSize(this);
+        //    clsUtils.SetSize(this.pSideNav);
+        //}
     }
 }

@@ -37,8 +37,9 @@
             // 
             this.pSidePanel.BackColor = System.Drawing.Color.Gold;
             this.pSidePanel.Location = new System.Drawing.Point(0, 0);
+            this.pSidePanel.Margin = new System.Windows.Forms.Padding(2);
             this.pSidePanel.Name = "pSidePanel";
-            this.pSidePanel.Size = new System.Drawing.Size(7, 76);
+            this.pSidePanel.Size = new System.Drawing.Size(5, 62);
             this.pSidePanel.TabIndex = 3;
             this.pSidePanel.Visible = false;
             // 
@@ -51,23 +52,24 @@
             this.btnMenuButton.ForeColor = System.Drawing.Color.White;
             this.btnMenuButton.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuButton.Image")));
             this.btnMenuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuButton.Location = new System.Drawing.Point(7, 0);
+            this.btnMenuButton.Location = new System.Drawing.Point(5, 0);
+            this.btnMenuButton.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenuButton.Name = "btnMenuButton";
-            this.btnMenuButton.Size = new System.Drawing.Size(246, 76);
+            this.btnMenuButton.Size = new System.Drawing.Size(184, 62);
             this.btnMenuButton.TabIndex = 1;
             this.btnMenuButton.Text = "        Drivers";
-            this.btnMenuButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMenuButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMenuButton.UseVisualStyleBackColor = false;
             // 
             // ctrlMenuButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pSidePanel);
             this.Controls.Add(this.btnMenuButton);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ctrlMenuButton";
-            this.Size = new System.Drawing.Size(253, 76);
+            this.Size = new System.Drawing.Size(190, 62);
             this.ResumeLayout(false);
 
         }

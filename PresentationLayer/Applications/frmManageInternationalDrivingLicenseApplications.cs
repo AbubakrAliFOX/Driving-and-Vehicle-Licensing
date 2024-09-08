@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace PresentationLayer
         private void FormatLayout()
         {
             DataGridView dgv = InternationalLicenseApplicationsPage.Controls.OfType<DataGridView>().FirstOrDefault();
-            if (dgv != null)
+            if (dgv != null && dgv.RowCount > 0)
             {
                 dgv.Columns["Int.LicenseID"].HeaderText = "Int.License ID";
                 dgv.Columns["L.LicenseID"].HeaderText = "L.License ID";
@@ -37,13 +38,13 @@ namespace PresentationLayer
                 dgv.Columns["ExpirationDate"].HeaderText = "Expiration Date";
                 dgv.Columns["IsActive"].HeaderText = "Is Active";
 
-                dgv.Columns["Int.LicenseID"].Width = 130;
-                dgv.Columns["L.LicenseID"].Width = 130;
-                dgv.Columns["ApplicationID"].Width = 120;
-                dgv.Columns["DriverID"].Width = 120;
-                dgv.Columns["IssueDate"].Width = 160;
-                dgv.Columns["ExpirationDate"].Width = 160;
-                dgv.Columns["IsActive"].Width = 100;
+                dgv.Columns["Int.LicenseID"].Width = clsUtils.SetCellWidth(12);
+                dgv.Columns["L.LicenseID"].Width = clsUtils.SetCellWidth(12);
+                dgv.Columns["ApplicationID"].Width = clsUtils.SetCellWidth(12);
+                dgv.Columns["DriverID"].Width = clsUtils.SetCellWidth(12);
+                dgv.Columns["IssueDate"].Width = clsUtils.SetCellWidth(20);
+                dgv.Columns["ExpirationDate"].Width = clsUtils.SetCellWidth(20);
+                dgv.Columns["IsActive"].Width = clsUtils.SetCellWidth(12);
 
                 dgv.ContextMenuStrip = cmsInternationalLicences;
             }

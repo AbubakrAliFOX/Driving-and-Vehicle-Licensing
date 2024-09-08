@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using PresentationLayer.Applications;
+using PresentationLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,20 +29,22 @@ namespace PresentationLayer
         private void FormatLayout()
         {
             DataGridView dgv = LocalLicenseApplicationsPage.Controls.OfType<DataGridView>().FirstOrDefault();
-            if (dgv != null)
+            if (dgv != null && dgv.RowCount > 0)
             {
                 dgv.Columns["DrivingClass"].HeaderText = "Driving Class";
                 dgv.Columns["NationalNo"].HeaderText = "National No";
                 dgv.Columns["FullName"].HeaderText = "Full Name";
                 dgv.Columns["ApplicationDate"].HeaderText = "Application Date";
+                dgv.Columns["PassedTests"].HeaderText = "Passed Tests";
                 dgv.Columns["ApplicationStatus"].HeaderText = "Application Status";
 
-                dgv.Columns["L.D.L.AppID"].Width = 100;
-                dgv.Columns["DrivingClass"].Width = 200;
-                dgv.Columns["NationalNo"].Width = 120;
-                dgv.Columns["FullName"].Width = 330;
-                dgv.Columns["ApplicationDate"].Width = 160;
-                dgv.Columns["ApplicationStatus"].Width = 120;
+                dgv.Columns["L.D.L.AppID"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["DrivingClass"].Width = clsUtils.SetCellWidth(20);
+                dgv.Columns["NationalNo"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["FullName"].Width = clsUtils.SetCellWidth(25);
+                dgv.Columns["ApplicationDate"].Width = clsUtils.SetCellWidth(15);
+                dgv.Columns["PassedTests"].Width = clsUtils.SetCellWidth(10);
+                dgv.Columns["ApplicationStatus"].Width = clsUtils.SetCellWidth(10);
 
                 dgv.ContextMenuStrip = cmsLocalLicences;
             }
