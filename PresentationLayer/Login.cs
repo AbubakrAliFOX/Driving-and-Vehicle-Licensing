@@ -49,6 +49,8 @@ namespace PresentationLayer
                 } else
                 {
                     clsUtils.SaveCredentials("", "");
+                    tbUserName.Text = "";
+                    tbPassword.Text = "";
                 }
 
                 this.Hide();
